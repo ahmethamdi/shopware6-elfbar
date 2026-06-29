@@ -4665,3 +4665,23 @@ a.elfbar-link, .elfbar-more-link {
 
 /* slider içindeki review kartı: metin alta yaslı değil, üstte düzgün dursun */
 .elfbar-reviews__slider .elfbar-review-card__text { flex: 0 1 auto; margin-bottom: 0; }
+
+/* ---- VITRINE compact (sidebar yanı, sağ ana alan üstü — tam ekran değil) ---- */
+.elfbar-vitrine--compact {
+    grid-template-columns: 200px 1fr;
+    gap: 1.5rem;
+    padding: 1.75rem;
+    margin: 0 0 1.5rem;
+    border-radius: $elfbar-radius;
+    .elfbar-vitrine__cabinet { max-width: 170px; }
+    .elfbar-vitrine__title { font-size: clamp(1.3rem, 2.5vw, 1.7rem); margin-bottom: 0.6rem; }
+    .elfbar-vitrine__text { font-size: 0.92rem; margin-bottom: 1rem; }
+    .elfbar-vitrine__features { margin-bottom: 1.1rem; }
+    .elfbar-btn { min-height: 42px; font-size: 0.9rem; padding: 0 1.2rem; }
+    @media (max-width: 700px) {
+        grid-template-columns: 1fr; text-align: center;
+        .elfbar-vitrine__media { order: -1; }
+        .elfbar-vitrine__features { justify-items: center; li { justify-content: center; } }
+        .elfbar-vitrine__actions { justify-content: center; }
+    }
+}

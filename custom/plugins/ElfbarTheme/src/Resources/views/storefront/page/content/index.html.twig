@@ -129,14 +129,6 @@
                 </section>
             {% endblock %}
 
-            {# ============ İnce şerit banner 1 (hero hemen altı, tam genişlik) ============ #}
-            {% block elfbar_home_stripe1 %}
-                <a href="{{ path('frontend.account.register.page') }}" class="elfbar-stripe elfbar-stripe--grad">
-                    <span class="elfbar-stripe__ico">{% sw_icon 'percentage' %}</span>
-                    <span class="elfbar-stripe__txt"><b>−10 % auf Ihre erste Bestellung</b> · Jetzt als Händler registrieren</span>
-                    <span class="elfbar-stripe__cta">Jetzt sichern {% sw_icon 'arrow-right' %}</span>
-                </a>
-            {% endblock %}
 
             {# ============ 2 KOLON: SOL sidebar | SAĞ içerik ============ #}
             <div class="elfbar-body">
@@ -187,6 +179,55 @@
                     {# B2B marka sitesi: hero altı marka ikon şeridi KALDIRILDI
                        (markalar zaten header + sidebar'da → tekrar gereksiz). #}
                     {% block elfbar_home_brands %}{% endblock %}
+
+                    {# ============ VERKAUFSVITRINE PRO — kompakt (sidebar yanı, sağ alan üstü, tam ekran DEĞİL) ============ #}
+                    {% block elfbar_home_vitrine %}
+                        <section class="elfbar-vitrine elfbar-vitrine--compact" aria-labelledby="elfbar-vitrine-title">
+                            <div class="elfbar-vitrine__glow elfbar-vitrine__glow--a" aria-hidden="true"></div>
+                            <div class="elfbar-vitrine__media">
+                                <span class="elfbar-vitrine__badge">Neu · Exklusiv für Händler</span>
+                                <div class="elfbar-vitrine__cabinet" aria-hidden="true">
+                                    <svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Verkaufsvitrine">
+                                        <rect x="22" y="14" width="156" height="252" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+                                        <rect x="22" y="14" width="156" height="46" rx="10" fill="url(#elfbar-vitrine-grad)"/>
+                                        <text x="100" y="44" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="20" font-weight="700" fill="#fff" letter-spacing="2">ELFBAR</text>
+                                        {% for row in 0..3 %}
+                                            <line x1="30" y1="{{ 78 + row * 46 }}" x2="170" y2="{{ 78 + row * 46 }}" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+                                            {% for col in 0..3 %}
+                                                <rect x="{{ 36 + col * 33 }}" y="{{ 84 + row * 46 }}" width="20" height="34" rx="4" fill="url(#elfbar-vitrine-prod)" opacity="0.92"/>
+                                            {% endfor %}
+                                        {% endfor %}
+                                        <defs>
+                                            <linearGradient id="elfbar-vitrine-grad" x1="22" y1="14" x2="178" y2="60" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#ff5ea7"/><stop offset="0.5" stop-color="#c85aff"/><stop offset="1" stop-color="#5a74ff"/>
+                                            </linearGradient>
+                                            <linearGradient id="elfbar-vitrine-prod" x1="0" y1="0" x2="0" y2="1">
+                                                <stop stop-color="#ffb3d4"/><stop offset="1" stop-color="#8a9bff"/>
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="elfbar-vitrine__content">
+                                <p class="elfbar-vitrine__eyebrow">VITRINE PRO</p>
+                                <h2 class="elfbar-vitrine__title" id="elfbar-vitrine-title">Premium Verkaufsvitrine für Ihren Store</h2>
+                                <p class="elfbar-vitrine__text">
+                                    Abschließbar, beleuchtet und sofort einsatzbereit – das perfekte Highlight für
+                                    Kiosk, Tankstelle und Fachhandel. Für Bestandskunden auf Wunsch kostenlos.
+                                </p>
+                                <ul class="elfbar-vitrine__features">
+                                    <li>{% sw_icon 'check' %} Abschließbar &amp; LED-beleuchtet</li>
+                                    <li>{% sw_icon 'check' %} Markenkonform gebrandet</li>
+                                </ul>
+                                <div class="elfbar-vitrine__actions">
+                                    <a href="{{ path('frontend.account.register.page') }}" class="elfbar-btn elfbar-btn--gradient">
+                                        Jetzt kostenlos anfragen {% sw_icon 'arrow-right' %}
+                                    </a>
+                                    <a href="#" class="elfbar-btn elfbar-btn--outline">Datenblatt</a>
+                                </div>
+                            </div>
+                        </section>
+                    {% endblock %}
 
                     {% block elfbar_home_campaign %}
                         {# Marke veya Text boşsa tüm Banner gizli #}
