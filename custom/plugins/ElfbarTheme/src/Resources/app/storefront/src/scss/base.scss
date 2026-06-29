@@ -4599,3 +4599,69 @@ a.elfbar-link, .elfbar-more-link {
     .elfbar-faq__item { margin-bottom: 0; align-self: start; }
 }
 .elfbar-faq__head { text-align: left; }
+
+/* ============================================================
+   ★ İnce şerit banner (.elfbar-stripe) + Reviews slider düzeni
+   ============================================================ */
+
+/* ---- İnce şerit banner: tek satır, ikon + metin + CTA ---- */
+.elfbar-stripe {
+    display: flex; align-items: center; gap: 1rem;
+    margin: 0 0 2rem; padding: 0.9rem 1.4rem; border-radius: 999px;
+    text-decoration: none; box-shadow: $elf-shadow-sm;
+    transition: transform .2s ease, box-shadow .2s ease;
+    &:hover { transform: translateY(-2px); box-shadow: $elf-shadow-md; text-decoration: none;
+        .elfbar-stripe__cta .icon { transform: translateX(4px); } }
+
+    &__ico {
+        flex: 0 0 auto; display: inline-grid; place-items: center; width: 38px; height: 38px;
+        border-radius: 50%; background: rgba(#fff, 0.18);
+        .icon { width: 20px; height: 20px; color: #fff; }
+    }
+    &__txt {
+        flex: 1 1 auto; min-width: 0; font-family: $elfbar-font-base; font-size: 0.95rem;
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        b { font-weight: 700; }
+    }
+    &__cta {
+        flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.4rem;
+        font-weight: 700; font-size: 0.9rem; white-space: nowrap;
+        .icon { width: 16px; height: 16px; transition: transform .2s ease; }
+    }
+
+    /* gradient varyant (kampanya) */
+    &--grad {
+        background: $elfbar-gradient; color: #fff;
+        .elfbar-stripe__cta { color: #fff; }
+    }
+    /* koyu varyant (vitrine) */
+    &--dark {
+        color: #fff;
+        background:
+            radial-gradient(80% 140% at 100% 0%, rgba($elfbar-grad-mid, 0.5), transparent 60%),
+            linear-gradient(120deg, #1a1230, #100a22);
+        .elfbar-stripe__ico { background: $elfbar-gradient; }
+        .elfbar-stripe__cta { color: #fff; }
+    }
+
+    @media (max-width: 640px) {
+        flex-wrap: wrap; border-radius: $elfbar-radius;
+        &__txt { white-space: normal; flex: 1 1 100%; order: 2; }
+        &__cta { order: 3; }
+    }
+}
+
+/* ---- Reviews: başlık satırı (sola yaslı + sağda ok'lar) ---- */
+.elfbar-reviews__head {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
+}
+
+/* ---- Reviews slider: kartlar sabit genişlik, yatay kayar ---- */
+.elfbar-reviews__slider .elfbar-cardslider__track { gap: 1rem; }
+.elfbar-reviews__slider .elfbar-review-card {
+    flex: 0 0 320px; max-width: 320px;
+    @media (max-width: 560px) { flex-basis: 82%; max-width: 82%; }
+}
+
+/* slider içindeki review kartı: metin alta yaslı değil, üstte düzgün dursun */
+.elfbar-reviews__slider .elfbar-review-card__text { flex: 0 1 auto; margin-bottom: 0; }

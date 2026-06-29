@@ -47,7 +47,8 @@
       "Bash(git ls-tree *)",
       "Bash(php -d memory_limit=512M bin/console lint:twig custom/plugins/ElfbarTheme/src/Resources/views)",
       "Bash(cd /Applications/XAMPP/xamppfiles/htdocs/Shopware6-Elfbar/custom/plugins/ElfbarTheme/src/Resources/app/storefront/src/scss *)",
-      "Read(//Applications/views/storefront/page/content/**)"
+      "Read(//Applications/views/storefront/page/content/**)",
+      "Bash(xargs -n1 basename)"
     ]
   }
 }
