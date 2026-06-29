@@ -45,7 +45,9 @@
       "Bash(npx --yes --package @playwright/cli playwright-cli screenshot /private/tmp/claude-501/-Applications-XAMPP-xamppfiles-htdocs-Shopware6-Elfbar/5288be5a-ebe4-4e86-b874-28687f4eb056/scratchpad/elfbar-products.png)",
       "Bash(grep -E \"\\\\.env$|auth.json|vendor/\")",
       "Bash(git ls-tree *)",
-      "Bash(php -d memory_limit=512M bin/console lint:twig custom/plugins/ElfbarTheme/src/Resources/views)"
+      "Bash(php -d memory_limit=512M bin/console lint:twig custom/plugins/ElfbarTheme/src/Resources/views)",
+      "Bash(cd /Applications/XAMPP/xamppfiles/htdocs/Shopware6-Elfbar/custom/plugins/ElfbarTheme/src/Resources/app/storefront/src/scss *)",
+      "Read(//Applications/views/storefront/page/content/**)"
     ]
   }
 }

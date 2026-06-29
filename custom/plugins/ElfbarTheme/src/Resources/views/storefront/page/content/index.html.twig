@@ -39,6 +39,37 @@
     </a>
 {% endmacro %}
 
+{# Kategori vitrini: SOL gradient kategori görsel kartı + SAĞ yatay ürün slider.
+   products = ürün listesi, loggedIn = B2B gate, badge, tone = renk varyantı,
+   catName/catSub/catLink = sol kart metinleri. #}
+{% macro elfbarCatSlider(products, loggedIn, badge, tone, catName, catSub, catLink) %}
+    <section class="elfbar-catslider">
+        <a href="{{ catLink ?: '#' }}" class="elfbar-catslider__feature elfbar-catslider__feature--{{ tone }}">
+            <span class="elfbar-catslider__eyebrow">Kategorie</span>
+            <span class="elfbar-catslider__name">{{ catName }}</span>
+            <span class="elfbar-catslider__sub">{{ catSub }}</span>
+            <span class="elfbar-catslider__cta">Alle anzeigen {% sw_icon 'arrow-right' %}</span>
+            <span class="elfbar-catslider__glyph" aria-hidden="true">{{ catName|first|upper }}</span>
+        </a>
+        <div class="elfbar-catslider__main">
+            <div class="elfbar-catslider__head">
+                <h2 class="elfbar-catslider__title">{{ catName }}</h2>
+                <div class="elfbar-slider-nav">
+                    <button type="button" class="elfbar-slider-btn" data-slide="prev" aria-label="Zurück"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg></button>
+                    <button type="button" class="elfbar-slider-btn" data-slide="next" aria-label="Weiter"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></button>
+                </div>
+            </div>
+            <div class="elfbar-cardslider" data-elfbar-cardslider>
+                <div class="elfbar-cardslider__track">
+                    {% for product in products %}
+                        {{ _self.elfbarProductCard(product, loggedIn, badge) }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
 {# =====================================================================
    ElfbarTheme — Anasayfa (MOCKUP birebir):
    HERO (köşeli, üstte) → hemen altında 2 kolon:
@@ -94,6 +125,59 @@
                             {% if heroSmall2 %}<img class="elfbar-hero__img elfbar-hero__img--desktop" src="{{ heroSmall2 }}" alt="" loading="lazy">{% elseif not heroSmall2Mob %}{{ mediaSvg }}{% endif %}
                             {% if heroSmall2Mob %}<img class="elfbar-hero__img elfbar-hero__img--mobile" src="{{ heroSmall2Mob }}" alt="" loading="lazy">{% endif %}
                         </{{ heroS2Tag }}>
+                    </div>
+                </section>
+            {% endblock %}
+
+            {# ============ VERKAUFSVITRINE PRO — hero hemen altı, tam genişlik amiral banner ============ #}
+            {% block elfbar_home_vitrine %}
+                <section class="elfbar-vitrine" aria-labelledby="elfbar-vitrine-title">
+                    <div class="elfbar-vitrine__glow elfbar-vitrine__glow--a" aria-hidden="true"></div>
+                    <div class="elfbar-vitrine__glow elfbar-vitrine__glow--b" aria-hidden="true"></div>
+                    <div class="elfbar-vitrine__media">
+                        <span class="elfbar-vitrine__badge">Neu · Exklusiv für Händler</span>
+                        <div class="elfbar-vitrine__cabinet" aria-hidden="true">
+                            <svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Verkaufsvitrine">
+                                <rect x="22" y="14" width="156" height="252" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+                                <rect x="22" y="14" width="156" height="46" rx="10" fill="url(#elfbar-vitrine-grad)"/>
+                                <text x="100" y="44" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="20" font-weight="700" fill="#fff" letter-spacing="2">ELFBAR</text>
+                                {% for row in 0..3 %}
+                                    <line x1="30" y1="{{ 78 + row * 46 }}" x2="170" y2="{{ 78 + row * 46 }}" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+                                    {% for col in 0..3 %}
+                                        <rect x="{{ 36 + col * 33 }}" y="{{ 84 + row * 46 }}" width="20" height="34" rx="4" fill="url(#elfbar-vitrine-prod)" opacity="0.92"/>
+                                    {% endfor %}
+                                {% endfor %}
+                                <defs>
+                                    <linearGradient id="elfbar-vitrine-grad" x1="22" y1="14" x2="178" y2="60" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#ff5ea7"/><stop offset="0.5" stop-color="#c85aff"/><stop offset="1" stop-color="#5a74ff"/>
+                                    </linearGradient>
+                                    <linearGradient id="elfbar-vitrine-prod" x1="0" y1="0" x2="0" y2="1">
+                                        <stop stop-color="#ffb3d4"/><stop offset="1" stop-color="#8a9bff"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="elfbar-vitrine__content">
+                        <p class="elfbar-vitrine__eyebrow">VITRINE PRO</p>
+                        <h2 class="elfbar-vitrine__title" id="elfbar-vitrine-title">Premium Verkaufsvitrine für Ihren Store</h2>
+                        <p class="elfbar-vitrine__text">
+                            Präsentieren Sie ELFBAR-Produkte stilvoll und verkaufsstark. Die VITRINE PRO ist abschließbar,
+                            beleuchtet und sofort einsatzbereit – das perfekte Highlight für Kiosk, Tankstelle und Fachhandel.
+                            Für Bestandskunden auf Wunsch kostenlos.
+                        </p>
+                        <ul class="elfbar-vitrine__features">
+                            <li>{% sw_icon 'check' %} Abschließbar &amp; LED-beleuchtet</li>
+                            <li>{% sw_icon 'check' %} Markenkonform gebrandet</li>
+                            <li>{% sw_icon 'check' %} Aufbau in unter 10 Minuten</li>
+                        </ul>
+                        <div class="elfbar-vitrine__actions">
+                            <a href="{{ path('frontend.account.register.page') }}" class="elfbar-btn elfbar-btn--gradient">
+                                Jetzt kostenlos anfragen {% sw_icon 'arrow-right' %}
+                            </a>
+                            <a href="#" class="elfbar-btn elfbar-btn--outline">Datenblatt Download</a>
+                        </div>
+                        <p class="elfbar-vitrine__note">* Nur für registrierte Gewerbetreibende. Abgabe ab 18 Jahren.</p>
                     </div>
                 </section>
             {% endblock %}
@@ -363,10 +447,44 @@
                         {% endif %}
                     {% endblock %}
 
-                    {# ============ Premium B2B section'lar (Vitrine, USP, Markenwelt,
-                       So geht's + FAQ, Bewertungen + Trust) ============ #}
+                    {# ============ Premium B2B section akışı (araya kategori-slider'lar
+                       serpiştirilmiş): Slider1 → USP → Markenwelt → Slider2 → Bildbanner →
+                       HowTo+FAQ → Reviews+Trust ============ #}
                     {% block elfbar_home_premium_sections %}
-                        {% sw_include '@ElfbarTheme/storefront/page/content/_home-sections.html.twig' %}
+                        {% set elfbarBest = page.extensions.elfbarBestseller.products ?? [] %}
+                        {% set elfbarNeu  = page.extensions.elfbarNeu.products ?? [] %}
+
+                        {# Kategori-Slider 1: Bestseller (sol görsel + sağ ürün slider) #}
+                        {% if elfbarBest|length %}
+                            {{ _self.elfbarCatSlider(elfbarBest, elfbarLoggedIn, 'Top', 'pink',
+                                'Bestseller', 'Die meistverkauften Produkte unserer Händler.',
+                                path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId })) }}
+                        {% endif %}
+
+                        {# USP + Markenwelt #}
+                        {% sw_include '@ElfbarTheme/storefront/page/content/_home-sections-top.html.twig' %}
+
+                        {# Kategori-Slider 2: Neuheiten (sol görsel + sağ ürün slider) #}
+                        {% if elfbarNeu|length %}
+                            {{ _self.elfbarCatSlider(elfbarNeu, elfbarLoggedIn, 'Neu', 'blue',
+                                'Neuheiten', 'Frisch im Sortiment – jetzt als Erster bestellen.',
+                                path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId })) }}
+                        {% endif %}
+
+                        {# Geniş görsel banner (gradient placeholder) #}
+                        {% block elfbar_home_imgbanner %}
+                            <a href="{{ path('frontend.account.register.page') }}" class="elfbar-imgbanner">
+                                <span class="elfbar-imgbanner__text">
+                                    <span class="elfbar-imgbanner__eyebrow">Aktion</span>
+                                    <span class="elfbar-imgbanner__title">−10 % auf Ihre erste Bestellung</span>
+                                    <span class="elfbar-imgbanner__sub">Jetzt als Händler registrieren und sparen.</span>
+                                </span>
+                                <span class="elfbar-imgbanner__cta">Jetzt sichern {% sw_icon 'arrow-right' %}</span>
+                            </a>
+                        {% endblock %}
+
+                        {# HowTo + FAQ + Reviews + Trust #}
+                        {% sw_include '@ElfbarTheme/storefront/page/content/_home-sections-bottom.html.twig' %}
                     {% endblock %}
                 </div>
             </div>

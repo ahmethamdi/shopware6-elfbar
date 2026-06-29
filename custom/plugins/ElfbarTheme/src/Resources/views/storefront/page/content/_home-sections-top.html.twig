@@ -1,0 +1,61 @@
+{# Premium section'lar — ÜST grup: USP grid + Markenwelt. Başlıklar SOLA yaslı (.elfbar-shead). #}
+
+{# ---- WARUM ELFBAR B2B? — USP Grid ---- #}
+<section class="elfbar-usps" aria-labelledby="elfbar-usps-title">
+    <header class="elfbar-shead">
+        <p class="elfbar-shead__eyebrow">Ihre Vorteile</p>
+        <h2 class="elfbar-shead__title" id="elfbar-usps-title">Warum ELFBAR B2B?</h2>
+        <p class="elfbar-shead__sub">Der Großhandel, der für Ihren Erfolg gemacht ist.</p>
+    </header>
+    <div class="elfbar-usps__grid">
+        <article class="elfbar-usp-card">
+            <span class="elfbar-usp-card__icon">{% sw_icon 'bag-product' %}</span>
+            <h3 class="elfbar-usp-card__title">Top-Margen für Händler</h3>
+            <p class="elfbar-usp-card__text">Attraktive Staffelpreise und Mengenrabatte sichern Ihnen erstklassige Gewinnspannen.</p>
+        </article>
+        <article class="elfbar-usp-card">
+            <span class="elfbar-usp-card__icon">{% sw_icon 'truck' %}</span>
+            <h3 class="elfbar-usp-card__title">Schnelle Lieferung 24–48h</h3>
+            <p class="elfbar-usp-card__text">Bestellt am Nachmittag, geliefert übermorgen – versandkostenfrei ab Mindestbestellwert.</p>
+        </article>
+        <article class="elfbar-usp-card">
+            <span class="elfbar-usp-card__icon">{% sw_icon 'lock-closed' %}</span>
+            <h3 class="elfbar-usp-card__title">Kauf auf Rechnung &amp; PayPal</h3>
+            <p class="elfbar-usp-card__text">Flexible Zahlung für Gewerbekunden – sicher, geprüft und ohne Vorkasse-Zwang.</p>
+        </article>
+        <article class="elfbar-usp-card">
+            <span class="elfbar-usp-card__icon">{% sw_icon 'headset' %}</span>
+            <h3 class="elfbar-usp-card__title">Persönlicher B2B-Support</h3>
+            <p class="elfbar-usp-card__text">Ihr fester Ansprechpartner berät Sie zu Sortiment, Aktionen und Nachschub.</p>
+        </article>
+    </div>
+</section>
+
+{# ---- UNSERE MARKENWELT — Brand World Banner Cards ---- #}
+<section class="elfbar-brandworld" aria-labelledby="elfbar-brandworld-title">
+    <header class="elfbar-shead">
+        <p class="elfbar-shead__eyebrow">Markenwelt</p>
+        <h2 class="elfbar-shead__title" id="elfbar-brandworld-title">Unsere Markenwelt</h2>
+        <p class="elfbar-shead__sub">Die stärksten Vape-Marken – exklusiv im B2B-Sortiment.</p>
+    </header>
+    <div class="elfbar-brandworld__grid">
+        {% set elfbar_brands = [
+            { letter: 'E', name: 'ELFBAR', desc: 'Der Bestseller. Einweg-Vapes in über 30 Geschmacksrichtungen.', tone: 'pink' },
+            { letter: 'L', name: 'Lost Mary', desc: 'Trendiges Design trifft auf intensiven Geschmack.', tone: 'violet' },
+            { letter: 'Q', name: 'ELFLIQ', desc: 'Premium-Liquids &amp; Nic-Salts für jedes Pod-System.', tone: 'blue' },
+            { letter: 'A', name: 'ELFA', desc: 'Das nachfüllbare Pod-System der nächsten Generation.', tone: 'mix' }
+        ] %}
+        {% for brand in elfbar_brands %}
+            <article class="elfbar-brand-card elfbar-brand-card--{{ brand.tone }}">
+                <div class="elfbar-brand-card__media" aria-hidden="true">
+                    <span class="elfbar-brand-card__letter">{{ brand.letter }}</span>
+                </div>
+                <div class="elfbar-brand-card__body">
+                    <h3 class="elfbar-brand-card__name">{{ brand.name }}</h3>
+                    <p class="elfbar-brand-card__desc">{{ brand.desc|raw }}</p>
+                    <a href="#" class="elfbar-brand-card__link">Entdecken {% sw_icon 'arrow-right' %}</a>
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+</section>

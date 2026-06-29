@@ -4259,17 +4259,30 @@ a.elfbar-link, .elfbar-more-link {
    ★ ELFBAR Home Premium Sections (Vitrine, USP, Markenwelt, HowTo+FAQ, Reviews)
    ============================================================ */
 
-/* ---- Paylaşılan section başlığı ---- */
-.elfbar-section-head {
+/* ---- Premium section başlığı — SOLA YASLI, izole (.elfbar-shead),
+       eski .elfbar-section-head flex space-between ile ÇAKIŞMAZ ---- */
+.elfbar-shead {
+    text-align: left;
+    margin: 0 0 1.75rem;
     &__eyebrow {
         font-family: $elfbar-font-base;
         font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em;
-        text-transform: uppercase; margin: 0 0 0.5rem;
+        text-transform: uppercase; margin: 0 0 0.4rem;
         background: $elfbar-gradient; -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    &__title {
+        font-family: $elfbar-font-headline;
+        font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 800; line-height: 1.15;
+        color: $elfbar-color-ink; margin: 0 0 0.4rem; letter-spacing: -0.02em;
+        position: relative; padding-bottom: 0.55rem;
+        &::after {
+            content: ""; position: absolute; left: 0; bottom: 0;
+            width: 48px; height: 4px; border-radius: 999px; background: $elfbar-gradient;
+        }
     }
     &__sub {
         font-family: $elfbar-font-base; font-size: 1rem;
-        color: rgba($elfbar-color-ink, 0.62); margin: 0;
+        color: rgba($elfbar-color-ink, 0.62); margin: 0.3rem 0 0;
     }
 }
 
@@ -4500,3 +4513,89 @@ a.elfbar-link, .elfbar-more-link {
     .elfbar-usp-card:hover, .elfbar-brand-card:hover, .elfbar-review-card:hover,
     .elfbar-btn--gradient:hover, .elfbar-btn--outline:hover { transform: none; }
 }
+
+/* ============================================================
+   ★ Kategori-Slider (sol görsel kart + sağ ürün slider), Bildbanner, FAQ-grid
+   ============================================================ */
+
+/* ---- Kategori-Slider: SOL feature kart + SAĞ ürün slider ---- */
+.elfbar-catslider {
+    display: grid;
+    grid-template-columns: 270px 1fr;
+    gap: 1.25rem;
+    margin: 0 0 3.5rem;
+    align-items: stretch;
+    @media (max-width: 860px) { grid-template-columns: 1fr; }
+
+    /* sol gradient kategori kartı */
+    &__feature {
+        position: relative; overflow: hidden;
+        display: flex; flex-direction: column; justify-content: flex-end;
+        min-height: 240px; padding: 1.5rem; border-radius: $elfbar-radius;
+        text-decoration: none; color: #fff; isolation: isolate;
+        box-shadow: $elf-shadow-md;
+        transition: transform .25s ease, box-shadow .25s ease;
+        &:hover { transform: translateY(-4px); box-shadow: $elf-shadow-lg; color: #fff; text-decoration: none;
+            .elfbar-catslider__glyph { transform: scale(1.06) rotate(-4deg); } }
+
+        &--pink   { background: linear-gradient(150deg, #ff5ea7, #c85aff); }
+        &--blue   { background: linear-gradient(150deg, #5a74ff, #c85aff); }
+        &--violet { background: linear-gradient(150deg, #c85aff, #8a6bff); }
+    }
+    &__eyebrow { font-family: $elfbar-font-base; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.85; }
+    &__name { font-family: $elfbar-font-headline; font-size: 1.6rem; font-weight: 800; line-height: 1.1; margin: 0.3rem 0; }
+    &__sub { font-family: $elfbar-font-base; font-size: 0.88rem; line-height: 1.45; opacity: 0.9; margin-bottom: 1rem; }
+    &__cta { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700; font-size: 0.9rem;
+        .icon { width: 16px; height: 16px; transition: transform .2s ease; } }
+    &__feature:hover &__cta .icon { transform: translateX(4px); }
+    &__glyph {
+        position: absolute; top: -10px; right: -6px; z-index: -1;
+        font-family: $elfbar-font-headline; font-weight: 800; font-size: 9rem; line-height: 1;
+        color: rgba(#fff, 0.16); transition: transform .35s ease;
+    }
+
+    /* sağ ana alan */
+    &__main { min-width: 0; display: flex; flex-direction: column; }
+    &__head {
+        display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;
+    }
+    &__title {
+        font-family: $elfbar-font-headline; font-weight: 800; font-size: 1.35rem; margin: 0;
+        color: $elfbar-color-ink; position: relative; padding-bottom: 0.5rem;
+        &::after { content: ""; position: absolute; left: 0; bottom: 0; width: 40px; height: 3px; border-radius: 999px; background: $elfbar-gradient; }
+    }
+}
+
+/* ---- Geniş görsel/aksiyon banner ---- */
+.elfbar-imgbanner {
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    margin: 0 0 3.5rem; padding: 1.75rem 2rem; border-radius: calc(#{$elfbar-radius} + 4px);
+    text-decoration: none; color: #fff; box-shadow: $elf-shadow-md;
+    background:
+        radial-gradient(80% 120% at 100% 0%, rgba(#fff, 0.18), transparent 55%),
+        $elfbar-gradient;
+    transition: transform .25s ease, box-shadow .25s ease;
+    &:hover { transform: translateY(-3px); box-shadow: $elf-shadow-lg; color: #fff; text-decoration: none;
+        .elfbar-imgbanner__cta .icon { transform: translateX(4px); } }
+    &__text { display: flex; flex-direction: column; }
+    &__eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.9; }
+    &__title { font-family: $elfbar-font-headline; font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 800; line-height: 1.1; margin: 0.25rem 0; }
+    &__sub { font-size: 0.92rem; opacity: 0.92; }
+    &__cta {
+        flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.5rem;
+        background: #fff; color: $sw-color-brand-primary; font-weight: 700; font-size: 0.95rem;
+        padding: 0.8rem 1.4rem; border-radius: $elfbar-radius; box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+        .icon { width: 18px; height: 18px; transition: transform .2s ease; }
+    }
+    @media (max-width: 600px) { flex-direction: column; align-items: flex-start; text-align: left; }
+}
+
+/* ---- FAQ 2 kolon grid (4 soru → 2+2) ---- */
+.elfbar-faq--grid {
+    max-width: none;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem;
+    @media (max-width: 720px) { grid-template-columns: 1fr; }
+    .elfbar-faq__item { margin-bottom: 0; align-self: start; }
+}
+.elfbar-faq__head { text-align: left; }

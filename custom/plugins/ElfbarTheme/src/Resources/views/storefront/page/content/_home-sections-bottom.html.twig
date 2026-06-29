@@ -1,0 +1,116 @@
+{# Premium section'lar — ALT grup: HowTo + FAQ (2 kolon) + Reviews + Trust. Başlıklar SOLA yaslı. #}
+
+{# ---- IN 3 SCHRITTEN ZUM HÄNDLER — Steps + FAQ ---- #}
+<section class="elfbar-howto" aria-labelledby="elfbar-howto-title">
+    <header class="elfbar-shead">
+        <p class="elfbar-shead__eyebrow">So einfach geht's</p>
+        <h2 class="elfbar-shead__title" id="elfbar-howto-title">In 3 Schritten zum Händler</h2>
+        <p class="elfbar-shead__sub">Von der Anmeldung bis zur ersten Bestellung in unter 24 Stunden.</p>
+    </header>
+
+    <ol class="elfbar-steps">
+        <li class="elfbar-step">
+            <span class="elfbar-step__num">1</span>
+            <span class="elfbar-step__icon">{% sw_icon 'rocket' %}</span>
+            <h3 class="elfbar-step__title">Registrieren</h3>
+            <p class="elfbar-step__text">Gewerbedaten eingeben und Konto kostenlos erstellen.</p>
+        </li>
+        <li class="elfbar-step">
+            <span class="elfbar-step__num">2</span>
+            <span class="elfbar-step__icon">{% sw_icon 'lock-closed' %}</span>
+            <h3 class="elfbar-step__title">Freischaltung</h3>
+            <p class="elfbar-step__text">Wir prüfen Ihren Gewerbenachweis – meist innerhalb weniger Stunden.</p>
+        </li>
+        <li class="elfbar-step">
+            <span class="elfbar-step__num">3</span>
+            <span class="elfbar-step__icon">{% sw_icon 'bag-product' %}</span>
+            <h3 class="elfbar-step__title">Bestellen</h3>
+            <p class="elfbar-step__text">Großhandelspreise sehen, Sortiment wählen und losbestellen.</p>
+        </li>
+    </ol>
+
+    <div class="elfbar-howto__cta">
+        <a href="{{ path('frontend.account.register.page') }}" class="elfbar-btn elfbar-btn--gradient">
+            Jetzt Händlerkonto erstellen {% sw_icon 'arrow-right' %}
+        </a>
+    </div>
+
+    <h3 class="elfbar-faq__head">Häufige Fragen</h3>
+    <div class="elfbar-faq elfbar-faq--grid">
+        <div class="elfbar-faq__item">
+            <button type="button" class="elfbar-faq__q">
+                <span>Wer kann sich als Händler registrieren?</span>
+                <span class="elfbar-faq__chev" aria-hidden="true">{% sw_icon 'arrow-right' %}</span>
+            </button>
+            <div class="elfbar-faq__a">
+                <p>Die Registrierung ist ausschließlich Gewerbetreibenden mit gültigem Gewerbenachweis vorbehalten. Privatverkauf ist ausgeschlossen.</p>
+            </div>
+        </div>
+        <div class="elfbar-faq__item">
+            <button type="button" class="elfbar-faq__q">
+                <span>Wie hoch ist der Mindestbestellwert?</span>
+                <span class="elfbar-faq__chev" aria-hidden="true">{% sw_icon 'arrow-right' %}</span>
+            </button>
+            <div class="elfbar-faq__a">
+                <p>Der Mindestbestellwert liegt bei 250 € netto. Ab 500 € netto liefern wir versandkostenfrei innerhalb Deutschlands.</p>
+            </div>
+        </div>
+        <div class="elfbar-faq__item">
+            <button type="button" class="elfbar-faq__q">
+                <span>Welche Zahlungsarten stehen zur Verfügung?</span>
+                <span class="elfbar-faq__chev" aria-hidden="true">{% sw_icon 'arrow-right' %}</span>
+            </button>
+            <div class="elfbar-faq__a">
+                <p>Wir bieten Kauf auf Rechnung, PayPal, Kreditkarte und Vorkasse. Kauf auf Rechnung ist nach erfolgreicher Bonitätsprüfung verfügbar.</p>
+            </div>
+        </div>
+        <div class="elfbar-faq__item">
+            <button type="button" class="elfbar-faq__q">
+                <span>Wie schnell wird geliefert?</span>
+                <span class="elfbar-faq__chev" aria-hidden="true">{% sw_icon 'arrow-right' %}</span>
+            </button>
+            <div class="elfbar-faq__a">
+                <p>Bestellungen, die werktags bis 14 Uhr eingehen, versenden wir noch am selben Tag. Die Zustellung erfolgt in der Regel innerhalb von 24–48 Stunden.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# ---- ÜBER 4.000 ZUFRIEDENE HÄNDLER — Reviews + Trust ---- #}
+<section class="elfbar-reviews" aria-labelledby="elfbar-reviews-title">
+    <header class="elfbar-shead">
+        <p class="elfbar-shead__eyebrow">Vertrauen &amp; Qualität</p>
+        <h2 class="elfbar-shead__title" id="elfbar-reviews-title">Über 4.000 zufriedene Händler</h2>
+        <p class="elfbar-shead__sub">Das sagen unsere Partner aus dem Fachhandel.</p>
+    </header>
+
+    <div class="elfbar-reviews__grid">
+        {% set elfbar_reviews = [
+            { text: 'Lieferung am nächsten Tag, top Margen und ein Ansprechpartner, der wirklich erreichbar ist. Genau so muss B2B sein.', name: 'Murat K.', firm: 'Kiosk am Bahnhof, Köln' },
+            { text: 'Die VITRINE PRO hat unseren Vape-Umsatz spürbar gesteigert. Kunden greifen einfach öfter zu. Klare Empfehlung.', name: 'Sandra B.', firm: 'Tankstelle Nord, Hamburg' },
+            { text: 'Riesige Auswahl, faire Staffelpreise und Kauf auf Rechnung ohne Stress. Wir bestellen seit über einem Jahr regelmäßig.', name: 'Daniel R.', firm: 'Vape Store, München' }
+        ] %}
+        {% for review in elfbar_reviews %}
+            <article class="elfbar-review-card">
+                <div class="elfbar-review-card__stars" aria-label="5 von 5 Sternen">
+                    {% for i in 1..5 %}{% sw_icon 'star' %}{% endfor %}
+                </div>
+                <p class="elfbar-review-card__text">{{ review.text }}</p>
+                <footer class="elfbar-review-card__author">
+                    <span class="elfbar-review-card__avatar" aria-hidden="true">{{ review.name|first }}</span>
+                    <span class="elfbar-review-card__meta">
+                        <strong>{{ review.name }}</strong>
+                        <span>{{ review.firm }}</span>
+                    </span>
+                </footer>
+            </article>
+        {% endfor %}
+    </div>
+
+    <div class="elfbar-trust">
+        <span class="elfbar-trust__badge">{% sw_icon 'check' %} Trusted Shops</span>
+        <span class="elfbar-trust__badge">{% sw_icon 'lock-closed' %} SSL-verschlüsselt</span>
+        <span class="elfbar-trust__badge">{% sw_icon 'check' %} Käuferschutz</span>
+        <span class="elfbar-trust__badge">{% sw_icon 'star' %} 4,8 / 5 Bewertung</span>
+    </div>
+</section>
