@@ -738,6 +738,19 @@ $elfbar-radius: 12px;
     @media (max-width: 991.98px) { grid-template-columns: 1fr; }
     &__main { min-width: 0; }
 
+    // Sidebar panelden kapatıldıysa → sağ alan tam genişlik (tek kolon)
+    &--nosidebar { grid-template-columns: 1fr; }
+
+    // Section'lar panelden sıralanabilir: flex-column + her .elfbar-sec'e style="order:N"
+    &__main--ordered {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        > .elfbar-sec { min-width: 0; }
+        // Eski blok aralıkları (margin-top) flex-gap ile çakışmasın
+        > .elfbar-sec > *:first-child { margin-top: 0; }
+    }
+
     // --- Anasayfadaki CMS ürün listing'ini "Bestseller vitrini" gibi göster ---
     &__cms {
         // Home'da gereksiz CMS bloklarını TAMAMEN gizle: "Home" text bloğu (pos-0),

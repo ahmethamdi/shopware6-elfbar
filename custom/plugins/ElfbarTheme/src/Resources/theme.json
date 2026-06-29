@@ -21,6 +21,13 @@
     ],
     "config": {
         "blocks": {
+            "elfbarSections": {
+                "label": {
+                    "de-DE": "0) Startseite-Sektionen (Anzeigen & Reihenfolge)",
+                    "en-GB": "0) Homepage sections (visibility & order)",
+                    "tr-TR": "0) Anasayfa bölümleri (göster & sıra)"
+                }
+            },
             "elfbarColors": {
                 "label": {
                     "de-DE": "1) Markenfarben",
@@ -156,6 +163,414 @@
             }
         },
         "fields": {
+            "elfbar-sec-hero-enabled": {
+                "label": {
+                    "de-DE": "Hero (oben) – anzeigen",
+                    "en-GB": "hero – show",
+                    "tr-TR": "Hero (üst) – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100
+            },
+            "elfbar-sec-hero-order": {
+                "label": {
+                    "de-DE": "Hero (oben) – Reihenfolge",
+                    "en-GB": "hero – order",
+                    "tr-TR": "Hero (üst) – sıra"
+                },
+                "type": "int",
+                "value": 5,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 150
+            },
+            "elfbar-sec-sidebar-enabled": {
+                "label": {
+                    "de-DE": "Seitenleiste (Kategorien) – anzeigen",
+                    "en-GB": "sidebar – show",
+                    "tr-TR": "Sol menü (kategoriler) – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 200
+            },
+            "elfbar-sec-sidebar-order": {
+                "label": {
+                    "de-DE": "Seitenleiste (Kategorien) – Reihenfolge",
+                    "en-GB": "sidebar – order",
+                    "tr-TR": "Sol menü (kategoriler) – sıra"
+                },
+                "type": "int",
+                "value": 8,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 250
+            },
+            "elfbar-sec-vitrine-enabled": {
+                "label": {
+                    "de-DE": "Verkaufsvitrine PRO – anzeigen",
+                    "en-GB": "vitrine – show",
+                    "tr-TR": "Vitrine PRO – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 300
+            },
+            "elfbar-sec-vitrine-order": {
+                "label": {
+                    "de-DE": "Verkaufsvitrine PRO – Reihenfolge",
+                    "en-GB": "vitrine – order",
+                    "tr-TR": "Vitrine PRO – sıra"
+                },
+                "type": "int",
+                "value": 10,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 350
+            },
+            "elfbar-sec-campaign-enabled": {
+                "label": {
+                    "de-DE": "Kampagnen-Streifen – anzeigen",
+                    "en-GB": "campaign – show",
+                    "tr-TR": "Kampanya şeridi – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 400
+            },
+            "elfbar-sec-campaign-order": {
+                "label": {
+                    "de-DE": "Kampagnen-Streifen – Reihenfolge",
+                    "en-GB": "campaign – order",
+                    "tr-TR": "Kampanya şeridi – sıra"
+                },
+                "type": "int",
+                "value": 20,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 450
+            },
+            "elfbar-sec-promo-enabled": {
+                "label": {
+                    "de-DE": "Promo-Bilder (2er) – anzeigen",
+                    "en-GB": "promo – show",
+                    "tr-TR": "Promo görseller (2li) – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 500
+            },
+            "elfbar-sec-promo-order": {
+                "label": {
+                    "de-DE": "Promo-Bilder (2er) – Reihenfolge",
+                    "en-GB": "promo – order",
+                    "tr-TR": "Promo görseller (2li) – sıra"
+                },
+                "type": "int",
+                "value": 30,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 550
+            },
+            "elfbar-sec-deals-enabled": {
+                "label": {
+                    "de-DE": "Deals des Tages – anzeigen",
+                    "en-GB": "deals – show",
+                    "tr-TR": "Günün fırsatları – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 600
+            },
+            "elfbar-sec-deals-order": {
+                "label": {
+                    "de-DE": "Deals des Tages – Reihenfolge",
+                    "en-GB": "deals – order",
+                    "tr-TR": "Günün fırsatları – sıra"
+                },
+                "type": "int",
+                "value": 40,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 650
+            },
+            "elfbar-sec-banner-enabled": {
+                "label": {
+                    "de-DE": "Bildbanner (Deals/Neu) – anzeigen",
+                    "en-GB": "banner – show",
+                    "tr-TR": "Görsel banner – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 700
+            },
+            "elfbar-sec-banner-order": {
+                "label": {
+                    "de-DE": "Bildbanner (Deals/Neu) – Reihenfolge",
+                    "en-GB": "banner – order",
+                    "tr-TR": "Görsel banner – sıra"
+                },
+                "type": "int",
+                "value": 50,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 750
+            },
+            "elfbar-sec-neu-enabled": {
+                "label": {
+                    "de-DE": "Neuheiten-Slider – anzeigen",
+                    "en-GB": "neu – show",
+                    "tr-TR": "Neuheiten slider – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 800
+            },
+            "elfbar-sec-neu-order": {
+                "label": {
+                    "de-DE": "Neuheiten-Slider – Reihenfolge",
+                    "en-GB": "neu – order",
+                    "tr-TR": "Neuheiten slider – sıra"
+                },
+                "type": "int",
+                "value": 60,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 850
+            },
+            "elfbar-sec-showcase-enabled": {
+                "label": {
+                    "de-DE": "Vitrine-Banner – anzeigen",
+                    "en-GB": "showcase – show",
+                    "tr-TR": "Vitrine banner – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 900
+            },
+            "elfbar-sec-showcase-order": {
+                "label": {
+                    "de-DE": "Vitrine-Banner – Reihenfolge",
+                    "en-GB": "showcase – order",
+                    "tr-TR": "Vitrine banner – sıra"
+                },
+                "type": "int",
+                "value": 70,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 950
+            },
+            "elfbar-sec-bestseller-enabled": {
+                "label": {
+                    "de-DE": "Bestseller-Grid – anzeigen",
+                    "en-GB": "bestseller – show",
+                    "tr-TR": "Bestseller grid – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1000
+            },
+            "elfbar-sec-bestseller-order": {
+                "label": {
+                    "de-DE": "Bestseller-Grid – Reihenfolge",
+                    "en-GB": "bestseller – order",
+                    "tr-TR": "Bestseller grid – sıra"
+                },
+                "type": "int",
+                "value": 80,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1050
+            },
+            "elfbar-sec-b2b-enabled": {
+                "label": {
+                    "de-DE": "B2B-Banner (CTA) – anzeigen",
+                    "en-GB": "b2b – show",
+                    "tr-TR": "B2B banner (CTA) – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1100
+            },
+            "elfbar-sec-b2b-order": {
+                "label": {
+                    "de-DE": "B2B-Banner (CTA) – Reihenfolge",
+                    "en-GB": "b2b – order",
+                    "tr-TR": "B2B banner (CTA) – sıra"
+                },
+                "type": "int",
+                "value": 90,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1150
+            },
+            "elfbar-sec-catslider1-enabled": {
+                "label": {
+                    "de-DE": "Kategorie-Slider 1 (Best.) – anzeigen",
+                    "en-GB": "catslider1 – show",
+                    "tr-TR": "Kategori slider 1 – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1200
+            },
+            "elfbar-sec-catslider1-order": {
+                "label": {
+                    "de-DE": "Kategorie-Slider 1 (Best.) – Reihenfolge",
+                    "en-GB": "catslider1 – order",
+                    "tr-TR": "Kategori slider 1 – sıra"
+                },
+                "type": "int",
+                "value": 100,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1250
+            },
+            "elfbar-sec-usp-enabled": {
+                "label": {
+                    "de-DE": "Warum ELFBAR (USP) – anzeigen",
+                    "en-GB": "usp – show",
+                    "tr-TR": "Neden ELFBAR (USP) – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1300
+            },
+            "elfbar-sec-usp-order": {
+                "label": {
+                    "de-DE": "Warum ELFBAR (USP) – Reihenfolge",
+                    "en-GB": "usp – order",
+                    "tr-TR": "Neden ELFBAR (USP) – sıra"
+                },
+                "type": "int",
+                "value": 110,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1350
+            },
+            "elfbar-sec-catslider2-enabled": {
+                "label": {
+                    "de-DE": "Kategorie-Slider 2 (Neu) – anzeigen",
+                    "en-GB": "catslider2 – show",
+                    "tr-TR": "Kategori slider 2 – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1400
+            },
+            "elfbar-sec-catslider2-order": {
+                "label": {
+                    "de-DE": "Kategorie-Slider 2 (Neu) – Reihenfolge",
+                    "en-GB": "catslider2 – order",
+                    "tr-TR": "Kategori slider 2 – sıra"
+                },
+                "type": "int",
+                "value": 120,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1450
+            },
+            "elfbar-sec-stripe2-enabled": {
+                "label": {
+                    "de-DE": "VITRINE-Streifen – anzeigen",
+                    "en-GB": "stripe2 – show",
+                    "tr-TR": "Vitrine şeridi – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1500
+            },
+            "elfbar-sec-stripe2-order": {
+                "label": {
+                    "de-DE": "VITRINE-Streifen – Reihenfolge",
+                    "en-GB": "stripe2 – order",
+                    "tr-TR": "Vitrine şeridi – sıra"
+                },
+                "type": "int",
+                "value": 130,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1550
+            },
+            "elfbar-sec-howtofaq-enabled": {
+                "label": {
+                    "de-DE": "So funktioniert + FAQ – anzeigen",
+                    "en-GB": "howtofaq – show",
+                    "tr-TR": "Nasıl çalışır + SSS – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1600
+            },
+            "elfbar-sec-howtofaq-order": {
+                "label": {
+                    "de-DE": "So funktioniert + FAQ – Reihenfolge",
+                    "en-GB": "howtofaq – order",
+                    "tr-TR": "Nasıl çalışır + SSS – sıra"
+                },
+                "type": "int",
+                "value": 140,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1650
+            },
+            "elfbar-sec-reviews-enabled": {
+                "label": {
+                    "de-DE": "Bewertungen-Slider – anzeigen",
+                    "en-GB": "reviews – show",
+                    "tr-TR": "Yorumlar slider – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1700
+            },
+            "elfbar-sec-reviews-order": {
+                "label": {
+                    "de-DE": "Bewertungen-Slider – Reihenfolge",
+                    "en-GB": "reviews – order",
+                    "tr-TR": "Yorumlar slider – sıra"
+                },
+                "type": "int",
+                "value": 150,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 1750
+            },
             "sw-color-brand-primary": {
                 "label": {
                     "de-DE": "Primärfarbe (Akzent)",

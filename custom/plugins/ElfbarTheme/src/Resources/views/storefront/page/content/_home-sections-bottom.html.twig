@@ -1,6 +1,11 @@
-{# Premium section'lar — ALT grup: HowTo + FAQ (2 kolon) + Reviews + Trust. Başlıklar SOLA yaslı. #}
+{# Premium section'lar — ALT grup: HowTo + FAQ (2 kolon) + Reviews. Başlıklar SOLA yaslı.
+   elfbarShowHowto / elfbarShowReviews flag'leriyle ayrı ayrı render edilebilir
+   (panelden bağımsız aç/kapa + sıra). Flag verilmezse ikisi de gösterilir. #}
+{% set elfbarShowHowto   = elfbarShowHowto is defined ? elfbarShowHowto : true %}
+{% set elfbarShowReviews = elfbarShowReviews is defined ? elfbarShowReviews : true %}
 
 {# ---- IN 3 SCHRITTEN ZUM HÄNDLER — Steps + FAQ ---- #}
+{% if elfbarShowHowto %}
 <section class="elfbar-howto" aria-labelledby="elfbar-howto-title">
     <header class="elfbar-shead">
         <p class="elfbar-shead__eyebrow">So einfach geht's</p>
@@ -75,9 +80,11 @@
         </div>
     </div>
 </section>
+{% endif %}
 
-{# ---- ÜBER 4.000 ZUFRIEDENE HÄNDLER — Reviews SLIDER (7-8 adet) + Trust
+{# ---- ÜBER 4.000 ZUFRIEDENE HÄNDLER — Reviews SLIDER (7-8 adet)
        (yıldız + metin; yazar/footer YOK) ---- #}
+{% if elfbarShowReviews %}
 <section class="elfbar-reviews" aria-labelledby="elfbar-reviews-title">
     <div class="elfbar-shead elfbar-reviews__head">
         <div>
@@ -114,3 +121,4 @@
         </div>
     </div>
 </section>
+{% endif %}

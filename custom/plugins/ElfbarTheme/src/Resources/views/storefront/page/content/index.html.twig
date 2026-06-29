@@ -86,8 +86,17 @@
     {% if elfbarIsHome %}
         {% set mediaSvg %}<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>{% endset %}
 
+        {# Panelden yönetilen section görünürlük + sıra okuyucular.
+           secOn('x') → bool (boşsa varsayılan açık), secOrder('x') → int sıra. #}
+        {% set elfbarSecOrderDefaults = {
+            'vitrine': 10, 'campaign': 20, 'promo': 30, 'deals': 40, 'banner': 50,
+            'neu': 60, 'showcase': 70, 'bestseller': 80, 'b2b': 90, 'catslider1': 100,
+            'usp': 110, 'catslider2': 120, 'stripe2': 130, 'howtofaq': 140, 'reviews': 150
+        } %}
+
         <div class="elfbar-page">
             {# ============ HERO (köşeli, üstte, tam genişlik) ============ #}
+            {% if theme_config('elfbar-sec-hero-enabled') is not same as(false) %}
             {% block elfbar_home_hero %}
                 <section class="elfbar-hero">
                     <div class="elfbar-hero__content">
@@ -128,11 +137,14 @@
                     </div>
                 </section>
             {% endblock %}
+            {% endif %}
 
 
             {# ============ 2 KOLON: SOL sidebar | SAĞ içerik ============ #}
-            <div class="elfbar-body">
+            {% set elfbarSidebarOn = theme_config('elfbar-sec-sidebar-enabled') is not same as(false) %}
+            <div class="elfbar-body{% if not elfbarSidebarOn %} elfbar-body--nosidebar{% endif %}">
                 {# --- SOL: SİDEBAR --- #}
+                {% if elfbarSidebarOn %}
                 {% block elfbar_home_sidebar %}
                     <aside class="elfbar-sidebar">
                         <div class="elfbar-sidebar__head">Alle Kategorien</div>
@@ -173,14 +185,18 @@
                         {% endif %}
                     </aside>
                 {% endblock %}
+                {% endif %}
 
-                {# --- SAĞ: marka ikonları + promo + bestseller + deals --- #}
-                <div class="elfbar-body__main">
+                {# --- SAĞ: section'lar. Sıra panelden (CSS order), her biri aç/kapa.
+                       body__main flex-column → her section'a style="order:N" ile sıralanır. --- #}
+                <div class="elfbar-body__main elfbar-body__main--ordered">
                     {# B2B marka sitesi: hero altı marka ikon şeridi KALDIRILDI
                        (markalar zaten header + sidebar'da → tekrar gereksiz). #}
                     {% block elfbar_home_brands %}{% endblock %}
 
-                    {# ============ VERKAUFSVITRINE PRO — kompakt (sidebar yanı, sağ alan üstü, tam ekran DEĞİL) ============ #}
+                    {# ============ VERKAUFSVITRINE PRO — kompakt ============ #}
+                    {% if theme_config('elfbar-sec-vitrine-enabled') is not same as(false) %}
+                    <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-vitrine-order')|default(elfbarSecOrderDefaults.vitrine) }}">
                     {% block elfbar_home_vitrine %}
                         <section class="elfbar-vitrine elfbar-vitrine--compact" aria-labelledby="elfbar-vitrine-title">
                             <div class="elfbar-vitrine__glow elfbar-vitrine__glow--a" aria-hidden="true"></div>
@@ -228,7 +244,11 @@
                             </div>
                         </section>
                     {% endblock %}
+                    </div>
+                    {% endif %}
 
+                    {% if theme_config('elfbar-sec-campaign-enabled') is not same as(false) %}
+                    <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-campaign-order')|default(elfbarSecOrderDefaults.campaign) }}">
                     {% block elfbar_home_campaign %}
                         {# Marke veya Text boşsa tüm Banner gizli #}
                         {% if theme_config('elfbar-campaign-brand') or theme_config('elfbar-campaign-text') %}
@@ -238,7 +258,11 @@
                             </a>
                         {% endif %}
                     {% endblock %}
+                    </div>
+                    {% endif %}
 
+                    {% if theme_config('elfbar-sec-promo-enabled') is not same as(false) %}
+                    <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-promo-order')|default(elfbarSecOrderDefaults.promo) }}">
                     {% block elfbar_home_promo_imgs %}
                         <div class="elfbar-promo-imgs">
                             {% set promo1Link = theme_config('elfbar-promo-img-1-link') %}
@@ -249,11 +273,15 @@
                             <{{ promo2Tag }}{% if promo2Link %} href="{{ promo2Link }}"{% endif %} class="elfbar-promo-img">{% if theme_config('elfbar-promo-img-2') %}<img src="{{ theme_config('elfbar-promo-img-2') }}" alt="" loading="lazy">{% else %}{{ mediaSvg }}{% endif %}</{{ promo2Tag }}>
                         </div>
                     {% endblock %}
+                    </div>
+                    {% endif %}
 
                     {# B2B marka sitesi: "Kategorien" vitrini KALDIRILDI
                        (kategoriler zaten sol sidebar + header mega menüde). #}
                     {% block elfbar_home_categories %}{% endblock %}
 
+                    {% if theme_config('elfbar-sec-deals-enabled') is not same as(false) %}
+                    <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-deals-order')|default(elfbarSecOrderDefaults.deals) }}">
                     {% block elfbar_home_deals %}
                         {% set dealTextColor = theme_config('elfbar-deal-text-color') %}
                         <div class="elfbar-section-head">
@@ -301,9 +329,13 @@
                             {% endfor %}
                         </div>
                     {% endblock %}
+                    </div>
+                    {% endif %}
 
                     {# ============ Geniş banner (Deals ↔ Neuheiten arası,
                        ~1292×239) — panelden görsel+link, görsel boşsa gizli ============ #}
+                    {% if theme_config('elfbar-sec-banner-enabled') is not same as(false) %}
+                    <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-banner-order')|default(elfbarSecOrderDefaults.banner) }}">
                     {% block elfbar_home_banner %}
                         {% set vbImg    = theme_config('elfbar-home-banner-img') %}
                         {% set vbImgMob = theme_config('elfbar-home-banner-img-mobile') %}
@@ -316,8 +348,12 @@
                             </{{ vbTag }}>
                         {% endif %}
                     {% endblock %}
+                    </div>
+                    {% endif %}
 
                     {# ============ Neuheiten — yatay slider kart ============ #}
+                    {% if theme_config('elfbar-sec-neu-enabled') is not same as(false) %}
+                    <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-neu-order')|default(elfbarSecOrderDefaults.neu) }}">
                     {% block elfbar_home_neu %}
                         <div class="elfbar-section-head">
                             {% if theme_config('elfbar-neu-title') %}<h2 class="elfbar-section-head__title">{{ theme_config('elfbar-neu-title') }}</h2>{% endif %}
@@ -335,10 +371,14 @@
                             </div>
                         </div>
                     {% endblock %}
+                    </div>
+                    {% endif %}
 
                     {# ============ Vitrine-Banner (Neuheiten ↔ Bestseller arası):
                        görsel solda + başlık/metin/buton sağda, hepsi panelden.
                        Görsel boşsa tüm blok gizli ============ #}
+                    {% if theme_config('elfbar-sec-showcase-enabled') is not same as(false) %}
+                    <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-showcase-order')|default(elfbarSecOrderDefaults.showcase) }}">
                     {% block elfbar_home_showcase %}
                         {% set scImg      = theme_config('elfbar-showcase-img') %}
                         {% set scImgMob   = theme_config('elfbar-showcase-img-mobile') %}
@@ -378,9 +418,12 @@
                             </div>
                         {% endif %}
                     {% endblock %}
+                    </div>
+                    {% endif %}
 
-                    {# ============ Bestseller — EN ALTTA (kullanıcı sırası: Kategorien →
-                       Deals → Banner → Neuheiten → Vitrine → Bestseller) ============ #}
+                    {# ============ Bestseller-Grid ============ #}
+                    {% if theme_config('elfbar-sec-bestseller-enabled') is not same as(false) %}
+                    <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-bestseller-order')|default(elfbarSecOrderDefaults.bestseller) }}">
                     {% block elfbar_home_section_title %}
                         {% set elfbarBest = page.extensions.elfbarBestseller.products ?? [] %}
                         <div class="elfbar-section-head">
@@ -400,12 +443,16 @@
                             </div>
                         {% endif %}
                     {% endblock %}
+                    </div>
+                    {% endif %}
 
                     {# B2B marka sitesi: Top-Marken logo slider KALDIRILDI
                        (tek marka B2B → logo şeridi tekrar/gereksiz). #}
                     {% block elfbar_home_brand_slider %}{% endblock %}
 
                     {# ============ B2B avantaj / kayıt CTA banner ============ #}
+                    {% if theme_config('elfbar-sec-b2b-enabled') is not same as(false) %}
+                    <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-b2b-order')|default(elfbarSecOrderDefaults.b2b) }}">
                     {% block elfbar_home_b2b_cta %}
                         {# Statları topla (sayı boş olanı atla) #}
                         {% set elfbarB2bStats = [] %}
@@ -443,32 +490,43 @@
                             </section>
                         {% endif %}
                     {% endblock %}
+                    </div>
+                    {% endif %}
 
-                    {# ============ Premium B2B section akışı (araya kategori-slider'lar
-                       serpiştirilmiş): Slider1 → USP → Markenwelt → Slider2 → Bildbanner →
-                       HowTo+FAQ → Reviews+Trust ============ #}
+                    {# ============ Premium B2B section akışı — her alt-section kendi
+                       elfbar-sec wrapper'ında (panelden aç/kapa + sıra) ============ #}
                     {% block elfbar_home_premium_sections %}
                         {% set elfbarBest = page.extensions.elfbarBestseller.products ?? [] %}
                         {% set elfbarNeu  = page.extensions.elfbarNeu.products ?? [] %}
 
                         {# Kategori-Slider 1: Bestseller (sol görsel + sağ ürün slider) #}
-                        {% if elfbarBest|length %}
+                        {% if elfbarBest|length and theme_config('elfbar-sec-catslider1-enabled') is not same as(false) %}
+                            <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-catslider1-order')|default(elfbarSecOrderDefaults.catslider1) }}">
                             {{ _self.elfbarCatSlider(elfbarBest, elfbarLoggedIn, 'Top', 'pink',
                                 'Bestseller', 'Die meistverkauften Produkte unserer Händler.',
                                 path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId })) }}
+                            </div>
                         {% endif %}
 
-                        {# USP + Markenwelt #}
-                        {% sw_include '@ElfbarTheme/storefront/page/content/_home-sections-top.html.twig' %}
+                        {# USP (panel: usp) — Markenwelt zaten kaldırılmış #}
+                        {% if theme_config('elfbar-sec-usp-enabled') is not same as(false) %}
+                            <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-usp-order')|default(elfbarSecOrderDefaults.usp) }}">
+                            {% sw_include '@ElfbarTheme/storefront/page/content/_home-sections-top.html.twig' %}
+                            </div>
+                        {% endif %}
 
                         {# Kategori-Slider 2: Neuheiten (sol görsel + sağ ürün slider) #}
-                        {% if elfbarNeu|length %}
+                        {% if elfbarNeu|length and theme_config('elfbar-sec-catslider2-enabled') is not same as(false) %}
+                            <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-catslider2-order')|default(elfbarSecOrderDefaults.catslider2) }}">
                             {{ _self.elfbarCatSlider(elfbarNeu, elfbarLoggedIn, 'Neu', 'blue',
                                 'Neuheiten', 'Frisch im Sortiment – jetzt als Erster bestellen.',
                                 path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId })) }}
+                            </div>
                         {% endif %}
 
                         {# İnce şerit banner 2: VITRINE PRO tanıtımı (dev banner yerine) #}
+                        {% if theme_config('elfbar-sec-stripe2-enabled') is not same as(false) %}
+                        <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-stripe2-order')|default(elfbarSecOrderDefaults.stripe2) }}">
                         {% block elfbar_home_stripe2 %}
                             <a href="{{ path('frontend.account.register.page') }}" class="elfbar-stripe elfbar-stripe--dark">
                                 <span class="elfbar-stripe__ico">{% sw_icon 'products' %}</span>
@@ -476,9 +534,22 @@
                                 <span class="elfbar-stripe__cta">Anfragen {% sw_icon 'arrow-right' %}</span>
                             </a>
                         {% endblock %}
+                        </div>
+                        {% endif %}
 
-                        {# HowTo + FAQ + Reviews + Trust #}
-                        {% sw_include '@ElfbarTheme/storefront/page/content/_home-sections-bottom.html.twig' %}
+                        {# HowTo + FAQ (panel: howtofaq) #}
+                        {% if theme_config('elfbar-sec-howtofaq-enabled') is not same as(false) %}
+                            <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-howtofaq-order')|default(elfbarSecOrderDefaults.howtofaq) }}">
+                            {% sw_include '@ElfbarTheme/storefront/page/content/_home-sections-bottom.html.twig' with { elfbarShowHowto: true, elfbarShowReviews: false } %}
+                            </div>
+                        {% endif %}
+
+                        {# Bewertungen-Slider (panel: reviews) #}
+                        {% if theme_config('elfbar-sec-reviews-enabled') is not same as(false) %}
+                            <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-reviews-order')|default(elfbarSecOrderDefaults.reviews) }}">
+                            {% sw_include '@ElfbarTheme/storefront/page/content/_home-sections-bottom.html.twig' with { elfbarShowHowto: false, elfbarShowReviews: true } %}
+                            </div>
+                        {% endif %}
                     {% endblock %}
                 </div>
             </div>
