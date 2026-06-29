@@ -43,7 +43,9 @@
       "Bash(npx --yes --package @playwright/cli playwright-cli eval \"\\(\\) => { document.cookie='AgeVerification-state=1;path=/'; localStorage.setItem\\('age-verified','1'\\); document.querySelectorAll\\('.modal,.modal-backdrop,[class*=age-gate],[class*=ageGate]'\\).forEach\\(e=>e.remove\\(\\)\\); document.body.classList.remove\\('modal-open'\\); document.body.style.overflow='auto'; }\")",
       "Bash(npx --yes --package @playwright/cli playwright-cli open \"http://127.0.0.1:8001/ELFBAR-ELFX/\")",
       "Bash(npx --yes --package @playwright/cli playwright-cli screenshot /private/tmp/claude-501/-Applications-XAMPP-xamppfiles-htdocs-Shopware6-Elfbar/5288be5a-ebe4-4e86-b874-28687f4eb056/scratchpad/elfbar-products.png)",
-      "Bash(grep -E \"\\\\.env$|auth.json|vendor/\")"
+      "Bash(grep -E \"\\\\.env$|auth.json|vendor/\")",
+      "Bash(git ls-tree *)",
+      "Bash(php -d memory_limit=512M bin/console lint:twig custom/plugins/ElfbarTheme/src/Resources/views)"
     ]
   }
 }

@@ -21,7 +21,7 @@
         {# Varyantlı ürün (childCount>0) listeden eklenemez → Details. Fiyat kademesi (displayFrom) eklenebilir. #}
         {% set canBuy = isAvailable and product.childCount <= 0 %}
         {% set detailUrl = seoUrl('frontend.detail.page', { productId: id }) %}
-        {# B2B: Preise & Warenkorb für eingeloggte Kunden.
+        {# B2B: Preise & Warenkorb nur für eingeloggte Kunden. #}
         {% set elfbarLoggedIn = context.customer %}
 
         <div class="card product-box elfbar-listrow"

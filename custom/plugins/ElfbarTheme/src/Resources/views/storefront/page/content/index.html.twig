@@ -144,26 +144,9 @@
 
                 {# --- SAĞ: marka ikonları + promo + bestseller + deals --- #}
                 <div class="elfbar-body__main">
-                    {% block elfbar_home_brands %}
-                        <div class="elfbar-brandnav" data-elfbar-dragscroll>
-                            <div class="elfbar-brandnav__track">
-                                {# 16 marka slotu config'ten: isim + logo + link. İsim boşsa gizli. Logo varsa img, yoksa baş harfler. #}
-                                {% for i in 1..16 %}
-                                    {% set bName = theme_config('elfbar-brand-' ~ i ~ '-name') %}
-                                    {% set bLogo = theme_config('elfbar-brand-' ~ i ~ '-logo') %}
-                                    {% set bLink = theme_config('elfbar-brand-' ~ i ~ '-link') %}
-                                    {% if bName %}
-                                        <a href="{{ bLink ?: '#' }}" class="elfbar-brandnav__item">
-                                            <span class="elfbar-brandnav__circle">
-                                                {% if bLogo %}<img src="{{ bLogo }}" alt="{{ bName }}" loading="lazy">{% else %}{{ bName|split(' ')|map(w => w|first)|join('')|slice(0,2)|upper }}{% endif %}
-                                            </span>
-                                            <span class="elfbar-brandnav__name">{{ bName }}</span>
-                                        </a>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                    {% endblock %}
+                    {# B2B marka sitesi: hero altı marka ikon şeridi KALDIRILDI
+                       (markalar zaten header + sidebar'da → tekrar gereksiz). #}
+                    {% block elfbar_home_brands %}{% endblock %}
 
                     {% block elfbar_home_campaign %}
                         {# Marke veya Text boşsa tüm Banner gizli #}
@@ -186,44 +169,9 @@
                         </div>
                     {% endblock %}
 
-                    {# ============ Kategori vitrini (görsel kartlar) ============ #}
-                    {% block elfbar_home_categories %}
-                        {# Panelden hiç kategori adı girilmiş mi? Girildiyse config kullan; girilmediyse
-                           canlı navigasyondan (elfbarNavTree) otomatik doldur (hardcoded ID YOK). #}
-                        {% set elfbarCatConfigUsed = false %}
-                        {% for i in 1..16 %}{% if theme_config('elfbar-cat-' ~ i ~ '-name') %}{% set elfbarCatConfigUsed = true %}{% endif %}{% endfor %}
-                        <div class="elfbar-section-head">
-                            <h2 class="elfbar-section-head__title">Kategorien</h2>
-                        </div>
-                        <div class="elfbar-cattiles">
-                            {% if elfbarCatConfigUsed %}
-                                {# Panel kullanıldı: 16 slot config'ten. İsim boşsa kart gizli. Link boşsa dinamik ağaçtan eşleşen URL. #}
-                                {% for i in 1..16 %}
-                                    {% set catName = theme_config('elfbar-cat-' ~ i ~ '-name') %}
-                                    {% set catImg = theme_config('elfbar-cat-img-' ~ i) %}
-                                    {% set catLink = theme_config('elfbar-cat-' ~ i ~ '-link') %}
-                                    {% set defItem = elfbarNavTree[i - 1]|default(null) %}
-                                    {% set catHref = catLink ?: (defItem ? (defItem.category.seoUrl ?: seoUrl('frontend.navigation.page', { navigationId: defItem.category.id })) : '#') %}
-                                    {% if catName %}
-                                        <a class="elfbar-cattile" href="{{ catHref }}">
-                                            <span class="elfbar-cattile__img">{% if catImg %}<img src="{{ catImg }}" alt="{{ catName }}" loading="lazy">{% else %}{{ mediaSvg }}{% endif %}</span>
-                                            <span class="elfbar-cattile__name">{{ catName }}</span>
-                                        </a>
-                                    {% endif %}
-                                {% endfor %}
-                            {% else %}
-                                {# Panel boş: canlı navigasyon kategorileri (gerçek isim + SEO URL). #}
-                                {% for treeItem in elfbarNavTree %}
-                                    {% set cat = treeItem.category %}
-                                    {% set catHref = cat.type == 'folder' ? '#' : (cat.seoUrl ?: seoUrl('frontend.navigation.page', { navigationId: cat.id })) %}
-                                    <a class="elfbar-cattile" href="{{ catHref }}">
-                                        <span class="elfbar-cattile__img">{% if cat.media %}<img src="{{ cat.media.url }}" alt="{{ cat.translated.name }}" loading="lazy">{% else %}{{ mediaSvg }}{% endif %}</span>
-                                        <span class="elfbar-cattile__name">{{ cat.translated.name }}</span>
-                                    </a>
-                                {% endfor %}
-                            {% endif %}
-                        </div>
-                    {% endblock %}
+                    {# B2B marka sitesi: "Kategorien" vitrini KALDIRILDI
+                       (kategoriler zaten sol sidebar + header mega menüde). #}
+                    {% block elfbar_home_categories %}{% endblock %}
 
                     {% block elfbar_home_deals %}
                         {% set dealTextColor = theme_config('elfbar-deal-text-color') %}
@@ -372,31 +320,9 @@
                         {% endif %}
                     {% endblock %}
 
-                    {# ============ Marka logo slider (kayan şerit) ============ #}
-                    {% block elfbar_home_brand_slider %}
-                        {# AYRI config: Top-Marken-Leiste bloğu (elfbar-topmarke-*). Hero altı markadan bağımsız — buraya ürün/logo görseli koyabilirsin. #}
-                        {% set elfbarTopList = [] %}
-                        {% for i in 1..12 %}
-                            {% set tLogo = theme_config('elfbar-topmarke-' ~ i ~ '-logo') %}
-                            {% set tName = theme_config('elfbar-topmarke-' ~ i ~ '-name') %}
-                            {# Logo VEYA isim varsa göster; ikisi de boşsa gizli #}
-                            {% if tLogo or tName %}{% set elfbarTopList = elfbarTopList|merge([{ name: tName, logo: tLogo, link: theme_config('elfbar-topmarke-' ~ i ~ '-link') }]) %}{% endif %}
-                        {% endfor %}
-                        {% if elfbarTopList|length %}
-                            <div class="elfbar-section-head elfbar-brandslider-head">
-                                <h2 class="elfbar-section-head__title">Top-Marken</h2>
-                            </div>
-                            <div class="elfbar-brandslider">
-                                <div class="elfbar-brandslider__track">
-                                    {% for brand in elfbarTopList|merge(elfbarTopList) %}
-                                        <a href="{{ brand.link ?: '#' }}" class="elfbar-brandslider__item">
-                                            {% if brand.logo %}<img src="{{ brand.logo }}" alt="{{ brand.name }}" loading="lazy">{% else %}{{ brand.name|upper }}{% endif %}
-                                        </a>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        {% endif %}
-                    {% endblock %}
+                    {# B2B marka sitesi: Top-Marken logo slider KALDIRILDI
+                       (tek marka B2B → logo şeridi tekrar/gereksiz). #}
+                    {% block elfbar_home_brand_slider %}{% endblock %}
 
                     {# ============ B2B avantaj / kayıt CTA banner ============ #}
                     {% block elfbar_home_b2b_cta %}
@@ -435,6 +361,12 @@
                                 {% endif %}
                             </section>
                         {% endif %}
+                    {% endblock %}
+
+                    {# ============ Premium B2B section'lar (Vitrine, USP, Markenwelt,
+                       So geht's + FAQ, Bewertungen + Trust) ============ #}
+                    {% block elfbar_home_premium_sections %}
+                        {% sw_include '@ElfbarTheme/storefront/page/content/_home-sections.html.twig' %}
                     {% endblock %}
                 </div>
             </div>

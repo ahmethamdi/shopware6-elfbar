@@ -4203,3 +4203,300 @@ a.elfbar-link, .elfbar-more-link {
     }
     .elfbar-brandslider__track { animation: none !important; }
 }
+
+// =====================================================================
+// ★ FIX: Mega menü panel'i section'ların ALTINDA kalıyordu
+//   Sebep: sidebar overflow:hidden panel'i kesiyordu + premium katmandaki
+//   backdrop-filter (pcard/cattile/sidebar) yeni stacking context yaratıp
+//   panel'in üstüne çıkıyordu. Çözüm: panel'i taşır yap + en üste al,
+//   sidebar/aside'ı stacking context'in tepesine çıkar, ana içerik altta.
+// =====================================================================
+
+// Sidebar & kategori aside: panel sağa TAŞABİLSİN + üstte dursun
+.elfbar-sidebar,
+.elfbar-cat__aside {
+    overflow: visible !important;          // mega panel kesilmesin
+    position: relative;
+    z-index: 400;                          // ana içerik kartlarının ÜSTÜNde
+}
+
+// Sidebar/aside cam efekti panel'in arkasına stacking context kurmasın diye
+// blur'u kaldırıp düz yarı saydam zemine çeviriyoruz (panel net kalsın)
+.elfbar-sidebar {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #fff !important;
+}
+
+// Mega container ve item'lar da yüksek stacking
+.elfbar-mega { position: relative; z-index: 401; }
+.elfbar-mega__item { position: relative; }
+.elfbar-mega__item.has-children:hover { z-index: 999; }
+
+// Açılan panel: HER ŞEYİN üstünde
+.elfbar-mega__panel {
+    z-index: 9999 !important;
+}
+
+// Anasayfa sağ ana alan (vitrin/section'lar) panel'in ALTINDA kalsın:
+// backdrop-filter'lı kartlar yeni context yaratıyor → onları düşür.
+.elfbar-body__main,
+.elfbar-cat__main {
+    position: relative;
+    z-index: 1;
+}
+
+// pcard/cattile/deal vb. backdrop-filter stacking context'i mega panel'le
+// çakışmasın: bunlar zaten z-index:1 olan ana alanın içinde → panel (sidebar
+// z-index:400 altında, kendi 9999'u ile) her zaman üstte kalır. Ekstra güvence:
+.elfbar-body__main .elfbar-pcard,
+.elfbar-body__main .elfbar-cattile,
+.elfbar-cat__main .elfbar-pcard {
+    z-index: 1;
+}
+
+/* ============================================================
+   ★ ELFBAR Home Premium Sections (Vitrine, USP, Markenwelt, HowTo+FAQ, Reviews)
+   ============================================================ */
+
+/* ---- Paylaşılan section başlığı ---- */
+.elfbar-section-head {
+    &__eyebrow {
+        font-family: $elfbar-font-base;
+        font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em;
+        text-transform: uppercase; margin: 0 0 0.5rem;
+        background: $elfbar-gradient; -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    &__sub {
+        font-family: $elfbar-font-base; font-size: 1rem;
+        color: rgba($elfbar-color-ink, 0.62); margin: 0;
+    }
+}
+
+/* ---- Paylaşılan butonlar ---- */
+.elfbar-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    min-height: 48px; padding: 0 1.5rem; border-radius: $elfbar-radius;
+    font-family: $elfbar-font-base; font-size: 0.95rem; font-weight: 600;
+    text-decoration: none; cursor: pointer; border: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    .icon { width: 18px; height: 18px; transition: transform 0.25s ease; }
+    &:hover .icon { transform: translateX(3px); }
+    &--gradient {
+        background: $elfbar-gradient; color: #fff;
+        box-shadow: 0 8px 22px rgba($elfbar-grad-mid, 0.4);
+        &:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba($elfbar-grad-mid, 0.5); color: #fff; }
+    }
+    &--outline {
+        background: rgba(255,255,255,0.06); color: #fff;
+        border: 1.5px solid rgba(255,255,255,0.5); backdrop-filter: blur(6px);
+        &:hover { transform: translateY(-2px); background: rgba(255,255,255,0.14); border-color: #fff; color: #fff; }
+    }
+    &:focus-visible { outline: 2px solid $sw-color-brand-primary; outline-offset: 3px; }
+}
+
+/* ---- 1. VERKAUFSVITRINE PRO ---- */
+.elfbar-vitrine {
+    position: relative; overflow: hidden; display: grid;
+    grid-template-columns: 0.85fr 1fr; gap: 2rem; align-items: center;
+    margin: 0 0 3.5rem; padding: 2.5rem; border-radius: calc(#{$elfbar-radius} + 8px);
+    background:
+        radial-gradient(120% 140% at 0% 0%, rgba($elfbar-grad-start, 0.35) 0%, transparent 55%),
+        radial-gradient(120% 140% at 100% 100%, rgba($elfbar-grad-end, 0.4) 0%, transparent 55%),
+        linear-gradient(160deg, #1a1230 0%, #100a22 100%);
+    box-shadow: $elf-shadow-lg; isolation: isolate;
+    &__glow {
+        position: absolute; width: 320px; height: 320px; border-radius: 50%;
+        filter: blur(90px); opacity: 0.55; z-index: -1; pointer-events: none;
+        &--a { top: -120px; left: -80px; background: $elfbar-grad-start; animation: elfbar-float 9s ease-in-out infinite; }
+        &--b { bottom: -140px; right: -90px; background: $elfbar-grad-end; animation: elfbar-float 11s ease-in-out infinite reverse; }
+    }
+    &__media { position: relative; display: flex; justify-content: center; }
+    &__badge {
+        position: absolute; top: -8px; left: 50%; transform: translateX(-50%); z-index: 2;
+        white-space: nowrap; padding: 0.4rem 0.9rem; border-radius: 999px;
+        font-family: $elfbar-font-base; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+        color: #fff; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(10px);
+    }
+    &__cabinet {
+        position: relative; width: 100%; max-width: 230px; padding: 1rem; border-radius: $elfbar-radius;
+        background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
+        border: 1px solid rgba(255,255,255,0.16);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+        animation: elfbar-rise 0.8s ease both;
+        svg { width: 100%; height: auto; display: block; }
+        &::after {
+            content: ""; position: absolute; inset: 0; border-radius: inherit;
+            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+    }
+    &:hover &__cabinet::after { opacity: 1; }
+    &__content { color: #fff; }
+    &__eyebrow {
+        font-family: $elfbar-font-headline; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.22em; margin: 0 0 0.5rem;
+        background: linear-gradient(90deg, $elfbar-grad-start, $elfbar-grad-mid); -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    &__title {
+        font-family: $elfbar-font-headline; font-size: clamp(1.8rem, 4.5vw, 2.6rem); font-weight: 700;
+        line-height: 1.08; margin: 0 0 0.9rem; color: #fff; hyphens: auto;
+    }
+    &__text { font-family: $elfbar-font-base; font-size: 1rem; line-height: 1.65; color: rgba(255,255,255,0.78); margin: 0 0 1.2rem; }
+    &__features {
+        list-style: none; margin: 0 0 1.6rem; padding: 0; display: grid; gap: 0.55rem;
+        li {
+            display: flex; align-items: center; gap: 0.55rem; font-family: $elfbar-font-base; font-size: 0.92rem; color: rgba(255,255,255,0.9);
+            .icon { width: 18px; height: 18px; flex: 0 0 auto; padding: 3px; border-radius: 50%; color: #fff; background: $elfbar-gradient; }
+        }
+    }
+    &__actions { display: flex; flex-wrap: wrap; gap: 0.85rem; margin: 0 0 1.1rem; }
+    &__note { font-family: $elfbar-font-base; font-size: 0.78rem; color: rgba(255,255,255,0.5); margin: 0; }
+}
+
+/* ---- 2. USPs ---- */
+.elfbar-usps { margin: 0 0 3.5rem; &__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; } }
+.elfbar-usp-card {
+    position: relative; padding: 1.6rem 1.4rem; border-radius: $elfbar-radius;
+    background: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(14px);
+    box-shadow: $elf-shadow-sm; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &::before {
+        content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: $elfbar-gradient;
+        transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease;
+    }
+    &:hover { transform: translateY(-6px); box-shadow: $elf-shadow-md; &::before { transform: scaleX(1); } }
+    &__icon {
+        display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; margin-bottom: 1rem;
+        border-radius: 14px; background: $elfbar-gradient; box-shadow: 0 8px 18px rgba($elfbar-grad-mid, 0.35);
+        .icon { width: 26px; height: 26px; color: #fff; }
+    }
+    &__title { font-family: $elfbar-font-headline; font-size: 1.1rem; font-weight: 700; color: $elfbar-color-ink; margin: 0 0 0.45rem; }
+    &__text { font-family: $elfbar-font-base; font-size: 0.9rem; line-height: 1.55; color: rgba($elfbar-color-ink, 0.62); margin: 0; }
+}
+
+/* ---- 3. MARKENWELT ---- */
+.elfbar-brandworld { margin: 0 0 3.5rem; &__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; } }
+.elfbar-brand-card {
+    position: relative; display: flex; flex-direction: column; border-radius: $elfbar-radius; overflow: hidden;
+    background: #fff; box-shadow: $elf-shadow-sm; transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &:hover {
+        transform: translateY(-6px); box-shadow: $elf-shadow-lg;
+        .elfbar-brand-card__letter { transform: scale(1.08) rotate(-3deg); }
+        .elfbar-brand-card__media::after { opacity: 0.35; }
+    }
+    &__media {
+        position: relative; height: 150px; display: flex; align-items: center; justify-content: center; overflow: hidden;
+        &::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 70% 20%, rgba(255,255,255,0.4), transparent 60%); opacity: 0; transition: opacity 0.4s ease; }
+    }
+    &__letter { font-family: $elfbar-font-headline; font-size: 4.5rem; font-weight: 700; color: rgba(255,255,255,0.95); text-shadow: 0 6px 24px rgba(0,0,0,0.25); transition: transform 0.4s ease; }
+    &--pink .elfbar-brand-card__media   { background: linear-gradient(140deg, #ff5ea7, #ff8fc4); }
+    &--violet .elfbar-brand-card__media { background: linear-gradient(140deg, #c85aff, #e29bff); }
+    &--blue .elfbar-brand-card__media   { background: linear-gradient(140deg, #5a74ff, #8fa3ff); }
+    &--mix .elfbar-brand-card__media    { background: $elfbar-gradient; }
+    &__body { padding: 1.2rem 1.3rem 1.4rem; }
+    &__name { font-family: $elfbar-font-headline; font-size: 1.25rem; font-weight: 700; color: $elfbar-color-ink; margin: 0 0 0.4rem; }
+    &__desc { font-family: $elfbar-font-base; font-size: 0.88rem; line-height: 1.5; color: rgba($elfbar-color-ink, 0.6); margin: 0 0 0.9rem; }
+    &__link {
+        display: inline-flex; align-items: center; gap: 0.4rem; font-family: $elfbar-font-base; font-size: 0.9rem; font-weight: 600; text-decoration: none;
+        background: $elfbar-gradient; -webkit-background-clip: text; background-clip: text; color: transparent;
+        .icon { width: 16px; height: 16px; color: $sw-color-brand-primary; transition: transform 0.25s ease; }
+        &:hover .icon { transform: translateX(4px); }
+    }
+}
+
+/* ---- 4. HOW TO + FAQ ---- */
+.elfbar-howto { margin: 0 0 3.5rem; &__cta { text-align: center; margin: 2rem 0 2.5rem; } }
+.elfbar-steps {
+    list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; position: relative;
+    &::before { content: ""; position: absolute; top: 28px; left: 16%; right: 16%; height: 2px; background: linear-gradient(90deg, $elfbar-grad-start, $elfbar-grad-mid, $elfbar-grad-end); opacity: 0.4; z-index: 0; }
+}
+.elfbar-step {
+    position: relative; z-index: 1; text-align: center; padding: 1.4rem 1rem; border-radius: $elfbar-radius;
+    background: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(12px); box-shadow: $elf-shadow-sm;
+    &__num {
+        display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; margin-bottom: 0.9rem; border-radius: 50%;
+        font-family: $elfbar-font-headline; font-size: 1.4rem; font-weight: 700; color: #fff; background: $elfbar-gradient; box-shadow: 0 8px 20px rgba($elfbar-grad-mid, 0.4);
+    }
+    &__icon { display: block; margin: 0 auto 0.6rem; .icon { width: 22px; height: 22px; color: $sw-color-brand-primary; } }
+    &__title { font-family: $elfbar-font-headline; font-size: 1.05rem; font-weight: 700; color: $elfbar-color-ink; margin: 0 0 0.35rem; }
+    &__text { font-family: $elfbar-font-base; font-size: 0.85rem; line-height: 1.5; color: rgba($elfbar-color-ink, 0.6); margin: 0; }
+}
+.elfbar-faq {
+    max-width: 720px; margin: 0 auto;
+    &__head { font-family: $elfbar-font-headline; font-size: 1.25rem; font-weight: 700; color: $elfbar-color-ink; text-align: center; margin: 0 0 1.2rem; }
+    &__item {
+        border-radius: $elfbar-radius; background: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.7);
+        backdrop-filter: blur(12px); box-shadow: $elf-shadow-sm; margin-bottom: 0.7rem; overflow: hidden; transition: box-shadow 0.25s ease;
+        &.is-open {
+            box-shadow: $elf-shadow-md;
+            .elfbar-faq__chev .icon { transform: rotate(90deg); }
+            .elfbar-faq__a { grid-template-rows: 1fr; opacity: 1; }
+        }
+    }
+    &__q {
+        width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 56px; padding: 0.9rem 1.2rem;
+        background: transparent; border: none; cursor: pointer; text-align: left;
+        font-family: $elfbar-font-headline; font-size: 1rem; font-weight: 600; color: $elfbar-color-ink;
+        &:focus-visible { outline: 2px solid $sw-color-brand-primary; outline-offset: -2px; }
+    }
+    &__chev .icon { width: 18px; height: 18px; color: $sw-color-brand-primary; transition: transform 0.3s ease; }
+    &__a {
+        display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.35s ease, opacity 0.35s ease;
+        p { overflow: hidden; margin: 0; padding: 0 1.2rem 1.1rem; font-family: $elfbar-font-base; font-size: 0.92rem; line-height: 1.6; color: rgba($elfbar-color-ink, 0.66); }
+    }
+}
+
+/* ---- 5. REVIEWS + TRUST ---- */
+.elfbar-reviews { margin: 0 0 2rem; &__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; } }
+.elfbar-review-card {
+    display: flex; flex-direction: column; padding: 1.5rem 1.3rem; border-radius: $elfbar-radius;
+    background: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(14px);
+    box-shadow: $elf-shadow-sm; transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &:hover { transform: translateY(-5px); box-shadow: $elf-shadow-md; }
+    &__stars { display: flex; gap: 2px; margin-bottom: 0.8rem; .icon { width: 18px; height: 18px; color: #ffb43b; } }
+    &__text { font-family: $elfbar-font-base; font-size: 0.92rem; line-height: 1.6; color: rgba($elfbar-color-ink, 0.78); margin: 0 0 1.2rem; flex: 1; }
+    &__author { display: flex; align-items: center; gap: 0.7rem; }
+    &__avatar {
+        display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; flex: 0 0 auto; border-radius: 50%;
+        font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.05rem; color: #fff; background: $elfbar-gradient;
+    }
+    &__meta {
+        display: flex; flex-direction: column; line-height: 1.3; font-family: $elfbar-font-base;
+        strong { font-size: 0.92rem; color: $elfbar-color-ink; }
+        span { font-size: 0.8rem; color: rgba($elfbar-color-ink, 0.55); }
+    }
+}
+.elfbar-trust {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem; padding: 1.3rem; border-radius: $elfbar-radius;
+    background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(12px);
+    &__badge {
+        display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: 999px; background: #fff; box-shadow: $elf-shadow-sm;
+        font-family: $elfbar-font-base; font-size: 0.82rem; font-weight: 600; color: $elfbar-color-ink;
+        .icon { width: 16px; height: 16px; color: $sw-color-brand-primary; }
+    }
+}
+
+@keyframes elfbar-float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(20px, -24px); } }
+@keyframes elfbar-rise { from { opacity: 0; transform: translateY(24px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+@media (max-width: 720px) {
+    .elfbar-vitrine {
+        grid-template-columns: 1fr; padding: 1.8rem 1.4rem; text-align: center;
+        &__media { order: -1; }
+        &__cabinet { max-width: 190px; }
+        &__features { justify-items: center; li { justify-content: center; } }
+        &__actions { justify-content: center; }
+    }
+    .elfbar-usps__grid, .elfbar-brandworld__grid, .elfbar-reviews__grid { grid-template-columns: 1fr; }
+    .elfbar-steps { grid-template-columns: 1fr; &::before { display: none; } }
+    .elfbar-btn { width: 100%; }
+}
+@media (min-width: 721px) and (max-width: 860px) { .elfbar-reviews__grid { grid-template-columns: 1fr; } }
+
+@media (prefers-reduced-motion: reduce) {
+    .elfbar-vitrine__glow, .elfbar-vitrine__cabinet { animation: none; }
+    .elfbar-btn, .elfbar-usp-card, .elfbar-brand-card, .elfbar-review-card,
+    .elfbar-brand-card__letter, .elfbar-faq__chev .icon, .elfbar-faq__a,
+    .elfbar-btn .icon, .elfbar-brand-card__link .icon { transition: none !important; animation: none !important; }
+    .elfbar-usp-card:hover, .elfbar-brand-card:hover, .elfbar-review-card:hover,
+    .elfbar-btn--gradient:hover, .elfbar-btn--outline:hover { transform: none; }
+}
