@@ -1,0 +1,25 @@
+{% sw_extends '@Storefront/storefront/layout/header/actions/account-widget.html.twig' %}
+
+{% block layout_header_actions_account_widget_dropdown_button %}
+    {% set elfbarCustomer = context.customer %}
+    {% set elfbarLoggedIn = elfbarCustomer and not elfbarCustomer.guest %}
+    {% set elfbarInitials = '' %}
+    {% if elfbarLoggedIn %}
+        {% set elfbarInitials = (elfbarCustomer.firstName|slice(0, 1) ~ elfbarCustomer.lastName|slice(0, 1))|upper %}
+    {% endif %}
+
+    <button class="btn account-menu-btn header-actions-btn{% if elfbarLoggedIn %} elfbar-account-btn--avatar{% endif %}"
+            type="button"
+            id="accountWidget"
+            data-account-menu="true"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            aria-label="{{ 'account.myAccount'|trans|striptags }}"
+            title="{% if elfbarLoggedIn %}{{ elfbarCustomer.firstName }} {{ elfbarCustomer.lastName }}{% else %}{{ 'account.myAccount'|trans|striptags }}{% endif %}">
+        {% if elfbarLoggedIn %}
+            <span class="elfbar-account-avatar" aria-hidden="true">{{ elfbarInitials }}</span>
+        {% else %}
+            {% sw_icon 'avatar' %}
+        {% endif %}
+    </button>
+{% endblock %}

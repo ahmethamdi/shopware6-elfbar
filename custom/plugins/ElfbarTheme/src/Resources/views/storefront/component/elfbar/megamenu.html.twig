@@ -1,0 +1,68 @@
+{# =====================================================================
+   ElfbarTheme — Mega menü (sol kategori ağacı + hover'da açılan panel)
+   DİNAMİK: kategoriler canlı navigasyondan gelir (elfbarNavTree =
+   page.extensions.elfbarNavTree.tree, subscriber → NavigationLoader).
+   Her ana kategorinin gerçek alt kategorileri + SEO URL'leri kullanılır.
+   Sağ promo alanı theme_config'ten (Mega-Menü Bilder bloğu, loop.index).
+   Parametreler:
+     elfbarNavTree (zorunlu) — TreeItem listesi (category + children)
+     activeId (opsiyonel) — aktif kategori vurgusu
+   ===================================================================== #}
+<nav class="elfbar-mega" data-elfbar-mega aria-label="Kategorien">
+    <ul class="elfbar-mega__list">
+        {% for treeItem in elfbarNavTree|default([]) %}
+            {% set cat = treeItem.category %}
+            {% set megaIdx = loop.index %}
+            {% set catName = cat.translated.name %}
+            {% set catUrl = cat.type == 'folder' ? '#' : (cat.seoUrl ?: seoUrl('frontend.navigation.page', { navigationId: cat.id })) %}
+            {% set children = treeItem.children|default([]) %}
+            {% set hasChildren = children|length > 0 %}
+            {% set isActive = (activeId is defined and activeId == cat.id) %}
+            <li class="elfbar-mega__item{{ hasChildren ? ' has-children' : '' }}">
+                <a class="elfbar-mega__link{{ isActive ? ' is-active' : '' }}" href="{{ catUrl }}">
+                    <span class="elfbar-mega__name">{{ catName }}</span>
+                    {% if hasChildren %}<span class="elfbar-mega__caret" aria-hidden="true">›</span>{% endif %}
+                </a>
+
+                {% if hasChildren %}
+                    <div class="elfbar-mega__panel">
+                        <div class="elfbar-mega__panel-head">
+                            <span class="elfbar-mega__heading">{{ catName }}</span>
+                            <a href="{{ catUrl }}" class="elfbar-mega__all">Alle anzeigen →</a>
+                        </div>
+                        <div class="elfbar-mega__body">
+                            {# Sol: gerçek alt kategoriler (canlı navigasyondan) #}
+                            <div class="elfbar-mega__grid">
+                                {% for childItem in children %}
+                                    {% set child = childItem.category %}
+                                    {% set childUrl = child.type == 'folder' ? '#' : (child.seoUrl ?: seoUrl('frontend.navigation.page', { navigationId: child.id })) %}
+                                    <a href="{{ childUrl }}" class="elfbar-mega__cell">{{ child.translated.name }}</a>
+                                {% endfor %}
+                            </div>
+                            {# Sağ: görsel promo alanı — config'ten (Mega-Menü Bilder bloğu). Görsel yoksa SVG. #}
+                            <div class="elfbar-mega__promos">
+                                {% for p in 1..2 %}
+                                    {% set pImg = theme_config('elfbar-mega-' ~ megaIdx ~ '-promo' ~ p ~ '-img') %}
+                                    {% set pCap = theme_config('elfbar-mega-' ~ megaIdx ~ '-promo' ~ p ~ '-cap')|default(p == 1 ? 'Top-Marke' : 'Aktion') %}
+                                    {% set pSub = theme_config('elfbar-mega-' ~ megaIdx ~ '-promo' ~ p ~ '-sub')|default(p == 1 ? catName : 'Bis zu −20 %') %}
+                                    {% set pLink = theme_config('elfbar-mega-' ~ megaIdx ~ '-promo' ~ p ~ '-link') %}
+                                    <a href="{{ pLink ?: catUrl }}" class="elfbar-mega__promo">
+                                        <span class="elfbar-mega__promo-img">
+                                            {% if pImg %}
+                                                <img src="{{ pImg }}" alt="{{ pSub }}" loading="lazy">
+                                            {% else %}
+                                                <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                                            {% endif %}
+                                        </span>
+                                        <span class="elfbar-mega__promo-cap">{{ pCap }}</span>
+                                        <span class="elfbar-mega__promo-sub">{{ pSub }}</span>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

@@ -1,0 +1,29 @@
+{% sw_extends '@Storefront/storefront/layout/header/top-bar.html.twig' %}
+
+{# Elfbar: mockup gibi TEK ince bilgi şeridi (gradient banner + sosyal bar birleşik) #}
+{% block layout_header_top_bar %}
+    {% block elfbar_info_bar %}
+        {# Texte aus Theme-Config (Admin → Themes → ElfbarTheme → Info-Leiste).
+           Default-Werte stehen in theme.json (dolu başla). Leeres Feld = ausgeblendet
+           (kein |default mehr → Löschen im Panel blendet das Item wirklich aus). #}
+        {% set elfbarInfobarItems = [
+            theme_config('elfbar-infobar-1'),
+            theme_config('elfbar-infobar-2'),
+            theme_config('elfbar-infobar-3'),
+            theme_config('elfbar-infobar-4'),
+            theme_config('elfbar-infobar-5')
+        ]|filter(t => t is not empty) %}
+        {% if elfbarInfobarItems|length %}
+            <div class="elfbar-info-bar">
+                <div class="container">
+                    <div class="elfbar-info-bar__inner">
+                        {% for item in elfbarInfobarItems %}
+                            <span class="elfbar-info-bar__item">{{ item }}</span>
+                            {% if not loop.last %}<span class="elfbar-info-bar__sep">·</span>{% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

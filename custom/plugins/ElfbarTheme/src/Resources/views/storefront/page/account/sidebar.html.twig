@@ -1,0 +1,70 @@
+{% sw_extends '@Storefront/storefront/page/account/sidebar.html.twig' %}
+
+{# =====================================================================
+   ElfbarTheme — Hesap sidebar'ı: modern panel (avatar + selam, ikonlu nav,
+   aktif pill, logout). Tüm hesap sayfalarında görünür.
+   (Agent/Vertreter modu YOK — sade B2B müşteri menüsü.)
+   ===================================================================== #}
+
+{% block page_account_sidebar_header %}
+    {% if not headerWidget %}
+        <div class="card-header account-aside-header elfbar-acc-aside__head">
+            <span class="elfbar-acc-aside__avatar">
+                {{ context.customer.firstName|first|upper }}{{ context.customer.lastName|first|upper }}
+            </span>
+            <span class="elfbar-acc-aside__hi">
+                <small>{{ 'account.greetings'|trans|sw_sanitize }}</small>
+                <b>{{ context.customer.firstName }} {{ context.customer.lastName }}</b>
+            </span>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block page_account_sidebar_link_home %}
+    <a href="{{ path('frontend.account.home.page') }}"
+       title="{{ 'account.overviewLink'|trans|striptags }}"
+       class="list-group-item list-group-item-action account-aside-item elfbar-acc-aside__item{% if activeRoute is same as('frontend.account.home.page') %} is-active{% endif %}"
+       {% if activeRoute is same as('frontend.account.home.page') %} aria-current="page"{% endif %}>
+        <span class="elfbar-acc-aside__ico">{% sw_icon 'home' %}</span>
+        {{ 'account.overviewLink'|trans|sw_sanitize }}
+    </a>
+{% endblock %}
+
+{% block page_account_sidebar_link_profile %}
+    <a href="{{ path('frontend.account.profile.page') }}"
+       title="{{ 'account.profileLink'|trans|striptags }}"
+       class="list-group-item list-group-item-action account-aside-item elfbar-acc-aside__item{% if activeRoute is same as('frontend.account.profile.page') %} is-active{% endif %}"
+       {% if activeRoute is same as('frontend.account.profile.page') %} aria-current="page"{% endif %}>
+        <span class="elfbar-acc-aside__ico">{% sw_icon 'avatar' %}</span>
+        {{ 'account.profileLink'|trans|sw_sanitize }}
+    </a>
+{% endblock %}
+
+{% block page_account_sidebar_link_address %}
+    <a href="{{ path('frontend.account.address.page') }}"
+       title="{{ 'account.addressLink'|trans|striptags }}"
+       class="list-group-item list-group-item-action account-aside-item elfbar-acc-aside__item{% if activeRoute starts with('frontend.account.address') %} is-active{% endif %}"
+       {% if activeRoute starts with('frontend.account.address.page') %} aria-current="page"{% endif %}>
+        <span class="elfbar-acc-aside__ico">{% sw_icon 'map' %}</span>
+        {{ 'account.addressLink'|trans|sw_sanitize }}
+    </a>
+{% endblock %}
+
+{% block page_account_sidebar_link_orders %}
+    <a href="{{ path('frontend.account.order.page') }}"
+       title="{{ 'account.ordersLink'|trans|striptags }}"
+       class="list-group-item list-group-item-action account-aside-item elfbar-acc-aside__item{% if activeRoute is same as('frontend.account.order.page') %} is-active{% endif %}"
+       {% if activeRoute is same as('frontend.account.order.page') %} aria-current="page"{% endif %}>
+        <span class="elfbar-acc-aside__ico">{% sw_icon 'bag' %}</span>
+        {{ 'account.ordersLink'|trans|sw_sanitize }}
+    </a>
+
+    {# ElfbarTheme: Rechnungen & Dokumente (faturalar/belgeler tek liste) #}
+    <a href="{{ path('frontend.account.elfbar.documents.page') }}"
+       title="Rechnungen &amp; Dokumente"
+       class="list-group-item list-group-item-action account-aside-item elfbar-acc-aside__item{% if activeRoute is same as('frontend.account.elfbar.documents.page') %} is-active{% endif %}"
+       {% if activeRoute is same as('frontend.account.elfbar.documents.page') %} aria-current="page"{% endif %}>
+        <span class="elfbar-acc-aside__ico">{% sw_icon 'file' %}</span>
+        Rechnungen &amp; Dokumente
+    </a>
+{% endblock %}

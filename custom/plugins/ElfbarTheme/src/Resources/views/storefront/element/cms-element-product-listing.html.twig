@@ -1,0 +1,36 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-product-listing.html.twig' %}
+
+{# =====================================================================
+   ElfbarTheme — Kategori listing'i LISTE düzenine zorla (B2B hızlı sipariş).
+   Anasayfa (home kategorisi) hariç: orada Bestseller grid kalsın.
+   ===================================================================== #}
+{% block element_product_listing_wrapper %}
+    {% set elfbarIsHome = shopware.navigation.id == context.salesChannel.navigationCategoryId %}
+
+    {% if elfbarIsHome %}
+        {{ parent() }}
+    {% else %}
+        {% set searchResult = element.data.listing %}
+        {% set slot = cmsPage.getFirstElementOfType('product-listing') %}
+        {% set filterUrl = null %}
+        {% set dataUrl = null %}
+        {% if searchResult.currentFilters.navigationId %}
+            {% set filterUrl = path('frontend.cms.navigation.filter', { navigationId: searchResult.currentFilters.navigationId }) %}
+            {% set dataUrl = path('frontend.cms.navigation.page', { navigationId: searchResult.currentFilters.navigationId }) %}
+        {% endif %}
+        {% set sidebar = sectionType == 'sidebar' %}
+        {% set params = { slots: slot.id, 'no-aggregations': 1 } %}
+
+        {% sw_include '@Storefront/storefront/component/product/listing.html.twig' with {
+            searchResult: searchResult,
+            dataUrl: dataUrl,
+            filterUrl: filterUrl,
+            params: params,
+            sidebar: sidebar,
+            boxLayout: 'list',
+            displayMode: element.translated.config.displayMode.value,
+            listingColumns: 'col-12 elfbar-listcol',
+            ariaLiveUpdates: true
+        } %}
+    {% endif %}
+{% endblock %}

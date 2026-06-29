@@ -1,0 +1,53 @@
+{% sw_extends '@Storefront/storefront/page/account/_page.html.twig' %}
+
+{# =====================================================================
+   ElfbarTheme — "Rechnungen & Dokumente": müşterinin tüm belgeleri tek liste.
+   elfbarDocuments = [{document_id, document_number, deep_link_code, type_technical,
+   type_name, order_number, created_at}]. İndirme Shopware route'uyla.
+   ===================================================================== #}
+{% block page_account_main_content %}
+    <div class="account-welcome">
+        <h1>Rechnungen &amp; Dokumente</h1>
+        <p>Alle Ihre Rechnungen, Lieferscheine und Gutschriften an einem Ort – jederzeit zum Download.</p>
+    </div>
+
+    {% if elfbarDocuments is empty %}
+        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+            type: 'info',
+            content: 'Es liegen noch keine Dokumente vor. Sobald eine Rechnung oder ein Lieferschein erstellt wird, finden Sie ihn hier.'
+        } %}
+    {% else %}
+        <div class="elfbar-docs">
+            {% for doc in elfbarDocuments %}
+                {# tip → ikon eşlemesi (mevcut sw_icon'lar) #}
+                {% set docIcon = 'file' %}
+                {% if doc.type_technical == 'delivery_note' %}{% set docIcon = 'package-closed' %}
+                {% elseif doc.type_technical == 'credit_note' %}{% set docIcon = 'money-cash' %}
+                {% endif %}
+
+                <div class="elfbar-docs__row">
+                    <span class="elfbar-docs__icon elfbar-docs__icon--{{ doc.type_technical }}">{% sw_icon docIcon %}</span>
+
+                    <div class="elfbar-docs__info">
+                        <span class="elfbar-docs__type">{{ doc.type_name }}</span>
+                        <span class="elfbar-docs__meta">
+                            Nr. {{ doc.document_number }}
+                            · Bestellung {{ doc.order_number }}
+                            · {{ doc.created_at|format_date('medium', locale=app.request.locale) }}
+                        </span>
+                    </div>
+
+                    <a href="{{ path('frontend.account.order.single.document', {
+                            documentId: doc.document_id,
+                            deepLinkCode: doc.deep_link_code
+                        }) }}"
+                       class="btn btn-primary btn-sm elfbar-docs__btn"
+                       target="_blank" rel="noopener">
+                        {% sw_icon 'circle-download' %}
+                        <span>Herunterladen</span>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

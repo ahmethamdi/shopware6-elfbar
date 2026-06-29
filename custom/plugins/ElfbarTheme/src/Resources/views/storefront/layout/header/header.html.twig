@@ -1,0 +1,165 @@
+{% sw_extends '@Storefront/storefront/layout/header/header.html.twig' %}
+
+{# =====================================================================
+   ElfbarTheme — Kompakt tek satır header (mockup):
+   logo + arama (daralt) + aksiyonlar + "Jetzt einkaufen" butonu
+   ===================================================================== #}
+{% block layout_header_navigation %}
+    <div class="elfbar-header-pill">
+    <div class="row align-items-center header-row elfbar-header-row">
+        {# MOBİL: hamburger en solda (logo ortalanır, diğer ikonlar sağda) #}
+        {% block elfbar_header_mobile_toggle %}
+            <div class="col-auto d-lg-none elfbar-mobile-toggle-col">
+                <button class="btn header-actions-btn nav-main-toggle-btn elfbar-mobile-toggle"
+                        type="button"
+                        data-off-canvas-menu="true"
+                        aria-label="{{ 'general.menuLink'|trans|striptags }}">
+                    {% sw_icon 'stack' %}
+                </button>
+            </div>
+        {% endblock %}
+
+        {% block layout_header_logo %}
+            <div class="col-auto header-logo-col my-2">
+                {% sw_include '@Storefront/storefront/layout/header/logo.html.twig' %}
+            </div>
+        {% endblock %}
+
+        {# Mockup: sade menü logo ile aynı satırda
+           Panelden link girilebilir (elfbar-header-menu-1..6-name/-link).
+           En az bir 'name' doluysa MANUEL menü çizilir (ID bağımlılığı yok → canlıda 404 olmaz).
+           Hepsi boşsa fallback: otomatik kategori menüsü (eski davranış). #}
+        {% block elfbar_header_menu %}
+            {% set elfbarManualMenu = [] %}
+            {% for i in 1..6 %}
+                {% set mName = theme_config('elfbar-header-menu-' ~ i ~ '-name') %}
+                {% set mLink = theme_config('elfbar-header-menu-' ~ i ~ '-link') %}
+                {% if mName %}
+                    {% set elfbarManualMenu = elfbarManualMenu|merge([{ name: mName, link: mLink }]) %}
+                {% endif %}
+            {% endfor %}
+            <div class="col-auto d-none d-lg-block">
+                <nav class="elfbar-topmenu">
+                    <a class="elfbar-topmenu__link" href="{{ path('frontend.home.page') }}">Home</a>
+                    {% if elfbarManualMenu|length > 0 %}
+                        {% for m in elfbarManualMenu %}
+                            <a class="elfbar-topmenu__link" href="{{ m.link ?: '#' }}">{{ m.name }}</a>
+                        {% endfor %}
+                    {% else %}
+                        {# Fallback: Shopware Hauptnavigation (otomatik, SEO URL) #}
+                        {% for m in page.header.navigation.tree %}
+                            <a class="elfbar-topmenu__link" href="{{ seoUrl('frontend.navigation.page', { navigationId: m.category.id }) }}">{{ m.category.translated.name }}</a>
+                        {% endfor %}
+                    {% endif %}
+                </nav>
+            </div>
+        {% endblock %}
+
+        {# Mockup: ortada büyük arama çubuğu YOK; arama küçük ikon (aksiyonlarda) #}
+        {% block layout_header_search %}
+            <div class="col"></div>
+        {% endblock %}
+
+        {% block layout_header_actions %}
+            <div class="col-auto header-actions-col">
+                <div class="row g-0 align-items-center">
+                    {# Ödeme logoları — search ikonunun SOLUNDA, SADECE DESKTOP, panelden #}
+                    {% block elfbar_header_payments %}
+                        {% set headerPays = [
+                            theme_config('elfbar-header-pay-1'),
+                            theme_config('elfbar-header-pay-2'),
+                            theme_config('elfbar-header-pay-3'),
+                            theme_config('elfbar-header-pay-4'),
+                            theme_config('elfbar-header-pay-5'),
+                            theme_config('elfbar-header-pay-6')
+                        ]|filter(i => i) %}
+                        {% if headerPays|length > 0 %}
+                            <div class="col-auto d-none d-lg-block">
+                                <div class="elfbar-header-pays">
+                                    {% for img in headerPays %}
+                                        <span class="elfbar-header-pays__item"><img src="{{ img }}" alt="" loading="lazy"></span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block elfbar_header_search_icon %}
+                        <div class="col-auto">
+                            <button class="btn header-actions-btn search-toggle-btn js-search-toggle-btn collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#searchCollapse"
+                                    aria-expanded="false"
+                                    aria-controls="searchCollapse"
+                                    aria-label="{{ 'header.searchButton'|trans|striptags }}">
+                                {% sw_icon 'search' %}
+                            </button>
+                        </div>
+                    {% endblock %}
+                    {% block layout_header_navigation_toggle %}
+                        <div class="col d-lg-none">
+                            <div class="menu-button">
+                                <button
+                                    class="btn nav-main-toggle-btn header-actions-btn"
+                                    type="button"
+                                    data-off-canvas-menu="true"
+                                    aria-label="{{ 'general.menuLink'|trans|striptags }}"
+                                >
+                                    {% sw_icon 'stack' %}
+                                </button>
+                            </div>
+                        </div>
+                    {% endblock %}
+
+                    {% block layout_header_actions_account %}
+                        <div class="col-auto">
+                            <div class="account-menu">
+                                {% sw_include '@Storefront/storefront/layout/header/actions/account-widget.html.twig' %}
+                            </div>
+                        </div>
+                    {% endblock %}
+
+                    {% set offcanvasCartOptions = { autoFocus: true } %}
+                    {% block layout_header_actions_cart %}
+                        <div class="col-auto">
+                            <div class="header-cart"
+                                 data-off-canvas-cart="true"
+                                 data-off-canvas-cart-options="{{ offcanvasCartOptions|json_encode }}">
+                                <a class="btn header-cart-btn header-actions-btn"
+                                   href="{{ path('frontend.checkout.cart.page') }}"
+                                   data-cart-widget="true"
+                                   title="{{ 'checkout.cartTitle'|trans|striptags }}">
+                                    {% sw_include '@Storefront/storefront/layout/header/actions/cart-widget.html.twig' %}
+                                </a>
+                            </div>
+                        </div>
+                    {% endblock %}
+
+                    {% block elfbar_header_cta %}
+                        <div class="col-auto d-none d-lg-block ms-2">
+                            <a href="{{ path('frontend.account.register.page') }}" class="btn elfbar-header-cta">
+                                Jetzt registrieren <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+    </div>
+
+    {# Arama ikonu tıklanınca açılan collapse arama formu #}
+    {% block elfbar_header_search_collapse %}
+        <div class="collapse elfbar-search-collapse" id="searchCollapse" data-elfbar-search-overlay>
+            <div class="elfbar-search-collapse__inner">
+                <div class="elfbar-search-collapse__head">
+                    <span class="elfbar-search-collapse__title">Wonach suchst du?</span>
+                    <button type="button" class="elfbar-search-collapse__close" data-elfbar-search-close
+                            data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-label="Schließen">✕</button>
+                </div>
+                {% sw_include '@Storefront/storefront/layout/header/search.html.twig' %}
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

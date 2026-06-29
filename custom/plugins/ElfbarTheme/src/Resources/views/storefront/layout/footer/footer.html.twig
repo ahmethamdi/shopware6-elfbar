@@ -1,0 +1,233 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{# =====================================================================
+   ElfbarTheme — B2B Footer Override (Almanca)
+   - Link kolonları: Shopware Footer-Navigation (Admin → Kataloge → Kategorien)
+   - İletişim + B2B-CTA + logolar: panelden (theme_config)
+   ===================================================================== #}
+
+{% block layout_footer_navigation %}
+    {# --- Üst şerit: USP güven rozetleri (panelden — başlık boşsa o öğe gizli) --- #}
+    {% set elfbarUsps = [
+        { i: theme_config('elfbar-footer-usp-1-icon')|default('truck'),         t: theme_config('elfbar-footer-usp-1-title'), s: theme_config('elfbar-footer-usp-1-sub') },
+        { i: theme_config('elfbar-footer-usp-2-icon')|default('lock-closed'),   t: theme_config('elfbar-footer-usp-2-title'), s: theme_config('elfbar-footer-usp-2-sub') },
+        { i: theme_config('elfbar-footer-usp-3-icon')|default('rocket'), t: theme_config('elfbar-footer-usp-3-title'), s: theme_config('elfbar-footer-usp-3-sub') },
+        { i: theme_config('elfbar-footer-usp-4-icon')|default('headset'),       t: theme_config('elfbar-footer-usp-4-title'), s: theme_config('elfbar-footer-usp-4-sub') }
+    ]|filter(u => u.t) %}
+    {% if elfbarUsps|length > 0 %}
+        <div class="elfbar-footer-top">
+            {% for usp in elfbarUsps %}
+                <div class="elfbar-footer-top__item">
+                    <span class="elfbar-footer-top__ico">{% sw_icon usp.i %}</span>
+                    <span class="elfbar-footer-top__txt"><b>{{ usp.t }}</b>{% if usp.s %}<small>{{ usp.s }}</small>{% endif %}</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="row footer-columns elfbar-footer-columns" role="list">
+
+        {# (a) Über uns — marka + iletişim (panelden) #}
+        <div class="col-12 col-md-6 col-lg-3 footer-column elfbar-footer-col">
+            <div class="footer-column-headline elfbar-footer-headline" role="listitem">Über uns</div>
+            <div class="elfbar-footer-col-content" role="listitem">
+                {% if theme_config('elfbar-footer-logo') %}
+                    <div class="elfbar-footer-logo">
+                        <img src="{{ theme_config('elfbar-footer-logo') }}" alt="Elfbar Handels GmbH" loading="lazy">
+                    </div>
+                {% endif %}
+                {% if theme_config('elfbar-footer-blurb') %}
+                    <p class="elfbar-footer-blurb">{{ theme_config('elfbar-footer-blurb') }}</p>
+                {% endif %}
+                <ul class="list-unstyled elfbar-footer-contact">
+                    {% if theme_config('elfbar-footer-phone') %}
+                        <li><a class="footer-link elfbar-footer-link" href="tel:{{ theme_config('elfbar-footer-phone')|replace({' ': '', '(': '', ')': '', '-': ''}) }}">Tel: {{ theme_config('elfbar-footer-phone') }}</a></li>
+                    {% endif %}
+                    {% if theme_config('elfbar-footer-email') %}
+                        <li><a class="footer-link elfbar-footer-link" href="mailto:{{ theme_config('elfbar-footer-email') }}">{{ theme_config('elfbar-footer-email') }}</a></li>
+                    {% endif %}
+                    {% if theme_config('elfbar-footer-hours') %}
+                        <li class="elfbar-footer-hours">{{ theme_config('elfbar-footer-hours') }}</li>
+                    {% endif %}
+                </ul>
+
+                {# Sosyal medya — sadece URL girilmiş olanlar #}
+                {% set fbSocial = {
+                    instagram: theme_config('elfbar-footer-social-instagram'),
+                    facebook:  theme_config('elfbar-footer-social-facebook'),
+                    whatsapp:  theme_config('elfbar-footer-social-whatsapp')
+                } %}
+                {% if fbSocial.instagram or fbSocial.facebook or fbSocial.whatsapp %}
+                    <div class="elfbar-footer-social">
+                        {% if fbSocial.instagram %}
+                            <a href="{{ fbSocial.instagram }}" target="_blank" rel="noopener" class="elfbar-footer-social__link" aria-label="Instagram">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                            </a>
+                        {% endif %}
+                        {% if fbSocial.facebook %}
+                            <a href="{{ fbSocial.facebook }}" target="_blank" rel="noopener" class="elfbar-footer-social__link" aria-label="Facebook">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13 22v-8h2.7l.4-3H13V9.2c0-.9.3-1.5 1.6-1.5H17V5.1C16.5 5 15.6 5 14.6 5 12.3 5 10.8 6.4 10.8 9v2H8v3h2.8v8H13z"/></svg>
+                            </a>
+                        {% endif %}
+                        {% if fbSocial.whatsapp %}
+                            <a href="{{ fbSocial.whatsapp }}" target="_blank" rel="noopener" class="elfbar-footer-social__link" aria-label="WhatsApp">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.7 4.3 3.8 1.6.7 2.2.7 3 .6.5 0 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1z"/></svg>
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        {# (b,c,d) Link kolonları — Shopware Footer-Navigation ağacından (panelden yönetilir).
+           Newsletter ARTIK buraya bağlı DEĞİL → kategori adına ('B2B'/'Händler') bağımlılık kaldırıldı.
+           Tüm footer-nav kolonları normal link kolonu olarak çizilir. #}
+        {% if footer.navigation and footer.navigation.tree %}
+            {% for root in footer.navigation.tree %}
+                <div class="col-6 col-md-3 col-lg-3 footer-column elfbar-footer-col">
+                    <div class="footer-column-headline elfbar-footer-headline" role="listitem">
+                        {% if root.category.type == 'folder' %}
+                            {{ root.category.translated.name }}
+                        {% else %}
+                            <a href="{{ root.category.seoUrl }}"{% if root.category.shouldOpenInNewTab %} target="_blank"{% endif %}>{{ root.category.translated.name }}</a>
+                        {% endif %}
+                    </div>
+                    <div class="elfbar-footer-col-content" role="listitem">
+                        {% if root.children|length > 0 %}
+                            <ul class="list-unstyled elfbar-footer-links">
+                                {% for child in root.children %}
+                                    {% set cat = child.category %}
+                                    <li>
+                                        {% if cat.type == 'folder' %}
+                                            <span class="elfbar-footer-link">{{ cat.translated.name }}</span>
+                                        {% else %}
+                                            <a class="footer-link elfbar-footer-link" href="{{ cat.seoUrl }}"{% if cat.shouldOpenInNewTab %} target="_blank"{% endif %}>{{ cat.translated.name }}</a>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {# (e) NEWSLETTER — BAĞIMSIZ sabit kolon (footer-nav ağacından AYRI).
+           Başlık doluysa HER ZAMAN çıkar → DB/kategori adına bağlı değil, canlıda kesin görünür. #}
+        {% if theme_config('elfbar-footer-newsletter-title') %}
+            <div class="col-12 col-md-6 col-lg-3 footer-column elfbar-footer-col elfbar-footer-col--newsletter">
+                <div class="elfbar-footer-newsletter">
+                    <div class="elfbar-footer-newsletter__head">{{ theme_config('elfbar-footer-newsletter-title') }}</div>
+                    {% if theme_config('elfbar-footer-newsletter-text') %}<p class="elfbar-footer-newsletter__text">{{ theme_config('elfbar-footer-newsletter-text')|raw }}</p>{% endif %}
+                    {# AJAX submit: Shopware FormAjaxSubmitPlugin form içeriğini response ile değiştirir.
+                       data-form-ajax-submit-options: başarıda formu reset + mesaj göster #}
+                    <form class="elfbar-footer-newsletter__form"
+                          action="{{ path('frontend.form.newsletter.register.handle') }}"
+                          method="post"
+                          data-form-ajax-submit="true"
+                          data-form-ajax-submit-options='{"replaceSelectors":[".elfbar-footer-newsletter__feedback"],"resetForm":true}'>
+                        <input type="hidden" name="option" value="subscribe">
+                        <div class="elfbar-footer-newsletter__row">
+                            <input type="email" name="email" required class="elfbar-footer-newsletter__input" placeholder="{{ 'newsletter.placeholderMail'|trans|default('E-Mail-Adresse') }}" aria-label="E-Mail">
+                            <button type="submit" class="elfbar-footer-newsletter__btn" aria-label="Anmelden">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </button>
+                        </div>
+                        <div class="elfbar-footer-newsletter__privacy">
+                            <label>
+                                <input type="checkbox" name="privacy" required>
+                                <span>Ich habe die {% if dataProtectionPageUrl is defined and dataProtectionPageUrl %}<a href="{{ dataProtectionPageUrl }}" target="_blank">Datenschutzbestimmungen</a>{% else %}Datenschutzbestimmungen{% endif %} gelesen.</span>
+                            </label>
+                        </div>
+                        {% if theme_config('elfbar-footer-newsletter-note') %}<p class="elfbar-footer-newsletter__note">{{ theme_config('elfbar-footer-newsletter-note') }}</p>{% endif %}
+                        {# AJAX yanıtı (başarı/hata mesajı) buraya gelir #}
+                        <div class="elfbar-footer-newsletter__feedback"></div>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}
+
+{# --- Ödeme + kargo + trust logoları (panelden media; boş slot gizli) --- #}
+{% block layout_footer_payment_shipping_logos %}
+    {% set trustLogos = [
+        { img: theme_config('elfbar-footer-trust-1'), link: theme_config('elfbar-footer-trust-1-link') },
+        { img: theme_config('elfbar-footer-trust-2'), link: theme_config('elfbar-footer-trust-2-link') },
+        { img: theme_config('elfbar-footer-trust-3'), link: theme_config('elfbar-footer-trust-3-link') },
+        { img: theme_config('elfbar-footer-trust-4'), link: theme_config('elfbar-footer-trust-4-link') }
+    ]|filter(t => t.img) %}
+    {% set payLogos = [
+        theme_config('elfbar-footer-pay-1'), theme_config('elfbar-footer-pay-2'),
+        theme_config('elfbar-footer-pay-3'), theme_config('elfbar-footer-pay-4'),
+        theme_config('elfbar-footer-pay-5')
+    ]|filter(i => i) %}
+    {% set shipLogos = [
+        theme_config('elfbar-footer-ship-1'), theme_config('elfbar-footer-ship-2'),
+        theme_config('elfbar-footer-ship-3'), theme_config('elfbar-footer-ship-4')
+    ]|filter(i => i) %}
+
+    {# Trust / sertifika logoları (Jugendschutz, Grüner Punkt, Händlerbund …) #}
+    {% if trustLogos|length > 0 %}
+        <div class="elfbar-footer-trust">
+            {% for t in trustLogos %}
+                {% if t.link %}
+                    <a href="{{ t.link }}" target="_blank" rel="noopener" class="elfbar-footer-trust__item">
+                        <img src="{{ t.img }}" alt="" loading="lazy">
+                    </a>
+                {% else %}
+                    <span class="elfbar-footer-trust__item"><img src="{{ t.img }}" alt="" loading="lazy"></span>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="footer-logos elfbar-footer-badges">
+        {% block layout_footer_payment_logos %}
+            <div class="elfbar-badge-group">
+                <span class="elfbar-badge-label">Zahlungsarten</span>
+                <div class="elfbar-badge-row">
+                    {% if payLogos|length > 0 %}
+                        {% for img in payLogos %}<span class="elfbar-badge elfbar-badge--img"><img src="{{ img }}" alt="" loading="lazy"></span>{% endfor %}
+                    {% else %}
+                        {# panelden görsel yoksa yazı rozetleri (fallback) #}
+                        <span class="elfbar-badge">Rechnung</span>
+                        <span class="elfbar-badge">Vorkasse</span>
+                        <span class="elfbar-badge">SEPA-Lastschrift</span>
+                        <span class="elfbar-badge">PayPal</span>
+                        <span class="elfbar-badge">Kreditkarte</span>
+                    {% endif %}
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block layout_footer_shipping_logos %}
+            <div class="elfbar-badge-group">
+                <span class="elfbar-badge-label">Versand</span>
+                <div class="elfbar-badge-row">
+                    {% if shipLogos|length > 0 %}
+                        {% for img in shipLogos %}<span class="elfbar-badge elfbar-badge--img"><img src="{{ img }}" alt="" loading="lazy"></span>{% endfor %}
+                    {% else %}
+                        <span class="elfbar-badge">DHL</span>
+                        <span class="elfbar-badge">DPD</span>
+                        <span class="elfbar-badge">UPS</span>
+                        <span class="elfbar-badge">Spedition</span>
+                    {% endif %}
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{# --- Alt bar: core service menü + VAT + copyright + 18+ uyarısı --- #}
+{% block layout_footer_copyright %}
+    <div class="footer-copyright elfbar-footer-copyright">
+        <span class="elfbar-footer-age">
+            18+ Nur für Erwachsene — Der Verkauf erfolgt ausschließlich an Gewerbetreibende.
+        </span>
+        <span class="elfbar-footer-copyright-text">
+            {{ parent() }}
+        </span>
+    </div>
+{% endblock %}

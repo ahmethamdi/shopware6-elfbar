@@ -1,0 +1,54 @@
+{% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget.html.twig' %}
+
+{# =====================================================================
+   ElfbarTheme — Ürün detay satın alma kutusu modernizasyonu.
+   B2B: Preise (auch Staffelpreis-Tabelle) + Warenkorb nur eingeloggt.
+   Satın alma formundan SONRA: USP güven rozetleri (kargo/iade/ödeme).
+   ===================================================================== #}
+
+{# B2B: Preise sichtbar für eingeloggte Kunden.
+{% set elfbarCanSeePrices = context.customer %}
+
+{# B2B: Fiyat tablosu (Staffelpreise) + tax + reviews girişsizken GİZLE #}
+{% block buy_widget_price %}
+    {% if elfbarCanSeePrices %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{# Reviews KOMPLETT ausgeblendet (Wunsch Ahmet/Mike): keine Sterne, keine Zahl,
+   kein Review-Link im Buy-Widget. Leerer Block überschreibt den Core-Block. #}
+{% block buy_widget_reviews %}{% endblock %}
+{% block buy_widget_buy_form %}
+    {# B2B: Preise & Warenkorb für eingeloggte Kunden #}
+    {% if elfbarCanSeePrices %}
+        {{ parent() }}
+    {% else %}
+        {# Nicht eingeloggt → Login-Gate statt Preis/Warenkorb #}
+        <div class="elfbar-buybox-login">
+            <span class="elfbar-buybox-login__ico">{% sw_icon 'lock-closed' %}</span>
+            <span class="elfbar-buybox-login__title">Großhandelspreise nach Login</span>
+            <span class="elfbar-buybox-login__text">Preise und Bestellung sind ausschließlich für registrierte Fachhändler sichtbar.</span>
+            <div class="elfbar-buybox-login__actions">
+                <a href="{{ path('frontend.account.login.page') }}" class="btn elfbar-buybox-login__btn is-primary">{% sw_icon 'avatar' %} Anmelden</a>
+                <a href="{{ path('frontend.account.register.page') }}" class="btn elfbar-buybox-login__btn is-ghost">Händler werden</a>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if product.active %}
+        <ul class="elfbar-buybox-usp">
+            {% for usp in [
+                { i: 'truck', t: 'Kostenloser Versand ab 500 € Netto' },
+                { i: 'lock-closed', t: 'Sichere Bezahlung · PayPal & Rechnung' },
+                { i: 'rocket', t: 'Schnelle Lieferung · 24–48h Versand' },
+                { i: 'marketing', t: 'B2B-Großhandelspreise nach Login' }
+            ] %}
+                <li class="elfbar-buybox-usp__item">
+                    <span class="elfbar-buybox-usp__ico">{% sw_icon usp.i %}</span>
+                    <span>{{ usp.t }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

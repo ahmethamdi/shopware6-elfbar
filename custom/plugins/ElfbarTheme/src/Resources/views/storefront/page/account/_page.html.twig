@@ -1,0 +1,42 @@
+{% sw_extends '@Storefront/storefront/page/account/_page.html.twig' %}
+
+{# ElfbarTheme — hesap layout:
+   - Desktop: sidebar sol kolon (col-xl-3)
+   - Mobil: sidebar GİZLİ → üstte "Mein Konto" butonu → alttan açılan bottom-sheet
+     (JS initCatSheets data-elfbar-sheet mekanizmasını yeniden kullanır) #}
+
+{% block page_account_sidebar %}
+    {# Sade B2B müşteri hesabı (Agent/Vertreter modu yok). #}
+    {% if context.customer and not context.customer.guest %}
+        {% set elfbarAva = context.customer.firstName|first|upper ~ context.customer.lastName|first|upper %}
+        {# MOBİL: üstte tetik butonu (desktop'ta gizli) #}
+        <div class="elfbar-acc-mobilebar d-lg-none col-12">
+            <button type="button" class="elfbar-acc-mobilebar__btn" data-elfbar-sheet-open="account">
+                <span class="elfbar-acc-mobilebar__ava">{{ elfbarAva }}</span>
+                <span class="elfbar-acc-mobilebar__txt">
+                    <small>{{ 'account.greetings'|trans|sw_sanitize }}</small>
+                    <b>{{ 'account.myAccount'|trans|sw_sanitize }}</b>
+                </span>
+                <span class="elfbar-acc-mobilebar__chev">{% sw_icon 'arrow-down' %}</span>
+            </button>
+        </div>
+
+        {# DESKTOP sidebar + MOBİL bottom-sheet (aynı içerik, CSS ile davranış değişir) #}
+        <div class="account-content-aside col-lg-4 col-xl-3 elfbar-acc-aside-wrap" data-elfbar-sheet="account">
+            <div class="elfbar-acc-sheet__head d-lg-none">
+                <b>{{ 'account.myAccount'|trans|sw_sanitize }}</b>
+                <button type="button" class="elfbar-acc-sheet__close" data-elfbar-sheet-close aria-label="schließen">{% sw_icon 'x' %}</button>
+            </div>
+            {% sw_include '@Storefront/storefront/page/account/sidebar.html.twig' %}
+        </div>
+
+        {# Bottom-sheet backdrop (kategori sayfasıyla ortak JS) #}
+        <div class="elfbar-sheet__backdrop d-lg-none" data-elfbar-sheet-backdrop hidden></div>
+    {% endif %}
+{% endblock %}
+
+{% block page_account_main %}
+    <div class="account-content-main col-lg-8 col-xl-9">
+        {% block page_account_main_content %}{% endblock %}
+    </div>
+{% endblock %}

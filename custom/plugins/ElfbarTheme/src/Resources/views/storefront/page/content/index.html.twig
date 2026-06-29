@@ -1,0 +1,544 @@
+{% sw_extends '@Storefront/storefront/page/content/index.html.twig' %}
+
+{# Gerçek üründen .elfbar-pcard kartı üretir (Bestseller + Neuheiten ortak).
+   product = SalesChannelProductEntity, loggedIn = B2B gate, badge = 'Neu'/'Top' vb. #}
+{% macro elfbarProductCard(product, loggedIn, badge) %}
+    {% set pName = product.translated.name ?? product.name %}
+    {% set pBrand = product.manufacturer ? (product.manufacturer.translated.name ?? product.manufacturer.name) : '' %}
+    {% set pCover = product.cover.media ?? null %}
+    {% set pPrice = product.calculatedCheapestPrice ?? product.calculatedPrice %}
+    {% set pUrl = path('frontend.detail.page', { productId: product.id }) %}
+    <a href="{{ pUrl }}" class="elfbar-pcard">
+        {% if badge %}<span class="elfbar-pcard__badge">{{ badge }}</span>{% endif %}
+        <span class="elfbar-pcard__age">18+</span>
+        <div class="elfbar-pcard__img">
+            {% if pCover %}
+                {% sw_thumbnails 'elfbar-pcard-img' with {
+                    media: pCover,
+                    sizes: { default: '240px' }
+                } %}
+            {% else %}<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>{% endif %}
+        </div>
+        {# NUR echte Bewertungen, keine Fake-Sterne (Wunsch Ahmet/Mike) #}
+        {% if product.ratingAverage > 0 %}
+            <div class="elfbar-pcard__stars">
+                {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with { points: product.ratingAverage } %}
+            </div>
+        {% endif %}
+        {% if pBrand %}<div class="elfbar-pcard__brand">{{ pBrand }}</div>{% endif %}
+        <div class="elfbar-pcard__name">{{ pName }}</div>
+        <div class="elfbar-pcard__foot">
+            {% if loggedIn %}
+                <span class="elfbar-pcard__price">{{ pPrice.unitPrice|currency }}</span>
+                <span class="elfbar-pcard__add" aria-hidden="true">+</span>
+            {% else %}
+                <span class="elfbar-pcard__price is-login">{% sw_icon 'lock-closed' %} Login</span>
+                <span class="elfbar-pcard__add is-login" aria-hidden="true">{% sw_icon 'lock-closed' %}</span>
+            {% endif %}
+        </div>
+    </a>
+{% endmacro %}
+
+{# =====================================================================
+   ElfbarTheme — Anasayfa (MOCKUP birebir):
+   HERO (köşeli, üstte) → hemen altında 2 kolon:
+   SOL = sidebar (HOME + kategoriler) | SAĞ = marka ikonları + promo + bestseller + deals
+   Full ekran DEĞİL — container içinde.
+   ===================================================================== #}
+{% block cms_content %}
+    {% set elfbarIsHome = shopware.navigation.id == context.salesChannel.navigationCategoryId %}
+    {# B2B: Preise nur für eingeloggte Kunden sichtbar. #}
+    {% set elfbarLoggedIn = context.customer %}
+    {# Dinamik kategori ağacı (subscriber → NavigationLoader). Boşsa Twig fallback ([]). #}
+    {% set elfbarNavTree = page.extensions.elfbarNavTree.tree|default([]) %}
+
+    {% if elfbarIsHome %}
+        {% set mediaSvg %}<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>{% endset %}
+
+        <div class="elfbar-page">
+            {# ============ HERO (köşeli, üstte, tam genişlik) ============ #}
+            {% block elfbar_home_hero %}
+                <section class="elfbar-hero">
+                    <div class="elfbar-hero__content">
+                        {% if theme_config('elfbar-hero-eyebrow') %}<span class="elfbar-hero__eyebrow">{{ theme_config('elfbar-hero-eyebrow') }}</span>{% endif %}
+                        {% if theme_config('elfbar-hero-title') %}<h1 class="elfbar-hero__title">{{ theme_config('elfbar-hero-title')|raw }}</h1>{% endif %}
+                        {% if theme_config('elfbar-hero-subtitle') %}<p class="elfbar-hero__subtitle">{{ theme_config('elfbar-hero-subtitle') }}</p>{% endif %}
+                        {% if theme_config('elfbar-hero-cta') %}<a href="{{ theme_config('elfbar-hero-cta-link') ?: path('frontend.account.register.page') }}" class="btn elfbar-hero__cta">{{ theme_config('elfbar-hero-cta') }}</a>{% endif %}
+                    </div>
+                    {# Mobilde ayrı görsel: panelde "(Mobil)" alanı doluysa telefonda O gösterilir
+                       (desktop görseli mobilde gizlenir). Boşsa desktop görseli mobilde de görünür. #}
+                    <div class="elfbar-hero__media">
+                        {% set heroBig      = theme_config('elfbar-hero-img-big') %}
+                        {% set heroSmall1   = theme_config('elfbar-hero-img-small-1') %}
+                        {% set heroSmall2   = theme_config('elfbar-hero-img-small-2') %}
+                        {% set heroBigMob    = theme_config('elfbar-hero-img-big-mobile') %}
+                        {% set heroSmall1Mob = theme_config('elfbar-hero-img-small-1-mobile') %}
+                        {% set heroSmall2Mob = theme_config('elfbar-hero-img-small-2-mobile') %}
+                        {# Görsel linkleri (panelden). Doluysa görsel <a> ile sarılır, boşsa düz div. #}
+                        {% set heroBigLink    = theme_config('elfbar-hero-img-big-link') %}
+                        {% set heroSmall1Link = theme_config('elfbar-hero-img-small-1-link') %}
+                        {% set heroSmall2Link = theme_config('elfbar-hero-img-small-2-link') %}
+
+                        {% set heroBigTag = heroBigLink ? 'a' : 'div' %}
+                        <{{ heroBigTag }}{% if heroBigLink %} href="{{ heroBigLink }}"{% endif %} class="elfbar-hero__media-big{% if heroBigMob %} has-mobile{% endif %}">
+                            {% if heroBig %}<img class="elfbar-hero__img elfbar-hero__img--desktop" src="{{ heroBig }}" alt="" loading="lazy">{% elseif not heroBigMob %}{{ mediaSvg }}{% endif %}
+                            {% if heroBigMob %}<img class="elfbar-hero__img elfbar-hero__img--mobile" src="{{ heroBigMob }}" alt="" loading="lazy">{% endif %}
+                        </{{ heroBigTag }}>
+                        {% set heroS1Tag = heroSmall1Link ? 'a' : 'div' %}
+                        <{{ heroS1Tag }}{% if heroSmall1Link %} href="{{ heroSmall1Link }}"{% endif %} class="elfbar-hero__media-small{% if heroSmall1Mob %} has-mobile{% endif %}">
+                            {% if heroSmall1 %}<img class="elfbar-hero__img elfbar-hero__img--desktop" src="{{ heroSmall1 }}" alt="" loading="lazy">{% elseif not heroSmall1Mob %}{{ mediaSvg }}{% endif %}
+                            {% if heroSmall1Mob %}<img class="elfbar-hero__img elfbar-hero__img--mobile" src="{{ heroSmall1Mob }}" alt="" loading="lazy">{% endif %}
+                        </{{ heroS1Tag }}>
+                        {% set heroS2Tag = heroSmall2Link ? 'a' : 'div' %}
+                        <{{ heroS2Tag }}{% if heroSmall2Link %} href="{{ heroSmall2Link }}"{% endif %} class="elfbar-hero__media-small{% if heroSmall2Mob %} has-mobile{% endif %}">
+                            {% if heroSmall2 %}<img class="elfbar-hero__img elfbar-hero__img--desktop" src="{{ heroSmall2 }}" alt="" loading="lazy">{% elseif not heroSmall2Mob %}{{ mediaSvg }}{% endif %}
+                            {% if heroSmall2Mob %}<img class="elfbar-hero__img elfbar-hero__img--mobile" src="{{ heroSmall2Mob }}" alt="" loading="lazy">{% endif %}
+                        </{{ heroS2Tag }}>
+                    </div>
+                </section>
+            {% endblock %}
+
+            {# ============ 2 KOLON: SOL sidebar | SAĞ içerik ============ #}
+            <div class="elfbar-body">
+                {# --- SOL: SİDEBAR --- #}
+                {% block elfbar_home_sidebar %}
+                    <aside class="elfbar-sidebar">
+                        <div class="elfbar-sidebar__head">Alle Kategorien</div>
+                        {% sw_include '@Storefront/storefront/component/elfbar/megamenu.html.twig' with { elfbarNavTree: elfbarNavTree } %}
+                        <div class="elfbar-sidebar__promo">{% if theme_config('elfbar-sidebar-promo-img') %}<img src="{{ theme_config('elfbar-sidebar-promo-img') }}" alt="" loading="lazy">{% else %}{{ mediaSvg }}{% endif %}</div>
+
+                        {# Dikey kampanya banner — başlık boşsa tüm CTA gizli #}
+                        {% if theme_config('elfbar-sidebar-cta-title') or theme_config('elfbar-sidebar-cta-btn') %}
+                            <a href="{{ path('frontend.account.register.page') }}" class="elfbar-sidebar__cta">
+                                {% if theme_config('elfbar-sidebar-cta-eyebrow') %}<span class="elfbar-sidebar__cta-eyebrow">{{ theme_config('elfbar-sidebar-cta-eyebrow') }}</span>{% endif %}
+                                {% if theme_config('elfbar-sidebar-cta-title') %}<span class="elfbar-sidebar__cta-title">{{ theme_config('elfbar-sidebar-cta-title') }}</span>{% endif %}
+                                {% if theme_config('elfbar-sidebar-cta-btn') %}<span class="elfbar-sidebar__cta-btn">{{ theme_config('elfbar-sidebar-cta-btn') }}</span>{% endif %}
+                            </a>
+                        {% endif %}
+
+                        {# USP listesi — başlığı boş olan madde gizli; hepsi boşsa liste gizli #}
+                        {% set elfbarUsps = [] %}
+                        {% for u in [
+                            { i: 'truck', t: theme_config('elfbar-usp-1-title'), s: theme_config('elfbar-usp-1-sub') },
+                            { i: 'lock-closed', t: theme_config('elfbar-usp-2-title'), s: theme_config('elfbar-usp-2-sub') },
+                            { i: 'arrow-circle-left', t: theme_config('elfbar-usp-3-title'), s: theme_config('elfbar-usp-3-sub') },
+                            { i: 'headset', t: theme_config('elfbar-usp-4-title'), s: theme_config('elfbar-usp-4-sub') }
+                        ] %}
+                            {% if u.t %}{% set elfbarUsps = elfbarUsps|merge([u]) %}{% endif %}
+                        {% endfor %}
+                        {% if elfbarUsps|length %}
+                            <ul class="elfbar-sidebar__usp">
+                                {% for usp in elfbarUsps %}
+                                    <li class="elfbar-sidebar__usp-item">
+                                        <span class="elfbar-sidebar__usp-ico">{% sw_icon usp.i %}</span>
+                                        <span class="elfbar-sidebar__usp-txt">
+                                            <b>{{ usp.t }}</b>
+                                            {% if usp.s %}<small>{{ usp.s }}</small>{% endif %}
+                                        </span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </aside>
+                {% endblock %}
+
+                {# --- SAĞ: marka ikonları + promo + bestseller + deals --- #}
+                <div class="elfbar-body__main">
+                    {% block elfbar_home_brands %}
+                        <div class="elfbar-brandnav" data-elfbar-dragscroll>
+                            <div class="elfbar-brandnav__track">
+                                {# 16 marka slotu config'ten: isim + logo + link. İsim boşsa gizli. Logo varsa img, yoksa baş harfler. #}
+                                {% for i in 1..16 %}
+                                    {% set bName = theme_config('elfbar-brand-' ~ i ~ '-name') %}
+                                    {% set bLogo = theme_config('elfbar-brand-' ~ i ~ '-logo') %}
+                                    {% set bLink = theme_config('elfbar-brand-' ~ i ~ '-link') %}
+                                    {% if bName %}
+                                        <a href="{{ bLink ?: '#' }}" class="elfbar-brandnav__item">
+                                            <span class="elfbar-brandnav__circle">
+                                                {% if bLogo %}<img src="{{ bLogo }}" alt="{{ bName }}" loading="lazy">{% else %}{{ bName|split(' ')|map(w => w|first)|join('')|slice(0,2)|upper }}{% endif %}
+                                            </span>
+                                            <span class="elfbar-brandnav__name">{{ bName }}</span>
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endblock %}
+
+                    {% block elfbar_home_campaign %}
+                        {# Marke veya Text boşsa tüm Banner gizli #}
+                        {% if theme_config('elfbar-campaign-brand') or theme_config('elfbar-campaign-text') %}
+                            <a href="{{ theme_config('elfbar-campaign-link') ?: '#' }}" class="elfbar-campaign">
+                                {% if theme_config('elfbar-campaign-brand') %}<span class="elfbar-campaign__brand">{{ theme_config('elfbar-campaign-brand') }}</span>{% endif %}
+                                {% if theme_config('elfbar-campaign-text') %}<span class="elfbar-campaign__text">{{ theme_config('elfbar-campaign-text') }}</span>{% endif %}
+                            </a>
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block elfbar_home_promo_imgs %}
+                        <div class="elfbar-promo-imgs">
+                            {% set promo1Link = theme_config('elfbar-promo-img-1-link') %}
+                            {% set promo2Link = theme_config('elfbar-promo-img-2-link') %}
+                            {% set promo1Tag = promo1Link ? 'a' : 'div' %}
+                            {% set promo2Tag = promo2Link ? 'a' : 'div' %}
+                            <{{ promo1Tag }}{% if promo1Link %} href="{{ promo1Link }}"{% endif %} class="elfbar-promo-img">{% if theme_config('elfbar-promo-img-1') %}<img src="{{ theme_config('elfbar-promo-img-1') }}" alt="" loading="lazy">{% else %}{{ mediaSvg }}{% endif %}</{{ promo1Tag }}>
+                            <{{ promo2Tag }}{% if promo2Link %} href="{{ promo2Link }}"{% endif %} class="elfbar-promo-img">{% if theme_config('elfbar-promo-img-2') %}<img src="{{ theme_config('elfbar-promo-img-2') }}" alt="" loading="lazy">{% else %}{{ mediaSvg }}{% endif %}</{{ promo2Tag }}>
+                        </div>
+                    {% endblock %}
+
+                    {# ============ Kategori vitrini (görsel kartlar) ============ #}
+                    {% block elfbar_home_categories %}
+                        {# Panelden hiç kategori adı girilmiş mi? Girildiyse config kullan; girilmediyse
+                           canlı navigasyondan (elfbarNavTree) otomatik doldur (hardcoded ID YOK). #}
+                        {% set elfbarCatConfigUsed = false %}
+                        {% for i in 1..16 %}{% if theme_config('elfbar-cat-' ~ i ~ '-name') %}{% set elfbarCatConfigUsed = true %}{% endif %}{% endfor %}
+                        <div class="elfbar-section-head">
+                            <h2 class="elfbar-section-head__title">Kategorien</h2>
+                        </div>
+                        <div class="elfbar-cattiles">
+                            {% if elfbarCatConfigUsed %}
+                                {# Panel kullanıldı: 16 slot config'ten. İsim boşsa kart gizli. Link boşsa dinamik ağaçtan eşleşen URL. #}
+                                {% for i in 1..16 %}
+                                    {% set catName = theme_config('elfbar-cat-' ~ i ~ '-name') %}
+                                    {% set catImg = theme_config('elfbar-cat-img-' ~ i) %}
+                                    {% set catLink = theme_config('elfbar-cat-' ~ i ~ '-link') %}
+                                    {% set defItem = elfbarNavTree[i - 1]|default(null) %}
+                                    {% set catHref = catLink ?: (defItem ? (defItem.category.seoUrl ?: seoUrl('frontend.navigation.page', { navigationId: defItem.category.id })) : '#') %}
+                                    {% if catName %}
+                                        <a class="elfbar-cattile" href="{{ catHref }}">
+                                            <span class="elfbar-cattile__img">{% if catImg %}<img src="{{ catImg }}" alt="{{ catName }}" loading="lazy">{% else %}{{ mediaSvg }}{% endif %}</span>
+                                            <span class="elfbar-cattile__name">{{ catName }}</span>
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                {# Panel boş: canlı navigasyon kategorileri (gerçek isim + SEO URL). #}
+                                {% for treeItem in elfbarNavTree %}
+                                    {% set cat = treeItem.category %}
+                                    {% set catHref = cat.type == 'folder' ? '#' : (cat.seoUrl ?: seoUrl('frontend.navigation.page', { navigationId: cat.id })) %}
+                                    <a class="elfbar-cattile" href="{{ catHref }}">
+                                        <span class="elfbar-cattile__img">{% if cat.media %}<img src="{{ cat.media.url }}" alt="{{ cat.translated.name }}" loading="lazy">{% else %}{{ mediaSvg }}{% endif %}</span>
+                                        <span class="elfbar-cattile__name">{{ cat.translated.name }}</span>
+                                    </a>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endblock %}
+
+                    {% block elfbar_home_deals %}
+                        {% set dealTextColor = theme_config('elfbar-deal-text-color') %}
+                        <div class="elfbar-section-head">
+                            {% if theme_config('elfbar-deals-title') %}<h2 class="elfbar-section-head__title">{{ theme_config('elfbar-deals-title') }}</h2>{% endif %}
+                        </div>
+                        <div class="elfbar-deals-row">
+                            {# 3 Deal config'ten: name/brand/price/img/link/hours. İsim boşsa gizli. #}
+                            {% for i in 1..3 %}
+                                {% set dName = theme_config('elfbar-deal-' ~ i ~ '-name') %}
+                                {% set dBrand = theme_config('elfbar-deal-' ~ i ~ '-brand') %}
+                                {% set dPrice = theme_config('elfbar-deal-' ~ i ~ '-price') %}
+                                {% set dImg = theme_config('elfbar-deal-' ~ i ~ '-img') %}
+                                {% set dLink = theme_config('elfbar-deal-' ~ i ~ '-link') %}
+                                {% set dHours = theme_config('elfbar-deal-' ~ i ~ '-hours')|default(12 + i * 6) %}
+                                {% if dName %}
+                                <div class="elfbar-deal" data-elfbar-countdown data-end-hours="{{ dHours }}">
+                                    {# Flip-clock geri sayım #}
+                                    <div class="elfbar-deal__timer">
+                                        <span class="elfbar-deal__t"><b data-d>05</b><small>Tage</small></span>
+                                        <span class="elfbar-deal__t"><b data-h>14</b><small>Stunden</small></span>
+                                        <span class="elfbar-deal__t"><b data-m>26</b><small>Minuten</small></span>
+                                        <span class="elfbar-deal__t"><b data-s>24</b><small>Sekunden</small></span>
+                                    </div>
+                                    {# Beyaz iç ürün kartı #}
+                                    <div class="elfbar-deal__card">
+                                        <div class="elfbar-deal__img">{% if dImg %}<img src="{{ dImg }}" alt="{{ dName }}" loading="lazy">{% else %}{{ mediaSvg }}{% endif %}</div>
+                                        <div class="elfbar-deal__brand"{% if dealTextColor %} style="background:{{ dealTextColor }}"{% endif %}>{{ dBrand }}</div>
+                                        <div class="elfbar-deal__name"{% if dealTextColor %} style="color:{{ dealTextColor }}"{% endif %}>{{ dName }}</div>
+                                        {# Deal-Karte = reine Panel-Texte (kein echtes Produkt) → KEINE Fake-Sterne/Reviews.
+                                           Bewertungen nur dort, wo echte Shopware-Daten existieren (Produktdetail/Listing). #}
+                                        <div class="elfbar-deal__foot">
+                                            {% if elfbarLoggedIn %}
+                                                <span class="elfbar-deal__price">{{ dPrice }}</span>
+                                                <a href="{{ dLink ?: '#' }}" class="elfbar-deal__btn">
+                                                    {% sw_icon 'bag-product' %} Kaufen
+                                                </a>
+                                            {% else %}
+                                                <span class="elfbar-deal__price is-login">{% sw_icon 'lock-closed' %} Login</span>
+                                                <a href="{{ path('frontend.account.login.page') }}" class="elfbar-deal__btn">Anmelden</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endblock %}
+
+                    {# ============ Geniş banner (Deals ↔ Neuheiten arası,
+                       ~1292×239) — panelden görsel+link, görsel boşsa gizli ============ #}
+                    {% block elfbar_home_banner %}
+                        {% set vbImg    = theme_config('elfbar-home-banner-img') %}
+                        {% set vbImgMob = theme_config('elfbar-home-banner-img-mobile') %}
+                        {% set vbLink   = theme_config('elfbar-home-banner-link') %}
+                        {% if vbImg or vbImgMob %}
+                            {% set vbTag = vbLink ? 'a' : 'div' %}
+                            <{{ vbTag }} class="elfbar-home-banner{% if vbImgMob %} has-mobile{% endif %}"{% if vbLink %} href="{{ vbLink }}"{% endif %}>
+                                {% if vbImg %}<img class="elfbar-home-banner__img elfbar-home-banner__img--desktop" src="{{ vbImg }}" alt="" loading="lazy">{% endif %}
+                                {% if vbImgMob %}<img class="elfbar-home-banner__img elfbar-home-banner__img--mobile" src="{{ vbImgMob }}" alt="" loading="lazy">{% endif %}
+                            </{{ vbTag }}>
+                        {% endif %}
+                    {% endblock %}
+
+                    {# ============ Neuheiten — yatay slider kart ============ #}
+                    {% block elfbar_home_neu %}
+                        <div class="elfbar-section-head">
+                            {% if theme_config('elfbar-neu-title') %}<h2 class="elfbar-section-head__title">{{ theme_config('elfbar-neu-title') }}</h2>{% endif %}
+                            <div class="elfbar-slider-nav">
+                                <button type="button" class="elfbar-slider-btn" data-slide="prev" aria-label="Zurück"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg></button>
+                                <button type="button" class="elfbar-slider-btn" data-slide="next" aria-label="Weiter"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></button>
+                            </div>
+                        </div>
+                        {% set elfbarNeu = page.extensions.elfbarNeu.products ?? [] %}
+                        <div class="elfbar-cardslider" data-elfbar-cardslider>
+                            <div class="elfbar-cardslider__track">
+                                {% for product in elfbarNeu %}
+                                    {{ _self.elfbarProductCard(product, elfbarLoggedIn, 'Neu') }}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endblock %}
+
+                    {# ============ Vitrine-Banner (Neuheiten ↔ Bestseller arası):
+                       görsel solda + başlık/metin/buton sağda, hepsi panelden.
+                       Görsel boşsa tüm blok gizli ============ #}
+                    {% block elfbar_home_showcase %}
+                        {% set scImg      = theme_config('elfbar-showcase-img') %}
+                        {% set scImgMob   = theme_config('elfbar-showcase-img-mobile') %}
+                        {% set scTitleImg = theme_config('elfbar-showcase-title-img') %}
+                        {% set scTitle    = theme_config('elfbar-showcase-title') %}
+                        {% set scText     = theme_config('elfbar-showcase-text') %}
+                        {% set scNote     = theme_config('elfbar-showcase-note') %}
+                        {% set scBtnTxt   = theme_config('elfbar-showcase-btn-text') %}
+                        {% set scBtnLnk   = theme_config('elfbar-showcase-btn-link') %}
+                        {% set scBtn2Txt  = theme_config('elfbar-showcase-btn2-text') %}
+                        {% set scBtn2Lnk  = theme_config('elfbar-showcase-btn2-link') %}
+                        {% if scImg or scImgMob %}
+                            <div class="elfbar-showcase{% if scImgMob %} has-mobile{% endif %}">
+                                <div class="elfbar-showcase__media">
+                                    {% if scImg %}<img class="elfbar-showcase__img elfbar-showcase__img--desktop" src="{{ scImg }}" alt="{{ scTitle }}" loading="lazy">{% endif %}
+                                    {% if scImgMob %}<img class="elfbar-showcase__img elfbar-showcase__img--mobile" src="{{ scImgMob }}" alt="{{ scTitle }}" loading="lazy">{% endif %}
+                                </div>
+                                <div class="elfbar-showcase__body">
+                                    {% if scTitleImg %}
+                                        <img class="elfbar-showcase__title-img" src="{{ scTitleImg }}" alt="{{ scTitle }}" loading="lazy">
+                                    {% elseif scTitle %}
+                                        <h3 class="elfbar-showcase__title">{{ scTitle }}</h3>
+                                    {% endif %}
+                                    {% if scText %}<p class="elfbar-showcase__text">{{ scText }}</p>{% endif %}
+                                    {% if (scBtnTxt and scBtnLnk) or (scBtn2Txt and scBtn2Lnk) %}
+                                        <div class="elfbar-showcase__btns">
+                                            {% if scBtnTxt and scBtnLnk %}
+                                                <a href="{{ scBtnLnk }}" class="elfbar-showcase__btn">{{ scBtnTxt }}</a>
+                                            {% endif %}
+                                            {% if scBtn2Txt and scBtn2Lnk %}
+                                                <a href="{{ scBtn2Lnk }}" class="elfbar-showcase__btn elfbar-showcase__btn--outline">{{ scBtn2Txt }}</a>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if scNote %}<p class="elfbar-showcase__note">{{ scNote }}</p>{% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+
+                    {# ============ Bestseller — EN ALTTA (kullanıcı sırası: Kategorien →
+                       Deals → Banner → Neuheiten → Vitrine → Bestseller) ============ #}
+                    {% block elfbar_home_section_title %}
+                        {% set elfbarBest = page.extensions.elfbarBestseller.products ?? [] %}
+                        <div class="elfbar-section-head">
+                            {% if theme_config('elfbar-bestseller-title') %}<h2 class="elfbar-section-head__title">{{ theme_config('elfbar-bestseller-title') }}</h2>{% endif %}
+                            <a href="{{ path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId }) }}" class="elfbar-section-head__link">Alle anzeigen →</a>
+                        </div>
+                        {% if elfbarBest|length %}
+                            <div class="elfbar-cardgrid">
+                                {% for product in elfbarBest %}
+                                    {{ _self.elfbarProductCard(product, elfbarLoggedIn, 'Bestseller') }}
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {# Fallback: henüz ürün yok (kategori/ürün eklenince dolacak) #}
+                            <div class="elfbar-body__cms elfbar-body__cms--empty">
+                                <p>Bald verfügbar – Produkte werden in Kürze ergänzt.</p>
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+
+                    {# ============ Marka logo slider (kayan şerit) ============ #}
+                    {% block elfbar_home_brand_slider %}
+                        {# AYRI config: Top-Marken-Leiste bloğu (elfbar-topmarke-*). Hero altı markadan bağımsız — buraya ürün/logo görseli koyabilirsin. #}
+                        {% set elfbarTopList = [] %}
+                        {% for i in 1..12 %}
+                            {% set tLogo = theme_config('elfbar-topmarke-' ~ i ~ '-logo') %}
+                            {% set tName = theme_config('elfbar-topmarke-' ~ i ~ '-name') %}
+                            {# Logo VEYA isim varsa göster; ikisi de boşsa gizli #}
+                            {% if tLogo or tName %}{% set elfbarTopList = elfbarTopList|merge([{ name: tName, logo: tLogo, link: theme_config('elfbar-topmarke-' ~ i ~ '-link') }]) %}{% endif %}
+                        {% endfor %}
+                        {% if elfbarTopList|length %}
+                            <div class="elfbar-section-head elfbar-brandslider-head">
+                                <h2 class="elfbar-section-head__title">Top-Marken</h2>
+                            </div>
+                            <div class="elfbar-brandslider">
+                                <div class="elfbar-brandslider__track">
+                                    {% for brand in elfbarTopList|merge(elfbarTopList) %}
+                                        <a href="{{ brand.link ?: '#' }}" class="elfbar-brandslider__item">
+                                            {% if brand.logo %}<img src="{{ brand.logo }}" alt="{{ brand.name }}" loading="lazy">{% else %}{{ brand.name|upper }}{% endif %}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+
+                    {# ============ B2B avantaj / kayıt CTA banner ============ #}
+                    {% block elfbar_home_b2b_cta %}
+                        {# Statları topla (sayı boş olanı atla) #}
+                        {% set elfbarB2bStats = [] %}
+                        {% for s in [
+                            {n: theme_config('elfbar-b2b-stat-1-n'), l: theme_config('elfbar-b2b-stat-1-l')},
+                            {n: theme_config('elfbar-b2b-stat-2-n'), l: theme_config('elfbar-b2b-stat-2-l')},
+                            {n: theme_config('elfbar-b2b-stat-3-n'), l: theme_config('elfbar-b2b-stat-3-l')},
+                            {n: theme_config('elfbar-b2b-stat-4-n'), l: theme_config('elfbar-b2b-stat-4-l')}
+                        ] %}
+                            {% if s.n %}{% set elfbarB2bStats = elfbarB2bStats|merge([s]) %}{% endif %}
+                        {% endfor %}
+                        {% set elfbarB2bHasContent = theme_config('elfbar-b2b-eyebrow') or theme_config('elfbar-b2b-title') or theme_config('elfbar-b2b-text') or theme_config('elfbar-b2b-btn-primary') or theme_config('elfbar-b2b-btn-ghost') %}
+
+                        {# Tüm B2B banner boşsa (içerik + stat yok) hiç gösterme #}
+                        {% if elfbarB2bHasContent or elfbarB2bStats|length %}
+                            <section class="elfbar-b2b">
+                                <div class="elfbar-b2b__content">
+                                    {% if theme_config('elfbar-b2b-eyebrow') %}<span class="elfbar-b2b__eyebrow">{{ theme_config('elfbar-b2b-eyebrow') }}</span>{% endif %}
+                                    {% if theme_config('elfbar-b2b-title') %}<h2 class="elfbar-b2b__title">{{ theme_config('elfbar-b2b-title')|raw }}</h2>{% endif %}
+                                    {% if theme_config('elfbar-b2b-text') %}<p class="elfbar-b2b__text">{{ theme_config('elfbar-b2b-text') }}</p>{% endif %}
+                                    {% if theme_config('elfbar-b2b-btn-primary') or theme_config('elfbar-b2b-btn-ghost') %}
+                                        <div class="elfbar-b2b__actions">
+                                            {% if theme_config('elfbar-b2b-btn-primary') %}<a href="{{ path('frontend.account.register.page') }}" class="elfbar-b2b__btn is-primary">{{ theme_config('elfbar-b2b-btn-primary') }}</a>{% endif %}
+                                            {% if theme_config('elfbar-b2b-btn-ghost') %}<a href="{{ path('frontend.account.login.page') }}" class="elfbar-b2b__btn is-ghost">{{ theme_config('elfbar-b2b-btn-ghost') }}</a>{% endif %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                {% if elfbarB2bStats|length %}
+                                    <div class="elfbar-b2b__stats">
+                                        {% for s in elfbarB2bStats %}
+                                            <div class="elfbar-b2b__stat"><b>{{ s.n }}</b>{% if s.l %}<small>{{ s.l }}</small>{% endif %}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </section>
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    {% elseif (page.landingPage ? page.landingPage.cmsPage.type : page.cmsPage.type)|default('') != 'product_list' %}
+        {# ============ İÇERİK SAYFASI (AGB/Datenschutz/Impressum/Widerruf vb.) —
+           ürün listesi DEĞİL (cmsPage.type != product_list). Kategori ağacı/filtre YOK.
+           Temiz, ortalanmış, okunur tipografi. ============ #}
+        {% set elfbarCmsPage = page.landingPage ? page.landingPage.cmsPage : page.cmsPage %}
+        {% set elfbarContentTitle = page.header.navigation.active.translated.name
+            |default(page.landingPage.translated.name)
+            |default(page.metaInformation.metaTitle)
+            |default('') %}
+        <div class="elfbar-content-page">
+            <article class="elfbar-content-page__inner">
+                {% if elfbarContentTitle %}
+                    <header class="elfbar-content-page__head">
+                        <h1 class="elfbar-content-page__title">{{ elfbarContentTitle }}</h1>
+                    </header>
+                {% endif %}
+                <div class="elfbar-content-page__cms">
+                    {{ parent() }}
+                </div>
+            </article>
+        </div>
+    {% else %}
+        {# ============ KATEGORİ SAYFASI — 2 kolon (sol: kategori ağacı + filtreler | sağ: başlık + liste) ============ #}
+        {# Dinamik kategori ağacı (subscriber → NavigationLoader). #}
+        {% set elfbarNavTree = page.extensions.elfbarNavTree.tree|default([]) %}
+
+        {# Sayfa başlığı: önce aktif navigasyon, yoksa dinamik ağaçtan eşleştir. #}
+        {% set elfbarCatTitle = page.header.navigation.active.translated.name|default('') %}
+        {% if elfbarCatTitle is empty %}
+            {% for treeItem in elfbarNavTree %}
+                {% if shopware.navigation.id == treeItem.category.id %}{% set elfbarCatTitle = treeItem.category.translated.name %}{% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <div class="elfbar-cat">
+            {# --- SOL KOL: kategori paneli + filtreler tek sticky blok (desktop'ta birlikte kayar) ---
+                 Mobilde aside ve filtersheet position:fixed bottom-sheet olur → sarmalayıcı etkisiz. #}
+            <div class="elfbar-cat__col">
+                {# --- kategori ağacı sidebar (mega menü) --- #}
+                <aside class="elfbar-cat__aside" data-elfbar-sheet="cats">
+                    <div class="elfbar-cat__aside-head">
+                        Alle Kategorien
+                        <button type="button" class="elfbar-sheet__close" data-elfbar-sheet-close aria-label="Schließen">✕</button>
+                    </div>
+                    {% sw_include '@Storefront/storefront/component/elfbar/megamenu.html.twig' with { elfbarNavTree: elfbarNavTree, activeId: shopware.navigation.id } %}
+                </aside>
+
+                {# --- Filtreler için ayrı BOTTOM-SHEET (data-elfbar-sheet="filter") --- #}
+                <div class="elfbar-cat__filtersheet" data-elfbar-sheet="filter">
+                    <div class="elfbar-cat__aside-head">
+                        Filter
+                        <button type="button" class="elfbar-sheet__close" data-elfbar-sheet-close aria-label="Schließen">✕</button>
+                    </div>
+                    {# Filtre paneli JS ile buraya taşınır (CSS desktop'ta sol kola koyar) #}
+                    <div class="elfbar-cat__filterslot" data-elfbar-filter-slot></div>
+                </div>
+            </div>
+
+            {# Bottom-sheet'ler için ortak backdrop #}
+            <div class="elfbar-sheet__backdrop" data-elfbar-sheet-backdrop hidden></div>
+
+            {# --- SAĞ: başlık + CMS içeriği (filtre paneli + ürün listesi) --- #}
+            <div class="elfbar-cat__main">
+                <h1 class="elfbar-cat__title">{{ elfbarCatTitle ?: page.header.navigation.active.translated.name|default(page.metaInformation.metaTitle|default('Produkte')) }}</h1>
+
+                {# MOBİL: yan yana 2 buton — Kategorien + Filter (bottom-sheet açar) #}
+                <div class="elfbar-cat__mobilebar">
+                    <button type="button" class="elfbar-cat__mbtn" data-elfbar-sheet-open="cats">
+                        {% sw_icon 'stack' %}<span>Kategorien</span>
+                    </button>
+                    <button type="button" class="elfbar-cat__mbtn" data-elfbar-sheet-open="filter">
+                        {% sw_icon 'filter' %}<span>Filter</span>
+                    </button>
+                </div>
+
+                <div class="elfbar-cat__cms">
+                    {{ parent() }}
+                </div>
+            </div>
+        </div>
+
+        {# =====================================================================
+           B2B CANLI SEPET BARI (sticky, ekran altı) — +/− satırlardan sepete
+           anında yazar; bu bar GERÇEK sepet özetini gösterir. JS: initLiveCart.
+           ===================================================================== #}
+        <div class="elfbar-bulkbar" data-elfbar-cartbar hidden>
+            <div class="elfbar-bulkbar__inner">
+                <div class="elfbar-bulkbar__info">
+                    <span class="elfbar-bulkbar__count"><b data-cart-products>0</b> Produkte</span>
+                    <span class="elfbar-bulkbar__sep">·</span>
+                    <span class="elfbar-bulkbar__qty"><b data-cart-units>0</b> Stück</span>
+                    <span class="elfbar-bulkbar__total" data-cart-total></span>
+                </div>
+                <div class="elfbar-bulkbar__actions">
+                    <a class="elfbar-bulkbar__clear" href="{{ path('frontend.checkout.cart.page') }}">Warenkorb ansehen</a>
+                    <a class="elfbar-bulkbar__submit" href="{{ path('frontend.checkout.confirm.page') }}">
+                        {% sw_icon 'bag-product' %} <span>Zur Kasse</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

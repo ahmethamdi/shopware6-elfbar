@@ -1,0 +1,74 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_body_script %}
+    {{ parent() }}
+
+    {% block elfbar_age_gate %}
+        <div
+            class="elfbar-age-gate"
+            id="elfbar-age-gate"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="elfbar-age-gate-title"
+            aria-describedby="elfbar-age-gate-text"
+            data-elfbar-age-gate
+            data-redirect-url="https://www.google.com"
+            hidden
+        >
+            <div class="elfbar-age-gate__backdrop" aria-hidden="true"></div>
+
+            <div class="elfbar-age-gate__card" role="document">
+                <div class="elfbar-age-gate__brand">
+                    <span class="elfbar-age-gate__badge">18+</span>
+                    <span class="elfbar-age-gate__brand-name">ElfbarShop</span>
+                </div>
+
+                <h2 class="elfbar-age-gate__title" id="elfbar-age-gate-title">
+                    Bist du über 18 Jahre alt?
+                </h2>
+
+                <p class="elfbar-age-gate__text" id="elfbar-age-gate-text">
+                    Der Verkauf von E-Zigaretten, E-Liquids und nikotinhaltigen Produkten
+                    ist gesetzlich ausschließlich Personen ab 18 Jahren gestattet
+                    (§ 10 Jugendschutzgesetz). Bitte bestätige, dass du das 18. Lebensjahr
+                    bereits vollendet hast, um diesen Shop zu betreten.
+                </p>
+
+                <div class="elfbar-age-gate__actions">
+                    <button
+                        type="button"
+                        class="elfbar-age-gate__btn elfbar-age-gate__btn--confirm"
+                        data-elfbar-age-confirm
+                    >
+                        Ja, ich bin über 18
+                    </button>
+                    <button
+                        type="button"
+                        class="elfbar-age-gate__btn elfbar-age-gate__btn--deny"
+                        data-elfbar-age-deny
+                    >
+                        Nein
+                    </button>
+                </div>
+
+                <p class="elfbar-age-gate__legal">
+                    Mit der Bestätigung erklärst du, volljährig zu sein. Falsche Angaben
+                    können rechtliche Folgen haben. Rauchen bzw. Dampfen kann die Gesundheit
+                    gefährden.
+                </p>
+
+                <div
+                    class="elfbar-age-gate__blocked"
+                    data-elfbar-age-blocked
+                    hidden
+                >
+                    <h3 class="elfbar-age-gate__blocked-title">Zugang nicht möglich</h3>
+                    <p class="elfbar-age-gate__blocked-text">
+                        Dieser Shop richtet sich ausschließlich an Personen ab 18 Jahren.
+                        Du wirst weitergeleitet …
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

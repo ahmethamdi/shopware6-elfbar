@@ -1,0 +1,14 @@
+{% sw_extends '@Storefront/storefront/page/account/index.html.twig' %}
+
+{# =====================================================================
+   ElfbarTheme — Hesap Übersicht: modern hoşgeldin başlık + kartlar (SCSS).
+   ===================================================================== #}
+{% block page_account_overview_welcome %}
+    <div class="account-welcome elfbar-acc-welcome">
+        <span class="elfbar-acc-welcome__eyebrow">★ Mein Konto</span>
+        <h1 class="elfbar-acc-welcome__title">{{ 'account.overviewTitle'|trans|sw_sanitize }}</h1>
+        {% block page_account_overview_welcome_intro %}
+            <p class="elfbar-acc-welcome__sub">{{ 'account.overviewInfo'|trans|sw_sanitize }}</p>
+        {% endblock %}
+    </div>
+{% endblock %}

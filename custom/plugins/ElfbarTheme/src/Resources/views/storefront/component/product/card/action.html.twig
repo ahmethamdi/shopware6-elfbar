@@ -1,0 +1,41 @@
+{% sw_extends '@Storefront/storefront/component/product/card/action.html.twig' %}
+
+{# =====================================================================
+   ElfbarTheme — Sepete ekle aksiyonu: mockup'taki yuvarlak "+" buton.
+   Satın alınabilirse "+" ile sepete ekler, değilse detay sayfasına "+" link.
+   ===================================================================== #}
+
+{# Buy butonunun içeriğini sadece "+" ikonu yap (B2B: Kunde) #}
+{% block component_product_box_action_buy_button %}
+    {% if context.customer %}
+        <div class="elfbar-add-wrap">
+            <button class="btn btn-buy elfbar-add-btn" aria-label="{{ 'listing.boxAddProduct'|trans|striptags }}">
+                <span class="elfbar-add-plus" aria-hidden="true">+</span>
+            </button>
+        </div>
+    {% else %}
+        {# Nicht eingeloggt → "+" führt zum Login #}
+        <div class="elfbar-add-wrap">
+            <a href="{{ path('frontend.account.login.page') }}" class="btn elfbar-add-btn is-login" aria-label="Anmelden">
+                <span class="elfbar-add-plus" aria-hidden="true">{% sw_icon 'lock-closed' %}</span>
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{# Buy edilemeyenler (varyant/childCount) için de detay sayfasına "+" link (B2B: Kunde) #}
+{% block component_product_box_action_detail %}
+    <div class="elfbar-add-wrap">
+        {% if context.customer %}
+            <a href="{{ seoUrl('frontend.detail.page', {productId: product.id}) }}"
+               class="btn elfbar-add-btn"
+               aria-label="{{ 'listing.boxProductDetails'|trans|striptags }}">
+                <span class="elfbar-add-plus" aria-hidden="true">+</span>
+            </a>
+        {% else %}
+            <a href="{{ path('frontend.account.login.page') }}" class="btn elfbar-add-btn is-login" aria-label="Anmelden">
+                <span class="elfbar-add-plus" aria-hidden="true">{% sw_icon 'lock-closed' %}</span>
+            </a>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,100 @@
+{# =====================================================================
+   ElfbarTheme — Kategori/listing LISTE satırı (B2B hızlı sipariş):
+   [görsel] [marka+isim+kısa açıklama+yıldız] [fiyat] [Menge -/+] [Warenkorb]
+   Tek satırda — müşteri tak tak tak hızlı sipariş verir.
+   ===================================================================== #}
+{% block component_product_box %}
+    {% if product %}
+        {% set id = product.id %}
+        {% set name = product.translated.name %}
+        {% set brand = product.manufacturer.translated.name|default('') %}
+        {% set cover = product.cover.media %}
+        {% set real = product.calculatedPrice %}
+        {% if product.calculatedPrices.count > 0 %}
+            {# Staffelpreis: İLK kademe (en düşük miktar = 1 adet) gösterilir →
+               sepete eklenince ödenecek GERÇEK fiyatla tutarlı. Eskiden .last
+               (en büyük miktar = en ucuz) gösteriliyordu, sepet farklı çıkıyordu (bug). #}
+            {% set real = product.calculatedPrices.first %}
+        {% endif %}
+        {% set displayFrom = product.calculatedPrices.count > 1 %}
+        {% set isAvailable = not product.isCloseout or (product.stock >= product.minPurchase) %}
+        {# Varyantlı ürün (childCount>0) listeden eklenemez → Details. Fiyat kademesi (displayFrom) eklenebilir. #}
+        {% set canBuy = isAvailable and product.childCount <= 0 %}
+        {% set detailUrl = seoUrl('frontend.detail.page', { productId: id }) %}
+        {# B2B: Preise & Warenkorb für eingeloggte Kunden.
+        {% set elfbarLoggedIn = context.customer %}
+
+        <div class="card product-box elfbar-listrow"
+             data-product-information="{{ {id, name, brand}|json_encode }}"
+             {% if canBuy and config('core.listing.allowBuyInListing') %}data-elfbar-cart-row data-product-id="{{ id }}"{% endif %}>
+            <div class="elfbar-listrow__inner">
+
+                {# --- Görsel --- #}
+                <a href="{{ detailUrl }}" class="elfbar-listrow__media" title="{{ name }}">
+                    {% if cover.url %}
+                        {% sw_thumbnails 'elfbar-listrow-img' with {
+                            media: cover,
+                            sizes: { default: '120px' },
+                            attributes: { class: 'elfbar-listrow__img', alt: (cover.translated.alt ?: name), loading: 'lazy' }
+                        } %}
+                    {% else %}
+                        <span class="elfbar-listrow__placeholder">{% sw_icon 'placeholder' style { size: 'fluid' } %}</span>
+                    {% endif %}
+                    <span class="elfbar-listrow__age">18+</span>
+                </a>
+
+                {# --- Bilgi: marka + isim + açıklama + yıldız --- #}
+                <div class="elfbar-listrow__info">
+                    {% if brand %}<span class="elfbar-listrow__brand">{{ brand }}</span>{% endif %}
+                    <a href="{{ detailUrl }}" class="elfbar-listrow__name" title="{{ name }}">{{ name }}</a>
+                    {# NUR echte Bewertungen, keine Fake-Sterne (Wunsch Ahmet/Mike) #}
+                    {% if product.ratingAverage > 0 %}
+                        <div class="elfbar-listrow__stars">
+                            {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with { points: product.ratingAverage } %}
+                        </div>
+                    {% endif %}
+                    <p class="elfbar-listrow__desc">{{ product.translated.description|striptags|slice(0, 130) }}</p>
+                </div>
+
+                {# --- Fiyat --- (B2B: nur für eingeloggte Kunden) #}
+                <div class="elfbar-listrow__price">
+                    {% if elfbarLoggedIn %}
+                        {% if displayFrom %}<span class="elfbar-listrow__from">{{ 'listing.listingTextFrom'|trans|sw_sanitize }}</span>{% endif %}
+                        <span class="elfbar-listrow__amount">{{ real.unitPrice|currency }}</span>
+                        <span class="elfbar-listrow__tax">{{ context.taxState == 'gross' ? 'inkl. MwSt.' : 'zzgl. MwSt.' }}</span>
+                    {% else %}
+                        <span class="elfbar-listrow__login-price">{% sw_icon 'lock-closed' %} Preise nach Login</span>
+                    {% endif %}
+                </div>
+
+                {# --- Menge stepper = CANLI SEPET (+ ekler / − çıkarır) --- (B2B-gated) #}
+                <div class="elfbar-listrow__buy">
+                    {% if not elfbarLoggedIn %}
+                        {# Nicht eingeloggt → Login-CTA statt Preis/Warenkorb #}
+                        <a href="{{ path('frontend.account.login.page') }}" class="btn elfbar-listrow__cart is-login">
+                            {% sw_icon 'avatar' %} Anmelden
+                        </a>
+                    {% elseif canBuy and config('core.listing.allowBuyInListing') %}
+                        {# +/− doğrudan sepete yazar (JS: initLiveCart). Adet 0 = sepette değil. #}
+                        <div class="elfbar-qty elfbar-qty--live"
+                             data-elfbar-cartqty
+                             data-product-id="{{ id }}"
+                             data-min="{{ product.minPurchase ?: 1 }}"
+                             data-step="{{ product.purchaseSteps ?: 1 }}"
+                             {% if product.maxPurchase %}data-max="{{ product.maxPurchase }}"{% endif %}>
+                            <button type="button" class="elfbar-qty__btn" data-cartqty="minus" aria-label="weniger">−</button>
+                            <input class="elfbar-qty__input" type="number" value="0" min="0" inputmode="numeric"
+                                   aria-label="Menge im Warenkorb">
+                            <button type="button" class="elfbar-qty__btn" data-cartqty="plus" aria-label="mehr">+</button>
+                        </div>
+                    {% else %}
+                        <a href="{{ detailUrl }}" class="btn elfbar-listrow__cart is-detail">
+                            {{ 'listing.boxProductDetails'|trans|sw_sanitize }}
+                        </a>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

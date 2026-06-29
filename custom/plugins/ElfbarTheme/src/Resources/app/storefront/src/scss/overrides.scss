@@ -1,0 +1,56 @@
+/*
+Elfbar Theme — Variable overrides
+==================================================
+Bootstrap / Shopware Storefront SCSS değişkenlerini override eder.
+!default flag'leri nedeniyle bu dosya @Storefront'tan ÖNCE yüklenir (theme.json style sırası).
+
+theme.json'daki config alanları derleme sırasında aynı isimli SCSS değişkenleri
+olarak enjekte edilir: $sw-color-brand-primary, $sw-color-brand-secondary, vb.
+Burada onlara fallback default veriyoruz ki admin'de değer girilmese de derleme bozulmasın.
+*/
+
+// --- Elfbar marka renkleri (admin config fallback'leri) ---
+// Marka gradient'i: pembe → mor → mavi (Elfbar karakteristik)
+$elfbar-grad-start:        #ff5ea7 !default; // pembe
+$elfbar-grad-mid:          #c85aff !default; // mor
+$elfbar-grad-end:          #5a74ff !default; // mavi
+$elfbar-gradient:          linear-gradient(135deg, #{$elfbar-grad-start} 0%, #{$elfbar-grad-mid} 50%, #{$elfbar-grad-end} 100%) !default;
+
+$sw-color-brand-primary:   #c85aff !default; // mor — gradient ortası, ana marka
+$sw-color-brand-secondary: #ff5ea7 !default; // pembe — ikincil
+$elfbar-color-ink:          #1F1633 !default; // koyu metin (hafif mor tonlu)
+$elfbar-color-bg:           #FAF8FF !default; // sayfa arka planı (hafif mor-beyaz)
+$elfbar-color-accent:       #ff5ea7 !default; // pembe accent (badge/rozet)
+$elfbar-color-success:      #1FB16B !default;
+$elfbar-color-sale:         #FF4D4D !default;
+$elfbar-font-base:     "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !default;
+$elfbar-font-headline: "Space Grotesk", "Inter", system-ui, sans-serif !default;
+
+// --- Bootstrap tema renkleri ---
+$primary:    $sw-color-brand-primary;
+$secondary:  $sw-color-brand-secondary;
+$success:    $elfbar-color-success;
+$danger:     $elfbar-color-sale;
+$dark:       $elfbar-color-ink;
+$body-color: $elfbar-color-ink;
+$body-bg:    $elfbar-color-bg;
+
+// --- Tipografi ---
+$font-family-base:     $elfbar-font-base;
+$headings-font-family: $elfbar-font-headline;
+$headings-font-weight: 700;
+$font-weight-bold:     600;
+
+// --- Köşe yumuşaklığı / modern his ---
+$border-radius:    .625rem;  // 10px
+$border-radius-sm: .375rem;
+$border-radius-lg: 1rem;
+
+// --- Butonlar ---
+$btn-font-weight: 600;
+$btn-padding-y:   .75rem;
+$btn-padding-x:   1.5rem;
+
+// --- Linkler ---
+$link-decoration:       none;
+$link-hover-decoration: underline;

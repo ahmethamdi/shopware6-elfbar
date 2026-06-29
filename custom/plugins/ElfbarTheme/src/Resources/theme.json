@@ -1,0 +1,5263 @@
+{
+    "name": "ElfbarTheme",
+    "author": "Elfbar Shop",
+    "views": [
+        "@Storefront",
+        "@Plugins",
+        "@ElfbarTheme"
+    ],
+    "style": [
+        "app/storefront/src/scss/overrides.scss",
+        "@Storefront",
+        "app/storefront/src/scss/base.scss"
+    ],
+    "script": [
+        "@Storefront",
+        "app/storefront/dist/storefront/js/elfbar-theme/elfbar-theme.js"
+    ],
+    "asset": [
+        "@Storefront",
+        "app/storefront/src/assets"
+    ],
+    "config": {
+        "blocks": {
+            "elfbarColors": {
+                "label": {
+                    "de-DE": "1) Markenfarben",
+                    "en-GB": "1) Brand colors",
+                    "tr-TR": "1) Marka renkleri"
+                }
+            },
+            "elfbarTypography": {
+                "label": {
+                    "de-DE": "2) Typografie",
+                    "en-GB": "2) Typography",
+                    "tr-TR": "2) Tipografi"
+                }
+            },
+            "elfbarInfobar": {
+                "label": {
+                    "de-DE": "3) Info-Leiste (oben)",
+                    "en-GB": "3) Info bar (top)",
+                    "tr-TR": "3) Üst bilgi şeridi"
+                }
+            },
+            "elfbarHero": {
+                "label": {
+                    "de-DE": "4) Hero (Text + Bilder)",
+                    "en-GB": "4) Hero (text + images)",
+                    "tr-TR": "4) Hero (metin + görsel)"
+                }
+            },
+            "elfbarBrands": {
+                "label": {
+                    "de-DE": "5) Marken (Logo + Link)",
+                    "en-GB": "5) Brands (logo + link)",
+                    "tr-TR": "5) Markalar (logo + link)"
+                }
+            },
+            "elfbarTopMarken": {
+                "label": {
+                    "de-DE": "Top-Marken-Leiste (Logos)",
+                    "en-GB": "Top brands strip (logos)",
+                    "tr-TR": "Top-Marken şeridi (logo)"
+                }
+            },
+            "elfbarCategories": {
+                "label": {
+                    "de-DE": "6) Kategorie-Vitrine (Name+Bild+Link)",
+                    "en-GB": "6) Category showcase",
+                    "tr-TR": "6) Kategori vitrini"
+                }
+            },
+            "elfbarBestseller": {
+                "label": {
+                    "de-DE": "7) Bestseller (Kategorie)",
+                    "en-GB": "7) Bestseller (category)",
+                    "tr-TR": "7) Bestseller (kategori)"
+                }
+            },
+            "elfbarDeals": {
+                "label": {
+                    "de-DE": "8) Deals des Tages",
+                    "en-GB": "8) Deals of the day",
+                    "tr-TR": "8) Günün fırsatları"
+                }
+            },
+            "elfbarNeu": {
+                "label": {
+                    "de-DE": "9) Neuheiten (Kategorie)",
+                    "en-GB": "9) New arrivals (category)",
+                    "tr-TR": "9) Yeni gelenler"
+                }
+            },
+            "elfbarCampaign": {
+                "label": {
+                    "de-DE": "10) Kampagnen-Banner",
+                    "en-GB": "10) Campaign banner",
+                    "tr-TR": "10) Kampanya banner"
+                }
+            },
+            "elfbarSidebar": {
+                "label": {
+                    "de-DE": "11) Seitenleiste (CTA + USP)",
+                    "en-GB": "11) Sidebar (CTA + USP)",
+                    "tr-TR": "11) Kenar çubuğu"
+                }
+            },
+            "elfbarB2bBanner": {
+                "label": {
+                    "de-DE": "12) B2B-Banner (unten)",
+                    "en-GB": "12) B2B banner (bottom)",
+                    "tr-TR": "12) B2B banner (alt)"
+                }
+            },
+            "elfbarMega": {
+                "label": {
+                    "de-DE": "13) Mega-Menü Bilder",
+                    "en-GB": "13) Mega menu images",
+                    "tr-TR": "13) Mega menü görselleri"
+                }
+            },
+            "elfbarB2b": {
+                "label": {
+                    "de-DE": "14) B2B-Optionen",
+                    "en-GB": "14) B2B options",
+                    "tr-TR": "14) B2B seçenekleri"
+                }
+            },
+            "elfbarFooter": {
+                "label": {
+                    "de-DE": "15) Footer (Kontakt, Logos, Zahlung)",
+                    "en-GB": "15) Footer (contact, logos, payment)",
+                    "tr-TR": "15) Footer (iletişim, logolar, ödeme)"
+                }
+            },
+            "elfbarHeader": {
+                "label": {
+                    "de-DE": "16) Header (Zahlung-Logos, Desktop)",
+                    "en-GB": "16) Header (payment logos, desktop)",
+                    "tr-TR": "16) Header (ödeme logoları, masaüstü)"
+                }
+            },
+            "elfbarHomeBanner": {
+                "label": {
+                    "de-DE": "17) Startseite Banner (zwischen Deals & Neuheiten)",
+                    "en-GB": "17) Home banner (between deals & new arrivals)",
+                    "tr-TR": "17) Anasayfa banner (Deals & Neuheiten arası)"
+                }
+            },
+            "elfbarShowcase": {
+                "label": {
+                    "de-DE": "18) Vitrine-Banner (zwischen Neuheiten & Bestseller)",
+                    "en-GB": "18) Showcase banner (between new arrivals & bestseller)",
+                    "tr-TR": "18) Vitrin banner (Neuheiten & Bestseller arası)"
+                }
+            }
+        },
+        "fields": {
+            "sw-color-brand-primary": {
+                "label": {
+                    "de-DE": "Primärfarbe (Akzent)",
+                    "en-GB": "Primary (accent)",
+                    "tr-TR": "Ana renk"
+                },
+                "type": "color",
+                "value": "#c85aff",
+                "editable": true,
+                "block": "elfbarColors",
+                "order": 100
+            },
+            "sw-color-brand-secondary": {
+                "label": {
+                    "de-DE": "Sekundärfarbe",
+                    "en-GB": "Secondary",
+                    "tr-TR": "İkincil"
+                },
+                "type": "color",
+                "value": "#ff5ea7",
+                "editable": true,
+                "block": "elfbarColors",
+                "order": 200
+            },
+            "elfbar-color-ink": {
+                "label": {
+                    "de-DE": "Textfarbe (dunkel)",
+                    "en-GB": "Ink / dark text",
+                    "tr-TR": "Koyu metin"
+                },
+                "type": "color",
+                "value": "#1F1633",
+                "editable": true,
+                "block": "elfbarColors",
+                "order": 300
+            },
+            "elfbar-color-bg": {
+                "label": {
+                    "de-DE": "Seitenhintergrund",
+                    "en-GB": "Page background",
+                    "tr-TR": "Sayfa arka planı"
+                },
+                "type": "color",
+                "value": "#FAF8FF",
+                "editable": true,
+                "block": "elfbarColors",
+                "order": 350
+            },
+            "elfbar-color-success": {
+                "label": {
+                    "de-DE": "Erfolg / auf Lager",
+                    "en-GB": "Success / in stock",
+                    "tr-TR": "Başarı / stokta"
+                },
+                "type": "color",
+                "value": "#1FB16B",
+                "editable": true,
+                "block": "elfbarColors",
+                "order": 400
+            },
+            "elfbar-color-sale": {
+                "label": {
+                    "de-DE": "Sale / Rabatt-Badge",
+                    "en-GB": "Sale / discount badge",
+                    "tr-TR": "İndirim rozeti"
+                },
+                "type": "color",
+                "value": "#FF4D4D",
+                "editable": true,
+                "block": "elfbarColors",
+                "order": 500
+            },
+            "elfbar-font-base": {
+                "label": {
+                    "de-DE": "Basis-Schrift",
+                    "en-GB": "Base font",
+                    "tr-TR": "Ana font"
+                },
+                "type": "text",
+                "value": "'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+                "editable": true,
+                "block": "elfbarTypography",
+                "order": 100,
+                "scss": true
+            },
+            "elfbar-font-headline": {
+                "label": {
+                    "de-DE": "Überschrift-Schrift",
+                    "en-GB": "Headline font",
+                    "tr-TR": "Başlık fontu"
+                },
+                "type": "text",
+                "value": "'Space Grotesk', 'Inter', system-ui, sans-serif",
+                "editable": true,
+                "block": "elfbarTypography",
+                "order": 200,
+                "scss": true
+            },
+            "elfbar-infobar-1": {
+                "label": {
+                    "de-DE": "Text 1",
+                    "en-GB": "Text 1",
+                    "tr-TR": "Metin 1"
+                },
+                "type": "text",
+                "value": "Kostenlose Lieferung ab 500 € Netto",
+                "editable": true,
+                "block": "elfbarInfobar",
+                "order": 100,
+                "scss": false
+            },
+            "elfbar-infobar-2": {
+                "label": {
+                    "de-DE": "Text 2",
+                    "en-GB": "Text 2",
+                    "tr-TR": "Metin 2"
+                },
+                "type": "text",
+                "value": "über 4.000 zufriedene Händler",
+                "editable": true,
+                "block": "elfbarInfobar",
+                "order": 200,
+                "scss": false
+            },
+            "elfbar-infobar-3": {
+                "label": {
+                    "de-DE": "Text 3",
+                    "en-GB": "Text 3",
+                    "tr-TR": "Metin 3"
+                },
+                "type": "text",
+                "value": "Jetzt Neuheiten entdecken",
+                "editable": true,
+                "block": "elfbarInfobar",
+                "order": 300,
+                "scss": false
+            },
+            "elfbar-infobar-4": {
+                "label": {
+                    "de-DE": "Text 4",
+                    "en-GB": "Text 4",
+                    "tr-TR": "Metin 4"
+                },
+                "type": "text",
+                "value": "Sichere Bezahlung mit PayPal",
+                "editable": true,
+                "block": "elfbarInfobar",
+                "order": 400,
+                "scss": false
+            },
+            "elfbar-infobar-5": {
+                "label": {
+                    "de-DE": "Text 5",
+                    "en-GB": "Text 5",
+                    "tr-TR": "Metin 5"
+                },
+                "type": "text",
+                "value": "Nur für Erwachsene (18+)",
+                "editable": true,
+                "block": "elfbarInfobar",
+                "order": 500,
+                "scss": false
+            },
+            "elfbar-hero-eyebrow": {
+                "label": {
+                    "de-DE": "Eyebrow (kleine Zeile)",
+                    "en-GB": "Eyebrow",
+                    "tr-TR": "Üst etiket"
+                },
+                "type": "text",
+                "value": "Deutschlands Nr. 1 in der Vape-Branche",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 100,
+                "scss": false
+            },
+            "elfbar-hero-title": {
+                "label": {
+                    "de-DE": "Titel (<br> für Umbruch)",
+                    "en-GB": "Title",
+                    "tr-TR": "Başlık"
+                },
+                "type": "text",
+                "value": "Mehr Auswahl. Mehr Marge.<br>Mehr Tempo für deinen Handel.",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 200,
+                "scss": false
+            },
+            "elfbar-hero-subtitle": {
+                "label": {
+                    "de-DE": "Untertitel",
+                    "en-GB": "Subtitle",
+                    "tr-TR": "Alt metin"
+                },
+                "type": "text",
+                "value": "Starke Marken, faire B2B-Preise und schnelle Lieferung für Händler.",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 300,
+                "scss": false
+            },
+            "elfbar-hero-cta": {
+                "label": {
+                    "de-DE": "Button-Text",
+                    "en-GB": "Button text",
+                    "tr-TR": "Buton metni"
+                },
+                "type": "text",
+                "value": "Jetzt als Händler registrieren",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 400,
+                "scss": false
+            },
+            "elfbar-hero-cta-link": {
+                "label": {
+                    "de-DE": "Button-Link (leer = Registrierung)",
+                    "en-GB": "Button link (empty = registration)",
+                    "tr-TR": "Buton link (boş = kayıt sayfası)"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 401,
+                "scss": false
+            },
+            "elfbar-hero-img-big": {
+                "label": {
+                    "de-DE": "Bild groß",
+                    "en-GB": "Image (big)",
+                    "tr-TR": "Görsel (büyük)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 500,
+                "scss": false
+            },
+            "elfbar-hero-img-big-link": {
+                "label": {
+                    "de-DE": "Bild groß — Link",
+                    "en-GB": "Image (big) — link",
+                    "tr-TR": "Görsel (büyük) — link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 501,
+                "scss": false
+            },
+            "elfbar-hero-img-small-1": {
+                "label": {
+                    "de-DE": "Bild klein 1",
+                    "en-GB": "Image (small 1)",
+                    "tr-TR": "Görsel (küçük 1)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 510,
+                "scss": false
+            },
+            "elfbar-hero-img-small-1-link": {
+                "label": {
+                    "de-DE": "Bild klein 1 — Link",
+                    "en-GB": "Image (small 1) — link",
+                    "tr-TR": "Görsel (küçük 1) — link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 511,
+                "scss": false
+            },
+            "elfbar-hero-img-small-2": {
+                "label": {
+                    "de-DE": "Bild klein 2",
+                    "en-GB": "Image (small 2)",
+                    "tr-TR": "Görsel (küçük 2)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 520,
+                "scss": false
+            },
+            "elfbar-hero-img-small-2-link": {
+                "label": {
+                    "de-DE": "Bild klein 2 — Link",
+                    "en-GB": "Image (small 2) — link",
+                    "tr-TR": "Görsel (küçük 2) — link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 521,
+                "scss": false
+            },
+            "elfbar-hero-img-big-mobile": {
+                "label": {
+                    "de-DE": "Bild groß (Mobil)",
+                    "en-GB": "Image big (mobile)",
+                    "tr-TR": "Görsel büyük (mobil)"
+                },
+                "helpText": {
+                    "de-DE": "Optional. Wird nur auf Smartphones statt des Desktop-Bildes gezeigt. Leer = Desktop-Bild wird verwendet.",
+                    "en-GB": "Optional. Shown only on phones instead of the desktop image. Empty = desktop image is used.",
+                    "tr-TR": "Opsiyonel. Sadece telefonda desktop görseli yerine gösterilir. Boş = desktop görseli kullanılır."
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 530,
+                "scss": false
+            },
+            "elfbar-hero-img-small-1-mobile": {
+                "label": {
+                    "de-DE": "Bild klein 1 (Mobil)",
+                    "en-GB": "Image small 1 (mobile)",
+                    "tr-TR": "Görsel küçük 1 (mobil)"
+                },
+                "helpText": {
+                    "de-DE": "Optional. Nur auf Smartphones. Leer = Desktop-Bild.",
+                    "en-GB": "Optional. Phones only. Empty = desktop image.",
+                    "tr-TR": "Opsiyonel. Sadece telefon. Boş = desktop görseli."
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 540,
+                "scss": false
+            },
+            "elfbar-hero-img-small-2-mobile": {
+                "label": {
+                    "de-DE": "Bild klein 2 (Mobil)",
+                    "en-GB": "Image small 2 (mobile)",
+                    "tr-TR": "Görsel küçük 2 (mobil)"
+                },
+                "helpText": {
+                    "de-DE": "Optional. Nur auf Smartphones. Leer = Desktop-Bild.",
+                    "en-GB": "Optional. Phones only. Empty = desktop image.",
+                    "tr-TR": "Opsiyonel. Sadece telefon. Boş = desktop görseli."
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHero",
+                "order": 550,
+                "scss": false
+            },
+            "elfbar-brand-1-name": {
+                "label": {
+                    "de-DE": "Marke 1 Name",
+                    "en-GB": "Brand 1 name",
+                    "tr-TR": "Marka 1 isim"
+                },
+                "type": "text",
+                "value": "ELFLIQ",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 100,
+                "scss": false
+            },
+            "elfbar-brand-1-logo": {
+                "label": {
+                    "de-DE": "Marke 1 Logo",
+                    "en-GB": "Brand 1 logo",
+                    "tr-TR": "Marka 1 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 110,
+                "scss": false
+            },
+            "elfbar-brand-1-link": {
+                "label": {
+                    "de-DE": "Marke 1 Link",
+                    "en-GB": "Brand 1 link",
+                    "tr-TR": "Marka 1 link"
+                },
+                "type": "text",
+                "value": "/Liquids/Elfliq-by-Elf-Bar/",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 120,
+                "scss": false
+            },
+            "elfbar-brand-2-name": {
+                "label": {
+                    "de-DE": "Marke 2 Name",
+                    "en-GB": "Brand 2 name",
+                    "tr-TR": "Marka 2 isim"
+                },
+                "type": "text",
+                "value": "ELFBAR ELFA",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 200,
+                "scss": false
+            },
+            "elfbar-brand-2-logo": {
+                "label": {
+                    "de-DE": "Marke 2 Logo",
+                    "en-GB": "Brand 2 logo",
+                    "tr-TR": "Marka 2 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 210,
+                "scss": false
+            },
+            "elfbar-brand-2-link": {
+                "label": {
+                    "de-DE": "Marke 2 Link",
+                    "en-GB": "Brand 2 link",
+                    "tr-TR": "Marka 2 link"
+                },
+                "type": "text",
+                "value": "/Pods-Akkutraeger/Elf-Bar-ELFA/",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 220,
+                "scss": false
+            },
+            "elfbar-brand-3-name": {
+                "label": {
+                    "de-DE": "Marke 3 Name",
+                    "en-GB": "Brand 3 name",
+                    "tr-TR": "Marka 3 isim"
+                },
+                "type": "text",
+                "value": "ELFBAR 800",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 300,
+                "scss": false
+            },
+            "elfbar-brand-3-logo": {
+                "label": {
+                    "de-DE": "Marke 3 Logo",
+                    "en-GB": "Brand 3 logo",
+                    "tr-TR": "Marka 3 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 310,
+                "scss": false
+            },
+            "elfbar-brand-3-link": {
+                "label": {
+                    "de-DE": "Marke 3 Link",
+                    "en-GB": "Brand 3 link",
+                    "tr-TR": "Marka 3 link"
+                },
+                "type": "text",
+                "value": "/E-Zigaretten-Vapes/ELFBAR-800/",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 320,
+                "scss": false
+            },
+            "elfbar-brand-4-name": {
+                "label": {
+                    "de-DE": "Marke 4 Name",
+                    "en-GB": "Brand 4 name",
+                    "tr-TR": "Marka 4 isim"
+                },
+                "type": "text",
+                "value": "LOST MARY  Wavi",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 400,
+                "scss": false
+            },
+            "elfbar-brand-4-logo": {
+                "label": {
+                    "de-DE": "Marke 4 Logo",
+                    "en-GB": "Brand 4 logo",
+                    "tr-TR": "Marka 4 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 410,
+                "scss": false
+            },
+            "elfbar-brand-4-link": {
+                "label": {
+                    "de-DE": "Marke 4 Link",
+                    "en-GB": "Brand 4 link",
+                    "tr-TR": "Marka 4 link"
+                },
+                "type": "text",
+                "value": "/Pods-Akkutraeger/Lost-Mary-WAVI/",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 420,
+                "scss": false
+            },
+            "elfbar-brand-5-name": {
+                "label": {
+                    "de-DE": "Marke 5 Name",
+                    "en-GB": "Brand 5 name",
+                    "tr-TR": "Marka 5 isim"
+                },
+                "type": "text",
+                "value": "LOST MARY Nicsalt",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 500,
+                "scss": false
+            },
+            "elfbar-brand-5-logo": {
+                "label": {
+                    "de-DE": "Marke 5 Logo",
+                    "en-GB": "Brand 5 logo",
+                    "tr-TR": "Marka 5 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 510,
+                "scss": false
+            },
+            "elfbar-brand-5-link": {
+                "label": {
+                    "de-DE": "Marke 5 Link",
+                    "en-GB": "Brand 5 link",
+                    "tr-TR": "Marka 5 link"
+                },
+                "type": "text",
+                "value": "/Liquids/Lost-Mary/",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 520,
+                "scss": false
+            },
+            "elfbar-brand-6-name": {
+                "label": {
+                    "de-DE": "Marke 6 Name",
+                    "en-GB": "Brand 6 name",
+                    "tr-TR": "Marka 6 isim"
+                },
+                "type": "text",
+                "value": "Shisha",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 600,
+                "scss": false
+            },
+            "elfbar-brand-6-logo": {
+                "label": {
+                    "de-DE": "Marke 6 Logo",
+                    "en-GB": "Brand 6 logo",
+                    "tr-TR": "Marka 6 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 610,
+                "scss": false
+            },
+            "elfbar-brand-6-link": {
+                "label": {
+                    "de-DE": "Marke 6 Link",
+                    "en-GB": "Brand 6 link",
+                    "tr-TR": "Marka 6 link"
+                },
+                "type": "text",
+                "value": "/Shisha/",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 620,
+                "scss": false
+            },
+            "elfbar-brand-7-name": {
+                "label": {
+                    "de-DE": "Marke 7 Name",
+                    "en-GB": "Brand 7 name",
+                    "tr-TR": "Marka 7 isim"
+                },
+                "type": "text",
+                "value": "Feuerzeuge",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 700,
+                "scss": false
+            },
+            "elfbar-brand-7-logo": {
+                "label": {
+                    "de-DE": "Marke 7 Logo",
+                    "en-GB": "Brand 7 logo",
+                    "tr-TR": "Marka 7 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 710,
+                "scss": false
+            },
+            "elfbar-brand-7-link": {
+                "label": {
+                    "de-DE": "Marke 7 Link",
+                    "en-GB": "Brand 7 link",
+                    "tr-TR": "Marka 7 link"
+                },
+                "type": "text",
+                "value": "/Raucherbedarf/Feuerzeuge/",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 720,
+                "scss": false
+            },
+            "elfbar-brand-8-name": {
+                "label": {
+                    "de-DE": "Marke 8 Name",
+                    "en-GB": "Brand 8 name",
+                    "tr-TR": "Marka 8 isim"
+                },
+                "type": "text",
+                "value": "Al Fakher 30K",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 800,
+                "scss": false
+            },
+            "elfbar-brand-8-logo": {
+                "label": {
+                    "de-DE": "Marke 8 Logo",
+                    "en-GB": "Brand 8 logo",
+                    "tr-TR": "Marka 8 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 810,
+                "scss": false
+            },
+            "elfbar-brand-8-link": {
+                "label": {
+                    "de-DE": "Marke 8 Link",
+                    "en-GB": "Brand 8 link",
+                    "tr-TR": "Marka 8 link"
+                },
+                "type": "text",
+                "value": "/E-Zigaretten-Vapes/Al-Fakher-Hypermax-Advanced-30K/",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 820,
+                "scss": false
+            },
+            "elfbar-cat-1-name": {
+                "label": {
+                    "de-DE": "Kategorie 1 Name",
+                    "en-GB": "Category 1 name",
+                    "tr-TR": "Kategori 1 isim"
+                },
+                "type": "text",
+                "value": "Einweg Vapes",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 100,
+                "scss": false
+            },
+            "elfbar-cat-img-1": {
+                "label": {
+                    "de-DE": "Kategorie 1 Bild",
+                    "en-GB": "Category 1 image",
+                    "tr-TR": "Kategori 1 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 110,
+                "scss": false
+            },
+            "elfbar-cat-1-link": {
+                "label": {
+                    "de-DE": "Kategorie 1 Link (leer = Auto)",
+                    "en-GB": "Category 1 link",
+                    "tr-TR": "Kategori 1 link"
+                },
+                "type": "text",
+                "value": "/E-Zigaretten-Vapes/",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 120,
+                "scss": false
+            },
+            "elfbar-cat-2-name": {
+                "label": {
+                    "de-DE": "Kategorie 2 Name",
+                    "en-GB": "Category 2 name",
+                    "tr-TR": "Kategori 2 isim"
+                },
+                "type": "text",
+                "value": "Pods & Akkuträger",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 200,
+                "scss": false
+            },
+            "elfbar-cat-img-2": {
+                "label": {
+                    "de-DE": "Kategorie 2 Bild",
+                    "en-GB": "Category 2 image",
+                    "tr-TR": "Kategori 2 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 210,
+                "scss": false
+            },
+            "elfbar-cat-2-link": {
+                "label": {
+                    "de-DE": "Kategorie 2 Link (leer = Auto)",
+                    "en-GB": "Category 2 link",
+                    "tr-TR": "Kategori 2 link"
+                },
+                "type": "text",
+                "value": "/Pods-Akkutraeger/",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 220,
+                "scss": false
+            },
+            "elfbar-cat-3-name": {
+                "label": {
+                    "de-DE": "Kategorie 3 Name",
+                    "en-GB": "Category 3 name",
+                    "tr-TR": "Kategori 3 isim"
+                },
+                "type": "text",
+                "value": "E-Zigaretten & Zubehör",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 300,
+                "scss": false
+            },
+            "elfbar-cat-img-3": {
+                "label": {
+                    "de-DE": "Kategorie 3 Bild",
+                    "en-GB": "Category 3 image",
+                    "tr-TR": "Kategori 3 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 310,
+                "scss": false
+            },
+            "elfbar-cat-3-link": {
+                "label": {
+                    "de-DE": "Kategorie 3 Link (leer = Auto)",
+                    "en-GB": "Category 3 link",
+                    "tr-TR": "Kategori 3 link"
+                },
+                "type": "text",
+                "value": "/E-Zigaretten-Zubehoer/",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 320,
+                "scss": false
+            },
+            "elfbar-cat-4-name": {
+                "label": {
+                    "de-DE": "Kategorie 4 Name",
+                    "en-GB": "Category 4 name",
+                    "tr-TR": "Kategori 4 isim"
+                },
+                "type": "text",
+                "value": "Liquids",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 400,
+                "scss": false
+            },
+            "elfbar-cat-img-4": {
+                "label": {
+                    "de-DE": "Kategorie 4 Bild",
+                    "en-GB": "Category 4 image",
+                    "tr-TR": "Kategori 4 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 410,
+                "scss": false
+            },
+            "elfbar-cat-4-link": {
+                "label": {
+                    "de-DE": "Kategorie 4 Link (leer = Auto)",
+                    "en-GB": "Category 4 link",
+                    "tr-TR": "Kategori 4 link"
+                },
+                "type": "text",
+                "value": "/Liquids/",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 420,
+                "scss": false
+            },
+            "elfbar-cat-5-name": {
+                "label": {
+                    "de-DE": "Kategorie 5 Name",
+                    "en-GB": "Category 5 name",
+                    "tr-TR": "Kategori 5 isim"
+                },
+                "type": "text",
+                "value": "Aromen",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 500,
+                "scss": false
+            },
+            "elfbar-cat-img-5": {
+                "label": {
+                    "de-DE": "Kategorie 5 Bild",
+                    "en-GB": "Category 5 image",
+                    "tr-TR": "Kategori 5 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 510,
+                "scss": false
+            },
+            "elfbar-cat-5-link": {
+                "label": {
+                    "de-DE": "Kategorie 5 Link (leer = Auto)",
+                    "en-GB": "Category 5 link",
+                    "tr-TR": "Kategori 5 link"
+                },
+                "type": "text",
+                "value": "/Aromen/",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 520,
+                "scss": false
+            },
+            "elfbar-cat-6-name": {
+                "label": {
+                    "de-DE": "Kategorie 6 Name",
+                    "en-GB": "Category 6 name",
+                    "tr-TR": "Kategori 6 isim"
+                },
+                "type": "text",
+                "value": "Merchandise & POS",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 600,
+                "scss": false
+            },
+            "elfbar-cat-img-6": {
+                "label": {
+                    "de-DE": "Kategorie 6 Bild",
+                    "en-GB": "Category 6 image",
+                    "tr-TR": "Kategori 6 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 610,
+                "scss": false
+            },
+            "elfbar-cat-6-link": {
+                "label": {
+                    "de-DE": "Kategorie 6 Link (leer = Auto)",
+                    "en-GB": "Category 6 link",
+                    "tr-TR": "Kategori 6 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 620,
+                "scss": false
+            },
+            "elfbar-cat-7-name": {
+                "label": {
+                    "de-DE": "Kategorie 7 Name",
+                    "en-GB": "Category 7 name",
+                    "tr-TR": "Kategori 7 isim"
+                },
+                "type": "text",
+                "value": "Aktionen",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 700,
+                "scss": false
+            },
+            "elfbar-cat-img-7": {
+                "label": {
+                    "de-DE": "Kategorie 7 Bild",
+                    "en-GB": "Category 7 image",
+                    "tr-TR": "Kategori 7 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 710,
+                "scss": false
+            },
+            "elfbar-cat-7-link": {
+                "label": {
+                    "de-DE": "Kategorie 7 Link (leer = Auto)",
+                    "en-GB": "Category 7 link",
+                    "tr-TR": "Kategori 7 link"
+                },
+                "type": "text",
+                "value": "/Aktionen/",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 720,
+                "scss": false
+            },
+            "elfbar-cat-8-name": {
+                "label": {
+                    "de-DE": "Kategorie 8 Name",
+                    "en-GB": "Category 8 name",
+                    "tr-TR": "Kategori 8 isim"
+                },
+                "type": "text",
+                "value": "Raucherbedarf",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 800,
+                "scss": false
+            },
+            "elfbar-cat-img-8": {
+                "label": {
+                    "de-DE": "Kategorie 8 Bild",
+                    "en-GB": "Category 8 image",
+                    "tr-TR": "Kategori 8 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 810,
+                "scss": false
+            },
+            "elfbar-cat-8-link": {
+                "label": {
+                    "de-DE": "Kategorie 8 Link (leer = Auto)",
+                    "en-GB": "Category 8 link",
+                    "tr-TR": "Kategori 8 link"
+                },
+                "type": "text",
+                "value": "/Raucherbedarf/",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 820,
+                "scss": false
+            },
+            "elfbar-cat-9-name": {
+                "label": {
+                    "de-DE": "Kategorie 9 Name",
+                    "en-GB": "Category 9 name",
+                    "tr-TR": "Kategori 9 isim"
+                },
+                "type": "text",
+                "value": "Shisha",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 900,
+                "scss": false
+            },
+            "elfbar-cat-img-9": {
+                "label": {
+                    "de-DE": "Kategorie 9 Bild",
+                    "en-GB": "Category 9 image",
+                    "tr-TR": "Kategori 9 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 910,
+                "scss": false
+            },
+            "elfbar-cat-9-link": {
+                "label": {
+                    "de-DE": "Kategorie 9 Link (leer = Auto)",
+                    "en-GB": "Category 9 link",
+                    "tr-TR": "Kategori 9 link"
+                },
+                "type": "text",
+                "value": "/Shisha/",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 920,
+                "scss": false
+            },
+            "elfbar-bestseller-category": {
+                "label": {
+                    "de-DE": "Bestseller Kategorie-ID (leer = Standard)",
+                    "en-GB": "Bestseller category ID",
+                    "tr-TR": "Bestseller kategori ID"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBestseller",
+                "order": 100,
+                "scss": false
+            },
+            "elfbar-bestseller-title": {
+                "label": {
+                    "de-DE": "Bestseller Überschrift",
+                    "en-GB": "Bestseller title",
+                    "tr-TR": "Bestseller başlık"
+                },
+                "type": "text",
+                "value": "Bestseller",
+                "editable": true,
+                "block": "elfbarBestseller",
+                "order": 200,
+                "scss": false
+            },
+            "elfbar-deals-title": {
+                "label": {
+                    "de-DE": "Deals Überschrift",
+                    "en-GB": "Deals title",
+                    "tr-TR": "Deals başlık"
+                },
+                "type": "text",
+                "value": "Deals des Tages",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 50,
+                "scss": false
+            },
+            "elfbar-deal-text-color": {
+                "label": {
+                    "de-DE": "Deal Textfarbe (Marke + Titel)",
+                    "en-GB": "Deal text color (brand + title)",
+                    "tr-TR": "Deal yazı rengi (marka + başlık)"
+                },
+                "helpText": {
+                    "de-DE": "Farbe für 'POWERED BY ...' Badge und Deal-Titel (z. B. -10% ...). Leer = Standardfarbe (Lila).",
+                    "en-GB": "Color for the 'POWERED BY ...' badge and deal title. Empty = default (purple).",
+                    "tr-TR": "'POWERED BY ...' rozeti ve deal başlığı rengi. Boş = varsayılan (mor)."
+                },
+                "type": "color",
+                "value": "",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 55,
+                "scss": false
+            },
+            "elfbar-deal-1-name": {
+                "label": {
+                    "de-DE": "Deal 1 Produktname",
+                    "en-GB": "Deal 1 product name",
+                    "tr-TR": "Deal 1 ürün adı"
+                },
+                "type": "text",
+                "value": "LOSTMARY QM600 10+1",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 200,
+                "scss": false
+            },
+            "elfbar-deal-1-brand": {
+                "label": {
+                    "de-DE": "Deal 1 Marke",
+                    "en-GB": "Deal 1 brand",
+                    "tr-TR": "Deal 1 marka"
+                },
+                "type": "text",
+                "value": "ELFBAR LOST MARY",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 210,
+                "scss": false
+            },
+            "elfbar-deal-1-price": {
+                "label": {
+                    "de-DE": "Deal 1 Preis",
+                    "en-GB": "Deal 1 price",
+                    "tr-TR": "Deal 1 fiyat"
+                },
+                "type": "text",
+                "value": "45,00 €",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 220,
+                "scss": false
+            },
+            "elfbar-deal-1-img": {
+                "label": {
+                    "de-DE": "Deal 1 Bild",
+                    "en-GB": "Deal 1 image",
+                    "tr-TR": "Deal 1 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 230,
+                "scss": false
+            },
+            "elfbar-deal-1-link": {
+                "label": {
+                    "de-DE": "Deal 1 Link",
+                    "en-GB": "Deal 1 link",
+                    "tr-TR": "Deal 1 link"
+                },
+                "type": "text",
+                "value": "/E-Zigaretten-Vapes/ELFBAR-Lost-Mary-QM600/",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 240,
+                "scss": false
+            },
+            "elfbar-deal-1-hours": {
+                "label": {
+                    "de-DE": "Deal 1 Endet in (Stunden)",
+                    "en-GB": "Deal 1 ends in (hours)",
+                    "tr-TR": "Deal 1 bitiş (saat)"
+                },
+                "type": "text",
+                "value": "18",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 250,
+                "scss": false
+            },
+            "elfbar-deal-2-name": {
+                "label": {
+                    "de-DE": "Deal 2 Produktname",
+                    "en-GB": "Deal 2 product name",
+                    "tr-TR": "Deal 2 ürün adı"
+                },
+                "type": "text",
+                "value": "WAVI Prefilled Pods",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 300,
+                "scss": false
+            },
+            "elfbar-deal-2-brand": {
+                "label": {
+                    "de-DE": "Deal 2 Marke",
+                    "en-GB": "Deal 2 brand",
+                    "tr-TR": "Deal 2 marka"
+                },
+                "type": "text",
+                "value": "ELFBAR LOST MARY",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 310,
+                "scss": false
+            },
+            "elfbar-deal-2-price": {
+                "label": {
+                    "de-DE": "Deal 2 Preis",
+                    "en-GB": "Deal 2 price",
+                    "tr-TR": "Deal 2 fiyat"
+                },
+                "type": "text",
+                "value": "45,00 €",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 320,
+                "scss": false
+            },
+            "elfbar-deal-2-img": {
+                "label": {
+                    "de-DE": "Deal 2 Bild",
+                    "en-GB": "Deal 2 image",
+                    "tr-TR": "Deal 2 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 330,
+                "scss": false
+            },
+            "elfbar-deal-2-link": {
+                "label": {
+                    "de-DE": "Deal 2 Link",
+                    "en-GB": "Deal 2 link",
+                    "tr-TR": "Deal 2 link"
+                },
+                "type": "text",
+                "value": "/Pods-Akkutraeger/Lost-Mary-WAVI/",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 340,
+                "scss": false
+            },
+            "elfbar-deal-2-hours": {
+                "label": {
+                    "de-DE": "Deal 2 Endet in (Stunden)",
+                    "en-GB": "Deal 2 ends in (hours)",
+                    "tr-TR": "Deal 2 bitiş (saat)"
+                },
+                "type": "text",
+                "value": "24",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 350,
+                "scss": false
+            },
+            "elfbar-deal-3-name": {
+                "label": {
+                    "de-DE": "Deal 3 Produktname",
+                    "en-GB": "Deal 3 product name",
+                    "tr-TR": "Deal 3 ürün adı"
+                },
+                "type": "text",
+                "value": "WAVI Prefilled Pods",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 400,
+                "scss": false
+            },
+            "elfbar-deal-3-brand": {
+                "label": {
+                    "de-DE": "Deal 3 Marke",
+                    "en-GB": "Deal 3 brand",
+                    "tr-TR": "Deal 3 marka"
+                },
+                "type": "text",
+                "value": "ELFBAR LOST MARY",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 410,
+                "scss": false
+            },
+            "elfbar-deal-3-price": {
+                "label": {
+                    "de-DE": "Deal 3 Preis",
+                    "en-GB": "Deal 3 price",
+                    "tr-TR": "Deal 3 fiyat"
+                },
+                "type": "text",
+                "value": "45,00 €",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 420,
+                "scss": false
+            },
+            "elfbar-deal-3-img": {
+                "label": {
+                    "de-DE": "Deal 3 Bild",
+                    "en-GB": "Deal 3 image",
+                    "tr-TR": "Deal 3 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 430,
+                "scss": false
+            },
+            "elfbar-deal-3-link": {
+                "label": {
+                    "de-DE": "Deal 3 Link",
+                    "en-GB": "Deal 3 link",
+                    "tr-TR": "Deal 3 link"
+                },
+                "type": "text",
+                "value": "/Pods-Akkutraeger/IVG-Air-4in1/",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 440,
+                "scss": false
+            },
+            "elfbar-deal-3-hours": {
+                "label": {
+                    "de-DE": "Deal 3 Endet in (Stunden)",
+                    "en-GB": "Deal 3 ends in (hours)",
+                    "tr-TR": "Deal 3 bitiş (saat)"
+                },
+                "type": "text",
+                "value": "30",
+                "editable": true,
+                "block": "elfbarDeals",
+                "order": 450,
+                "scss": false
+            },
+            "elfbar-neu-category": {
+                "label": {
+                    "de-DE": "Neuheiten Kategorie-ID (leer = Standard)",
+                    "en-GB": "New arrivals category ID",
+                    "tr-TR": "Yeni gelenler kategori ID"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarNeu",
+                "order": 100,
+                "scss": false
+            },
+            "elfbar-neu-title": {
+                "label": {
+                    "de-DE": "Neuheiten Überschrift",
+                    "en-GB": "New arrivals title",
+                    "tr-TR": "Yeni gelenler başlık"
+                },
+                "type": "text",
+                "value": "Neuheiten",
+                "editable": true,
+                "block": "elfbarNeu",
+                "order": 200,
+                "scss": false
+            },
+            "elfbar-campaign-brand": {
+                "label": {
+                    "de-DE": "Marke/Badge",
+                    "en-GB": "Brand badge",
+                    "tr-TR": "Marka rozeti"
+                },
+                "type": "text",
+                "value": "Powered by ELFBAR",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 100,
+                "scss": false
+            },
+            "elfbar-campaign-text": {
+                "label": {
+                    "de-DE": "Text",
+                    "en-GB": "Text",
+                    "tr-TR": "Metin"
+                },
+                "type": "text",
+                "value": "−10 % auf alle LOST MARY Produkte",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 200,
+                "scss": false
+            },
+            "elfbar-campaign-link": {
+                "label": {
+                    "de-DE": "Link",
+                    "en-GB": "Link",
+                    "tr-TR": "Link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 300,
+                "scss": false
+            },
+            "elfbar-promo-img-1": {
+                "label": {
+                    "de-DE": "Promo-Banner Bild 1",
+                    "en-GB": "Promo image 1",
+                    "tr-TR": "Promo görsel 1"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 400,
+                "scss": false
+            },
+            "elfbar-promo-img-1-link": {
+                "label": {
+                    "de-DE": "Promo-Banner Bild 1 — Link",
+                    "en-GB": "Promo image 1 — link",
+                    "tr-TR": "Promo görsel 1 — link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 401,
+                "scss": false
+            },
+            "elfbar-promo-img-2": {
+                "label": {
+                    "de-DE": "Promo-Banner Bild 2",
+                    "en-GB": "Promo image 2",
+                    "tr-TR": "Promo görsel 2"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 410,
+                "scss": false
+            },
+            "elfbar-promo-img-2-link": {
+                "label": {
+                    "de-DE": "Promo-Banner Bild 2 — Link",
+                    "en-GB": "Promo image 2 — link",
+                    "tr-TR": "Promo görsel 2 — link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 411,
+                "scss": false
+            },
+            "elfbar-sidebar-cta-eyebrow": {
+                "label": {
+                    "de-DE": "CTA Eyebrow",
+                    "en-GB": "CTA eyebrow",
+                    "tr-TR": "CTA üst etiket"
+                },
+                "type": "text",
+                "value": "B2B Vorteil",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 100,
+                "scss": false
+            },
+            "elfbar-sidebar-cta-title": {
+                "label": {
+                    "de-DE": "CTA Titel",
+                    "en-GB": "CTA title",
+                    "tr-TR": "CTA başlık"
+                },
+                "type": "text",
+                "value": "Bis zu 40 % Marge für Händler",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 200,
+                "scss": false
+            },
+            "elfbar-sidebar-cta-btn": {
+                "label": {
+                    "de-DE": "CTA Button",
+                    "en-GB": "CTA button",
+                    "tr-TR": "CTA buton"
+                },
+                "type": "text",
+                "value": "Jetzt registrieren →",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 300,
+                "scss": false
+            },
+            "elfbar-sidebar-promo-img": {
+                "label": {
+                    "de-DE": "Promo-Bild",
+                    "en-GB": "Promo image",
+                    "tr-TR": "Promo görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 350,
+                "scss": false
+            },
+            "elfbar-usp-1-title": {
+                "label": {
+                    "de-DE": "USP 1 Titel",
+                    "en-GB": "USP 1 title",
+                    "tr-TR": "USP 1 başlık"
+                },
+                "type": "text",
+                "value": "Kostenloser Versand",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 420,
+                "scss": false
+            },
+            "elfbar-usp-1-sub": {
+                "label": {
+                    "de-DE": "USP 1 Untertitel",
+                    "en-GB": "USP 1 subtitle",
+                    "tr-TR": "USP 1 alt"
+                },
+                "type": "text",
+                "value": "ab 500 € Netto",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 425,
+                "scss": false
+            },
+            "elfbar-usp-2-title": {
+                "label": {
+                    "de-DE": "USP 2 Titel",
+                    "en-GB": "USP 2 title",
+                    "tr-TR": "USP 2 başlık"
+                },
+                "type": "text",
+                "value": "Sichere Bezahlung",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 440,
+                "scss": false
+            },
+            "elfbar-usp-2-sub": {
+                "label": {
+                    "de-DE": "USP 2 Untertitel",
+                    "en-GB": "USP 2 subtitle",
+                    "tr-TR": "USP 2 alt"
+                },
+                "type": "text",
+                "value": "PayPal & Kauf auf Rechnung",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 445,
+                "scss": false
+            },
+            "elfbar-usp-3-title": {
+                "label": {
+                    "de-DE": "USP 3 Titel",
+                    "en-GB": "USP 3 title",
+                    "tr-TR": "USP 3 başlık"
+                },
+                "type": "text",
+                "value": "Schnelle Lieferung",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 460,
+                "scss": false
+            },
+            "elfbar-usp-3-sub": {
+                "label": {
+                    "de-DE": "USP 3 Untertitel",
+                    "en-GB": "USP 3 subtitle",
+                    "tr-TR": "USP 3 alt"
+                },
+                "type": "text",
+                "value": "24–48h Versand",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 465,
+                "scss": false
+            },
+            "elfbar-usp-4-title": {
+                "label": {
+                    "de-DE": "USP 4 Titel",
+                    "en-GB": "USP 4 title",
+                    "tr-TR": "USP 4 başlık"
+                },
+                "type": "text",
+                "value": "B2B Support",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 480,
+                "scss": false
+            },
+            "elfbar-usp-4-sub": {
+                "label": {
+                    "de-DE": "USP 4 Untertitel",
+                    "en-GB": "USP 4 subtitle",
+                    "tr-TR": "USP 4 alt"
+                },
+                "type": "text",
+                "value": "Mo-Fr, 09:00 - 16:00 Uhr",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 485,
+                "scss": false
+            },
+            "elfbar-b2b-eyebrow": {
+                "label": {
+                    "de-DE": "Eyebrow",
+                    "en-GB": "Eyebrow",
+                    "tr-TR": "Üst etiket"
+                },
+                "type": "text",
+                "value": "★ Werde Elfbar-Handelspartner",
+                "editable": true,
+                "block": "elfbarB2bBanner",
+                "order": 100,
+                "scss": false
+            },
+            "elfbar-b2b-title": {
+                "label": {
+                    "de-DE": "Titel (<br>)",
+                    "en-GB": "Title",
+                    "tr-TR": "Başlık"
+                },
+                "type": "text",
+                "value": "Großhandelspreise. Schnelle Lieferung.<br>Persönlicher B2B-Support.",
+                "editable": true,
+                "block": "elfbarB2bBanner",
+                "order": 200,
+                "scss": false
+            },
+            "elfbar-b2b-text": {
+                "label": {
+                    "de-DE": "Text",
+                    "en-GB": "Text",
+                    "tr-TR": "Metin"
+                },
+                "type": "text",
+                "value": "Registriere dich jetzt als Händler und sieh deine Netto-Einkaufspreise – über 4.000 zufriedene Partner vertrauen uns.",
+                "editable": true,
+                "block": "elfbarB2bBanner",
+                "order": 300,
+                "scss": false
+            },
+            "elfbar-b2b-btn-primary": {
+                "label": {
+                    "de-DE": "Button 1",
+                    "en-GB": "Button 1",
+                    "tr-TR": "Buton 1"
+                },
+                "type": "text",
+                "value": "Jetzt registrieren",
+                "editable": true,
+                "block": "elfbarB2bBanner",
+                "order": 400,
+                "scss": false
+            },
+            "elfbar-b2b-btn-ghost": {
+                "label": {
+                    "de-DE": "Button 2",
+                    "en-GB": "Button 2",
+                    "tr-TR": "Buton 2"
+                },
+                "type": "text",
+                "value": "Anmelden",
+                "editable": true,
+                "block": "elfbarB2bBanner",
+                "order": 500,
+                "scss": false
+            },
+            "elfbar-b2b-stat-1-n": {
+                "label": {
+                    "de-DE": "Stat 1 Zahl",
+                    "en-GB": "Stat 1 number",
+                    "tr-TR": "İst. 1 sayı"
+                },
+                "type": "text",
+                "value": "4.000+",
+                "editable": true,
+                "block": "elfbarB2bBanner",
+                "order": 620,
+                "scss": false
+            },
+            "elfbar-b2b-stat-1-l": {
+                "label": {
+                    "de-DE": "Stat 1 Label",
+                    "en-GB": "Stat 1 label",
+                    "tr-TR": "İst. 1 etiket"
+                },
+                "type": "text",
+                "value": "Händler",
+                "editable": true,
+                "block": "elfbarB2bBanner",
+                "order": 625,
+                "scss": false
+            },
+            "elfbar-b2b-stat-2-n": {
+                "label": {
+                    "de-DE": "Stat 2 Zahl",
+                    "en-GB": "Stat 2 number",
+                    "tr-TR": "İst. 2 sayı"
+                },
+                "type": "text",
+                "value": "8.000+",
+                "editable": true,
+                "block": "elfbarB2bBanner",
+                "order": 640,
+                "scss": false
+            },
+            "elfbar-b2b-stat-2-l": {
+                "label": {
+                    "de-DE": "Stat 2 Label",
+                    "en-GB": "Stat 2 label",
+                    "tr-TR": "İst. 2 etiket"
+                },
+                "type": "text",
+                "value": "Produkte",
+                "editable": true,
+                "block": "elfbarB2bBanner",
+                "order": 645,
+                "scss": false
+            },
+            "elfbar-b2b-stat-3-n": {
+                "label": {
+                    "de-DE": "Stat 3 Zahl",
+                    "en-GB": "Stat 3 number",
+                    "tr-TR": "İst. 3 sayı"
+                },
+                "type": "text",
+                "value": "24h",
+                "editable": true,
+                "block": "elfbarB2bBanner",
+                "order": 660,
+                "scss": false
+            },
+            "elfbar-b2b-stat-3-l": {
+                "label": {
+                    "de-DE": "Stat 3 Label",
+                    "en-GB": "Stat 3 label",
+                    "tr-TR": "İst. 3 etiket"
+                },
+                "type": "text",
+                "value": "Versand",
+                "editable": true,
+                "block": "elfbarB2bBanner",
+                "order": 665,
+                "scss": false
+            },
+            "elfbar-b2b-stat-4-n": {
+                "label": {
+                    "de-DE": "Stat 4 Zahl",
+                    "en-GB": "Stat 4 number",
+                    "tr-TR": "İst. 4 sayı"
+                },
+                "type": "text",
+                "value": "40 %",
+                "editable": true,
+                "block": "elfbarB2bBanner",
+                "order": 680,
+                "scss": false
+            },
+            "elfbar-b2b-stat-4-l": {
+                "label": {
+                    "de-DE": "Stat 4 Label",
+                    "en-GB": "Stat 4 label",
+                    "tr-TR": "İst. 4 etiket"
+                },
+                "type": "text",
+                "value": "Marge",
+                "editable": true,
+                "block": "elfbarB2bBanner",
+                "order": 685,
+                "scss": false
+            },
+            "elfbar-show-net-prices": {
+                "label": {
+                    "de-DE": "Netto-Hinweis auf Produktkarten",
+                    "en-GB": "Show net hint",
+                    "tr-TR": "KDV hariç ipucu"
+                },
+                "type": "switch",
+                "value": true,
+                "editable": true,
+                "block": "elfbarB2b",
+                "order": 100
+            },
+            "elfbar-brand-9-name": {
+                "label": {
+                    "de-DE": "Marke 9 Name",
+                    "en-GB": "Brand 9 name",
+                    "tr-TR": "Marka 9 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 900,
+                "scss": false
+            },
+            "elfbar-brand-9-logo": {
+                "label": {
+                    "de-DE": "Marke 9 Logo",
+                    "en-GB": "Brand 9 logo",
+                    "tr-TR": "Marka 9 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 910,
+                "scss": false
+            },
+            "elfbar-brand-9-link": {
+                "label": {
+                    "de-DE": "Marke 9 Link",
+                    "en-GB": "Brand 9 link",
+                    "tr-TR": "Marka 9 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 920,
+                "scss": false
+            },
+            "elfbar-brand-10-name": {
+                "label": {
+                    "de-DE": "Marke 10 Name",
+                    "en-GB": "Brand 10 name",
+                    "tr-TR": "Marka 10 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1000,
+                "scss": false
+            },
+            "elfbar-brand-10-logo": {
+                "label": {
+                    "de-DE": "Marke 10 Logo",
+                    "en-GB": "Brand 10 logo",
+                    "tr-TR": "Marka 10 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1010,
+                "scss": false
+            },
+            "elfbar-brand-10-link": {
+                "label": {
+                    "de-DE": "Marke 10 Link",
+                    "en-GB": "Brand 10 link",
+                    "tr-TR": "Marka 10 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1020,
+                "scss": false
+            },
+            "elfbar-brand-11-name": {
+                "label": {
+                    "de-DE": "Marke 11 Name",
+                    "en-GB": "Brand 11 name",
+                    "tr-TR": "Marka 11 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1100,
+                "scss": false
+            },
+            "elfbar-brand-11-logo": {
+                "label": {
+                    "de-DE": "Marke 11 Logo",
+                    "en-GB": "Brand 11 logo",
+                    "tr-TR": "Marka 11 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1110,
+                "scss": false
+            },
+            "elfbar-brand-11-link": {
+                "label": {
+                    "de-DE": "Marke 11 Link",
+                    "en-GB": "Brand 11 link",
+                    "tr-TR": "Marka 11 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1120,
+                "scss": false
+            },
+            "elfbar-brand-12-name": {
+                "label": {
+                    "de-DE": "Marke 12 Name",
+                    "en-GB": "Brand 12 name",
+                    "tr-TR": "Marka 12 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1200,
+                "scss": false
+            },
+            "elfbar-brand-12-logo": {
+                "label": {
+                    "de-DE": "Marke 12 Logo",
+                    "en-GB": "Brand 12 logo",
+                    "tr-TR": "Marka 12 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1210,
+                "scss": false
+            },
+            "elfbar-brand-12-link": {
+                "label": {
+                    "de-DE": "Marke 12 Link",
+                    "en-GB": "Brand 12 link",
+                    "tr-TR": "Marka 12 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1220,
+                "scss": false
+            },
+            "elfbar-brand-13-name": {
+                "label": {
+                    "de-DE": "Marke 13 Name",
+                    "en-GB": "Brand 13 name",
+                    "tr-TR": "Marka 13 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1300,
+                "scss": false
+            },
+            "elfbar-brand-13-logo": {
+                "label": {
+                    "de-DE": "Marke 13 Logo",
+                    "en-GB": "Brand 13 logo",
+                    "tr-TR": "Marka 13 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1310,
+                "scss": false
+            },
+            "elfbar-brand-13-link": {
+                "label": {
+                    "de-DE": "Marke 13 Link",
+                    "en-GB": "Brand 13 link",
+                    "tr-TR": "Marka 13 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1320,
+                "scss": false
+            },
+            "elfbar-brand-14-name": {
+                "label": {
+                    "de-DE": "Marke 14 Name",
+                    "en-GB": "Brand 14 name",
+                    "tr-TR": "Marka 14 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1400,
+                "scss": false
+            },
+            "elfbar-brand-14-logo": {
+                "label": {
+                    "de-DE": "Marke 14 Logo",
+                    "en-GB": "Brand 14 logo",
+                    "tr-TR": "Marka 14 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1410,
+                "scss": false
+            },
+            "elfbar-brand-14-link": {
+                "label": {
+                    "de-DE": "Marke 14 Link",
+                    "en-GB": "Brand 14 link",
+                    "tr-TR": "Marka 14 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1420,
+                "scss": false
+            },
+            "elfbar-brand-15-name": {
+                "label": {
+                    "de-DE": "Marke 15 Name",
+                    "en-GB": "Brand 15 name",
+                    "tr-TR": "Marka 15 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1500,
+                "scss": false
+            },
+            "elfbar-brand-15-logo": {
+                "label": {
+                    "de-DE": "Marke 15 Logo",
+                    "en-GB": "Brand 15 logo",
+                    "tr-TR": "Marka 15 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1510,
+                "scss": false
+            },
+            "elfbar-brand-15-link": {
+                "label": {
+                    "de-DE": "Marke 15 Link",
+                    "en-GB": "Brand 15 link",
+                    "tr-TR": "Marka 15 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1520,
+                "scss": false
+            },
+            "elfbar-brand-16-name": {
+                "label": {
+                    "de-DE": "Marke 16 Name",
+                    "en-GB": "Brand 16 name",
+                    "tr-TR": "Marka 16 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1600,
+                "scss": false
+            },
+            "elfbar-brand-16-logo": {
+                "label": {
+                    "de-DE": "Marke 16 Logo",
+                    "en-GB": "Brand 16 logo",
+                    "tr-TR": "Marka 16 logo"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1610,
+                "scss": false
+            },
+            "elfbar-brand-16-link": {
+                "label": {
+                    "de-DE": "Marke 16 Link",
+                    "en-GB": "Brand 16 link",
+                    "tr-TR": "Marka 16 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarBrands",
+                "order": 1620,
+                "scss": false
+            },
+            "elfbar-cat-10-name": {
+                "label": {
+                    "de-DE": "Kategorie 10 Name",
+                    "en-GB": "Category 10 name",
+                    "tr-TR": "Kategori 10 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1000,
+                "scss": false
+            },
+            "elfbar-cat-img-10": {
+                "label": {
+                    "de-DE": "Kategorie 10 Bild",
+                    "en-GB": "Category 10 image",
+                    "tr-TR": "Kategori 10 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1010,
+                "scss": false
+            },
+            "elfbar-cat-10-link": {
+                "label": {
+                    "de-DE": "Kategorie 10 Link",
+                    "en-GB": "Category 10 link",
+                    "tr-TR": "Kategori 10 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1020,
+                "scss": false
+            },
+            "elfbar-cat-11-name": {
+                "label": {
+                    "de-DE": "Kategorie 11 Name",
+                    "en-GB": "Category 11 name",
+                    "tr-TR": "Kategori 11 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1100,
+                "scss": false
+            },
+            "elfbar-cat-img-11": {
+                "label": {
+                    "de-DE": "Kategorie 11 Bild",
+                    "en-GB": "Category 11 image",
+                    "tr-TR": "Kategori 11 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1110,
+                "scss": false
+            },
+            "elfbar-cat-11-link": {
+                "label": {
+                    "de-DE": "Kategorie 11 Link",
+                    "en-GB": "Category 11 link",
+                    "tr-TR": "Kategori 11 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1120,
+                "scss": false
+            },
+            "elfbar-cat-12-name": {
+                "label": {
+                    "de-DE": "Kategorie 12 Name",
+                    "en-GB": "Category 12 name",
+                    "tr-TR": "Kategori 12 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1200,
+                "scss": false
+            },
+            "elfbar-cat-img-12": {
+                "label": {
+                    "de-DE": "Kategorie 12 Bild",
+                    "en-GB": "Category 12 image",
+                    "tr-TR": "Kategori 12 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1210,
+                "scss": false
+            },
+            "elfbar-cat-12-link": {
+                "label": {
+                    "de-DE": "Kategorie 12 Link",
+                    "en-GB": "Category 12 link",
+                    "tr-TR": "Kategori 12 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1220,
+                "scss": false
+            },
+            "elfbar-cat-13-name": {
+                "label": {
+                    "de-DE": "Kategorie 13 Name",
+                    "en-GB": "Category 13 name",
+                    "tr-TR": "Kategori 13 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1300,
+                "scss": false
+            },
+            "elfbar-cat-img-13": {
+                "label": {
+                    "de-DE": "Kategorie 13 Bild",
+                    "en-GB": "Category 13 image",
+                    "tr-TR": "Kategori 13 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1310,
+                "scss": false
+            },
+            "elfbar-cat-13-link": {
+                "label": {
+                    "de-DE": "Kategorie 13 Link",
+                    "en-GB": "Category 13 link",
+                    "tr-TR": "Kategori 13 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1320,
+                "scss": false
+            },
+            "elfbar-cat-14-name": {
+                "label": {
+                    "de-DE": "Kategorie 14 Name",
+                    "en-GB": "Category 14 name",
+                    "tr-TR": "Kategori 14 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1400,
+                "scss": false
+            },
+            "elfbar-cat-img-14": {
+                "label": {
+                    "de-DE": "Kategorie 14 Bild",
+                    "en-GB": "Category 14 image",
+                    "tr-TR": "Kategori 14 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1410,
+                "scss": false
+            },
+            "elfbar-cat-14-link": {
+                "label": {
+                    "de-DE": "Kategorie 14 Link",
+                    "en-GB": "Category 14 link",
+                    "tr-TR": "Kategori 14 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1420,
+                "scss": false
+            },
+            "elfbar-cat-15-name": {
+                "label": {
+                    "de-DE": "Kategorie 15 Name",
+                    "en-GB": "Category 15 name",
+                    "tr-TR": "Kategori 15 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1500,
+                "scss": false
+            },
+            "elfbar-cat-img-15": {
+                "label": {
+                    "de-DE": "Kategorie 15 Bild",
+                    "en-GB": "Category 15 image",
+                    "tr-TR": "Kategori 15 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1510,
+                "scss": false
+            },
+            "elfbar-cat-15-link": {
+                "label": {
+                    "de-DE": "Kategorie 15 Link",
+                    "en-GB": "Category 15 link",
+                    "tr-TR": "Kategori 15 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1520,
+                "scss": false
+            },
+            "elfbar-cat-16-name": {
+                "label": {
+                    "de-DE": "Kategorie 16 Name",
+                    "en-GB": "Category 16 name",
+                    "tr-TR": "Kategori 16 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1600,
+                "scss": false
+            },
+            "elfbar-cat-img-16": {
+                "label": {
+                    "de-DE": "Kategorie 16 Bild",
+                    "en-GB": "Category 16 image",
+                    "tr-TR": "Kategori 16 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1610,
+                "scss": false
+            },
+            "elfbar-cat-16-link": {
+                "label": {
+                    "de-DE": "Kategorie 16 Link",
+                    "en-GB": "Category 16 link",
+                    "tr-TR": "Kategori 16 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCategories",
+                "order": 1620,
+                "scss": false
+            },
+            "elfbar-mega-1-promo1-img": {
+                "label": {
+                    "de-DE": "Kat.1 Promo 1 Bild",
+                    "en-GB": "Cat 1 promo 1 image",
+                    "tr-TR": "Kat.1 promo 1 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 1100,
+                "scss": false
+            },
+            "elfbar-mega-1-promo1-cap": {
+                "label": {
+                    "de-DE": "Kat.1 Promo 1 Label",
+                    "en-GB": "Cat 1 promo 1 label",
+                    "tr-TR": "Kat.1 promo 1 etiket"
+                },
+                "type": "text",
+                "value": "Top-Marke",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 1110,
+                "scss": false
+            },
+            "elfbar-mega-1-promo1-sub": {
+                "label": {
+                    "de-DE": "Kat.1 Promo 1 Titel",
+                    "en-GB": "Cat 1 promo 1 title",
+                    "tr-TR": "Kat.1 promo 1 başlık"
+                },
+                "type": "text",
+                "value": "E-Zigaretten & Vapes",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 1120,
+                "scss": false
+            },
+            "elfbar-mega-1-promo1-link": {
+                "label": {
+                    "de-DE": "Kat.1 Promo 1 Link",
+                    "en-GB": "Cat 1 promo 1 link",
+                    "tr-TR": "Kat.1 promo 1 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 1130,
+                "scss": false
+            },
+            "elfbar-mega-1-promo2-img": {
+                "label": {
+                    "de-DE": "Kat.1 Promo 2 Bild",
+                    "en-GB": "Cat 1 promo 2 image",
+                    "tr-TR": "Kat.1 promo 2 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 1200,
+                "scss": false
+            },
+            "elfbar-mega-1-promo2-cap": {
+                "label": {
+                    "de-DE": "Kat.1 Promo 2 Label",
+                    "en-GB": "Cat 1 promo 2 label",
+                    "tr-TR": "Kat.1 promo 2 etiket"
+                },
+                "type": "text",
+                "value": "Aktion",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 1210,
+                "scss": false
+            },
+            "elfbar-mega-1-promo2-sub": {
+                "label": {
+                    "de-DE": "Kat.1 Promo 2 Titel",
+                    "en-GB": "Cat 1 promo 2 title",
+                    "tr-TR": "Kat.1 promo 2 başlık"
+                },
+                "type": "text",
+                "value": "Bis zu −20 %",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 1220,
+                "scss": false
+            },
+            "elfbar-mega-1-promo2-link": {
+                "label": {
+                    "de-DE": "Kat.1 Promo 2 Link",
+                    "en-GB": "Cat 1 promo 2 link",
+                    "tr-TR": "Kat.1 promo 2 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 1230,
+                "scss": false
+            },
+            "elfbar-mega-2-promo1-img": {
+                "label": {
+                    "de-DE": "Kat.2 Promo 1 Bild",
+                    "en-GB": "Cat 2 promo 1 image",
+                    "tr-TR": "Kat.2 promo 1 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 2100,
+                "scss": false
+            },
+            "elfbar-mega-2-promo1-cap": {
+                "label": {
+                    "de-DE": "Kat.2 Promo 1 Label",
+                    "en-GB": "Cat 2 promo 1 label",
+                    "tr-TR": "Kat.2 promo 1 etiket"
+                },
+                "type": "text",
+                "value": "Top-Marke",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 2110,
+                "scss": false
+            },
+            "elfbar-mega-2-promo1-sub": {
+                "label": {
+                    "de-DE": "Kat.2 Promo 1 Titel",
+                    "en-GB": "Cat 2 promo 1 title",
+                    "tr-TR": "Kat.2 promo 1 başlık"
+                },
+                "type": "text",
+                "value": "Pods & Akkuträger",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 2120,
+                "scss": false
+            },
+            "elfbar-mega-2-promo1-link": {
+                "label": {
+                    "de-DE": "Kat.2 Promo 1 Link",
+                    "en-GB": "Cat 2 promo 1 link",
+                    "tr-TR": "Kat.2 promo 1 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 2130,
+                "scss": false
+            },
+            "elfbar-mega-2-promo2-img": {
+                "label": {
+                    "de-DE": "Kat.2 Promo 2 Bild",
+                    "en-GB": "Cat 2 promo 2 image",
+                    "tr-TR": "Kat.2 promo 2 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 2200,
+                "scss": false
+            },
+            "elfbar-mega-2-promo2-cap": {
+                "label": {
+                    "de-DE": "Kat.2 Promo 2 Label",
+                    "en-GB": "Cat 2 promo 2 label",
+                    "tr-TR": "Kat.2 promo 2 etiket"
+                },
+                "type": "text",
+                "value": "Aktion",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 2210,
+                "scss": false
+            },
+            "elfbar-mega-2-promo2-sub": {
+                "label": {
+                    "de-DE": "Kat.2 Promo 2 Titel",
+                    "en-GB": "Cat 2 promo 2 title",
+                    "tr-TR": "Kat.2 promo 2 başlık"
+                },
+                "type": "text",
+                "value": "Bis zu −20 %",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 2220,
+                "scss": false
+            },
+            "elfbar-mega-2-promo2-link": {
+                "label": {
+                    "de-DE": "Kat.2 Promo 2 Link",
+                    "en-GB": "Cat 2 promo 2 link",
+                    "tr-TR": "Kat.2 promo 2 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 2230,
+                "scss": false
+            },
+            "elfbar-mega-3-promo1-img": {
+                "label": {
+                    "de-DE": "Kat.3 Promo 1 Bild",
+                    "en-GB": "Cat 3 promo 1 image",
+                    "tr-TR": "Kat.3 promo 1 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 3100,
+                "scss": false
+            },
+            "elfbar-mega-3-promo1-cap": {
+                "label": {
+                    "de-DE": "Kat.3 Promo 1 Label",
+                    "en-GB": "Cat 3 promo 1 label",
+                    "tr-TR": "Kat.3 promo 1 etiket"
+                },
+                "type": "text",
+                "value": "Top-Marke",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 3110,
+                "scss": false
+            },
+            "elfbar-mega-3-promo1-sub": {
+                "label": {
+                    "de-DE": "Kat.3 Promo 1 Titel",
+                    "en-GB": "Cat 3 promo 1 title",
+                    "tr-TR": "Kat.3 promo 1 başlık"
+                },
+                "type": "text",
+                "value": "E-Zigaretten & Zubehör",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 3120,
+                "scss": false
+            },
+            "elfbar-mega-3-promo1-link": {
+                "label": {
+                    "de-DE": "Kat.3 Promo 1 Link",
+                    "en-GB": "Cat 3 promo 1 link",
+                    "tr-TR": "Kat.3 promo 1 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 3130,
+                "scss": false
+            },
+            "elfbar-mega-3-promo2-img": {
+                "label": {
+                    "de-DE": "Kat.3 Promo 2 Bild",
+                    "en-GB": "Cat 3 promo 2 image",
+                    "tr-TR": "Kat.3 promo 2 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 3200,
+                "scss": false
+            },
+            "elfbar-mega-3-promo2-cap": {
+                "label": {
+                    "de-DE": "Kat.3 Promo 2 Label",
+                    "en-GB": "Cat 3 promo 2 label",
+                    "tr-TR": "Kat.3 promo 2 etiket"
+                },
+                "type": "text",
+                "value": "Aktion",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 3210,
+                "scss": false
+            },
+            "elfbar-mega-3-promo2-sub": {
+                "label": {
+                    "de-DE": "Kat.3 Promo 2 Titel",
+                    "en-GB": "Cat 3 promo 2 title",
+                    "tr-TR": "Kat.3 promo 2 başlık"
+                },
+                "type": "text",
+                "value": "Bis zu −20 %",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 3220,
+                "scss": false
+            },
+            "elfbar-mega-3-promo2-link": {
+                "label": {
+                    "de-DE": "Kat.3 Promo 2 Link",
+                    "en-GB": "Cat 3 promo 2 link",
+                    "tr-TR": "Kat.3 promo 2 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 3230,
+                "scss": false
+            },
+            "elfbar-mega-4-promo1-img": {
+                "label": {
+                    "de-DE": "Kat.4 Promo 1 Bild",
+                    "en-GB": "Cat 4 promo 1 image",
+                    "tr-TR": "Kat.4 promo 1 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 4100,
+                "scss": false
+            },
+            "elfbar-mega-4-promo1-cap": {
+                "label": {
+                    "de-DE": "Kat.4 Promo 1 Label",
+                    "en-GB": "Cat 4 promo 1 label",
+                    "tr-TR": "Kat.4 promo 1 etiket"
+                },
+                "type": "text",
+                "value": "Top-Marke",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 4110,
+                "scss": false
+            },
+            "elfbar-mega-4-promo1-sub": {
+                "label": {
+                    "de-DE": "Kat.4 Promo 1 Titel",
+                    "en-GB": "Cat 4 promo 1 title",
+                    "tr-TR": "Kat.4 promo 1 başlık"
+                },
+                "type": "text",
+                "value": "Liquids",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 4120,
+                "scss": false
+            },
+            "elfbar-mega-4-promo1-link": {
+                "label": {
+                    "de-DE": "Kat.4 Promo 1 Link",
+                    "en-GB": "Cat 4 promo 1 link",
+                    "tr-TR": "Kat.4 promo 1 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 4130,
+                "scss": false
+            },
+            "elfbar-mega-4-promo2-img": {
+                "label": {
+                    "de-DE": "Kat.4 Promo 2 Bild",
+                    "en-GB": "Cat 4 promo 2 image",
+                    "tr-TR": "Kat.4 promo 2 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 4200,
+                "scss": false
+            },
+            "elfbar-mega-4-promo2-cap": {
+                "label": {
+                    "de-DE": "Kat.4 Promo 2 Label",
+                    "en-GB": "Cat 4 promo 2 label",
+                    "tr-TR": "Kat.4 promo 2 etiket"
+                },
+                "type": "text",
+                "value": "Aktion",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 4210,
+                "scss": false
+            },
+            "elfbar-mega-4-promo2-sub": {
+                "label": {
+                    "de-DE": "Kat.4 Promo 2 Titel",
+                    "en-GB": "Cat 4 promo 2 title",
+                    "tr-TR": "Kat.4 promo 2 başlık"
+                },
+                "type": "text",
+                "value": "Bis zu −20 %",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 4220,
+                "scss": false
+            },
+            "elfbar-mega-4-promo2-link": {
+                "label": {
+                    "de-DE": "Kat.4 Promo 2 Link",
+                    "en-GB": "Cat 4 promo 2 link",
+                    "tr-TR": "Kat.4 promo 2 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 4230,
+                "scss": false
+            },
+            "elfbar-mega-5-promo1-img": {
+                "label": {
+                    "de-DE": "Kat.5 Promo 1 Bild",
+                    "en-GB": "Cat 5 promo 1 image",
+                    "tr-TR": "Kat.5 promo 1 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 5100,
+                "scss": false
+            },
+            "elfbar-mega-5-promo1-cap": {
+                "label": {
+                    "de-DE": "Kat.5 Promo 1 Label",
+                    "en-GB": "Cat 5 promo 1 label",
+                    "tr-TR": "Kat.5 promo 1 etiket"
+                },
+                "type": "text",
+                "value": "Top-Marke",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 5110,
+                "scss": false
+            },
+            "elfbar-mega-5-promo1-sub": {
+                "label": {
+                    "de-DE": "Kat.5 Promo 1 Titel",
+                    "en-GB": "Cat 5 promo 1 title",
+                    "tr-TR": "Kat.5 promo 1 başlık"
+                },
+                "type": "text",
+                "value": "Aromen",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 5120,
+                "scss": false
+            },
+            "elfbar-mega-5-promo1-link": {
+                "label": {
+                    "de-DE": "Kat.5 Promo 1 Link",
+                    "en-GB": "Cat 5 promo 1 link",
+                    "tr-TR": "Kat.5 promo 1 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 5130,
+                "scss": false
+            },
+            "elfbar-mega-5-promo2-img": {
+                "label": {
+                    "de-DE": "Kat.5 Promo 2 Bild",
+                    "en-GB": "Cat 5 promo 2 image",
+                    "tr-TR": "Kat.5 promo 2 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 5200,
+                "scss": false
+            },
+            "elfbar-mega-5-promo2-cap": {
+                "label": {
+                    "de-DE": "Kat.5 Promo 2 Label",
+                    "en-GB": "Cat 5 promo 2 label",
+                    "tr-TR": "Kat.5 promo 2 etiket"
+                },
+                "type": "text",
+                "value": "Aktion",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 5210,
+                "scss": false
+            },
+            "elfbar-mega-5-promo2-sub": {
+                "label": {
+                    "de-DE": "Kat.5 Promo 2 Titel",
+                    "en-GB": "Cat 5 promo 2 title",
+                    "tr-TR": "Kat.5 promo 2 başlık"
+                },
+                "type": "text",
+                "value": "Bis zu −20 %",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 5220,
+                "scss": false
+            },
+            "elfbar-mega-5-promo2-link": {
+                "label": {
+                    "de-DE": "Kat.5 Promo 2 Link",
+                    "en-GB": "Cat 5 promo 2 link",
+                    "tr-TR": "Kat.5 promo 2 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 5230,
+                "scss": false
+            },
+            "elfbar-mega-6-promo1-img": {
+                "label": {
+                    "de-DE": "Kat.6 Promo 1 Bild",
+                    "en-GB": "Cat 6 promo 1 image",
+                    "tr-TR": "Kat.6 promo 1 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 6100,
+                "scss": false
+            },
+            "elfbar-mega-6-promo1-cap": {
+                "label": {
+                    "de-DE": "Kat.6 Promo 1 Label",
+                    "en-GB": "Cat 6 promo 1 label",
+                    "tr-TR": "Kat.6 promo 1 etiket"
+                },
+                "type": "text",
+                "value": "Top-Marke",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 6110,
+                "scss": false
+            },
+            "elfbar-mega-6-promo1-sub": {
+                "label": {
+                    "de-DE": "Kat.6 Promo 1 Titel",
+                    "en-GB": "Cat 6 promo 1 title",
+                    "tr-TR": "Kat.6 promo 1 başlık"
+                },
+                "type": "text",
+                "value": "Merchandise & POS",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 6120,
+                "scss": false
+            },
+            "elfbar-mega-6-promo1-link": {
+                "label": {
+                    "de-DE": "Kat.6 Promo 1 Link",
+                    "en-GB": "Cat 6 promo 1 link",
+                    "tr-TR": "Kat.6 promo 1 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 6130,
+                "scss": false
+            },
+            "elfbar-mega-6-promo2-img": {
+                "label": {
+                    "de-DE": "Kat.6 Promo 2 Bild",
+                    "en-GB": "Cat 6 promo 2 image",
+                    "tr-TR": "Kat.6 promo 2 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 6200,
+                "scss": false
+            },
+            "elfbar-mega-6-promo2-cap": {
+                "label": {
+                    "de-DE": "Kat.6 Promo 2 Label",
+                    "en-GB": "Cat 6 promo 2 label",
+                    "tr-TR": "Kat.6 promo 2 etiket"
+                },
+                "type": "text",
+                "value": "Aktion",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 6210,
+                "scss": false
+            },
+            "elfbar-mega-6-promo2-sub": {
+                "label": {
+                    "de-DE": "Kat.6 Promo 2 Titel",
+                    "en-GB": "Cat 6 promo 2 title",
+                    "tr-TR": "Kat.6 promo 2 başlık"
+                },
+                "type": "text",
+                "value": "Bis zu −20 %",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 6220,
+                "scss": false
+            },
+            "elfbar-mega-6-promo2-link": {
+                "label": {
+                    "de-DE": "Kat.6 Promo 2 Link",
+                    "en-GB": "Cat 6 promo 2 link",
+                    "tr-TR": "Kat.6 promo 2 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 6230,
+                "scss": false
+            },
+            "elfbar-mega-7-promo1-img": {
+                "label": {
+                    "de-DE": "Kat.7 Promo 1 Bild",
+                    "en-GB": "Cat 7 promo 1 image",
+                    "tr-TR": "Kat.7 promo 1 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 7100,
+                "scss": false
+            },
+            "elfbar-mega-7-promo1-cap": {
+                "label": {
+                    "de-DE": "Kat.7 Promo 1 Label",
+                    "en-GB": "Cat 7 promo 1 label",
+                    "tr-TR": "Kat.7 promo 1 etiket"
+                },
+                "type": "text",
+                "value": "Top-Marke",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 7110,
+                "scss": false
+            },
+            "elfbar-mega-7-promo1-sub": {
+                "label": {
+                    "de-DE": "Kat.7 Promo 1 Titel",
+                    "en-GB": "Cat 7 promo 1 title",
+                    "tr-TR": "Kat.7 promo 1 başlık"
+                },
+                "type": "text",
+                "value": "Aktionen",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 7120,
+                "scss": false
+            },
+            "elfbar-mega-7-promo1-link": {
+                "label": {
+                    "de-DE": "Kat.7 Promo 1 Link",
+                    "en-GB": "Cat 7 promo 1 link",
+                    "tr-TR": "Kat.7 promo 1 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 7130,
+                "scss": false
+            },
+            "elfbar-mega-7-promo2-img": {
+                "label": {
+                    "de-DE": "Kat.7 Promo 2 Bild",
+                    "en-GB": "Cat 7 promo 2 image",
+                    "tr-TR": "Kat.7 promo 2 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 7200,
+                "scss": false
+            },
+            "elfbar-mega-7-promo2-cap": {
+                "label": {
+                    "de-DE": "Kat.7 Promo 2 Label",
+                    "en-GB": "Cat 7 promo 2 label",
+                    "tr-TR": "Kat.7 promo 2 etiket"
+                },
+                "type": "text",
+                "value": "Aktion",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 7210,
+                "scss": false
+            },
+            "elfbar-mega-7-promo2-sub": {
+                "label": {
+                    "de-DE": "Kat.7 Promo 2 Titel",
+                    "en-GB": "Cat 7 promo 2 title",
+                    "tr-TR": "Kat.7 promo 2 başlık"
+                },
+                "type": "text",
+                "value": "Bis zu −20 %",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 7220,
+                "scss": false
+            },
+            "elfbar-mega-7-promo2-link": {
+                "label": {
+                    "de-DE": "Kat.7 Promo 2 Link",
+                    "en-GB": "Cat 7 promo 2 link",
+                    "tr-TR": "Kat.7 promo 2 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 7230,
+                "scss": false
+            },
+            "elfbar-mega-8-promo1-img": {
+                "label": {
+                    "de-DE": "Kat.8 Promo 1 Bild",
+                    "en-GB": "Cat 8 promo 1 image",
+                    "tr-TR": "Kat.8 promo 1 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 8100,
+                "scss": false
+            },
+            "elfbar-mega-8-promo1-cap": {
+                "label": {
+                    "de-DE": "Kat.8 Promo 1 Label",
+                    "en-GB": "Cat 8 promo 1 label",
+                    "tr-TR": "Kat.8 promo 1 etiket"
+                },
+                "type": "text",
+                "value": "Top-Marke",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 8110,
+                "scss": false
+            },
+            "elfbar-mega-8-promo1-sub": {
+                "label": {
+                    "de-DE": "Kat.8 Promo 1 Titel",
+                    "en-GB": "Cat 8 promo 1 title",
+                    "tr-TR": "Kat.8 promo 1 başlık"
+                },
+                "type": "text",
+                "value": "Raucherbedarf",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 8120,
+                "scss": false
+            },
+            "elfbar-mega-8-promo1-link": {
+                "label": {
+                    "de-DE": "Kat.8 Promo 1 Link",
+                    "en-GB": "Cat 8 promo 1 link",
+                    "tr-TR": "Kat.8 promo 1 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 8130,
+                "scss": false
+            },
+            "elfbar-mega-8-promo2-img": {
+                "label": {
+                    "de-DE": "Kat.8 Promo 2 Bild",
+                    "en-GB": "Cat 8 promo 2 image",
+                    "tr-TR": "Kat.8 promo 2 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 8200,
+                "scss": false
+            },
+            "elfbar-mega-8-promo2-cap": {
+                "label": {
+                    "de-DE": "Kat.8 Promo 2 Label",
+                    "en-GB": "Cat 8 promo 2 label",
+                    "tr-TR": "Kat.8 promo 2 etiket"
+                },
+                "type": "text",
+                "value": "Aktion",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 8210,
+                "scss": false
+            },
+            "elfbar-mega-8-promo2-sub": {
+                "label": {
+                    "de-DE": "Kat.8 Promo 2 Titel",
+                    "en-GB": "Cat 8 promo 2 title",
+                    "tr-TR": "Kat.8 promo 2 başlık"
+                },
+                "type": "text",
+                "value": "Bis zu −20 %",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 8220,
+                "scss": false
+            },
+            "elfbar-mega-8-promo2-link": {
+                "label": {
+                    "de-DE": "Kat.8 Promo 2 Link",
+                    "en-GB": "Cat 8 promo 2 link",
+                    "tr-TR": "Kat.8 promo 2 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 8230,
+                "scss": false
+            },
+            "elfbar-mega-9-promo1-img": {
+                "label": {
+                    "de-DE": "Kat.9 Promo 1 Bild",
+                    "en-GB": "Cat 9 promo 1 image",
+                    "tr-TR": "Kat.9 promo 1 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 9100,
+                "scss": false
+            },
+            "elfbar-mega-9-promo1-cap": {
+                "label": {
+                    "de-DE": "Kat.9 Promo 1 Label",
+                    "en-GB": "Cat 9 promo 1 label",
+                    "tr-TR": "Kat.9 promo 1 etiket"
+                },
+                "type": "text",
+                "value": "Top-Marke",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 9110,
+                "scss": false
+            },
+            "elfbar-mega-9-promo1-sub": {
+                "label": {
+                    "de-DE": "Kat.9 Promo 1 Titel",
+                    "en-GB": "Cat 9 promo 1 title",
+                    "tr-TR": "Kat.9 promo 1 başlık"
+                },
+                "type": "text",
+                "value": "Shisha",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 9120,
+                "scss": false
+            },
+            "elfbar-mega-9-promo1-link": {
+                "label": {
+                    "de-DE": "Kat.9 Promo 1 Link",
+                    "en-GB": "Cat 9 promo 1 link",
+                    "tr-TR": "Kat.9 promo 1 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 9130,
+                "scss": false
+            },
+            "elfbar-mega-9-promo2-img": {
+                "label": {
+                    "de-DE": "Kat.9 Promo 2 Bild",
+                    "en-GB": "Cat 9 promo 2 image",
+                    "tr-TR": "Kat.9 promo 2 görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 9200,
+                "scss": false
+            },
+            "elfbar-mega-9-promo2-cap": {
+                "label": {
+                    "de-DE": "Kat.9 Promo 2 Label",
+                    "en-GB": "Cat 9 promo 2 label",
+                    "tr-TR": "Kat.9 promo 2 etiket"
+                },
+                "type": "text",
+                "value": "Aktion",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 9210,
+                "scss": false
+            },
+            "elfbar-mega-9-promo2-sub": {
+                "label": {
+                    "de-DE": "Kat.9 Promo 2 Titel",
+                    "en-GB": "Cat 9 promo 2 title",
+                    "tr-TR": "Kat.9 promo 2 başlık"
+                },
+                "type": "text",
+                "value": "Bis zu −20 %",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 9220,
+                "scss": false
+            },
+            "elfbar-mega-9-promo2-link": {
+                "label": {
+                    "de-DE": "Kat.9 Promo 2 Link",
+                    "en-GB": "Cat 9 promo 2 link",
+                    "tr-TR": "Kat.9 promo 2 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarMega",
+                "order": 9230,
+                "scss": false
+            },
+            "elfbar-topmarke-1-logo": {
+                "label": {
+                    "de-DE": "Top-Marke 1 Logo/Bild",
+                    "en-GB": "Top brand 1 logo/image",
+                    "tr-TR": "Top-Marka 1 logo/görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 100,
+                "scss": false
+            },
+            "elfbar-topmarke-1-name": {
+                "label": {
+                    "de-DE": "Top-Marke 1 Name (falls kein Logo)",
+                    "en-GB": "Top brand 1 name",
+                    "tr-TR": "Top-Marka 1 isim"
+                },
+                "type": "text",
+                "value": "ELFBAR",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 110,
+                "scss": false
+            },
+            "elfbar-topmarke-1-link": {
+                "label": {
+                    "de-DE": "Top-Marke 1 Link",
+                    "en-GB": "Top brand 1 link",
+                    "tr-TR": "Top-Marka 1 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 120,
+                "scss": false
+            },
+            "elfbar-topmarke-2-logo": {
+                "label": {
+                    "de-DE": "Top-Marke 2 Logo/Bild",
+                    "en-GB": "Top brand 2 logo/image",
+                    "tr-TR": "Top-Marka 2 logo/görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 200,
+                "scss": false
+            },
+            "elfbar-topmarke-2-name": {
+                "label": {
+                    "de-DE": "Top-Marke 2 Name (falls kein Logo)",
+                    "en-GB": "Top brand 2 name",
+                    "tr-TR": "Top-Marka 2 isim"
+                },
+                "type": "text",
+                "value": "LOST MARY",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 210,
+                "scss": false
+            },
+            "elfbar-topmarke-2-link": {
+                "label": {
+                    "de-DE": "Top-Marke 2 Link",
+                    "en-GB": "Top brand 2 link",
+                    "tr-TR": "Top-Marka 2 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 220,
+                "scss": false
+            },
+            "elfbar-topmarke-3-logo": {
+                "label": {
+                    "de-DE": "Top-Marke 3 Logo/Bild",
+                    "en-GB": "Top brand 3 logo/image",
+                    "tr-TR": "Top-Marka 3 logo/görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 300,
+                "scss": false
+            },
+            "elfbar-topmarke-3-name": {
+                "label": {
+                    "de-DE": "Top-Marke 3 Name (falls kein Logo)",
+                    "en-GB": "Top brand 3 name",
+                    "tr-TR": "Top-Marka 3 isim"
+                },
+                "type": "text",
+                "value": "AL FAKHER",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 310,
+                "scss": false
+            },
+            "elfbar-topmarke-3-link": {
+                "label": {
+                    "de-DE": "Top-Marke 3 Link",
+                    "en-GB": "Top brand 3 link",
+                    "tr-TR": "Top-Marka 3 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 320,
+                "scss": false
+            },
+            "elfbar-topmarke-4-logo": {
+                "label": {
+                    "de-DE": "Top-Marke 4 Logo/Bild",
+                    "en-GB": "Top brand 4 logo/image",
+                    "tr-TR": "Top-Marka 4 logo/görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 400,
+                "scss": false
+            },
+            "elfbar-topmarke-4-name": {
+                "label": {
+                    "de-DE": "Top-Marke 4 Name (falls kein Logo)",
+                    "en-GB": "Top brand 4 name",
+                    "tr-TR": "Top-Marka 4 isim"
+                },
+                "type": "text",
+                "value": "ELFBARESSO",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 410,
+                "scss": false
+            },
+            "elfbar-topmarke-4-link": {
+                "label": {
+                    "de-DE": "Top-Marke 4 Link",
+                    "en-GB": "Top brand 4 link",
+                    "tr-TR": "Top-Marka 4 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 420,
+                "scss": false
+            },
+            "elfbar-topmarke-5-logo": {
+                "label": {
+                    "de-DE": "Top-Marke 5 Logo/Bild",
+                    "en-GB": "Top brand 5 logo/image",
+                    "tr-TR": "Top-Marka 5 logo/görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 500,
+                "scss": false
+            },
+            "elfbar-topmarke-5-name": {
+                "label": {
+                    "de-DE": "Top-Marke 5 Name (falls kein Logo)",
+                    "en-GB": "Top brand 5 name",
+                    "tr-TR": "Top-Marka 5 isim"
+                },
+                "type": "text",
+                "value": "SMOK",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 510,
+                "scss": false
+            },
+            "elfbar-topmarke-5-link": {
+                "label": {
+                    "de-DE": "Top-Marke 5 Link",
+                    "en-GB": "Top brand 5 link",
+                    "tr-TR": "Top-Marka 5 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 520,
+                "scss": false
+            },
+            "elfbar-topmarke-6-logo": {
+                "label": {
+                    "de-DE": "Top-Marke 6 Logo/Bild",
+                    "en-GB": "Top brand 6 logo/image",
+                    "tr-TR": "Top-Marka 6 logo/görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 600,
+                "scss": false
+            },
+            "elfbar-topmarke-6-name": {
+                "label": {
+                    "de-DE": "Top-Marke 6 Name (falls kein Logo)",
+                    "en-GB": "Top brand 6 name",
+                    "tr-TR": "Top-Marka 6 isim"
+                },
+                "type": "text",
+                "value": "ASPIRE",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 610,
+                "scss": false
+            },
+            "elfbar-topmarke-6-link": {
+                "label": {
+                    "de-DE": "Top-Marke 6 Link",
+                    "en-GB": "Top brand 6 link",
+                    "tr-TR": "Top-Marka 6 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 620,
+                "scss": false
+            },
+            "elfbar-topmarke-7-logo": {
+                "label": {
+                    "de-DE": "Top-Marke 7 Logo/Bild",
+                    "en-GB": "Top brand 7 logo/image",
+                    "tr-TR": "Top-Marka 7 logo/görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 700,
+                "scss": false
+            },
+            "elfbar-topmarke-7-name": {
+                "label": {
+                    "de-DE": "Top-Marke 7 Name (falls kein Logo)",
+                    "en-GB": "Top brand 7 name",
+                    "tr-TR": "Top-Marka 7 isim"
+                },
+                "type": "text",
+                "value": "GEEKVAPE",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 710,
+                "scss": false
+            },
+            "elfbar-topmarke-7-link": {
+                "label": {
+                    "de-DE": "Top-Marke 7 Link",
+                    "en-GB": "Top brand 7 link",
+                    "tr-TR": "Top-Marka 7 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 720,
+                "scss": false
+            },
+            "elfbar-topmarke-8-logo": {
+                "label": {
+                    "de-DE": "Top-Marke 8 Logo/Bild",
+                    "en-GB": "Top brand 8 logo/image",
+                    "tr-TR": "Top-Marka 8 logo/görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 800,
+                "scss": false
+            },
+            "elfbar-topmarke-8-name": {
+                "label": {
+                    "de-DE": "Top-Marke 8 Name (falls kein Logo)",
+                    "en-GB": "Top brand 8 name",
+                    "tr-TR": "Top-Marka 8 isim"
+                },
+                "type": "text",
+                "value": "VOOPOO",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 810,
+                "scss": false
+            },
+            "elfbar-topmarke-8-link": {
+                "label": {
+                    "de-DE": "Top-Marke 8 Link",
+                    "en-GB": "Top brand 8 link",
+                    "tr-TR": "Top-Marka 8 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 820,
+                "scss": false
+            },
+            "elfbar-topmarke-9-logo": {
+                "label": {
+                    "de-DE": "Top-Marke 9 Logo/Bild",
+                    "en-GB": "Top brand 9 logo/image",
+                    "tr-TR": "Top-Marka 9 logo/görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 900,
+                "scss": false
+            },
+            "elfbar-topmarke-9-name": {
+                "label": {
+                    "de-DE": "Top-Marke 9 Name (falls kein Logo)",
+                    "en-GB": "Top brand 9 name",
+                    "tr-TR": "Top-Marka 9 isim"
+                },
+                "type": "text",
+                "value": "187 STRASSENBANDE",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 910,
+                "scss": false
+            },
+            "elfbar-topmarke-9-link": {
+                "label": {
+                    "de-DE": "Top-Marke 9 Link",
+                    "en-GB": "Top brand 9 link",
+                    "tr-TR": "Top-Marka 9 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 920,
+                "scss": false
+            },
+            "elfbar-topmarke-10-logo": {
+                "label": {
+                    "de-DE": "Top-Marke 10 Logo/Bild",
+                    "en-GB": "Top brand 10 logo/image",
+                    "tr-TR": "Top-Marka 10 logo/görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 1000,
+                "scss": false
+            },
+            "elfbar-topmarke-10-name": {
+                "label": {
+                    "de-DE": "Top-Marke 10 Name (falls kein Logo)",
+                    "en-GB": "Top brand 10 name",
+                    "tr-TR": "Top-Marka 10 isim"
+                },
+                "type": "text",
+                "value": "UWELL",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 1010,
+                "scss": false
+            },
+            "elfbar-topmarke-10-link": {
+                "label": {
+                    "de-DE": "Top-Marke 10 Link",
+                    "en-GB": "Top brand 10 link",
+                    "tr-TR": "Top-Marka 10 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 1020,
+                "scss": false
+            },
+            "elfbar-topmarke-11-logo": {
+                "label": {
+                    "de-DE": "Top-Marke 11 Logo/Bild",
+                    "en-GB": "Top brand 11 logo/image",
+                    "tr-TR": "Top-Marka 11 logo/görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 1100,
+                "scss": false
+            },
+            "elfbar-topmarke-11-name": {
+                "label": {
+                    "de-DE": "Top-Marke 11 Name (falls kein Logo)",
+                    "en-GB": "Top brand 11 name",
+                    "tr-TR": "Top-Marka 11 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 1110,
+                "scss": false
+            },
+            "elfbar-topmarke-11-link": {
+                "label": {
+                    "de-DE": "Top-Marke 11 Link",
+                    "en-GB": "Top brand 11 link",
+                    "tr-TR": "Top-Marka 11 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 1120,
+                "scss": false
+            },
+            "elfbar-topmarke-12-logo": {
+                "label": {
+                    "de-DE": "Top-Marke 12 Logo/Bild",
+                    "en-GB": "Top brand 12 logo/image",
+                    "tr-TR": "Top-Marka 12 logo/görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 1200,
+                "scss": false
+            },
+            "elfbar-topmarke-12-name": {
+                "label": {
+                    "de-DE": "Top-Marke 12 Name (falls kein Logo)",
+                    "en-GB": "Top brand 12 name",
+                    "tr-TR": "Top-Marka 12 isim"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 1210,
+                "scss": false
+            },
+            "elfbar-topmarke-12-link": {
+                "label": {
+                    "de-DE": "Top-Marke 12 Link",
+                    "en-GB": "Top brand 12 link",
+                    "tr-TR": "Top-Marka 12 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopMarken",
+                "order": 1220,
+                "scss": false
+            },
+            "elfbar-footer-usp-1-icon": {
+                "label": {
+                    "de-DE": "USP 1 Icon",
+                    "en-GB": "USP 1 icon",
+                    "tr-TR": "USP 1 ikon"
+                },
+                "type": "text",
+                "value": "truck",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 1900,
+                "scss": false,
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "truck",
+                            "label": {
+                                "de-DE": "LKW / Versand",
+                                "en-GB": "Truck / shipping",
+                                "tr-TR": "Kamyon / kargo"
+                            }
+                        },
+                        {
+                            "value": "lock-closed",
+                            "label": {
+                                "de-DE": "Schloss / Sicherheit",
+                                "en-GB": "Lock / security",
+                                "tr-TR": "Kilit / güvenlik"
+                            }
+                        },
+                        {
+                            "value": "arrow-circle-left",
+                            "label": {
+                                "de-DE": "Rückgabe",
+                                "en-GB": "Return",
+                                "tr-TR": "İade"
+                            }
+                        },
+                        {
+                            "value": "headset",
+                            "label": {
+                                "de-DE": "Support / Headset",
+                                "en-GB": "Support / headset",
+                                "tr-TR": "Destek / kulaklık"
+                            }
+                        },
+                        {
+                            "value": "marketing",
+                            "label": {
+                                "de-DE": "Marketing / Stern",
+                                "en-GB": "Marketing / star",
+                                "tr-TR": "Pazarlama / yıldız"
+                            }
+                        },
+                        {
+                            "value": "rocket",
+                            "label": {
+                                "de-DE": "Rakete / schnell",
+                                "en-GB": "Rocket / fast",
+                                "tr-TR": "Roket / hızlı"
+                            }
+                        },
+                        {
+                            "value": "checkmark",
+                            "label": {
+                                "de-DE": "Haken",
+                                "en-GB": "Checkmark",
+                                "tr-TR": "Onay"
+                            }
+                        },
+                        {
+                            "value": "tags",
+                            "label": {
+                                "de-DE": "Etikett / Rabatt",
+                                "en-GB": "Tag / discount",
+                                "tr-TR": "Etiket / indirim"
+                            }
+                        }
+                    ]
+                }
+            },
+            "elfbar-footer-usp-1-title": {
+                "label": {
+                    "de-DE": "USP 1 Titel",
+                    "en-GB": "USP 1 title",
+                    "tr-TR": "USP 1 başlık"
+                },
+                "helpText": {
+                    "de-DE": "Leer = dieser USP wird ausgeblendet.",
+                    "en-GB": "Empty = this USP is hidden.",
+                    "tr-TR": "Boş = bu USP gizlenir."
+                },
+                "type": "text",
+                "value": "Kostenloser Versand",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 1901,
+                "scss": false
+            },
+            "elfbar-footer-usp-1-sub": {
+                "label": {
+                    "de-DE": "USP 1 Untertitel",
+                    "en-GB": "USP 1 subtitle",
+                    "tr-TR": "USP 1 alt metin"
+                },
+                "type": "text",
+                "value": "ab 500 € Netto",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 1902,
+                "scss": false
+            },
+            "elfbar-footer-usp-2-icon": {
+                "label": {
+                    "de-DE": "USP 2 Icon",
+                    "en-GB": "USP 2 icon",
+                    "tr-TR": "USP 2 ikon"
+                },
+                "type": "text",
+                "value": "lock-closed",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 1910,
+                "scss": false,
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "truck",
+                            "label": {
+                                "de-DE": "LKW / Versand",
+                                "en-GB": "Truck / shipping",
+                                "tr-TR": "Kamyon / kargo"
+                            }
+                        },
+                        {
+                            "value": "lock-closed",
+                            "label": {
+                                "de-DE": "Schloss / Sicherheit",
+                                "en-GB": "Lock / security",
+                                "tr-TR": "Kilit / güvenlik"
+                            }
+                        },
+                        {
+                            "value": "arrow-circle-left",
+                            "label": {
+                                "de-DE": "Rückgabe",
+                                "en-GB": "Return",
+                                "tr-TR": "İade"
+                            }
+                        },
+                        {
+                            "value": "headset",
+                            "label": {
+                                "de-DE": "Support / Headset",
+                                "en-GB": "Support / headset",
+                                "tr-TR": "Destek / kulaklık"
+                            }
+                        },
+                        {
+                            "value": "marketing",
+                            "label": {
+                                "de-DE": "Marketing / Stern",
+                                "en-GB": "Marketing / star",
+                                "tr-TR": "Pazarlama / yıldız"
+                            }
+                        },
+                        {
+                            "value": "rocket",
+                            "label": {
+                                "de-DE": "Rakete / schnell",
+                                "en-GB": "Rocket / fast",
+                                "tr-TR": "Roket / hızlı"
+                            }
+                        },
+                        {
+                            "value": "checkmark",
+                            "label": {
+                                "de-DE": "Haken",
+                                "en-GB": "Checkmark",
+                                "tr-TR": "Onay"
+                            }
+                        },
+                        {
+                            "value": "tags",
+                            "label": {
+                                "de-DE": "Etikett / Rabatt",
+                                "en-GB": "Tag / discount",
+                                "tr-TR": "Etiket / indirim"
+                            }
+                        }
+                    ]
+                }
+            },
+            "elfbar-footer-usp-2-title": {
+                "label": {
+                    "de-DE": "USP 2 Titel",
+                    "en-GB": "USP 2 title",
+                    "tr-TR": "USP 2 başlık"
+                },
+                "type": "text",
+                "value": "Sichere Bezahlung",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 1911,
+                "scss": false
+            },
+            "elfbar-footer-usp-2-sub": {
+                "label": {
+                    "de-DE": "USP 2 Untertitel",
+                    "en-GB": "USP 2 subtitle",
+                    "tr-TR": "USP 2 alt metin"
+                },
+                "type": "text",
+                "value": "PayPal & Rechnung",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 1912,
+                "scss": false
+            },
+            "elfbar-footer-usp-3-icon": {
+                "label": {
+                    "de-DE": "USP 3 Icon",
+                    "en-GB": "USP 3 icon",
+                    "tr-TR": "USP 3 ikon"
+                },
+                "type": "text",
+                "value": "rocket",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 1920,
+                "scss": false,
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "truck",
+                            "label": {
+                                "de-DE": "LKW / Versand",
+                                "en-GB": "Truck / shipping",
+                                "tr-TR": "Kamyon / kargo"
+                            }
+                        },
+                        {
+                            "value": "lock-closed",
+                            "label": {
+                                "de-DE": "Schloss / Sicherheit",
+                                "en-GB": "Lock / security",
+                                "tr-TR": "Kilit / güvenlik"
+                            }
+                        },
+                        {
+                            "value": "arrow-circle-left",
+                            "label": {
+                                "de-DE": "Rückgabe",
+                                "en-GB": "Return",
+                                "tr-TR": "İade"
+                            }
+                        },
+                        {
+                            "value": "headset",
+                            "label": {
+                                "de-DE": "Support / Headset",
+                                "en-GB": "Support / headset",
+                                "tr-TR": "Destek / kulaklık"
+                            }
+                        },
+                        {
+                            "value": "marketing",
+                            "label": {
+                                "de-DE": "Marketing / Stern",
+                                "en-GB": "Marketing / star",
+                                "tr-TR": "Pazarlama / yıldız"
+                            }
+                        },
+                        {
+                            "value": "rocket",
+                            "label": {
+                                "de-DE": "Rakete / schnell",
+                                "en-GB": "Rocket / fast",
+                                "tr-TR": "Roket / hızlı"
+                            }
+                        },
+                        {
+                            "value": "checkmark",
+                            "label": {
+                                "de-DE": "Haken",
+                                "en-GB": "Checkmark",
+                                "tr-TR": "Onay"
+                            }
+                        },
+                        {
+                            "value": "tags",
+                            "label": {
+                                "de-DE": "Etikett / Rabatt",
+                                "en-GB": "Tag / discount",
+                                "tr-TR": "Etiket / indirim"
+                            }
+                        }
+                    ]
+                }
+            },
+            "elfbar-footer-usp-3-title": {
+                "label": {
+                    "de-DE": "USP 3 Titel",
+                    "en-GB": "USP 3 title",
+                    "tr-TR": "USP 3 başlık"
+                },
+                "type": "text",
+                "value": "Schnelle Lieferung",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 1921,
+                "scss": false
+            },
+            "elfbar-footer-usp-3-sub": {
+                "label": {
+                    "de-DE": "USP 3 Untertitel",
+                    "en-GB": "USP 3 subtitle",
+                    "tr-TR": "USP 3 alt metin"
+                },
+                "type": "text",
+                "value": "24–48h Versand",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 1922,
+                "scss": false
+            },
+            "elfbar-footer-usp-4-icon": {
+                "label": {
+                    "de-DE": "USP 4 Icon",
+                    "en-GB": "USP 4 icon",
+                    "tr-TR": "USP 4 ikon"
+                },
+                "type": "text",
+                "value": "headset",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 1930,
+                "scss": false,
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "truck",
+                            "label": {
+                                "de-DE": "LKW / Versand",
+                                "en-GB": "Truck / shipping",
+                                "tr-TR": "Kamyon / kargo"
+                            }
+                        },
+                        {
+                            "value": "lock-closed",
+                            "label": {
+                                "de-DE": "Schloss / Sicherheit",
+                                "en-GB": "Lock / security",
+                                "tr-TR": "Kilit / güvenlik"
+                            }
+                        },
+                        {
+                            "value": "arrow-circle-left",
+                            "label": {
+                                "de-DE": "Rückgabe",
+                                "en-GB": "Return",
+                                "tr-TR": "İade"
+                            }
+                        },
+                        {
+                            "value": "headset",
+                            "label": {
+                                "de-DE": "Support / Headset",
+                                "en-GB": "Support / headset",
+                                "tr-TR": "Destek / kulaklık"
+                            }
+                        },
+                        {
+                            "value": "marketing",
+                            "label": {
+                                "de-DE": "Marketing / Stern",
+                                "en-GB": "Marketing / star",
+                                "tr-TR": "Pazarlama / yıldız"
+                            }
+                        },
+                        {
+                            "value": "rocket",
+                            "label": {
+                                "de-DE": "Rakete / schnell",
+                                "en-GB": "Rocket / fast",
+                                "tr-TR": "Roket / hızlı"
+                            }
+                        },
+                        {
+                            "value": "checkmark",
+                            "label": {
+                                "de-DE": "Haken",
+                                "en-GB": "Checkmark",
+                                "tr-TR": "Onay"
+                            }
+                        },
+                        {
+                            "value": "tags",
+                            "label": {
+                                "de-DE": "Etikett / Rabatt",
+                                "en-GB": "Tag / discount",
+                                "tr-TR": "Etiket / indirim"
+                            }
+                        }
+                    ]
+                }
+            },
+            "elfbar-footer-usp-4-title": {
+                "label": {
+                    "de-DE": "USP 4 Titel",
+                    "en-GB": "USP 4 title",
+                    "tr-TR": "USP 4 başlık"
+                },
+                "type": "text",
+                "value": "Persönlicher B2B-Support",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 1931,
+                "scss": false
+            },
+            "elfbar-footer-usp-4-sub": {
+                "label": {
+                    "de-DE": "USP 4 Untertitel",
+                    "en-GB": "USP 4 subtitle",
+                    "tr-TR": "USP 4 alt metin"
+                },
+                "type": "text",
+                "value": "Mo-Fr, 09:00 - 16:00 Uhr",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 1932,
+                "scss": false
+            },
+            "elfbar-footer-blurb": {
+                "label": {
+                    "de-DE": "Über uns Text",
+                    "en-GB": "About text",
+                    "tr-TR": "Hakkımızda metni"
+                },
+                "type": "text",
+                "value": "Ihr zuverlässiger B2B-Partner für E-Zigaretten, Liquids und Zubehör. Großhandelskonditionen, schnelle Lieferung und persönliche Beratung für den Fachhandel.",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2000,
+                "scss": false
+            },
+            "elfbar-footer-phone": {
+                "label": {
+                    "de-DE": "Telefon",
+                    "en-GB": "Phone",
+                    "tr-TR": "Telefon"
+                },
+                "type": "text",
+                "value": "0212 / 520 821 00",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2010,
+                "scss": false
+            },
+            "elfbar-footer-email": {
+                "label": {
+                    "de-DE": "E-Mail",
+                    "en-GB": "Email",
+                    "tr-TR": "E-posta"
+                },
+                "type": "text",
+                "value": "info@elfbar-handel.de",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2020,
+                "scss": false
+            },
+            "elfbar-footer-hours": {
+                "label": {
+                    "de-DE": "Öffnungszeiten",
+                    "en-GB": "Opening hours",
+                    "tr-TR": "Çalışma saatleri"
+                },
+                "type": "text",
+                "value": "Mo-Fr, 09:00 - 16:00 Uhr",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2030,
+                "scss": false
+            },
+            "elfbar-footer-social-instagram": {
+                "label": {
+                    "de-DE": "Instagram URL",
+                    "en-GB": "Instagram URL",
+                    "tr-TR": "Instagram URL"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2040,
+                "scss": false
+            },
+            "elfbar-footer-social-facebook": {
+                "label": {
+                    "de-DE": "Facebook URL",
+                    "en-GB": "Facebook URL",
+                    "tr-TR": "Facebook URL"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2050,
+                "scss": false
+            },
+            "elfbar-footer-social-whatsapp": {
+                "label": {
+                    "de-DE": "WhatsApp URL",
+                    "en-GB": "WhatsApp URL",
+                    "tr-TR": "WhatsApp URL"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2060,
+                "scss": false
+            },
+            "elfbar-footer-b2b-cta-text": {
+                "label": {
+                    "de-DE": "B2B-Button Text",
+                    "en-GB": "B2B button text",
+                    "tr-TR": "B2B buton metni"
+                },
+                "type": "text",
+                "value": "Jetzt Händler werden",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2070,
+                "scss": false
+            },
+            "elfbar-footer-b2b-cta-link": {
+                "label": {
+                    "de-DE": "B2B-Button Link",
+                    "en-GB": "B2B button link",
+                    "tr-TR": "B2B buton link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2080,
+                "scss": false
+            },
+            "elfbar-footer-logo": {
+                "label": {
+                    "de-DE": "Footer Logo (über \"Über uns\")",
+                    "en-GB": "Footer logo (above \"About us\")",
+                    "tr-TR": "Footer logo (Über uns altı)"
+                },
+                "helpText": {
+                    "de-DE": "Logo unter der Überschrift \"Über uns\" im Footer. Leer = ausgeblendet.",
+                    "en-GB": "Logo under the \"About us\" footer heading. Empty = hidden.",
+                    "tr-TR": "Footer'da \"Über uns\" başlığı altındaki logo. Boş = gizli."
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2081,
+                "scss": false
+            },
+            "elfbar-footer-newsletter-title": {
+                "label": {
+                    "de-DE": "Newsletter Titel",
+                    "en-GB": "Newsletter title",
+                    "tr-TR": "Newsletter başlık"
+                },
+                "helpText": {
+                    "de-DE": "Überschrift der Newsletter-Box im Footer. Leer = Box ausgeblendet.",
+                    "en-GB": "Newsletter box heading in footer. Empty = hidden.",
+                    "tr-TR": "Footer newsletter kutusu başlığı. Boş = gizli."
+                },
+                "type": "text",
+                "value": "Newsletter",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2082,
+                "scss": false
+            },
+            "elfbar-footer-newsletter-text": {
+                "label": {
+                    "de-DE": "Newsletter Text",
+                    "en-GB": "Newsletter text",
+                    "tr-TR": "Newsletter metin"
+                },
+                "helpText": {
+                    "de-DE": "Beschreibung unter dem Titel (z. B. Gutschein-Hinweis).",
+                    "en-GB": "Description below the title.",
+                    "tr-TR": "Başlık altı açıklama."
+                },
+                "type": "text",
+                "value": "Jetzt anmelden und 50€ Gutschein sichern!",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2084,
+                "scss": false
+            },
+            "elfbar-footer-newsletter-note": {
+                "label": {
+                    "de-DE": "Newsletter Kleingedrucktes",
+                    "en-GB": "Newsletter fine print",
+                    "tr-TR": "Newsletter dipnot"
+                },
+                "helpText": {
+                    "de-DE": "Kleiner Hinweistext unter dem Formular.",
+                    "en-GB": "Small note below the form.",
+                    "tr-TR": "Form altı küçük dipnot."
+                },
+                "type": "text",
+                "value": "*Ab einem Warenwert von 500€",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2086,
+                "scss": false
+            },
+            "elfbar-footer-trust-1": {
+                "label": {
+                    "de-DE": "Trust-Logo 1 (Bild)",
+                    "en-GB": "Trust logo 1 (image)",
+                    "tr-TR": "Güven logosu 1 (görsel)"
+                },
+                "helpText": {
+                    "de-DE": "z. B. Jugendschutz, Der Grüne Punkt, Händlerbund. Leer = ausgeblendet.",
+                    "en-GB": "e.g. youth protection, recycling, dealer association. Empty = hidden.",
+                    "tr-TR": "Örn. Jugendschutz / Grüner Punkt / Händlerbund. Boş = gizli."
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2100,
+                "scss": false
+            },
+            "elfbar-footer-trust-1-link": {
+                "label": {
+                    "de-DE": "Trust-Logo 1 Link (optional)",
+                    "en-GB": "Trust logo 1 link",
+                    "tr-TR": "Güven logosu 1 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2105,
+                "scss": false
+            },
+            "elfbar-footer-trust-2": {
+                "label": {
+                    "de-DE": "Trust-Logo 2 (Bild)",
+                    "en-GB": "Trust logo 2 (image)",
+                    "tr-TR": "Güven logosu 2 (görsel)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2110,
+                "scss": false
+            },
+            "elfbar-footer-trust-2-link": {
+                "label": {
+                    "de-DE": "Trust-Logo 2 Link (optional)",
+                    "en-GB": "Trust logo 2 link",
+                    "tr-TR": "Güven logosu 2 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2115,
+                "scss": false
+            },
+            "elfbar-footer-trust-3": {
+                "label": {
+                    "de-DE": "Trust-Logo 3 (Bild)",
+                    "en-GB": "Trust logo 3 (image)",
+                    "tr-TR": "Güven logosu 3 (görsel)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2120,
+                "scss": false
+            },
+            "elfbar-footer-trust-3-link": {
+                "label": {
+                    "de-DE": "Trust-Logo 3 Link (optional)",
+                    "en-GB": "Trust logo 3 link",
+                    "tr-TR": "Güven logosu 3 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2125,
+                "scss": false
+            },
+            "elfbar-footer-trust-4": {
+                "label": {
+                    "de-DE": "Trust-Logo 4 (Bild)",
+                    "en-GB": "Trust logo 4 (image)",
+                    "tr-TR": "Güven logosu 4 (görsel)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2130,
+                "scss": false
+            },
+            "elfbar-footer-trust-4-link": {
+                "label": {
+                    "de-DE": "Trust-Logo 4 Link (optional)",
+                    "en-GB": "Trust logo 4 link",
+                    "tr-TR": "Güven logosu 4 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2135,
+                "scss": false
+            },
+            "elfbar-footer-pay-1": {
+                "label": {
+                    "de-DE": "Zahlung-Logo 1 (Bild)",
+                    "en-GB": "Payment logo 1",
+                    "tr-TR": "Ödeme logosu 1"
+                },
+                "helpText": {
+                    "de-DE": "z. B. PayPal, Klarna, Visa. Leer = ausgeblendet.",
+                    "en-GB": "e.g. PayPal, Klarna, Visa. Empty = hidden.",
+                    "tr-TR": "Örn. PayPal, Klarna, Visa. Boş = gizli."
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2200,
+                "scss": false
+            },
+            "elfbar-footer-pay-2": {
+                "label": {
+                    "de-DE": "Zahlung-Logo 2 (Bild)",
+                    "en-GB": "Payment logo 2",
+                    "tr-TR": "Ödeme logosu 2"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2210,
+                "scss": false
+            },
+            "elfbar-footer-pay-3": {
+                "label": {
+                    "de-DE": "Zahlung-Logo 3 (Bild)",
+                    "en-GB": "Payment logo 3",
+                    "tr-TR": "Ödeme logosu 3"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2220,
+                "scss": false
+            },
+            "elfbar-footer-pay-4": {
+                "label": {
+                    "de-DE": "Zahlung-Logo 4 (Bild)",
+                    "en-GB": "Payment logo 4",
+                    "tr-TR": "Ödeme logosu 4"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2230,
+                "scss": false
+            },
+            "elfbar-footer-pay-5": {
+                "label": {
+                    "de-DE": "Zahlung-Logo 5 (Bild)",
+                    "en-GB": "Payment logo 5",
+                    "tr-TR": "Ödeme logosu 5"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2240,
+                "scss": false
+            },
+            "elfbar-footer-ship-1": {
+                "label": {
+                    "de-DE": "Versand-Logo 1 (Bild)",
+                    "en-GB": "Shipping logo 1",
+                    "tr-TR": "Kargo logosu 1"
+                },
+                "helpText": {
+                    "de-DE": "z. B. DHL, DPD, UPS. Leer = ausgeblendet.",
+                    "en-GB": "e.g. DHL, DPD, UPS. Empty = hidden.",
+                    "tr-TR": "Örn. DHL, DPD, UPS. Boş = gizli."
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2300,
+                "scss": false
+            },
+            "elfbar-footer-ship-2": {
+                "label": {
+                    "de-DE": "Versand-Logo 2 (Bild)",
+                    "en-GB": "Shipping logo 2",
+                    "tr-TR": "Kargo logosu 2"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2310,
+                "scss": false
+            },
+            "elfbar-footer-ship-3": {
+                "label": {
+                    "de-DE": "Versand-Logo 3 (Bild)",
+                    "en-GB": "Shipping logo 3",
+                    "tr-TR": "Kargo logosu 3"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2320,
+                "scss": false
+            },
+            "elfbar-footer-ship-4": {
+                "label": {
+                    "de-DE": "Versand-Logo 4 (Bild)",
+                    "en-GB": "Shipping logo 4",
+                    "tr-TR": "Kargo logosu 4"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarFooter",
+                "order": 2330,
+                "scss": false
+            },
+            "elfbar-header-pay-1": {
+                "label": {
+                    "de-DE": "Header Zahlung-Logo 1",
+                    "en-GB": "Header payment logo 1",
+                    "tr-TR": "Header ödeme logosu 1"
+                },
+                "helpText": {
+                    "de-DE": "Neben dem Such-Icon (nur Desktop). z. B. PayPal. Leer = ausgeblendet.",
+                    "en-GB": "Next to the search icon (desktop only). e.g. PayPal. Empty = hidden.",
+                    "tr-TR": "Arama ikonu yanında (sadece masaüstü). Örn. PayPal. Boş = gizli."
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2400,
+                "scss": false
+            },
+            "elfbar-header-pay-2": {
+                "label": {
+                    "de-DE": "Header Zahlung-Logo 2",
+                    "en-GB": "Header payment logo 2",
+                    "tr-TR": "Header ödeme logosu 2"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2410,
+                "scss": false
+            },
+            "elfbar-header-pay-3": {
+                "label": {
+                    "de-DE": "Header Zahlung-Logo 3",
+                    "en-GB": "Header payment logo 3",
+                    "tr-TR": "Header ödeme logosu 3"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2420,
+                "scss": false
+            },
+            "elfbar-header-pay-4": {
+                "label": {
+                    "de-DE": "Header Zahlung-Logo 4",
+                    "en-GB": "Header payment logo 4",
+                    "tr-TR": "Header ödeme logosu 4"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2421,
+                "scss": false
+            },
+            "elfbar-header-pay-5": {
+                "label": {
+                    "de-DE": "Header Zahlung-Logo 5",
+                    "en-GB": "Header payment logo 5",
+                    "tr-TR": "Header ödeme logosu 5"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2422,
+                "scss": false
+            },
+            "elfbar-header-pay-6": {
+                "label": {
+                    "de-DE": "Header Zahlung-Logo 6",
+                    "en-GB": "Header payment logo 6",
+                    "tr-TR": "Header ödeme logosu 6"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2423,
+                "scss": false
+            },
+            "elfbar-header-menu-1-name": {
+                "label": {
+                    "de-DE": "Menüpunkt 1 – Name",
+                    "en-GB": "Menu item 1 – name",
+                    "tr-TR": "Menü 1 – ad"
+                },
+                "helpText": {
+                    "de-DE": "Header-Navigation. Name + Link selbst eintragen (z. B. Liquids / /Liquids). Alle Namen leer = automatisches Kategorie-Menü.",
+                    "en-GB": "Header navigation. Enter name + link (e.g. Liquids / /Liquids). All names empty = automatic category menu.",
+                    "tr-TR": "Header menüsü. Ad + link gir (örn. Liquids / /Liquids). Hepsi boşsa otomatik kategori menüsü."
+                },
+                "type": "text",
+                "value": "E-Zigaretten & Vapes",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2430,
+                "scss": false
+            },
+            "elfbar-header-menu-1-link": {
+                "label": {
+                    "de-DE": "Menüpunkt 1 – Link",
+                    "en-GB": "Menu item 1 – link",
+                    "tr-TR": "Menü 1 – link"
+                },
+                "helpText": {
+                    "de-DE": "z. B. /Liquids oder volle URL.",
+                    "en-GB": "e.g. /Liquids or full URL.",
+                    "tr-TR": "Örn. /Liquids veya tam URL."
+                },
+                "type": "text",
+                "value": "/E-Zigaretten-Vapes/",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2431,
+                "scss": false
+            },
+            "elfbar-header-menu-2-name": {
+                "label": {
+                    "de-DE": "Menüpunkt 2 – Name",
+                    "en-GB": "Menu item 2 – name",
+                    "tr-TR": "Menü 2 – ad"
+                },
+                "type": "text",
+                "value": "Pods",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2432,
+                "scss": false
+            },
+            "elfbar-header-menu-2-link": {
+                "label": {
+                    "de-DE": "Menüpunkt 2 – Link",
+                    "en-GB": "Menu item 2 – link",
+                    "tr-TR": "Menü 2 – link"
+                },
+                "type": "text",
+                "value": "/Pods-Akkutraeger/",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2433,
+                "scss": false
+            },
+            "elfbar-header-menu-3-name": {
+                "label": {
+                    "de-DE": "Menüpunkt 3 – Name",
+                    "en-GB": "Menu item 3 – name",
+                    "tr-TR": "Menü 3 – ad"
+                },
+                "type": "text",
+                "value": "Liquids",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2434,
+                "scss": false
+            },
+            "elfbar-header-menu-3-link": {
+                "label": {
+                    "de-DE": "Menüpunkt 3 – Link",
+                    "en-GB": "Menu item 3 – link",
+                    "tr-TR": "Menü 3 – link"
+                },
+                "type": "text",
+                "value": "/Liquids/",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2435,
+                "scss": false
+            },
+            "elfbar-header-menu-4-name": {
+                "label": {
+                    "de-DE": "Menüpunkt 4 – Name",
+                    "en-GB": "Menu item 4 – name",
+                    "tr-TR": "Menü 4 – ad"
+                },
+                "type": "text",
+                "value": "Aromen",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2436,
+                "scss": false
+            },
+            "elfbar-header-menu-4-link": {
+                "label": {
+                    "de-DE": "Menüpunkt 4 – Link",
+                    "en-GB": "Menu item 4 – link",
+                    "tr-TR": "Menü 4 – link"
+                },
+                "type": "text",
+                "value": "/Aromen/",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2437,
+                "scss": false
+            },
+            "elfbar-header-menu-5-name": {
+                "label": {
+                    "de-DE": "Menüpunkt 5 – Name",
+                    "en-GB": "Menu item 5 – name",
+                    "tr-TR": "Menü 5 – ad"
+                },
+                "type": "text",
+                "value": "Aktionen",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2438,
+                "scss": false
+            },
+            "elfbar-header-menu-5-link": {
+                "label": {
+                    "de-DE": "Menüpunkt 5 – Link",
+                    "en-GB": "Menu item 5 – link",
+                    "tr-TR": "Menü 5 – link"
+                },
+                "type": "text",
+                "value": "/Aktionen/",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2439,
+                "scss": false
+            },
+            "elfbar-header-menu-6-name": {
+                "label": {
+                    "de-DE": "Menüpunkt 6 – Name",
+                    "en-GB": "Menu item 6 – name",
+                    "tr-TR": "Menü 6 – ad"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2440,
+                "scss": false
+            },
+            "elfbar-header-menu-6-link": {
+                "label": {
+                    "de-DE": "Menüpunkt 6 – Link",
+                    "en-GB": "Menu item 6 – link",
+                    "tr-TR": "Menü 6 – link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHeader",
+                "order": 2441,
+                "scss": false
+            },
+            "elfbar-home-banner-img": {
+                "label": {
+                    "de-DE": "Banner Bild (Desktop, ~1292×239)",
+                    "en-GB": "Banner image (desktop, ~1292×239)",
+                    "tr-TR": "Banner görsel (masaüstü, ~1292×239)"
+                },
+                "helpText": {
+                    "de-DE": "Breites Banner zwischen Deals & Neuheiten. Empfohlen 1292×239 px. Leer = Banner ausgeblendet.",
+                    "en-GB": "Wide banner between deals & new arrivals. Recommended 1292×239 px. Empty = hidden.",
+                    "tr-TR": "Deals & Neuheiten arası geniş banner. Önerilen 1292×239 px. Boş = gizli."
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHomeBanner",
+                "order": 2500,
+                "scss": false
+            },
+            "elfbar-home-banner-img-mobile": {
+                "label": {
+                    "de-DE": "Banner Bild (Mobil, optional)",
+                    "en-GB": "Banner image (mobile, optional)",
+                    "tr-TR": "Banner görsel (mobil, opsiyonel)"
+                },
+                "helpText": {
+                    "de-DE": "Optional. Auf Smartphones statt des breiten Desktop-Banners. Leer = Desktop-Bild wird verwendet.",
+                    "en-GB": "Optional. Shown on phones instead of the wide desktop banner. Empty = desktop image is used.",
+                    "tr-TR": "Opsiyonel. Telefonda geniş masaüstü banner yerine. Boş = masaüstü görseli kullanılır."
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHomeBanner",
+                "order": 2510,
+                "scss": false
+            },
+            "elfbar-home-banner-link": {
+                "label": {
+                    "de-DE": "Banner Link",
+                    "en-GB": "Banner link",
+                    "tr-TR": "Banner link"
+                },
+                "helpText": {
+                    "de-DE": "z. B. /Aktionen/ oder volle URL. Leer = nicht klickbar.",
+                    "en-GB": "e.g. /Aktionen/ or full URL. Empty = not clickable.",
+                    "tr-TR": "Örn. /Aktionen/ veya tam URL. Boş = tıklanamaz."
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarHomeBanner",
+                "order": 2520,
+                "scss": false
+            },
+            "elfbar-showcase-img": {
+                "label": {
+                    "de-DE": "Vitrine Bild (Desktop)",
+                    "en-GB": "Showcase image (desktop)",
+                    "tr-TR": "Vitrin görsel (masaüstü)"
+                },
+                "helpText": {
+                    "de-DE": "Bild links im Vitrine-Banner (z. B. ELFBAR COMPACT PRO MAX). Leer = ganzer Block ausgeblendet.",
+                    "en-GB": "Image on the left of the showcase banner (e.g. ELFBAR COMPACT PRO MAX). Empty = whole block hidden.",
+                    "tr-TR": "Vitrin banner'ında sol görsel (örn. ELFBAR COMPACT PRO MAX). Boş = tüm blok gizli."
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarShowcase",
+                "order": 2600,
+                "scss": false
+            },
+            "elfbar-showcase-img-mobile": {
+                "label": {
+                    "de-DE": "Vitrine Bild (Mobil, optional)",
+                    "en-GB": "Showcase image (mobile, optional)",
+                    "tr-TR": "Vitrin görsel (mobil, opsiyonel)"
+                },
+                "helpText": {
+                    "de-DE": "Optional. Auf Smartphones statt des Desktop-Bildes. Leer = Desktop-Bild wird verwendet.",
+                    "en-GB": "Optional. Shown on phones instead of the desktop image. Empty = desktop image is used.",
+                    "tr-TR": "Opsiyonel. Telefonda masaüstü görsel yerine. Boş = masaüstü görseli kullanılır."
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarShowcase",
+                "order": 2610,
+                "scss": false
+            },
+            "elfbar-showcase-title-img": {
+                "label": {
+                    "de-DE": "Vitrine Titel-Bild (rechts)",
+                    "en-GB": "Showcase title image (right)",
+                    "tr-TR": "Vitrin başlık görseli (sağ)"
+                },
+                "helpText": {
+                    "de-DE": "Bild statt Überschrift im rechten Bereich (z. B. Logo/Schriftzug). Leer = Text-Titel wird verwendet.",
+                    "en-GB": "Image instead of the heading in the right area (e.g. logo/wordmark). Empty = text title is used.",
+                    "tr-TR": "Sağ alanda başlık metni yerine görsel (örn. logo/yazı). Boş = metin başlık kullanılır."
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarShowcase",
+                "order": 2615,
+                "scss": false
+            },
+            "elfbar-showcase-title": {
+                "label": {
+                    "de-DE": "Vitrine Titel (Text, falls kein Bild)",
+                    "en-GB": "Showcase title (text, if no image)",
+                    "tr-TR": "Vitrin başlık (metin, görsel yoksa)"
+                },
+                "helpText": {
+                    "de-DE": "Text-Überschrift. Wird nur angezeigt, wenn KEIN Titel-Bild gesetzt ist. Leer = ausgeblendet.",
+                    "en-GB": "Text heading. Shown only when NO title image is set. Empty = hidden.",
+                    "tr-TR": "Metin başlık. Sadece başlık görseli YOKSA görünür. Boş = gizli."
+                },
+                "type": "text",
+                "value": "Präsentieren wie nie zuvor!",
+                "editable": true,
+                "block": "elfbarShowcase",
+                "order": 2620,
+                "scss": false
+            },
+            "elfbar-showcase-text": {
+                "label": {
+                    "de-DE": "Vitrine Text",
+                    "en-GB": "Showcase text",
+                    "tr-TR": "Vitrin metin"
+                },
+                "helpText": {
+                    "de-DE": "Beschreibungstext unter dem Titel. Leer = ausgeblendet.",
+                    "en-GB": "Description text below the title. Empty = hidden.",
+                    "tr-TR": "Başlık altı açıklama metni. Boş = gizli."
+                },
+                "type": "text",
+                "value": "Mit den Elfbar Premium Verkaufsvitrinen nicht nur sichtbar sein, sondern auch mehr Umsatz generieren!",
+                "editable": true,
+                "block": "elfbarShowcase",
+                "order": 2630,
+                "scss": false
+            },
+            "elfbar-showcase-note": {
+                "label": {
+                    "de-DE": "Vitrine Kleingedrucktes",
+                    "en-GB": "Showcase fine print",
+                    "tr-TR": "Vitrin dipnot"
+                },
+                "helpText": {
+                    "de-DE": "Kleiner Hinweistext (z. B. *Kostenlos im Rahmen ...). Leer = ausgeblendet.",
+                    "en-GB": "Small note text. Empty = hidden.",
+                    "tr-TR": "Küçük dipnot. Boş = gizli."
+                },
+                "type": "text",
+                "value": "*Kostenlos im Rahmen einer individuellen Einkaufsvereinbarung. Details und Voraussetzungen werden nach Ihrer Anfrage mitgeteilt.",
+                "editable": true,
+                "block": "elfbarShowcase",
+                "order": 2640,
+                "scss": false
+            },
+            "elfbar-showcase-btn-text": {
+                "label": {
+                    "de-DE": "Vitrine Button Text",
+                    "en-GB": "Showcase button text",
+                    "tr-TR": "Vitrin buton metni"
+                },
+                "helpText": {
+                    "de-DE": "Button-Beschriftung. Leer = Button ausgeblendet.",
+                    "en-GB": "Button label. Empty = button hidden.",
+                    "tr-TR": "Buton yazısı. Boş = buton gizli."
+                },
+                "type": "text",
+                "value": "Jetzt kostenlos anfragen",
+                "editable": true,
+                "block": "elfbarShowcase",
+                "order": 2650,
+                "scss": false
+            },
+            "elfbar-showcase-btn-link": {
+                "label": {
+                    "de-DE": "Vitrine Button Link",
+                    "en-GB": "Showcase button link",
+                    "tr-TR": "Vitrin buton link"
+                },
+                "helpText": {
+                    "de-DE": "Ziel des Buttons (z. B. /Kontakt/, mailto:anfrage@..., volle URL). Leer = Button ausgeblendet.",
+                    "en-GB": "Button target (e.g. /Kontakt/, mailto:..., full URL). Empty = button hidden.",
+                    "tr-TR": "Buton hedefi (örn. /Kontakt/, mailto:..., tam URL). Boş = buton gizli."
+                },
+                "type": "text",
+                "value": "#",
+                "editable": true,
+                "block": "elfbarShowcase",
+                "order": 2660,
+                "scss": false
+            },
+            "elfbar-showcase-btn2-text": {
+                "label": {
+                    "de-DE": "Vitrine 2. Button Text",
+                    "en-GB": "Showcase 2nd button text",
+                    "tr-TR": "Vitrin 2. buton metni"
+                },
+                "helpText": {
+                    "de-DE": "Zweiter Button (Umriss-Stil), z. B. 'Download'. Leer = ausgeblendet.",
+                    "en-GB": "Second button (outline), e.g. 'Download'. Empty = hidden.",
+                    "tr-TR": "İkinci buton (çerçeveli), örn. 'Download'. Boş = gizli."
+                },
+                "type": "text",
+                "value": "Dowload",
+                "editable": true,
+                "block": "elfbarShowcase",
+                "order": 2670,
+                "scss": false
+            },
+            "elfbar-showcase-btn2-link": {
+                "label": {
+                    "de-DE": "Vitrine 2. Button Link",
+                    "en-GB": "Showcase 2nd button link",
+                    "tr-TR": "Vitrin 2. buton link"
+                },
+                "helpText": {
+                    "de-DE": "Ziel des 2. Buttons (z. B. PDF-URL, /Download/, volle URL). Leer = ausgeblendet.",
+                    "en-GB": "2nd button target (e.g. PDF URL, /Download/, full URL). Empty = hidden.",
+                    "tr-TR": "2. buton hedefi (örn. PDF URL, /Download/, tam URL). Boş = gizli."
+                },
+                "type": "text",
+                "value": "#",
+                "editable": true,
+                "block": "elfbarShowcase",
+                "order": 2680,
+                "scss": false
+            }
+        }
+    }
+}

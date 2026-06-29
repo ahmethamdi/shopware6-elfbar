@@ -1,0 +1,4205 @@
+/*
+Elfbar Theme — Base styles
+==================================================
+@Storefront'tan SONRA yüklenir; kendi marka stillerimiz burada.
+Renk/font değişkenleri overrides.scss + theme.json config'ten gelir.
+*/
+
+// Google Fonts (Inter + Space Grotesk)
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+// CSS custom property'leri (JS/inline kullanım için de erişilebilir)
+:root {
+    --elfbar-primary: #{$sw-color-brand-primary};
+    --elfbar-secondary: #{$sw-color-brand-secondary};
+    --elfbar-grad-start: #{$elfbar-grad-start};
+    --elfbar-grad-mid: #{$elfbar-grad-mid};
+    --elfbar-grad-end: #{$elfbar-grad-end};
+    --elfbar-gradient: #{$elfbar-gradient};
+    --elfbar-ink: #{$elfbar-color-ink};
+    --elfbar-bg: #{$elfbar-color-bg};
+    --elfbar-sale: #{$elfbar-color-sale};
+    --elfbar-radius: #{$border-radius};
+}
+
+// --- Genel ---
+body {
+    font-family: $elfbar-font-base;
+    color: $elfbar-color-ink;
+    background-color: $elfbar-color-bg;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: $elfbar-font-headline;
+    letter-spacing: -0.01em;
+}
+
+// --- Butonlar: yumuşak köşe, Elfbar gradient primary ---
+.btn-primary {
+    background: $elfbar-gradient;
+    background-size: 150% 150%;
+    border: none;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba($elfbar-grad-mid, 0.30);
+    transition: transform .15s ease, box-shadow .15s ease, background-position .4s ease;
+
+    &:hover, &:focus, &:active {
+        background-position: 100% 0;
+        transform: translateY(-1px);
+        color: #fff;
+        box-shadow: 0 8px 24px rgba($elfbar-grad-mid, 0.42);
+    }
+}
+
+.btn-outline-primary {
+    border-width: 2px;
+    border-color: $elfbar-grad-mid;
+    color: $elfbar-grad-mid;
+    font-weight: 600;
+
+    &:hover, &:focus, &:active {
+        background: $elfbar-gradient;
+        border-color: transparent;
+        color: #fff;
+    }
+}
+
+// --- Ürün kartı: modern, hover'da yükselme ---
+.card.product-box {
+    border: 1px solid rgba($elfbar-color-ink, 0.08);
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba($elfbar-color-ink, 0.10);
+        border-color: rgba($sw-color-brand-primary, 0.3);
+    }
+
+    .product-image-wrapper {
+        background: #f7f7fb;
+    }
+
+    .product-name {
+        font-weight: 600;
+        color: $elfbar-color-ink;
+    }
+
+    // İndirim rozeti (sol üst)
+    .product-badges .badge,
+    .product-badge-discount {
+        background: $elfbar-color-sale;
+        color: #fff;
+        font-weight: 700;
+        border-radius: 999px;
+        padding: .35em .7em;
+    }
+}
+
+// ==================================================
+// HEADER (mockup: koyu mavi zemin, beyaz içerik)
+// ==================================================
+
+.header-main {
+    // Mavi tam genişlik bant; alttan boşluk YOK, içerik hemen yapışsın
+    background: $sw-color-brand-primary;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+
+    // Header içeriği max 1600 (kullanıcı isteği)
+    .container { max-width: 1600px; }
+
+    // Beyaz yuvarlak "pill" kart (logo+menü+ikon+CTA bunun içinde)
+    .elfbar-header-pill {
+        background: #fff;
+        border-radius: 14px;
+        padding: .5rem 1.25rem;
+        box-shadow: 0 8px 24px rgba($elfbar-color-ink, 0.18);
+        // overflow visible: account/wishlist dropdown'ları pill dışına açılabilsin
+        overflow: visible;
+        position: relative;
+        z-index: 20;
+    }
+    // Header'ın altındaki hero vb. dropdown'ı kapatmasın
+    .header-actions, .header-actions-col { position: relative; z-index: 30; }
+    // Account/wishlist dropdown menüsü her şeyin üstünde
+    .account-menu .dropdown-menu, .dropdown-menu {
+        z-index: 1050;
+    }
+    // Account dropdown'ı genişlet: uzun menü adları (Persönliches Profil, Meine
+    // Top-Produkte, Rechnungen & Dokumente) tek satıra sığsın, ferah dursun.
+    .account-menu .dropdown-menu {
+        min-width: 270px; padding: .5rem;
+        .dropdown-item, .account-aside-item, .elfbar-acc-aside__item {
+            white-space: nowrap; border-radius: 8px;
+        }
+    }
+    // CTA pill'in en sağına otursun, taşma yok
+    .elfbar-header-pill .elfbar-header-row { width: 100%; }
+
+    // Pill beyaz olduğu için logo artık koyu kalsın (invert KALDIRILDI)
+    .header-logo-main-img { filter: none; }
+
+    // Hesap + sepet + arama ikonları KOYU (beyaz zeminde okunur)
+    .header-actions-col {
+        .btn, a, svg { color: $elfbar-color-ink; }
+        .header-cart-total, .header-cart-btn { color: $elfbar-color-ink; }
+        .header-cart-badge, .badge { background: $elfbar-color-sale; color: #fff; }
+        .btn:hover, a:hover { color: $sw-color-brand-primary; }
+    }
+
+    // Login'liyken hesap ikonu yerine baş harf avatarı (yuvarlak)
+    .account-menu-btn.elfbar-account-btn--avatar {
+        padding: 0;
+        line-height: 0;
+
+        .elfbar-account-avatar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, $sw-color-brand-primary, darken($sw-color-brand-primary, 12%));
+            color: #fff !important;
+            font-weight: 700;
+            font-size: .9rem;
+            letter-spacing: .02em;
+            line-height: 1;
+            box-shadow: 0 2px 6px rgba($sw-color-brand-primary, 0.4);
+            transition: transform .15s ease, box-shadow .15s ease;
+        }
+
+        &:hover .elfbar-account-avatar {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba($sw-color-brand-primary, 0.5);
+        }
+    }
+}
+
+// Navigasyon menüsü de koyu mavi (header'ın devamı), beyaz linkler
+.nav-main {
+    background: $sw-color-brand-primary;
+    border-bottom: 1px solid rgba(#fff, 0.12);
+
+    .main-navigation-link-text,
+    .nav-link,
+    .navigation-flyout-link { color: #fff !important; }
+
+    .nav-item > .nav-link:hover .main-navigation-link-text,
+    .main-navigation-link:hover .main-navigation-link-text { color: rgba(#fff, 0.78) !important; }
+
+    // Aktif menü öğesi alt çizgi beyaz
+    .is-active .main-navigation-link-text,
+    .active .main-navigation-link-text { border-bottom-color: #fff; }
+
+    // dropdown flyout içi normal (beyaz zemin) kalsın
+    .dropdown-menu { color: $elfbar-color-ink; }
+    .dropdown-menu .navigation-flyout-link { color: $elfbar-color-ink !important; &:hover { color: $sw-color-brand-primary !important; } }
+}
+
+// Logo: biraz daha büyük, dikey ortalı
+.header-logo-main {
+    max-height: 56px;
+    width: auto;
+}
+
+// --- Arama çubuğu: yuvarlak hatlar, accent buton (referans gibi) ---
+.header-search {
+    .input-group {
+        border-radius: 999px;
+        overflow: hidden;
+        border: 2px solid rgba($elfbar-color-ink, 0.1);
+        transition: border-color .15s ease, box-shadow .15s ease;
+
+        &:focus-within {
+            border-color: $sw-color-brand-primary;
+            box-shadow: 0 0 0 .2rem rgba($sw-color-brand-primary, 0.15);
+        }
+    }
+
+    .header-search-input {
+        border: none;
+        padding-left: 1.25rem;
+        height: 48px;
+        box-shadow: none;
+        &:focus { box-shadow: none; }
+    }
+
+    .header-search-btn {
+        background: $sw-color-brand-primary;
+        color: #fff;
+        border: none;
+        min-width: 56px;
+        transition: background .15s ease;
+
+        &:hover { background: darken($sw-color-brand-primary, 8%); color: #fff; }
+        svg, .header-search-icon { color: #fff; }
+    }
+}
+
+// --- Header aksiyon ikonları (wishlist/hesap) ---
+.header-actions {
+    .header-actions-col {
+        .btn,
+        a {
+            color: $elfbar-color-ink;
+            &:hover { color: $sw-color-brand-primary; }
+        }
+    }
+}
+
+// --- Sepet kutusu: accent vurgulu (referanstaki Warenkorb kutusu) ---
+.header-cart {
+    .header-cart-btn,
+    .header-cart-total {
+        font-weight: 700;
+        color: $sw-color-brand-primary;
+    }
+
+    .header-cart-icon-wrapper {
+        position: relative;
+    }
+
+    .header-cart-badge,
+    .badge {
+        background: $elfbar-color-sale;
+        color: #fff;
+        font-weight: 700;
+    }
+
+    // Sepet ikonu köşesindeki BELİRGİN adet rozeti (toplam adet)
+    .elfbar-cart-icon-wrap {
+        position: relative;
+        display: inline-flex;
+    }
+    .elfbar-cart-count {
+        position: absolute;
+        top: -8px;
+        right: -10px;
+        min-width: 18px;
+        height: 18px;
+        padding: 0 5px;
+        border-radius: 999px;
+        background: $sw-color-brand-primary;
+        color: #fff;
+        font-size: .68rem;
+        font-weight: 800;
+        line-height: 18px;
+        text-align: center;
+        box-shadow: 0 0 0 2px #fff;
+        pointer-events: none;
+    }
+}
+
+// --- B2B: KDV hariç fiyat ipucu (theme.json switch'i kapalıysa gizle) ---
+.elfbar-net-price-hint {
+    display: inline-block;
+    font-size: .75rem;
+    font-weight: 600;
+    color: $sw-color-brand-secondary;
+    margin-top: .15rem;
+}
+
+// --- Top bar (B2B servis vurgusu / iletişim) ---
+.elfbar-topbar {
+    background: $elfbar-color-ink;
+    color: #fff;
+    font-size: .8125rem;
+
+    a { color: rgba(#fff, 0.85); &:hover { color: #fff; } }
+}
+
+// --- Üst TEK ince bilgi şeridi (mockup) ---
+.elfbar-info-bar {
+    background: transparent; // kullanıcı: şeffaf
+    color: rgba(#fff, 0.92);
+    font-size: .8rem;
+    padding: .45rem 0;
+    &__inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: .5rem;
+    }
+    &__sep { color: rgba(#fff, 0.3); }
+    &__item { white-space: nowrap; }
+    // MOBİL: marketing şeridi yer kaplıyor → tamamen gizle (kullanıcı isteği)
+    @media (max-width: 991.98px) { display: none !important; }
+}
+
+// --- Sade üst menü (beyaz pill içinde — koyu linkler, mockup) ---
+.elfbar-topmenu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: 1.5rem;
+    &__link {
+        color: $elfbar-color-ink;
+        font-weight: 600;
+        font-size: .95rem;
+        text-decoration: none;
+        padding: .35rem 0;
+        border-bottom: 2px solid transparent;
+        transition: border-color .15s ease, color .15s ease;
+        &:hover { color: $sw-color-brand-primary; border-bottom-color: $sw-color-brand-primary; text-decoration: none; }
+    }
+}
+
+// --- Header CTA butonu ("Jetzt einkaufen →") ---
+// actions-col içindeki genel .btn beyaz kuralını ezmek için !important
+.header-main .header-actions-col a.elfbar-header-cta {
+    background: $sw-color-brand-primary;
+    color: #fff !important;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: .55rem 1.25rem;
+    white-space: nowrap;
+    border: none;
+    box-shadow: 0 4px 14px rgba($sw-color-brand-primary, 0.3);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    &:hover { color: #fff !important; background: darken($sw-color-brand-primary, 8%); transform: translateY(-1px); box-shadow: 0 6px 18px rgba($sw-color-brand-primary, 0.4); }
+}
+
+// Header tek satır zorla (logo | menü | boşluk | aksiyonlar) — masaüstü
+@media (min-width: 992px) {
+    .elfbar-header-row {
+        flex-wrap: nowrap;
+        align-items: center;
+        .header-logo-col { flex: 0 0 auto; }
+        .header-logo-col .header-logo-main { max-height: 44px; margin: 0; }
+        .header-actions-col { margin-left: auto; flex: 0 0 auto; }
+    }
+    // Kullanıcı: menü SOLA çekilsin (logoya yaklaşsın) — desktop
+    .elfbar-topmenu { margin-left: .5rem; gap: 1.25rem; }
+}
+
+// Ödeme logoları — search ikonunun SOLUNDA (SADECE DESKTOP, panelden)
+.elfbar-header-pays {
+    display: flex; align-items: center; gap: .55rem;
+    margin: 0 .5rem 0 .35rem;
+    &__item {
+        display: inline-flex; align-items: center;
+        img { display: block; height: 30px; width: auto; object-fit: contain; border-radius: 4px; }
+    }
+}
+
+// KÜÇÜK/ORTA LAPTOP (992–1399px): içerik tek satıra sığmıyordu →
+// "Jetzt registrieren" CTA taşıyordu. Bu aralıkta CTA gizlenir (arama/hesap/sepet zaten var),
+// topmenü boşlukları daraltılır. 1400px+ tam görünüm.
+@media (min-width: 992px) and (max-width: 1399.98px) {
+    // CTA butonu + onu saran col'u gizle
+    .elfbar-header-cta,
+    .elfbar-header-row > .col-auto:has(> .elfbar-header-cta) { display: none !important; }
+    .elfbar-topmenu { gap: 1rem; margin-left: .5rem; }
+    .elfbar-topmenu__link { font-size: .9rem; }
+    .elfbar-header-pill .header-actions-col { gap: .35rem; }
+    // Bu dar aralıkta ödeme logoları yer açmak için gizli (1400px+ görünür)
+    .elfbar-header-pays { display: none !important; }
+}
+
+// 1400px+ tam görünüm: CTA pill'in sağ kenarına BİTİŞİK duruyordu (bozukluk hissi) →
+// pill içinde nefes payı ver (CTA'yı sağ kenardan içeri al).
+@media (min-width: 1400px) {
+    .elfbar-header-pill { padding-right: 1.75rem; }
+    .elfbar-header-cta { margin-right: .25rem; }
+}
+
+// Kompakt header: arama artık ikon; collapse form mavi header altında açılır
+// Arama POPUP (overlay) — ikona tıklayınca ekranın üstünden inen modern kutu
+.elfbar-search-collapse {
+    // Bootstrap collapse açıkken (.show) görünür
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba($elfbar-color-ink, 0.55);
+    backdrop-filter: blur(3px);
+    z-index: 1100;
+    // collapse kapalıyken (.collapse default display:none) zaten görünmez
+    &.show, &.collapsing { display: block; }
+
+    &__inner {
+        max-width: 680px; margin: 0 auto;
+        margin-top: 12vh; padding: 1.75rem;
+        background: #fff; border-radius: 18px;
+        box-shadow: 0 30px 80px rgba(#000, 0.3);
+        animation: elfbar-search-pop .22s ease;
+    }
+    // popup başlık + kapat
+    &__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    &__title { font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.15rem; color: $elfbar-color-ink; }
+    &__close {
+        width: 36px; height: 36px; border-radius: 50%; border: none; cursor: pointer;
+        background: rgba($elfbar-color-ink, 0.06); color: $elfbar-color-ink; font-size: 1rem; line-height: 1;
+        display: grid; place-items: center;
+        &:hover { background: rgba($elfbar-color-ink, 0.12); }
+    }
+
+    // arama formu = konumlandırma referansı (suggest buna göre absolute)
+    .header-search { margin: 0; max-width: none; position: relative; }
+    .header-search-form { position: relative; }
+
+    // ⭐ input-group = TEK temiz pill. Buton DAİRE olarak input'un İÇİNDE oturur
+    // (pill kenarına taşmaz). Pill overflow:visible (suggest absolute taşsın diye).
+    .header-search .input-group {
+        position: relative;
+        display: flex; flex-wrap: nowrap; align-items: center;
+        border: 2px solid rgba($sw-color-brand-primary, 0.25);
+        background: #fff; border-radius: 999px;
+        overflow: visible; // suggest (absolute) kesilmesin
+        padding: 4px; // butona iç boşluk → daire kenara değmez
+        &:focus-within { border-color: $sw-color-brand-primary; box-shadow: 0 0 0 .25rem rgba($sw-color-brand-primary, 0.12); }
+
+        .header-search-input {
+            flex: 1 1 auto; min-width: 0;
+            border: none; box-shadow: none;
+            border-radius: 999px 0 0 999px;
+            font-size: 1.05rem; padding: .7rem .5rem .7rem 1.15rem;
+            background: transparent;
+            &:focus { box-shadow: none; }
+        }
+        // submit butonu: tam DAİRE, pill içinde yüzer (kenara taşmaz)
+        .header-search-btn, .btn[type="submit"] {
+            flex: 0 0 auto; border: none; margin: 0;
+            width: 44px; height: 44px; min-width: 44px; padding: 0;
+            // Bootstrap .input-group>.btn :not(:last-child) radius'u sıfırlıyor → !important ile ez
+            border-radius: 50% !important; // tam daire — kare köşe yok
+            background: $sw-color-brand-primary; color: #fff;
+            display: inline-flex; align-items: center; justify-content: center;
+            .icon svg, svg { color: #fff; }
+            &:hover { background: darken($sw-color-brand-primary, 8%); }
+        }
+        // Shopware'in ekstra "kapat" (X) butonu — popup'ın kendi ✕'i var, gizle
+        .header-close-btn, .js-search-close-btn { display: none !important; }
+    }
+
+    // ⭐ Canlı arama sonuçları (search-suggest) — input-group İÇİNDE inject edilir,
+    // absolute ile input-group'un ALTINA açılır (input-group overflow:visible olduğu için kesilmez).
+    .header-search .input-group .search-suggest.js-search-result,
+    .search-suggest.js-search-result {
+        position: absolute; top: calc(100% + .65rem); left: 0; right: 0;
+        display: block; width: 100%; z-index: 1200;
+        background: #fff;
+        border: 1px solid rgba($elfbar-color-ink, 0.1);
+        border-radius: 14px;
+        box-shadow: 0 12px 32px rgba($elfbar-color-ink, 0.16);
+        max-height: 55vh; overflow-y: auto;
+        padding: .5rem;
+    }
+    // Shopware container'ı default: absolute + left:50% + translateX(-50%) (ortalama hack'i)
+    // → bu transform suggest'i sola kaydırıyordu. Hepsini sıfırla, tam genişlik akışa al.
+    .search-suggest-container {
+        position: static !important; left: auto !important; transform: none !important;
+        list-style: none; margin: 0; padding: 0; width: 100% !important;
+    }
+    .search-suggest-product { border-radius: 10px;
+        &:hover, &.is-active { background: rgba($sw-color-brand-primary, 0.07); } }
+    .search-suggest-product-link { padding: .6rem .75rem; display: block; text-decoration: none; color: $elfbar-color-ink; }
+    .search-suggest-product-price { color: $sw-color-brand-primary; font-weight: 700; }
+    .search-suggest-total { padding: .6rem .75rem; font-weight: 600; color: $sw-color-brand-primary;
+        &:hover { background: rgba($sw-color-brand-primary, 0.07); border-radius: 10px; } }
+}
+@keyframes elfbar-search-pop {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+// Arama ikonu (header'da, beyaz pill içinde) koyu
+.header-main .header-actions-col .search-toggle-btn svg { color: $elfbar-color-ink; }
+
+// --- Üst marketing banner (gradient kampanya şeridi) ---
+.elfbar-marketing-banner {
+    background: linear-gradient(90deg, $sw-color-brand-primary 0%, $sw-color-brand-secondary 100%);
+    color: #fff;
+    text-align: center;
+    padding: .5rem 0;
+    font-size: .8125rem;
+    font-weight: 500;
+    letter-spacing: .01em;
+
+    &__text { display: inline-block; }
+}
+
+// --- Sosyal + iletişim barı (koyu zemin) ---
+.elfbar-social-bar {
+    background: $elfbar-color-ink;
+    color: rgba(#fff, 0.85);
+    font-size: .8125rem;
+    padding: .4rem 0;
+
+    &__link {
+        color: rgba(#fff, 0.8);
+        display: inline-flex;
+        align-items: center;
+        gap: .35rem;
+        text-decoration: none;
+        &:hover { color: #fff; text-decoration: none; }
+    }
+
+    &__sep { color: rgba(#fff, 0.3); }
+
+    &__icon {
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(#fff, 0.08);
+        color: rgba(#fff, 0.85);
+        transition: background .15s ease, color .15s ease;
+        &:hover { background: $sw-color-brand-primary; color: #fff; }
+    }
+
+    // Dil/para widget'larını koyu barda okunur yap
+    .top-bar-nav { color: rgba(#fff, 0.85); }
+    .top-bar-nav a,
+    .top-bar-nav .btn { color: rgba(#fff, 0.85) !important; }
+
+    // icon svg boyutlandırma fallback
+    svg { width: 14px; height: 14px; }
+}
+
+// --- Servis vurgu kutuları (kargo/iade/destek) ---
+.elfbar-usp-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem 0;
+
+    .elfbar-usp {
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+
+        .elfbar-usp-icon {
+            flex: 0 0 auto;
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba($sw-color-brand-primary, 0.1);
+            color: $sw-color-brand-primary;
+        }
+
+        .elfbar-usp-title { font-weight: 600; font-size: .95rem; }
+        .elfbar-usp-sub { font-size: .8rem; color: rgba($elfbar-color-ink, 0.6); }
+    }
+}
+
+// =====================================================================
+// ANASAYFA (spec): hero tam genişlik → marka nav → promo → sidebar+vitrin
+// max-width 1600, 12px radius, 16px spacing
+// =====================================================================
+$elfbar-radius: 12px;
+
+// Sayfa wrapper (alt içerik için)
+.elfbar-page {
+    padding-bottom: 2.5rem;
+}
+
+// Home'da header→hero boşluğunu yaratan Shopware kalıntılarını temizle
+.is-ctl-navigation {
+    .cms-breadcrumb { display: none; } // breadcrumb boşluğu
+    .content-main { margin-top: 0; padding-top: 0; }
+    .container-main { padding-top: 0; }
+}
+
+// --- HERO (FULL-SIZE, köşeli, header'a yapışık — boşluk YOK) ---
+.elfbar-hero {
+    // Elfbar marka gradient'i (pembe→mor→mavi) + yumuşak radyal glow lekeleri.
+    // Üst kenar header gradient'iyle akışkan devam eder; derinlik için ışık lekeleri.
+    background:
+        radial-gradient(120% 95% at 85% 18%, rgba(#ff9ecb, 0.45) 0%, rgba(#ff9ecb, 0) 50%),
+        radial-gradient(115% 100% at 8% 100%, rgba(#5a74ff, 0.55) 0%, rgba(#5a74ff, 0) 55%),
+        linear-gradient(135deg, #ff5ea7 0%, #c85aff 50%, #5a74ff 100%);
+    color: #fff;
+    border-radius: 0; // KULLANICI: radius YOK
+    margin: 0; // header ile arasında boşluk YOK
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+    gap: 2rem;
+    // full-size: içerik 1600'de ortalı ama mavi zemin tam genişlik
+    padding: 3rem max(1.5rem, calc((100% - 1600px) / 2 + 1.5rem));
+    @media (max-width: 991.98px) { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+
+    &__content { min-width: 0; }
+
+    &__eyebrow {
+        display: inline-flex; align-items: center; gap: .4rem;
+        font-size: .78rem; font-weight: 600; letter-spacing: .03em;
+        background: rgba(#fff, 0.15); color: #fff;
+        padding: .4rem .85rem; border-radius: 999px; margin-bottom: 1.25rem;
+    }
+    &__title {
+        font-family: $elfbar-font-headline; font-weight: 700;
+        font-size: clamp(1.9rem, 3.5vw, 3rem); line-height: 1.12; color: #fff; margin-bottom: 1rem;
+    }
+    &__subtitle { font-size: 1.05rem; line-height: 1.6; color: rgba(#fff, 0.88); margin-bottom: 1.75rem; max-width: 460px; }
+    &__cta {
+        display: inline-block; background: #fff; color: $sw-color-brand-primary;
+        font-weight: 600; padding: .85rem 1.75rem; border-radius: $elfbar-radius; border: none;
+        transition: transform .15s ease, box-shadow .15s ease;
+        &:hover { color: darken($sw-color-brand-primary, 8%); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.2); }
+    }
+
+    &__media {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 1rem;
+        min-height: 300px;
+        // Mobilde kutular fazla basıktı (küçükler ~100px) → ferahlat.
+        // Panelden mobil görsel yüklenince zaten o gösterilir; yine de
+        // grid oranı mobilde dengeli olsun (kesik/sıkışma azalır).
+        @media (max-width: 575.98px) {
+            min-height: 300px; gap: .65rem;
+        }
+    }
+    &__media-big, &__media-small {
+        background: rgba(#fff, 0.16);
+        border: 1px solid rgba(#fff, 0.3);
+        border-radius: $elfbar-radius;
+        display: grid; place-items: center;
+        color: rgba(#fff, 0.7);
+        transition: transform .2s ease, background .2s ease;
+        &:hover { transform: translateY(-4px); background: rgba(#fff, 0.24); }
+    }
+    &__media-big { grid-row: 1 / 3; }
+
+    // --- Responsive görsel: desktop vs mobil (panelden ayrı yüklenebilir) ---
+    // Varsayılan (desktop ≥992px): desktop görselini göster, mobil görselini gizle.
+    &__img--mobile { display: none; }
+    &__img--desktop { display: block; }
+    @media (max-width: 991.98px) {
+        // Mobilde: "has-mobile" (panelde mobil görsel dolu) kutularda mobil göster,
+        // desktop gizle. has-mobile YOKSA desktop görseli mobilde de görünür (fallback).
+        .has-mobile {
+            .elfbar-hero__img--desktop { display: none; }
+            .elfbar-hero__img--mobile { display: block; }
+        }
+    }
+}
+
+// --- Marka hızlı navigasyon (sağ kolon üstü, 4 adet) ---
+.elfbar-brandnav {
+    margin: 0 0 1.25rem;
+    overflow-x: auto; overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
+    scrollbar-width: none; &::-webkit-scrollbar { display: none; }
+    cursor: grab;
+    &.is-dragging { cursor: grabbing; scroll-behavior: auto; }
+    &__track { display: flex; gap: 1rem; width: max-content; padding-bottom: .25rem; }
+    &__item {
+        flex: 0 0 auto; width: 150px;
+        display: flex; flex-direction: column; align-items: center; gap: .6rem;
+        background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.07);
+        border-radius: $elfbar-radius; padding: 1.1rem .75rem; text-decoration: none;
+        color: $elfbar-color-ink; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+        user-select: none;
+        &:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba($elfbar-color-ink, 0.08); border-color: rgba($sw-color-brand-primary, 0.4); color: $sw-color-brand-primary; text-decoration: none; }
+    }
+    &__circle {
+        width: 56px; height: 56px; display: grid; place-items: center; border-radius: 50%;
+        background: rgba($sw-color-brand-primary, 0.22);
+        color: $sw-color-brand-primary; font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.05rem;
+    }
+    &__name { font-size: .85rem; font-weight: 600; text-align: center; }
+}
+
+// --- Promo banner ---
+.elfbar-campaign {
+    display: flex; align-items: center; gap: 1rem;
+    background: #fff;
+    border: 1px solid rgba($sw-color-brand-primary, 0.12);
+    border-radius: $elfbar-radius; padding: 1rem 1.5rem; margin-bottom: 1.5rem;
+    text-decoration: none; transition: box-shadow .15s ease, border-color .15s ease;
+    &:hover { box-shadow: 0 8px 22px rgba($sw-color-brand-primary, 0.18); border-color: rgba($sw-color-brand-primary, 0.3); text-decoration: none; }
+    &__brand {
+        font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+        color: #fff; background: linear-gradient(135deg, #7C4DFF, #E040FB);
+        padding: .35rem .7rem; border-radius: 999px; white-space: nowrap;
+    }
+    &__text { font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.2rem; color: #7C4DFF; }
+}
+
+// --- Gövde: sidebar (sol) + içerik (sağ) — container'da (1600), hero altında ---
+.elfbar-body {
+    max-width: 1600px;
+    margin: 1.5rem auto 0;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    @media (max-width: 991.98px) { grid-template-columns: 1fr; }
+    &__main { min-width: 0; }
+
+    // --- Anasayfadaki CMS ürün listing'ini "Bestseller vitrini" gibi göster ---
+    &__cms {
+        // Home'da gereksiz CMS bloklarını TAMAMEN gizle: "Home" text bloğu (pos-0),
+        // boşluk yapan image-text bloğu (pos-1), filtre bloğu (pos-2).
+        // Sadece product-listing (pos-3) kalsın.
+        .cms-block-text,
+        .cms-block-image-text,
+        .cms-block-sidebar-filter,
+        .cms-element-product-listing-wrapper > .cms-element-product-listing-actions,
+        .cms-element-sidebar-filter,
+        .filter-panel,
+        .cms-element-product-listing-actions,
+        .pagination-nav,
+        .cms-listing-actions,
+        .cms-element-text,
+        nav[aria-label="pagination"] {
+            display: none !important;
+        }
+
+        // Başlıkla ürünler arası TÜM boşluğu sıfırla (gizli bloklar + container'lar)
+        margin-top: 0 !important;
+        .cms-page, .cms-sections, .cms-section,
+        .cms-block-product-listing, .cms-block, .cms-block-container,
+        .cms-block-container-row, .cms-block-container-row > [class*="col"],
+        .cms-element-product-listing-wrapper, .cms-element-product-listing {
+            margin: 0 !important; padding: 0 !important;
+        }
+        // Gizli blokların aralarındaki row gap'ini de kapat
+        .cms-block-container-row { row-gap: 0 !important; }
+
+        // Ürün gridini 4 kolona sabitle, ferah boşluk
+        .cms-listing-row {
+            margin: 0 -.6rem;
+        }
+        .cms-listing-col {
+            padding: .6rem;
+            @media (min-width: 992px) { flex: 0 0 25%; max-width: 25%; }
+            // Anasayfada sadece ilk 8 ürünü göster (4x2)
+            &:nth-of-type(n+9) { display: none; }
+        }
+
+        // Ürün kartı — mockup birebir: beyaz, yumuşak gölge, hover yükselme
+        .product-box {
+            position: relative;
+            border: 1px solid rgba($elfbar-color-ink, 0.08);
+            border-radius: $elfbar-radius;
+            box-shadow: 0 1px 2px rgba($elfbar-color-ink, 0.04);
+            transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+            height: 100%;
+            &:hover {
+                box-shadow: 0 10px 28px rgba($sw-color-brand-primary, 0.16);
+                transform: translateY(-4px);
+                border-color: rgba($sw-color-brand-primary, 0.3);
+            }
+            .card-body { padding: .9rem; display: flex; flex-direction: column; height: 100%; }
+        }
+
+        // "Beliebt" rozeti — sol üst
+        .elfbar-card-badge {
+            position: absolute; top: .75rem; left: .75rem; z-index: 3;
+            background: rgba($elfbar-color-ink, 0.06);
+            color: $elfbar-color-ink;
+            font-size: .68rem; font-weight: 700; letter-spacing: .02em;
+            padding: .28rem .7rem; border-radius: 999px;
+        }
+        // +18 yaş rozeti — sol üst, Beliebt'in altında, kırmızı daire
+        .elfbar-card-age {
+            position: absolute; top: 2.6rem; left: .75rem; z-index: 3;
+            background: $elfbar-color-sale; color: #fff;
+            font-size: .66rem; font-weight: 800; letter-spacing: .01em;
+            width: 30px; height: 30px; border-radius: 50%;
+            display: grid; place-items: center;
+            box-shadow: 0 1px 4px rgba($elfbar-color-ink, 0.15);
+        }
+        // Shopware'in kendi rozetlerini (sale vs.) home'da gizle, sadece Beliebt kalsın
+        .product-badges { display: none; }
+
+        // Wishlist kalbi — sağ üst, beyaz daire (icon tam ortalı)
+        .product-wishlist-action,
+        .product-wishlist-action-circle {
+            position: absolute; top: .6rem; right: .6rem; z-index: 3;
+            background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.1);
+            border-radius: 50%; width: 36px; height: 36px; padding: 0; margin: 0;
+            display: inline-flex; align-items: center; justify-content: center;
+            line-height: 0;
+            box-shadow: 0 1px 4px rgba($elfbar-color-ink, 0.08);
+            // içindeki kalp ikonunu tam ortala + boyut sabitle
+            .icon, svg { display: block; width: 17px; height: 17px; margin: 0; }
+            .icon { line-height: 0; }
+            &::before, &::after { display: none; }
+
+            // ⭐ Shopware wishlist butonu İKİ kalp ikonu içerir (added=dolu, not-added=boş).
+            // Bizim grid/flex ezmesi ikisini de gösteriyordu → yamuk. Sadece birini göster:
+            .icon-wishlist-added { display: none !important; }
+            .icon-wishlist-not-added { display: inline-flex !important; }
+        }
+        // Ürün listeye eklenince: dolu kalp göster, boş kalbi gizle
+        .product-wishlist-added {
+            .icon-wishlist-added { display: inline-flex !important; }
+            .icon-wishlist-not-added { display: none !important; }
+        }
+
+        // Görsel alanı — kare, açık zemin
+        .product-image-wrapper {
+            padding-top: 100%;
+            background: rgba($elfbar-color-ink, 0.03);
+            border-radius: 10px;
+            margin-bottom: .75rem;
+            overflow: hidden;
+        }
+
+        // Marka + başlık
+        .product-name {
+            font-weight: 700; font-size: .9rem; color: $elfbar-color-ink;
+            line-height: 1.3; min-height: 2.4em;
+            display: block; margin-bottom: .35rem;
+        }
+
+        // Yıldız rating
+        .elfbar-card-stars {
+            font-size: .95rem; line-height: 1; margin-bottom: .55rem; letter-spacing: 1px;
+            .elfbar-star { color: rgba($elfbar-color-ink, 0.2); }
+            .elfbar-star.is-full { color: #FFB400; }
+        }
+
+        // product-info card-body içinde dikey akış, fiyat+buton satırı en altta
+        .product-info {
+            display: flex; flex-direction: column;
+            flex: 1 1 auto; min-height: 0;
+        }
+        // Fiyat ile aksiyon butonunu tek satırda, en alta sabitle
+        .product-price-info {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: .5rem; margin-top: auto;
+        }
+        // "+" butonunu fiyat satırının İÇİNE çek (DOM'da kardeş ama görselde yan yana)
+        .product-action {
+            position: absolute; right: .9rem; bottom: .9rem; margin: 0;
+        }
+        .product-price-info { padding-right: 3rem; } // butona yer aç
+
+        .product-price-wrapper { order: 0; }
+        .product-price, .product-cheapest-price-price {
+            color: $elfbar-color-ink; font-weight: 700; font-size: 1.1rem;
+        }
+        // tax info linkini home kartında gizle (sade)
+        .product-price-tax-link, .product-price-unit { display: none; }
+
+        // Yuvarlak "+" sepete-ekle butonu (mockup: koyu daire)
+        .elfbar-add-wrap { display: flex; }
+        .elfbar-add-btn {
+            width: 40px; height: 40px; padding: 0; border: none;
+            border-radius: 50%; background: $elfbar-color-ink; color: #fff;
+            display: grid; place-items: center; cursor: pointer;
+            transition: background .15s ease, transform .15s ease;
+            &:hover { background: $sw-color-brand-primary; color: #fff; transform: scale(1.08); }
+        }
+        .elfbar-add-plus { font-size: 1.5rem; line-height: 1; font-weight: 400; }
+        // d-grid sarmalayıcısını sıfırla (buton tam genişlik olmasın)
+        .product-action .d-grid { display: inline-flex !important; }
+    }
+}
+
+// Sidebar — mockup: açık mavi/lila tonda kart, dikey kategori listesi
+.elfbar-sidebar {
+    background: #fff;
+    border: 1px solid rgba($elfbar-color-ink, 0.07);
+    border-radius: $elfbar-radius;
+    overflow: hidden;
+    &__list { list-style: none; margin: 0; padding: 0; }
+    &__item { border-bottom: 1px solid rgba($elfbar-color-ink, 0.06); &:last-child { border-bottom: none; } }
+    &__link {
+        display: block; padding: .8rem 1rem;
+        color: $elfbar-color-ink; text-decoration: none; font-size: .82rem; font-weight: 700;
+        text-transform: uppercase; letter-spacing: .02em;
+        transition: background .12s ease, color .12s ease;
+        &:hover { background: rgba($sw-color-brand-primary, 0.08); color: $sw-color-brand-primary; text-decoration: none; }
+        &.is-home { background: $sw-color-brand-primary; color: #fff; letter-spacing: .03em; }
+    }
+    // Sidebar altı promo görsel kutusu (mockup)
+    &__promo {
+        margin: 1rem; height: 220px;
+        background: rgba($sw-color-brand-primary, 0.14);
+        border: 1px solid rgba($sw-color-brand-primary, 0.2);
+        border-radius: $elfbar-radius;
+        display: grid; place-items: center; color: rgba($sw-color-brand-primary, 0.5);
+    }
+
+    // Dikey B2B kampanya banner (boşluğu doldurur)
+    &__cta {
+        display: block; margin: 1rem; padding: 1.25rem 1.1rem;
+        background: linear-gradient(155deg, $sw-color-brand-primary, darken($sw-color-brand-primary, 14%));
+        border-radius: $elfbar-radius; color: #fff; text-decoration: none;
+        transition: box-shadow .15s ease, transform .15s ease;
+        &:hover { box-shadow: 0 10px 24px rgba($sw-color-brand-primary, 0.32); transform: translateY(-2px); text-decoration: none; color: #fff; }
+    }
+    &__cta-eyebrow { display: block; font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; opacity: .85; margin-bottom: .4rem; }
+    &__cta-title { display: block; font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.05rem; line-height: 1.25; margin-bottom: .9rem; }
+    &__cta-btn { display: inline-block; background: #fff; color: $sw-color-brand-primary; font-weight: 700; font-size: .78rem; padding: .45rem .8rem; border-radius: 999px; }
+
+    // USP listesi (güven)
+    &__usp { list-style: none; margin: 1rem; padding: 1rem 0 .25rem; border-top: 1px solid rgba($elfbar-color-ink, 0.07); }
+    &__usp-item { display: flex; align-items: center; gap: .7rem; padding: .55rem 0; }
+    &__usp-ico {
+        flex: 0 0 auto; width: 38px; height: 38px; border-radius: 10px;
+        background: rgba($sw-color-brand-primary, 0.1);
+        display: grid; place-items: center;
+        .icon { width: 18px; height: 18px; }
+        .icon svg { color: $sw-color-brand-primary; }
+    }
+    &__usp-txt { display: flex; flex-direction: column; line-height: 1.25;
+        b { font-size: .82rem; font-weight: 700; color: $elfbar-color-ink; }
+        small { font-size: .72rem; color: rgba($elfbar-color-ink, 0.5); }
+    }
+}
+
+// Sağ kolon promo görsel kutuları (mockup'ta marka ikonları+banner sonrası 2 geniş kutu)
+.elfbar-promo-imgs {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;
+    @media (max-width: 575.98px) { grid-template-columns: 1fr; }
+}
+.elfbar-promo-img {
+    aspect-ratio: 8 / 3; // önce 4/3 idi → yükseklik yarıya indirildi (kullanıcı "çok büyük")
+    min-height: 0; overflow: hidden; // aspect-ratio'yu içindeki <img> ezmesin
+    background: rgba($sw-color-brand-primary, 0.12);
+    border: 1px solid rgba($sw-color-brand-primary, 0.18);
+    border-radius: $elfbar-radius;
+    display: grid; place-items: center; color: rgba($sw-color-brand-primary, 0.45);
+    // yüklenen görsel kutuyu tam doldursun, taşan kısım kırpılsın
+    > img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+// --- Bölüm başlığı ---
+.elfbar-section-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin: 2rem 0 1.25rem;
+    &__title { font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.5rem; margin: 0; }
+    &__link { color: $sw-color-brand-primary; font-weight: 600; font-size: .9rem; text-decoration: none; &:hover { text-decoration: underline; } }
+}
+// İlk section-head (Bestseller) üstte fazla boşluk olmasın
+.elfbar-body__main > .elfbar-section-head:first-of-type { margin-top: 0; }
+
+// --- Deals des Tages (countdown) ---
+.elfbar-deals-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0 0;
+    @media (max-width: 767.98px) { grid-template-columns: 1fr; }
+}
+// Deal kartı — mockup birebir: koyu dış kart + flip-clock + beyaz iç ürün kartı
+.elfbar-deal {
+    background: $elfbar-color-ink; border-radius: 18px; overflow: hidden;
+    color: #fff; padding: 1.1rem;
+
+    // Flip-clock geri sayım: beyaz kutucuklar
+    &__timer { display: flex; justify-content: center; gap: .5rem; margin-bottom: 1rem; }
+    &__t {
+        background: #fff; color: $elfbar-color-ink;
+        border-radius: 8px; padding: .5rem .25rem; min-width: 52px;
+        display: flex; flex-direction: column; align-items: center;
+        box-shadow: inset 0 -1px 0 rgba($elfbar-color-ink, 0.08);
+        b { font-family: $elfbar-font-headline; font-size: 1.55rem; line-height: 1; font-weight: 700; }
+        small { font-size: .58rem; color: rgba($elfbar-color-ink, 0.55); margin-top: .25rem; }
+    }
+
+    // Beyaz iç ürün kartı
+    &__card { background: #fff; color: $elfbar-color-ink; border-radius: 12px; padding: 1rem; }
+    &__img {
+        height: 110px; background: rgba($elfbar-color-ink, 0.04);
+        border-radius: 8px; margin-bottom: .8rem;
+        display: grid; place-items: center; color: rgba($elfbar-color-ink, 0.3);
+    }
+    &__brand { font-size: .68rem; font-weight: 700; letter-spacing: .04em; color: rgba($elfbar-color-ink, 0.5); text-transform: uppercase; }
+    &__name { font-weight: 700; font-size: 1rem; margin: .1rem 0 .35rem; }
+    &__stars {
+        font-size: .85rem; letter-spacing: 1px; margin-bottom: .6rem; color: rgba($elfbar-color-ink, 0.2);
+        span.is-full { color: #FFB400; }
+        .elfbar-deal__reviews { color: rgba($elfbar-color-ink, 0.45); font-size: .72rem; letter-spacing: 0; margin-left: .3rem; }
+    }
+    &__tags { display: flex; gap: .4rem; margin-bottom: .9rem; }
+    &__tag {
+        font-size: .62rem; font-weight: 700; letter-spacing: .03em;
+        background: rgba($sw-color-brand-primary, 0.12); color: $sw-color-brand-primary;
+        padding: .25rem .55rem; border-radius: 5px;
+    }
+    &__foot { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+    &__price { font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.35rem; color: $sw-color-brand-primary; }
+    &__btn {
+        background: $sw-color-brand-primary; color: #fff; border: none;
+        padding: .5rem .9rem; border-radius: 8px; font-weight: 600; font-size: .82rem; cursor: pointer;
+        display: inline-flex; align-items: center; gap: .35rem;
+        .icon { width: 15px; height: 15px; margin-bottom: 5px; }
+        .icon svg { color: #fff; }
+        &:hover { background: darken($sw-color-brand-primary, 8%); }
+    }
+}
+
+// =====================================================================
+// Marka logo slider — sonsuz kayan şerit (Top-Marken)
+// =====================================================================
+.elfbar-brandslider-head { margin-top: 2.5rem; }
+.elfbar-brandslider {
+    position: relative;
+    overflow: hidden;
+    padding: .5rem 0;
+    // kenarlarda yumuşak fade (mask)
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+
+    &__track {
+        display: flex;
+        width: max-content;
+        animation: elfbar-brandscroll 38s linear infinite;
+    }
+    &:hover .elfbar-brandslider__track { animation-play-state: paused; }
+
+    &__item {
+        flex: 0 0 auto;
+        margin: 0 .6rem;
+        min-width: 150px; height: 80px;
+        display: grid; place-items: center;
+        background: #fff;
+        border: 1px solid rgba($elfbar-color-ink, 0.08);
+        border-radius: $elfbar-radius;
+        font-family: $elfbar-font-headline;
+        font-weight: 700; font-size: 1rem; letter-spacing: .02em;
+        color: rgba($elfbar-color-ink, 0.55);
+        transition: color .15s ease, border-color .15s ease, box-shadow .15s ease;
+        &:hover {
+            color: $sw-color-brand-primary;
+            border-color: rgba($sw-color-brand-primary, 0.35);
+            box-shadow: 0 6px 18px rgba($sw-color-brand-primary, 0.12);
+        }
+    }
+}
+@keyframes elfbar-brandscroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); } // ilk 10 marka kadar kayar, seamless loop
+}
+
+// =====================================================================
+// Kategori vitrini — görsel kartlar grid
+// =====================================================================
+.elfbar-cattiles {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;
+    @media (max-width: 767.98px) { grid-template-columns: repeat(2, 1fr); }
+}
+.elfbar-cattile {
+    display: flex; align-items: center; gap: .9rem;
+    background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.08);
+    border-radius: $elfbar-radius; padding: .85rem 1rem; text-decoration: none;
+    color: $elfbar-color-ink;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    &:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba($sw-color-brand-primary, 0.14);
+        border-color: rgba($sw-color-brand-primary, 0.35); text-decoration: none; color: $sw-color-brand-primary;
+        .elfbar-cattile__img { background: rgba($sw-color-brand-primary, 0.16); } }
+    &__img {
+        flex: 0 0 auto; width: 56px; height: 56px; border-radius: 12px;
+        background: rgba($sw-color-brand-primary, 0.1);
+        display: grid; place-items: center; color: rgba($sw-color-brand-primary, 0.55);
+        transition: background .15s ease;
+        overflow: hidden;   // görsel radius dışına taşmasın
+        svg { width: 26px; height: 26px; }
+    }
+    &__name { font-weight: 700; font-size: .92rem; }
+}
+
+// =====================================================================
+// Ürün kart slider (Neuheiten) — yatay kaydırma
+// =====================================================================
+.elfbar-slider-nav { display: flex; gap: .5rem; }
+.elfbar-slider-btn {
+    width: 44px; height: 44px; border-radius: 12px; padding: 0;
+    border: none; background: $sw-color-brand-primary;
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer; color: #fff; line-height: 0;
+    box-shadow: 0 4px 12px rgba($sw-color-brand-primary, 0.28);
+    transition: background .15s ease, transform .1s ease, box-shadow .15s ease;
+    // ikon kesin ortala (inline chevron — tam simetrik)
+    > svg, .icon svg { display: block; width: 20px; height: 20px; color: #fff; }
+    .icon { width: 20px; height: 20px; margin: 0; line-height: 0; display: flex; align-items: center; justify-content: center; }
+    &:hover {
+        background: darken($sw-color-brand-primary, 9%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba($sw-color-brand-primary, 0.38);
+    }
+    &:active { transform: scale(.94); }
+}
+.elfbar-cardslider {
+    overflow-x: auto; overflow-y: hidden; margin: 0 0 1.5rem;
+    scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; &::-webkit-scrollbar { display: none; }
+    &__track { display: flex; gap: 1rem; width: max-content; padding-bottom: .25rem; }
+}
+
+// Geniş anasayfa banner (Deals ↔ Neuheiten), ~1292×239 oran
+.elfbar-home-banner {
+    display: block; margin: .5rem 0 2rem;
+    border-radius: $elfbar-radius; overflow: hidden;
+    aspect-ratio: 1292 / 239;          // ince-uzun korunur (görsel oran fark etse de)
+    background: rgba($elfbar-color-ink, 0.04);
+    transition: box-shadow .18s ease, transform .18s ease;
+    &[href]:hover { box-shadow: 0 12px 30px rgba($elfbar-color-ink, 0.12); transform: translateY(-2px); }
+    &__img {
+        display: block; width: 100%; height: 100%; object-fit: cover;
+    }
+    // Desktop/mobil swap: varsayılan desktop görseli
+    &__img--mobile { display: none; }
+    // has-mobile (panelde mobil görsel dolu) → mobilde mobil görseli, desktop gizli
+    @media (max-width: 767.98px) {
+        // mobil görsel genelde daha kare → oran kısıtını gevşet
+        &.has-mobile { aspect-ratio: auto; }
+        &.has-mobile .elfbar-home-banner__img--desktop { display: none; }
+        &.has-mobile .elfbar-home-banner__img--mobile { display: block; }
+    }
+}
+
+// Vitrine-Banner (Neuheiten ↔ Bestseller): sol görsel + sağ (başlık-görseli/metin/buton)
+// Awward-level premium: temiz beyaz, sola hizalı büyük logo, ince ışık dokunuşları
+.elfbar-showcase {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    align-items: stretch;
+    margin: .5rem 0 2.25rem;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba($elfbar-color-ink, 0.07);
+    box-shadow: 0 24px 60px -28px rgba($elfbar-color-ink, 0.32), 0 4px 14px rgba($elfbar-color-ink, 0.05);
+    transition: box-shadow .3s ease, transform .3s ease;
+    &:hover { box-shadow: 0 34px 80px -30px rgba($elfbar-color-ink, 0.40), 0 6px 18px rgba($elfbar-color-ink, 0.06); }
+
+    &__media {
+        position: relative;
+        min-height: 340px;
+        background: #0c1118;
+        overflow: hidden;
+        // alt köşede yumuşak geçiş, görseli karta bağlar
+        &::after {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(105deg, transparent 78%, rgba(#fff, 0.04) 100%);
+            pointer-events: none;
+        }
+    }
+    &__img {
+        display: block; width: 100%; height: 100%;
+        object-fit: cover;
+        transition: transform .6s cubic-bezier(.2,.7,.2,1);
+    }
+    &:hover &__img { transform: scale(1.03); }
+    &__img--mobile { display: none; }
+
+    &__body {
+        position: relative;
+        display: flex; flex-direction: column;
+        align-items: flex-start;            // sola yaslı
+        justify-content: center;
+        text-align: left;
+        gap: 1.4rem;                        // büyük logo ile dengeli aralık
+        padding: 3rem 3.25rem;
+        color: $elfbar-color-ink;
+        // sağ panele çok hafif premium ışık (radial), neredeyse beyaz
+        background:
+            radial-gradient(120% 140% at 100% 0%, rgba($sw-color-brand-primary, 0.05) 0%, transparent 45%),
+            radial-gradient(120% 140% at 0% 100%, rgba(#D6F23E, 0.06) 0%, transparent 42%),
+            #fff;
+        // sol kenarda dikey hairline (görselden ayırır, premium)
+        &::before {
+            content: ""; position: absolute; left: 0; top: 14%; bottom: 14%; width: 1px;
+            background: linear-gradient(180deg, transparent, rgba($elfbar-color-ink, 0.10), transparent);
+        }
+    }
+    // Başlık görseli (panelden yüklenen — title yerine): SOLA yaslı + BÜYÜK
+    &__title-img {
+        display: block; max-width: 92%; max-height: 150px;
+        width: auto; height: auto; object-fit: contain;
+        object-position: left center;
+        margin: 0 0 .15rem;                 // büyük logo sonrası küçük ekstra boşluk
+    }
+    &__title {
+        margin: 0; font-family: $elfbar-font-headline;
+        font-weight: 800; font-size: 2rem; line-height: 1.1;
+        letter-spacing: -0.01em;
+        color: $elfbar-color-ink;
+    }
+    &__text {
+        margin: 0; font-size: 1.05rem; line-height: 1.6;
+        max-width: 30rem;
+        color: rgba($elfbar-color-ink, 0.66);
+    }
+    &__btn {
+        align-self: flex-start;
+        display: inline-flex; align-items: center; gap: .55rem;
+        margin-top: .4rem;
+        padding: .95rem 2rem;
+        background: #D6F23E; color: #15330f;
+        font-weight: 800; font-size: 1.02rem; letter-spacing: -0.005em;
+        border-radius: 999px; text-decoration: none;
+        box-shadow: 0 10px 26px -6px rgba(#9bbd1a, 0.6);
+        transition: transform .18s ease, box-shadow .18s ease, background .18s ease, gap .18s ease;
+        // ok ikonu
+        &::after {
+            content: ""; width: 18px; height: 18px; flex: 0 0 18px;
+            background: currentColor;
+            -webkit-mask: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3Cpolyline points='12 5 19 12 12 19'/%3E%3C/svg%3E");
+            mask: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3Cpolyline points='12 5 19 12 12 19'/%3E%3C/svg%3E");
+        }
+        &:hover { transform: translateY(-2px); gap: .8rem; background: #cdec2f; box-shadow: 0 16px 34px -8px rgba(#9bbd1a, 0.7); color: #15330f; }
+    }
+    // İki buton yan yana (1. lime dolu + 2. outline)
+    &__btns {
+        display: flex; flex-wrap: wrap; align-items: center; gap: .75rem;
+        margin-top: .4rem;
+        .elfbar-showcase__btn { margin-top: 0; align-self: auto; }
+    }
+    // 2. buton — çerçeveli ikincil (Download vb)
+    &__btn--outline {
+        background: transparent; color: $elfbar-color-ink;
+        border: 2px solid rgba($elfbar-color-ink, 0.18);
+        box-shadow: none;
+        &::after {
+            // indirme/ok yerine aşağı-ok (download hissi) — currentColor maske
+            -webkit-mask: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='5' y1='21' x2='19' y2='21'/%3E%3C/svg%3E");
+            mask: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='5' y1='21' x2='19' y2='21'/%3E%3C/svg%3E");
+        }
+        &:hover {
+            transform: translateY(-2px); gap: .8rem; background: rgba($elfbar-color-ink, 0.04);
+            border-color: rgba($elfbar-color-ink, 0.32); box-shadow: none; color: $elfbar-color-ink;
+        }
+    }
+    &__note {
+        margin: .35rem 0 0; font-size: .74rem; line-height: 1.45;
+        max-width: 30rem;
+        color: rgba($elfbar-color-ink, 0.42);
+    }
+
+    @media (max-width: 991.98px) {
+        &__body { padding: 2.5rem 2.5rem; gap: 1.2rem; }
+        &__title-img { max-height: 118px; }
+        &__title { font-size: 1.7rem; }
+    }
+    @media (max-width: 767.98px) {
+        grid-template-columns: 1fr;
+        border-radius: 18px;
+        &__media { min-height: 200px; }
+        &.has-mobile .elfbar-showcase__img--desktop { display: none; }
+        &.has-mobile .elfbar-showcase__img--mobile { display: block; }
+        &__body { padding: 2rem 1.5rem; gap: 1.1rem; }
+        &__body::before { display: none; }
+        &__title-img { max-height: 92px; max-width: 82%; }
+        &__title { font-size: 1.5rem; }
+        &__text { font-size: .98rem; }
+        &__btns { width: 100%; }
+        &__btn { width: 100%; justify-content: center; }
+    }
+}
+
+// ============ İçerik sayfaları (AGB / Datenschutz / Impressum / Widerruf …) ============
+// Temiz, ortalanmış, okunur tipografi. Kategori ağacı/filtre YOK.
+.elfbar-content-page {
+    background: #fff;
+    padding: 3.25rem 1.25rem 4.5rem;
+
+    &__inner {
+        max-width: 820px;
+        margin: 0 auto;
+    }
+
+    &__head {
+        margin-bottom: 2.25rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba($elfbar-color-ink, 0.08);
+    }
+    &__title {
+        margin: 0;
+        font-family: $elfbar-font-headline;
+        font-weight: 800;
+        font-size: 2.4rem;
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+        color: $elfbar-color-ink;
+        position: relative;
+        padding-bottom: 1rem;
+        // mavi accent çizgi başlık altında
+        &::after {
+            content: ""; position: absolute; left: 0; bottom: 0;
+            width: 56px; height: 4px; border-radius: 4px;
+            background: $elfbar-gradient;
+        }
+    }
+
+    // CMS metin içeriği — okunur dökümantasyon tipografisi
+    &__cms {
+        color: rgba($elfbar-color-ink, 0.82);
+        font-size: 1.02rem;
+        line-height: 1.75;
+
+        // Shopware CMS section'larının kendi container/genişlik/dolgusunu sıfırla
+        // → metin akışını bizim 820px inner'ımız yönetsin (boxed/container max-width ezilir)
+        .cms-page, .cms-sections, .cms-section, .cms-section .boxed,
+        .cms-block, .cms-block-container, .cms-block-container-row,
+        .cms-element-text {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            max-width: 100% !important;
+            width: auto !important;
+        }
+        .cms-section { padding-top: 0 !important; padding-bottom: 1rem !important; }
+        .cms-block { margin-bottom: .5rem; }
+        // grid/flex container'ları düz akışa al
+        .cms-block-container-row, .row { display: block !important; margin: 0 !important; }
+        [class*="col-"] { width: 100% !important; max-width: 100% !important; flex: none !important; padding: 0 !important; }
+
+        h1, h2, h3, h4 {
+            font-family: $elfbar-font-headline;
+            font-weight: 700;
+            color: $elfbar-color-ink;
+            line-height: 1.25;
+            margin: 2rem 0 .85rem;
+            letter-spacing: -0.01em;
+        }
+        h1 { font-size: 1.9rem; }
+        h2 { font-size: 1.45rem; }
+        h3 { font-size: 1.18rem; }
+        h4 { font-size: 1.05rem; }
+        > :first-child, .cms-element-text > :first-child { margin-top: 0; }
+
+        p { margin: 0 0 1.1rem; }
+        a {
+            color: $sw-color-brand-primary;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            &:hover { color: #3f72b8; }
+        }
+        ul, ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
+        li { margin-bottom: .45rem; }
+
+        strong, b { color: $elfbar-color-ink; font-weight: 700; }
+
+        // tablolar (örn. Versand & Zahlung fiyat tablosu)
+        table {
+            width: 100%; border-collapse: collapse; margin: 0 0 1.5rem;
+            font-size: .95rem;
+        }
+        th, td {
+            text-align: left; padding: .7rem .9rem;
+            border-bottom: 1px solid rgba($elfbar-color-ink, 0.10);
+        }
+        th { font-weight: 700; color: $elfbar-color-ink; background: rgba($elfbar-color-ink, 0.03); }
+
+        img { max-width: 100%; height: auto; border-radius: $elfbar-radius; }
+
+        hr { border: 0; border-top: 1px solid rgba($elfbar-color-ink, 0.10); margin: 2rem 0; }
+
+        blockquote {
+            margin: 1.5rem 0; padding: .9rem 1.25rem;
+            border-left: 3px solid $sw-color-brand-primary;
+            background: rgba($sw-color-brand-primary, 0.05);
+            border-radius: 0 8px 8px 0;
+            color: rgba($elfbar-color-ink, 0.75);
+        }
+
+        // ===== FAQ accordion (<details>/<summary>) =====
+        .elfbar-faq__group {
+            margin-top: 2.5rem;
+            color: $sw-color-brand-primary;
+            font-size: 1.05rem; text-transform: uppercase; letter-spacing: .04em;
+            &:first-of-type { margin-top: 1rem; }
+        }
+        .elfbar-faq__item {
+            border: 1px solid rgba($elfbar-color-ink, 0.10);
+            border-radius: 14px;
+            margin-bottom: .7rem;
+            background: #fff;
+            overflow: hidden;
+            transition: border-color .18s ease, box-shadow .18s ease;
+            &.is-open {
+                border-color: rgba($sw-color-brand-primary, 0.35);
+                box-shadow: 0 8px 22px -10px rgba($sw-color-brand-primary, 0.35);
+            }
+        }
+        .elfbar-faq__q {
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+            padding: 1.1rem 1.3rem;
+            font-family: $elfbar-font-headline;
+            font-weight: 700; font-size: 1.02rem; line-height: 1.35;
+            color: $elfbar-color-ink;
+            user-select: none;
+            transition: color .15s ease;
+            &:hover { color: $sw-color-brand-primary; }
+        }
+        // + / − ikon
+        .elfbar-faq__icon {
+            flex: 0 0 22px; width: 22px; height: 22px; position: relative;
+            border-radius: 50%;
+            background: rgba($sw-color-brand-primary, 0.10);
+            transition: background .18s ease, transform .25s ease;
+            &::before, &::after {
+                content: ""; position: absolute; left: 50%; top: 50%;
+                width: 10px; height: 2px; border-radius: 2px;
+                background: $sw-color-brand-primary;
+                transform: translate(-50%, -50%);
+                transition: opacity .2s ease, transform .25s ease;
+            }
+            &::after { transform: translate(-50%, -50%) rotate(90deg); } // + (dikey çubuk)
+        }
+        .elfbar-faq__item.is-open .elfbar-faq__icon {
+            background: $sw-color-brand-primary;
+            transform: rotate(180deg);
+            &::before, &::after { background: #fff; }
+            &::after { opacity: 0; } // + → −
+        }
+        // Cevap kapalı: max-height 0 (JS açınca .is-open)
+        .elfbar-faq__a {
+            max-height: 0; overflow: hidden;
+            padding: 0 1.3rem;
+            color: rgba($elfbar-color-ink, 0.7);
+            line-height: 1.65;
+            transition: max-height .3s ease, padding .3s ease;
+            p { margin: 0; padding: .25rem 0 0; }
+        }
+        .elfbar-faq__item.is-open .elfbar-faq__a {
+            max-height: 600px;
+            padding: 0 1.3rem 1.15rem;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        padding: 2.25rem 1.1rem 3rem;
+        &__title { font-size: 1.85rem; }
+        &__head { margin-bottom: 1.75rem; padding-bottom: 1.1rem; }
+        &__cms { font-size: .98rem; }
+    }
+}
+
+// Slider içindeki ürün kartı (Bestseller kartıyla aynı dil)
+.elfbar-pcard {
+    position: relative; flex: 0 0 auto; width: 230px;
+    background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.08);
+    border-radius: $elfbar-radius; padding: .9rem;
+    transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+    // Kart artık <a> (tüm karta tıklanır) — link görünümünü sıfırla
+    text-decoration: none; color: inherit; display: block;
+    &:hover { text-decoration: none; color: inherit; }
+    &:hover { box-shadow: 0 10px 28px rgba($sw-color-brand-primary, 0.16); transform: translateY(-4px);
+        border-color: rgba($sw-color-brand-primary, 0.3); }
+    &__badge { position: absolute; top: .75rem; left: .75rem; z-index: 2;
+        background: $sw-color-brand-primary; color: #fff; font-size: .66rem; font-weight: 700;
+        padding: .25rem .6rem; border-radius: 999px; }
+    &__age { position: absolute; top: 2.5rem; left: .75rem; z-index: 2;
+        background: $elfbar-color-sale; color: #fff; font-size: .62rem; font-weight: 800;
+        width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; }
+    &__wish { position: absolute; top: .6rem; right: .6rem; z-index: 2;
+        width: 32px; height: 32px; border-radius: 50%; background: #fff;
+        border: 1px solid rgba($elfbar-color-ink, 0.1); display: grid; place-items: center; cursor: pointer;
+        .icon { width: 15px; height: 15px; } }
+    &__img { aspect-ratio: 1/1; background: rgba($elfbar-color-ink, 0.03); border-radius: 10px;
+        margin-bottom: .65rem; display: grid; place-items: center; color: rgba($elfbar-color-ink, 0.3);
+        overflow: hidden;
+        img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; } }
+    &__stars { font-size: .85rem; letter-spacing: 1px; color: rgba($elfbar-color-ink, 0.2); margin-bottom: .3rem;
+        span.is-full { color: #FFB400; } }
+    &__brand { font-size: .66rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+        color: rgba($elfbar-color-ink, 0.5); }
+    &__name { font-weight: 700; font-size: .88rem; line-height: 1.3; min-height: 2.3em; margin-bottom: .6rem; }
+    &__foot { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+    &__price { font-weight: 700; font-size: 1.05rem; color: $elfbar-color-ink; }
+    &__add { width: 38px; height: 38px; border: none; border-radius: 50%;
+        background: $elfbar-color-ink; color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer;
+        display: grid; place-items: center;
+        transition: background .15s ease, transform .15s ease;
+        &:hover { background: $sw-color-brand-primary; transform: scale(1.08); } }
+}
+
+// Bestseller grid (gerçek ürünler — subscriber'dan). Kartlar tam genişlikte aksın.
+.elfbar-cardgrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: .5rem;
+    .elfbar-pcard { width: auto; }
+    @media (max-width: 1199.98px) { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 767.98px) {
+        // Mobilde yatay slider hissi (anasayfa mobil çizgisiyle uyumlu)
+        display: flex; flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;
+        &::-webkit-scrollbar { display: none; }
+        .elfbar-pcard { flex: 0 0 72%; scroll-snap-align: start; }
+    }
+}
+
+// =====================================================================
+// B2B avantaj / kayıt CTA banner (sayfa sonu)
+// =====================================================================
+.elfbar-b2b {
+    margin: 2.5rem 0 0;
+    background: linear-gradient(135deg, $sw-color-brand-primary, darken($sw-color-brand-primary, 16%));
+    border-radius: 20px; padding: 2.5rem; color: #fff;
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem; align-items: center;
+    @media (max-width: 767.98px) { grid-template-columns: 1fr; padding: 1.75rem; }
+    &__eyebrow { display: inline-block; font-size: .72rem; font-weight: 700; text-transform: uppercase;
+        letter-spacing: .05em; opacity: .9; margin-bottom: .8rem; }
+    &__title { font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.7rem; line-height: 1.2; margin: 0 0 .8rem; }
+    &__text { opacity: .9; line-height: 1.55; margin: 0 0 1.4rem; max-width: 44ch; }
+    &__actions { display: flex; gap: .7rem; flex-wrap: wrap; }
+    &__btn { font-weight: 700; font-size: .9rem; padding: .7rem 1.4rem; border-radius: 999px; text-decoration: none;
+        transition: transform .15s ease, box-shadow .15s ease;
+        &.is-primary { background: #fff; color: $sw-color-brand-primary;
+            &:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(#000, 0.18); } }
+        &.is-ghost { background: rgba(#fff, 0.12); color: #fff; border: 1px solid rgba(#fff, 0.35);
+            &:hover { background: rgba(#fff, 0.2); } } }
+    &__stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    &__stat { background: rgba(#fff, 0.1); border: 1px solid rgba(#fff, 0.18); border-radius: 14px;
+        padding: 1.1rem; text-align: center;
+        b { display: block; font-family: $elfbar-font-headline; font-size: 1.7rem; line-height: 1; }
+        small { display: block; margin-top: .35rem; font-size: .78rem; opacity: .85; } }
+}
+
+// =====================================================================
+// Kategori liste satırı (B2B hızlı sipariş) — box-list
+// =====================================================================
+.elfbar-listcol { padding: 0 !important; max-width: 100% !important; flex: 0 0 100% !important; }
+.elfbar-listrow {
+    border: 1px solid rgba($elfbar-color-ink, 0.08) !important;
+    border-radius: $elfbar-radius; margin-bottom: .85rem; background: #fff;
+    transition: box-shadow .15s ease, border-color .15s ease;
+    &:hover { box-shadow: 0 6px 20px rgba($sw-color-brand-primary, 0.1); border-color: rgba($sw-color-brand-primary, 0.25) !important; }
+
+    &__inner {
+        display: grid;
+        grid-template-columns: 110px 1fr auto auto;
+        gap: 1.25rem; align-items: center; padding: .9rem 1.1rem;
+        @media (max-width: 991.98px) { grid-template-columns: 90px 1fr; row-gap: .9rem; }
+    }
+
+    // Görsel
+    &__media {
+        position: relative; display: block; width: 110px; height: 110px;
+        border-radius: 10px; overflow: hidden; background: rgba($elfbar-color-ink, 0.03);
+        @media (max-width: 991.98px) { width: 90px; height: 90px; }
+    }
+    &__img { width: 100%; height: 100%; object-fit: contain; }
+    &__placeholder { display: grid; place-items: center; height: 100%; color: rgba($elfbar-color-ink, 0.25);
+        svg { width: 38px; height: 38px; } }
+    &__age {
+        position: absolute; top: .35rem; left: .35rem;
+        background: $elfbar-color-sale; color: #fff; font-size: .58rem; font-weight: 800;
+        width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+    }
+
+    // Bilgi
+    &__info { min-width: 0; }
+    &__brand { font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: rgba($elfbar-color-ink, 0.5); }
+    &__name { display: block; font-weight: 700; font-size: 1.02rem; color: $elfbar-color-ink; text-decoration: none; line-height: 1.3; margin: .1rem 0 .25rem;
+        &:hover { color: $sw-color-brand-primary; text-decoration: none; } }
+    &__stars { font-size: .82rem; letter-spacing: 1px; color: rgba($elfbar-color-ink, 0.2); margin-bottom: .3rem;
+        span.is-full { color: #FFB400; } }
+    &__desc { font-size: .82rem; color: rgba($elfbar-color-ink, 0.55); line-height: 1.45; margin: 0;
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+    // Fiyat
+    &__price { text-align: right; white-space: nowrap;
+        @media (max-width: 991.98px) { text-align: left; } }
+    &__from { display: block; font-size: .7rem; color: rgba($elfbar-color-ink, 0.5); }
+    &__amount { font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.35rem; color: $sw-color-brand-primary; }
+    &__tax { display: block; font-size: .68rem; color: rgba($elfbar-color-ink, 0.45); }
+
+    // Menge + Warenkorb — qty stepper ve buton AYNI yükseklik + dikey ortalı
+    &__buy { @media (max-width: 991.98px) { grid-column: 1 / -1; } }
+    &__form { display: flex; align-items: stretch; gap: .6rem; @media (max-width: 575.98px) { flex-wrap: wrap; } }
+    &__cart {
+        height: 44px; box-sizing: border-box;
+        background: $sw-color-brand-primary; border: none; color: #fff;
+        border-radius: 10px; padding: 0 1.1rem; font-weight: 700; font-size: .88rem;
+        display: inline-flex; align-items: center; gap: .45rem; white-space: nowrap; cursor: pointer;
+        .icon { width: 16px; height: 16px; } .icon svg { color: #fff; }
+        &:hover { background: darken($sw-color-brand-primary, 8%); color: #fff; }
+        &.is-detail { background: transparent; color: $sw-color-brand-primary; border: 1px solid rgba($sw-color-brand-primary, 0.4);
+            &:hover { background: rgba($sw-color-brand-primary, 0.08); } }
+    }
+    // Bu satırdaki qty stepper da 44px (butonla aynı hiza)
+    .elfbar-qty { height: 44px;
+        &__btn { height: 44px; }
+        &__input { height: 44px; }
+    }
+}
+
+// Menge stepper
+.elfbar-qty {
+    display: inline-flex; align-items: center; border: 1px solid rgba($elfbar-color-ink, 0.15); border-radius: 10px; overflow: hidden;
+    &__btn {
+        width: 36px; height: 42px; border: none; background: rgba($elfbar-color-ink, 0.04);
+        font-size: 1.25rem; line-height: 1; color: $elfbar-color-ink; cursor: pointer;
+        &:hover { background: rgba($sw-color-brand-primary, 0.12); color: $sw-color-brand-primary; }
+    }
+    &__input {
+        width: 48px; height: 42px; border: none; text-align: center; font-weight: 700; font-size: .95rem;
+        color: $elfbar-color-ink; -moz-appearance: textfield;
+        &::-webkit-outer-spin-button, &::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        &:focus { outline: none; }
+    }
+}
+
+// =====================================================================
+// KATEGORİ SAYFASI — 2 kolon (sol kategori ağacı + filtre | sağ başlık + liste)
+// =====================================================================
+.elfbar-cat {
+    max-width: 1600px; margin: 1.5rem auto 0; padding: 0 1.5rem;
+    display: grid; grid-template-columns: 270px 1fr; gap: 1.5rem; align-items: start;
+    // Desktop: sol kol = col (kategori + filtre tek blok); sağ kol = main
+    grid-template-areas: "col main";
+    @media (max-width: 991.98px) { grid-template-columns: 1fr; grid-template-areas: "main"; }
+
+    // --- SOL kol: kategori paneli + filtreler tek sticky blok ---
+    // Tüm kol birlikte kayar → sticky aside artık filtrenin üstüne BİNMEZ.
+    // NOT: overflow KOYULMAZ — mega menü paneli (position:absolute; left:100%)
+    // sağa açıldığında clip'lenmesin diye. Kol viewport'tan uzunsa normal
+    // sayfa scroll'u devreye girer (sticky en kötü ihtimalle üstü sabitler).
+    &__col {
+        grid-area: col;
+        position: sticky; top: 1rem;
+        z-index: 50; // mega panel sağa açılınca ürün listesinin ÜSTÜNde kalsın
+        @media (max-width: 991.98px) { position: static; z-index: auto; }
+    }
+    // mobilde aside/filtre fixed bottom-sheet (kendi kuralları); filtre kolda akar
+    &__filtersheet { margin-top: 1rem; }
+    // sağ alan daha düşük katmanda (panel onun üstüne biner)
+    &__main { grid-area: main; min-width: 0; position: relative; z-index: 1; }
+    // Mobil buton bar'ı + sheet başlık/✕ desktop'ta GİZLİ
+    &__mobilebar { display: none; }
+    .elfbar-sheet__close { display: none; }
+    // Desktop: filtre sheet'inin "Filter" başlığı gizli (eski sade görünüm)
+    &__filtersheet > .elfbar-cat__aside-head { display: none; }
+    &__aside-head {
+        background: $sw-color-brand-primary; color: #fff;
+        font-weight: 700; font-size: .82rem; text-transform: uppercase; letter-spacing: .03em;
+        padding: .85rem 1.1rem; border-radius: $elfbar-radius $elfbar-radius 0 0;
+    }
+
+    // --- SAĞ ana alan --- (z-index aşağıda, panelin altında)
+    &__title {
+        font-family: $elfbar-font-headline; font-weight: 700; font-size: 2rem;
+        color: $elfbar-color-ink; margin: .5rem 0 1.25rem;
+    }
+    &__cms { min-width: 0; }
+
+    // Filtre slotu (JS ile filtre paneli buraya taşınır)
+    &__filterslot { margin-top: 1rem; }
+}
+
+// Kategori ağacı (sol sidebar)
+.elfbar-catnav {
+    list-style: none; margin: 0; padding: 0;
+    background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.08);
+    border-top: none; border-radius: 0 0 $elfbar-radius $elfbar-radius; overflow: hidden;
+    &__item { border-bottom: 1px solid rgba($elfbar-color-ink, 0.06); &:last-child { border-bottom: none; } }
+    &__link {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: .8rem 1.1rem; color: $elfbar-color-ink; text-decoration: none;
+        font-size: .85rem; font-weight: 600;
+        transition: background .12s ease, color .12s ease;
+        &::after { content: "›"; color: rgba($elfbar-color-ink, 0.3); font-size: 1.1rem; }
+        &:hover { background: rgba($sw-color-brand-primary, 0.07); color: $sw-color-brand-primary; text-decoration: none;
+            &::after { color: $sw-color-brand-primary; } }
+        &.is-active { background: rgba($sw-color-brand-primary, 0.1); color: $sw-color-brand-primary; font-weight: 700;
+            border-left: 3px solid $sw-color-brand-primary; }
+    }
+}
+
+// Filtre paneli sidebar'da — dikey görünüm
+.elfbar-cat__filterslot {
+    .cms-block-sidebar-filter, .cms-block-container, .cms-block-container-row,
+    .cms-block-container .col-12 { padding: 0 !important; margin: 0 !important; }
+    .filter-panel {
+        display: block !important; background: #fff;
+        border: 1px solid rgba($elfbar-color-ink, 0.08); border-radius: $elfbar-radius;
+        padding: 1rem !important; margin: 0 !important;
+    }
+    .filter-panel-items-container { display: block !important; }
+    // Her filtreyi tam genişlik dikey diz
+    .filter-panel .filter-panel-item {
+        display: block !important; width: 100% !important; margin: 0 0 .6rem !important;
+        .filter-panel-item-toggle, .btn {
+            width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center;
+            border: 1px solid rgba($elfbar-color-ink, 0.12); border-radius: 10px;
+            padding: .65rem .9rem; font-weight: 600; font-size: .85rem; background: #fff;
+        }
+    }
+    .filter-panel-item:last-child { margin-bottom: 0 !important; }
+    // "Reset all" / aktif filtre satırı
+    .filter-panel-active-container { margin-top: .75rem; }
+}
+
+// Kategori sayfasında üst sıralama bar (Name A-Z) — sağ alana hizalı, sade
+.elfbar-cat__cms {
+    .cms-element-product-listing-actions { padding: 0 0 1rem !important; margin: 0 !important; }
+    // boş cms text/image bloklarını gizle (home'daki gibi)
+    .cms-block-text, .cms-block-image-text { display: none !important; }
+    .cms-section, .cms-block, .cms-block-container { padding: 0 !important; margin: 0 !important; }
+}
+
+
+// =====================================================================
+// SEPET DRAWER (offcanvas-cart) — düzen + quantity stepper fix
+// =====================================================================
+// ⭐ "Continue shopping" başlık butonu turkuaz (btn-secondary) idi → mavi tema (global)
+.offcanvas-header .offcanvas-close,
+.btn-secondary.offcanvas-close,
+.offcanvas-close.js-offcanvas-close {
+    background: $sw-color-brand-primary !important;
+    border-color: $sw-color-brand-primary !important;
+    color: #fff !important;
+    .icon svg { color: #fff !important; }
+    &:hover { background: darken($sw-color-brand-primary, 8%) !important; border-color: darken($sw-color-brand-primary, 8%) !important; }
+}
+
+.offcanvas.is-right.cart-offcanvas,
+.offcanvas-cart {
+    // Quantity satırı: etiket sol, stepper sağ — tek hizada
+    .line-item-quantity-row { align-items: center; margin: 0; }
+    .line-item-quantity-label { font-weight: 600; font-size: .9rem; color: $elfbar-color-ink; }
+    .line-item-quantity-select-wrapper { display: flex; justify-content: flex-end; }
+
+    // ⭐ Quantity stepper FIX — minus/input/plus YAN YANA (sarma yok)
+    .line-item-quantity-group.quantity-selector-group {
+        display: inline-flex !important;
+        flex-wrap: nowrap !important;
+        width: auto !important;
+        border: 1px solid rgba($elfbar-color-ink, 0.15);
+        border-radius: 10px; overflow: hidden;
+
+        .btn-minus, .btn-plus {
+            flex: 0 0 auto !important;
+            width: 40px; height: 42px; padding: 0;
+            border: none !important; border-radius: 0 !important;
+            background: rgba($elfbar-color-ink, 0.04); color: $elfbar-color-ink;
+            display: grid; place-items: center;
+            &:hover { background: rgba($sw-color-brand-primary, 0.12); color: $sw-color-brand-primary; }
+            .icon.icon-minus, .icon.icon-plus { margin-bottom: 5px; }
+        }
+        .js-quantity-selector, input.form-control {
+            flex: 0 0 52px !important; width: 52px !important; height: 42px;
+            border: none !important; border-left: 1px solid rgba($elfbar-color-ink, 0.1) !important;
+            border-right: 1px solid rgba($elfbar-color-ink, 0.1) !important;
+            border-radius: 0 !important; text-align: center; font-weight: 700;
+            box-shadow: none !important; -moz-appearance: textfield;
+            &::-webkit-outer-spin-button, &::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        }
+    }
+
+    // Ürün satırı genel düzen
+    .line-item { padding: 1rem 0; }
+    .line-item-img-container img { border-radius: 8px; border: 1px solid rgba($elfbar-color-ink, 0.06); }
+    .line-item-label { font-weight: 700; }
+
+    // "Go to checkout" butonu — marka mavisi dolu
+    .offcanvas-cart-actions .btn-primary, .begin-checkout-btn {
+        background: $sw-color-brand-primary; border-color: $sw-color-brand-primary;
+        border-radius: 10px; font-weight: 700;
+        &:hover { background: darken($sw-color-brand-primary, 8%); border-color: darken($sw-color-brand-primary, 8%); }
+    }
+}
+
+
+// =====================================================================
+// ÜRÜN DETAY SAYFASI — modern satın alma kutusu + başlık
+// =====================================================================
+// Başlık (product-name CMS element)
+.cms-element-product-name .product-detail-name,
+.product-detail-name {
+    font-family: $elfbar-font-headline; font-weight: 700;
+    font-size: 2rem; color: $elfbar-color-ink; line-height: 1.2;
+}
+
+// Satın alma kutusu → beyaz kart, gölge
+.cms-element-buy-box {
+    background: #fff;
+    border: 1px solid rgba($elfbar-color-ink, 0.08);
+    border-radius: $elfbar-radius;
+    padding: 1.5rem;
+    box-shadow: 0 4px 18px rgba($elfbar-color-ink, 0.05);
+
+    // Fiyat — büyük, marka mavisi
+    .product-detail-price {
+        font-family: $elfbar-font-headline; font-weight: 700;
+        font-size: 1.9rem; color: $sw-color-brand-primary;
+    }
+    // B2B fiyat kademesi tablosu — vurgulu
+    .product-block-prices {
+        margin: .5rem 0 1rem;
+        .product-block-prices-row { font-size: .9rem; }
+        .product-block-prices-cell.price { font-weight: 700; color: $sw-color-brand-primary; }
+    }
+    .product-detail-tax-container { margin-bottom: 1rem; }
+
+    // Miktar + sepete ekle
+    .product-detail-quantity-container, .product-detail-form-container {
+        margin-bottom: .5rem;
+    }
+    // Sepete ekle butonu — büyük, marka mavisi, tam genişlik
+    .btn-buy {
+        background: $sw-color-brand-primary; border-color: $sw-color-brand-primary;
+        border-radius: 10px; font-weight: 700; padding: .85rem 1.5rem; font-size: 1rem;
+        &:hover { background: darken($sw-color-brand-primary, 8%); border-color: darken($sw-color-brand-primary, 8%); }
+    }
+    // Quantity selector (detayda) — minus/input/plus YAN YANA (mobilde + alt
+    // satıra düşüyordu = leş). Offcanvas stepper'ıyla aynı nowrap fix.
+    .product-detail-quantity-container,
+    .product-detail-form-container {
+        display: flex; flex-wrap: wrap; align-items: stretch; gap: .6rem;
+    }
+    .quantity-selector-group,
+    .line-item-quantity-group.quantity-selector-group {
+        display: inline-flex !important;
+        flex-wrap: nowrap !important;
+        width: auto !important;
+        flex: 0 0 auto;
+        border: 1px solid rgba($elfbar-color-ink, 0.15);
+        border-radius: 10px; overflow: hidden;
+
+        .btn-minus, .btn-plus {
+            flex: 0 0 auto !important;
+            width: 42px; height: 48px; padding: 0;
+            border: none !important; border-radius: 0 !important;
+            background: rgba($elfbar-color-ink, 0.04); color: $elfbar-color-ink;
+            display: grid; place-items: center;
+            &:hover { background: rgba($sw-color-brand-primary, 0.12); color: $sw-color-brand-primary; }
+        }
+        .js-quantity-selector, input.form-control {
+            flex: 0 0 56px !important; width: 56px !important; height: 48px;
+            border: none !important;
+            border-left: 1px solid rgba($elfbar-color-ink, 0.1) !important;
+            border-right: 1px solid rgba($elfbar-color-ink, 0.1) !important;
+            border-radius: 0 !important; text-align: center; font-weight: 700;
+            box-shadow: none !important; -moz-appearance: textfield;
+            &::-webkit-outer-spin-button, &::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        }
+    }
+    // ⭐ ASIL FIX: Menge + Sepete-ekle Bootstrap grid'inde (.row.g-2 içinde
+    // col-4 stepper + col-8 buton) YAN YANA → boğuluyordu (hem masaüstü hem
+    // mobil). İkisini de TAM GENİŞLİK alt alta yap: stepper üstte, buton altta.
+    .buy-widget .row.g-2,
+    .buy-widget-container.row,
+    form.buy-widget > .row {
+        --bs-gutter-x: 0;
+        > .col-4, > fieldset.col-4 {
+            flex: 0 0 100%; max-width: 100%; width: 100%; margin-bottom: .75rem;
+            justify-content: flex-start !important; // stepper sola yaslı
+        }
+        > .col-8 { flex: 0 0 100%; max-width: 100%; width: 100%; }
+    }
+    // Stepper kabı (fieldset içindeki input-group) sola yaslı, kendi boyu
+    .product-detail-quantity-group.input-group,
+    fieldset .quantity-selector-group { width: auto !important; flex: 0 0 auto !important; }
+    // Sepete ekle butonu TAM genişlik, büyük
+    .btn-buy { width: 100%; min-height: 48px; }
+
+    // (eski) — artık yukarıdaki grid fix her ekranda alt alta yapıyor
+    @media (max-width: 575.98px) {
+        // stepper sola yaslı, kendi genişliğinde (tam genişlik değil, şık dursun)
+        .quantity-selector-group { align-self: flex-start; }
+        // buton altta TAM genişlik
+        .btn-buy { width: 100%; flex: 1 1 100%; }
+    }
+}
+
+// USP güven rozetleri (satın alma kutusu altı)
+.elfbar-buybox-usp {
+    list-style: none; margin: 1.25rem 0 0; padding: 1.25rem 0 0;
+    border-top: 1px solid rgba($elfbar-color-ink, 0.08);
+    &__item {
+        display: flex; align-items: center; gap: .7rem;
+        font-size: .85rem; font-weight: 500; color: rgba($elfbar-color-ink, 0.75);
+        padding: .4rem 0;
+    }
+    &__ico {
+        flex: 0 0 auto; width: 32px; height: 32px; border-radius: 8px;
+        background: rgba($sw-color-brand-primary, 0.1);
+        display: grid; place-items: center;
+        .icon { width: 16px; height: 16px; }
+        .icon svg { color: $sw-color-brand-primary; }
+    }
+}
+
+// =====================================================================
+// MOBİL ÜRÜN DETAY — düzen + güzelleştirme (kullanıcı: breadcrumb → görsel →
+// başlık → buybox). Başlığı görselin altına taşıma JS ile (initProductDetail-
+// MobileOrder, main.js) — CMS blokları farklı container'larda, CSS order yetmez.
+// Buradaki kurallar sadece görünüm (başlık/görsel/buybox stilleri).
+// =====================================================================
+@media (max-width: 767.98px) {
+    // Başlık görselin hemen altında, ferah
+    .is-ctl-product .product-detail-name {
+        font-size: 1.4rem; line-height: 1.25; margin: .35rem 0 .75rem;
+    }
+    // Başlık + mavi marka ismi sol kenara YAPIŞIKTI (left:0/-20), breadcrumb
+    // ve görsel 20px içerideydi → heading bloğuna yatay padding ver, hizala.
+    .is-ctl-product .cms-block-product-heading {
+        padding-left: 20px; padding-right: 20px;
+    }
+    // Başlık col'u (product-heading-name-container) kendi 20px iç padding'i +
+    // blok padding'i = 40px (fazla içeride) → col iç padding'i sıfırla, 20'de hizala.
+    .is-ctl-product .product-heading-name-container { padding-left: 0; padding-right: 0; }
+    // Marka logo/isim col'u negatif margin'le sola taşıyordu (gutter) → sıfırla
+    .is-ctl-product .product-heading-manufacturer-logo-container { margin-left: 0; padding-left: 0; }
+    .is-ctl-product .cms-block-product-heading .row { margin-left: 0; margin-right: 0; }
+    // Görsel mobilde temiz, köşeli kart
+    .is-ctl-product .product-detail-media {
+        margin-bottom: .25rem;
+        .gallery-slider-row, .gallery-slider { border-radius: $elfbar-radius; overflow: hidden; }
+    }
+    // Buybox kartı mobilde nefes payı + hafif kart hissi
+    .is-ctl-product .product-detail-buy {
+        background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.08);
+        border-radius: $elfbar-radius; padding: 1.1rem;
+        box-shadow: 0 6px 20px rgba($elfbar-color-ink, 0.05);
+        margin-top: .75rem;
+    }
+}
+
+
+// =====================================================================
+// MEGA MENÜ — sol kategori listesi + hover'da sağa açılan panel
+// =====================================================================
+// Sidebar kapsayıcıları panelin taşmasına izin vermeli
+.elfbar-sidebar, .elfbar-cat__aside { overflow: visible; }
+
+// "Alle Kategorien" başlığı — anasayfa + kategori sayfası ortak (mavi başlık)
+.elfbar-sidebar__head, .elfbar-cat__aside-head {
+    background: $sw-color-brand-primary; color: #fff;
+    font-weight: 700; font-size: .82rem; text-transform: uppercase; letter-spacing: .03em;
+    padding: .85rem 1.1rem; border-radius: $elfbar-radius $elfbar-radius 0 0;
+}
+
+.elfbar-mega {
+    background: #fff;
+    border: 1px solid rgba($elfbar-color-ink, 0.08);
+    border-top: none;
+    border-radius: 0 0 $elfbar-radius $elfbar-radius;
+    &__list { list-style: none; margin: 0; padding: 0; }
+    &__item {
+        position: relative;
+        border-bottom: 1px solid rgba($elfbar-color-ink, 0.06);
+        &:last-child { border-bottom: none; }
+    }
+    &__link {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: .8rem 1.1rem; color: $elfbar-color-ink; text-decoration: none;
+        font-size: .85rem; font-weight: 600;
+        transition: background .12s ease, color .12s ease;
+        &:hover { background: rgba($sw-color-brand-primary, 0.07); color: $sw-color-brand-primary; text-decoration: none; }
+        &.is-active { background: rgba($sw-color-brand-primary, 0.1); color: $sw-color-brand-primary; font-weight: 700;
+            border-left: 3px solid $sw-color-brand-primary; }
+    }
+    &__caret { color: rgba($elfbar-color-ink, 0.35); font-size: 1.15rem; line-height: 1; transition: transform .15s ease, color .15s ease; }
+    &__item.has-children:hover .elfbar-mega__caret { transform: translateX(2px); color: $sw-color-brand-primary; }
+
+    // ---- Açılan panel (çok kolonlu marka grid'i, elfbar-handel.de gibi) ----
+    &__panel {
+        position: absolute; top: -1px; left: 100%;
+        width: 1040px; max-width: calc(100vw - 300px);
+        max-height: 80vh; overflow-y: auto;
+        background: #fff;
+        border: 1px solid rgba($elfbar-color-ink, 0.1);
+        border-radius: $elfbar-radius;
+        box-shadow: 0 18px 50px rgba($elfbar-color-ink, 0.16);
+        padding: 1.5rem 1.75rem;
+        z-index: 60;
+        opacity: 0; visibility: hidden; transform: translateX(8px);
+        transition: opacity .16s ease, transform .16s ease, visibility .16s;
+        pointer-events: none;
+    }
+    &__item.has-children:hover .elfbar-mega__panel {
+        opacity: 1; visibility: visible; transform: translateX(0); pointer-events: auto;
+    }
+    // panel ile menü arasında görünmez köprü (fare boşlukta kaybolmasın)
+    &__item.has-children:hover::after {
+        content: ""; position: absolute; top: 0; left: 100%; width: 14px; height: 100%;
+    }
+
+    // panel başlık satırı
+    &__panel-head {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-bottom: 1.1rem; padding-bottom: .7rem;
+        border-bottom: 2px solid rgba($sw-color-brand-primary, 0.15);
+    }
+    &__heading { font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.15rem; color: $elfbar-color-ink; }
+    &__all { color: $sw-color-brand-primary; font-weight: 700; font-size: .85rem; text-decoration: none;
+        &:hover { text-decoration: underline; } }
+
+    // çok kolonlu marka/alt-kategori grid'i
+    // body: sol marka grid + sağ görsel promo kolonu
+    &__body { display: grid; grid-template-columns: 1fr 200px; gap: 1.5rem; align-items: start;
+        @media (max-width: 1200px) { grid-template-columns: 1fr 170px; } }
+    &__grid {
+        display: grid; grid-template-columns: repeat(4, 1fr);
+        gap: .15rem 1.5rem;
+        @media (max-width: 1300px) { grid-template-columns: repeat(3, 1fr); }
+    }
+    &__cell {
+        display: block; padding: .5rem .2rem; font-size: .85rem; font-weight: 500;
+        color: rgba($elfbar-color-ink, 0.78); text-decoration: none;
+        border-bottom: 1px solid rgba($elfbar-color-ink, 0.05);
+        transition: color .12s ease, padding-left .12s ease;
+        &:hover { color: $sw-color-brand-primary; padding-left: .4rem; text-decoration: none; }
+    }
+
+    // sağ görsel promo kolonu
+    &__promos { display: flex; flex-direction: column; gap: 1rem; }
+    &__promo {
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4rem;
+        background: rgba($sw-color-brand-primary, 0.07);
+        border: 1px solid rgba($sw-color-brand-primary, 0.14);
+        border-radius: $elfbar-radius; padding: 1.1rem .85rem; text-decoration: none;
+        text-align: center; transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
+        &:hover { background: rgba($sw-color-brand-primary, 0.13); transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba($sw-color-brand-primary, 0.14); text-decoration: none; }
+    }
+    &__promo-img {
+        width: 100%; aspect-ratio: 4/3; border-radius: 8px; margin-bottom: .35rem;
+        background: rgba($sw-color-brand-primary, 0.1); color: rgba($sw-color-brand-primary, 0.5);
+        display: grid; place-items: center;
+    }
+    &__promo-cap { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: $sw-color-brand-primary; }
+    &__promo-sub { font-weight: 700; font-size: .9rem; color: $elfbar-color-ink; line-height: 1.2; }
+
+    // Mobilde panel'i alta aç (sonra mobil turunda JS toggle)
+    @media (max-width: 991.98px) {
+        &__panel { position: static; width: auto; max-width: none; max-height: none; box-shadow: none;
+            border: none; padding: .25rem 1.1rem 1rem; opacity: 1; visibility: visible; transform: none;
+            pointer-events: auto; display: none; overflow: visible; }
+        &__item.has-children.is-open .elfbar-mega__panel { display: block; }
+        &__body { grid-template-columns: 1fr; }
+        &__grid { grid-template-columns: 1fr 1fr; }
+        &__promos { display: none; } // mobilde promo gizli
+    }
+}
+
+
+// =====================================================================
+// FOOTER (B2B çok kolonlu)
+// =====================================================================
+// =====================================================================
+// FOOTER — AÇIK GRİ ZEMİN (kullanıcı: siyah/koyu istemiyor)
+// $elfbar-footer-bg açık gri, metinler koyu, başlıklar mavi.
+// =====================================================================
+$elfbar-footer-bg:    #F4F6FA;   // açık gri zemin
+$elfbar-footer-ink:   #2A3340;   // koyu metin
+$elfbar-footer-muted: rgba(#2A3340, 0.62); // ikincil metin
+
+.footer-main {
+    background: $elfbar-footer-bg;
+    color: $elfbar-footer-muted;
+    padding-top: 3.5rem;
+    margin-top: 4rem;
+    border-top: 3px solid $sw-color-brand-primary;
+    font-size: 0.9375rem;
+
+    a { color: $elfbar-footer-muted; }
+}
+
+.elfbar-footer-columns { padding-bottom: 2.5rem; row-gap: 2rem; }
+
+.elfbar-footer-col {
+    // Core'un @media min-768 .footer-column-headline { padding: 3rem 0 0.5rem 0 }
+    // kuralını ez → tüm başlıklar aynı hizada başlasın (mobilde de güvenli)
+    .footer-column-headline.elfbar-footer-headline { padding-top: 0 !important; }
+
+    .elfbar-footer-headline {
+        font-family: $elfbar-font-headline;
+        font-weight: 700;
+        font-size: 1.0625rem;
+        color: $sw-color-brand-primary;
+        margin-bottom: 1.1rem;
+        letter-spacing: 0.01em;
+        position: relative;
+        padding-bottom: 0.6rem;
+        a { color: $sw-color-brand-primary; text-decoration: none; }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 32px; height: 2px;
+            background: $sw-color-brand-primary;
+            border-radius: 2px;
+        }
+    }
+}
+
+// Footer üst şerit — USP güven rozetleri
+.elfbar-footer-top {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    padding: 0 0 2.5rem; margin-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(#2A3340, 0.1);
+    @media (max-width: 767.98px) { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    &__item { display: flex; align-items: center; gap: .8rem; }
+    &__ico {
+        flex: 0 0 auto; width: 44px; height: 44px; border-radius: 12px;
+        background: rgba($sw-color-brand-primary, 0.12);
+        display: grid; place-items: center;
+        .icon { width: 20px; height: 20px; }
+        .icon svg { color: $sw-color-brand-primary; }
+    }
+    &__txt { display: flex; flex-direction: column; line-height: 1.3;
+        b { color: $elfbar-footer-ink; font-size: .92rem; font-weight: 700; }
+        small { color: $elfbar-footer-muted; font-size: .8rem; }
+    }
+}
+
+// Footer sosyal medya
+.elfbar-footer-social {
+    display: flex; gap: .6rem; margin-top: 1.2rem;
+    &__link {
+        width: 38px; height: 38px; border-radius: 10px;
+        background: #fff; border: 1px solid rgba(#2A3340, 0.12);
+        display: grid; place-items: center; color: $elfbar-footer-ink;
+        transition: background .15s ease, color .15s ease, transform .15s ease;
+        &:hover { background: $sw-color-brand-primary; color: #fff; transform: translateY(-2px); border-color: $sw-color-brand-primary; }
+    }
+}
+
+.elfbar-footer-blurb { line-height: 1.6; margin-bottom: 1rem; color: $elfbar-footer-muted; }
+.elfbar-footer-links, .elfbar-footer-contact { margin-bottom: 0; li { margin-bottom: 0.55rem; } }
+.elfbar-footer-hours { color: rgba(#2A3340, 0.5); }
+
+.elfbar-footer-link {
+    color: $elfbar-footer-muted;
+    text-decoration: none;
+    transition: color 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+
+    &:hover, &:focus-visible { color: $sw-color-brand-primary; text-decoration: none; }
+    &:focus-visible { outline: 2px solid $sw-color-brand-secondary; outline-offset: 2px; border-radius: 2px; }
+}
+
+.elfbar-footer-b2b-cta {
+    display: inline-block;
+    margin-top: 1.1rem;
+    padding: 0.55rem 1.1rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #fff;
+    background: $sw-color-brand-primary;
+    border: none;
+    border-radius: 8px;
+    transition: background 0.15s ease, transform 0.15s ease;
+
+    &:hover, &:focus-visible { background: darken($sw-color-brand-primary, 8%); color: #fff; }
+    &:focus-visible { outline: 2px solid $sw-color-brand-secondary; outline-offset: 2px; }
+    &:active { transform: translateY(1px); }
+}
+
+// Footer logo (Über uns başlığı altında)
+.elfbar-footer-logo {
+    margin: 0 0 1rem;
+    img {
+        display: block; max-width: 170px; max-height: 56px;
+        width: auto; height: auto; object-fit: contain;
+    }
+}
+
+// B2B kolonu newsletter'a dönüştü → başlık yok, içerik en üstten başlasın
+.elfbar-footer-col--newsletter .elfbar-footer-col-content { margin-top: 0; }
+
+// Footer Newsletter kutusu (B2B/Händler kolonunda) — mavi gradient kart
+.elfbar-footer-newsletter {
+    margin-top: 0;
+    padding: 1.4rem 1.3rem;
+    border-radius: 16px;
+    background: $elfbar-gradient;
+    color: #fff;
+    box-shadow: 0 12px 28px -12px rgba($sw-color-brand-primary, 0.6);
+
+    &__head {
+        font-family: $elfbar-font-headline;
+        font-weight: 800; font-size: 1.5rem; line-height: 1.05;
+        color: #fff; margin-bottom: .35rem;
+    }
+    &__text {
+        margin: 0 0 .9rem; font-size: .9rem; line-height: 1.4;
+        color: rgba(#fff, 0.92);
+    }
+    &__row {
+        display: flex; align-items: stretch; gap: .4rem;
+        background: #fff; border-radius: 10px; padding: .25rem;
+    }
+    &__input {
+        flex: 1 1 auto; min-width: 0;
+        border: 0; background: transparent; outline: none;
+        padding: .5rem .65rem; font-size: .9rem; color: $elfbar-color-ink;
+        &::placeholder { color: rgba($elfbar-color-ink, 0.45); }
+    }
+    &__btn {
+        flex: 0 0 auto;
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 40px; border: 0; border-radius: 8px; cursor: pointer;
+        background: #D6F23E; color: #15330f;
+        transition: background .15s ease, transform .15s ease;
+        &:hover { background: #c7e62f; }
+        &:active { transform: scale(.96); }
+    }
+    &__privacy {
+        margin-top: .7rem; font-size: .72rem; line-height: 1.4;
+        color: rgba(#fff, 0.85);
+        label { display: flex; align-items: flex-start; gap: .45rem; cursor: pointer; }
+        input { margin-top: .15rem; flex: 0 0 auto; accent-color: #D6F23E; }
+        a { color: #fff; text-decoration: underline; }
+    }
+    &__note {
+        margin: .55rem 0 0; font-size: .7rem;
+        color: rgba(#fff, 0.7);
+    }
+    // başarı/hata mesajı (Shopware AJAX form alert'leri)
+    .alert {
+        margin-top: .7rem; font-size: .8rem; padding: .55rem .75rem;
+        border-radius: 8px; background: rgba(#fff, 0.95); color: $elfbar-color-ink;
+        border: 0;
+        &.alert-success { color: #1c6b2e; }
+        &.alert-danger, &.alert-warning { color: #9a2a2a; }
+    }
+    &__feedback:empty { display: none; }
+}
+
+// Mobil: newsletter kolonu tam genişlik + alt nefes payı (footer çizgisine yapışmasın)
+@media (max-width: 767.98px) {
+    .elfbar-footer-col--newsletter {
+        width: 100%; flex: 0 0 100%; max-width: 100%;
+        margin-top: .5rem;
+    }
+    .elfbar-footer-newsletter {
+        margin-bottom: 1.75rem;   // alt bar çizgisiyle birleşmesin
+        padding: 1.6rem 1.4rem;
+        &__head { font-size: 1.6rem; }
+        &__row { padding: .3rem; }
+        &__input { padding: .65rem .7rem; font-size: 1rem; }
+        &__btn { width: 48px; }
+    }
+}
+
+// Trust / sertifika logoları (Jugendschutz, Grüner Punkt, Händlerbund …) — panelden
+.elfbar-footer-trust {
+    display: flex; flex-wrap: wrap; align-items: center;
+    justify-content: center; gap: 1.5rem 2.5rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(#2A3340, 0.1);
+    &__item {
+        display: inline-flex; align-items: center;
+        img { display: block; max-height: 64px; width: auto; object-fit: contain; }
+    }
+    a.elfbar-footer-trust__item {
+        transition: transform .15s ease, opacity .15s ease;
+        &:hover { transform: translateY(-2px); opacity: .85; }
+    }
+}
+
+.elfbar-footer-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.75rem 3rem;
+    padding: 1.75rem 0;
+    border-top: 1px solid rgba(#2A3340, 0.1);
+    border-bottom: 1px solid rgba(#2A3340, 0.1);
+}
+
+.elfbar-badge-group { display: flex; flex-direction: column; gap: 0.6rem; }
+.elfbar-badge-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(#2A3340, 0.5);
+    font-weight: 600;
+}
+.elfbar-badge-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.elfbar-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: $elfbar-footer-ink;
+    background: #fff;
+    border: 1px solid rgba(#2A3340, 0.12);
+    border-radius: 6px;
+    line-height: 1.2;
+
+    // Panelden yüklenen ödeme/kargo görseli
+    &--img {
+        padding: 0.35rem 0.6rem;
+        img { display: block; max-height: 26px; width: auto; object-fit: contain; }
+    }
+}
+
+// Alt bar — açık zeminle uyumlu (hafif daha koyu gri ayrım)
+.footer-main .footer-bottom {
+    border-top: none;
+    padding: 1.75rem 0 2.25rem;
+    background: #E9EDF4;
+    color: rgba(#2A3340, 0.6);
+}
+.footer-main .footer-copyright,
+.footer-main .footer-copyright a,
+.footer-main .icon-shopware { color: rgba(#2A3340, 0.6); }
+.footer-main .icon-shopware svg { fill: rgba(#2A3340, 0.6); }
+.footer-main .footer-service-menu-list {
+    margin-bottom: 1.25rem;
+    gap: 0.25rem 1.5rem;
+    .footer-service-menu-link {
+        color: rgba(#2A3340, 0.6);
+        font-size: 0.8125rem;
+        text-decoration: none;
+        min-height: 24px;
+        display: inline-flex;
+        align-items: center;
+        &:hover, &:focus-visible { color: $sw-color-brand-primary; }
+        &:focus-visible { outline: 2px solid $sw-color-brand-secondary; outline-offset: 2px; }
+    }
+}
+
+.footer-main .footer-vat {
+    text-align: center;
+    color: rgba(#2A3340, 0.5);
+    font-size: 0.8125rem;
+    margin-bottom: 0.75rem;
+    a { color: rgba(#2A3340, 0.7); }
+}
+
+.elfbar-footer-copyright {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-align: center;
+    color: rgba(#2A3340, 0.5);
+    font-size: 0.8125rem;
+}
+
+.elfbar-footer-age {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: $sw-color-brand-primary;
+    background: rgba($sw-color-brand-primary, 0.1);
+    border: 1px solid rgba($sw-color-brand-primary, 0.4);
+    border-radius: 20px;
+}
+
+@media (max-width: 767.98px) {
+    .footer-main { padding-top: 2.5rem; }
+    .elfbar-footer-columns { row-gap: 1.75rem; }
+    .elfbar-footer-badges { gap: 1.25rem 2rem; }
+    .elfbar-footer-trust { gap: 1.25rem 1.75rem; padding: 1.5rem 0; img { max-height: 52px; } }
+    .elfbar-footer-social { margin-bottom: 10px; }
+    .elfbar-footer-b2b-cta { margin-bottom: 10px; }
+}
+
+// =====================================================================
+// 18+ ALTERSVERIFIKATION (Age Gate)
+// =====================================================================
+html.elfbar-age-gate--open,
+body.elfbar-age-gate--open { overflow: hidden !important; touch-action: none; }
+
+.elfbar-age-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+
+    &[hidden] { display: none; }
+
+    &__backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba($elfbar-color-ink, 0.72);
+        backdrop-filter: blur(10px) saturate(120%);
+        -webkit-backdrop-filter: blur(10px) saturate(120%);
+    }
+
+    &__card {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 460px;
+        max-height: calc(100vh - 2.5rem);
+        overflow-y: auto;
+        padding: 2.5rem 2rem 2rem;
+        text-align: center;
+        background: #fff;
+        border-radius: calc(#{$border-radius} * 2.5);
+        box-shadow: 0 24px 60px rgba($elfbar-color-ink, 0.35), 0 0 0 1px rgba(#fff, 0.6) inset;
+        animation: elfbar-age-gate-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+            border-radius: calc(#{$border-radius} * 2.5) calc(#{$border-radius} * 2.5) 0 0;
+            background: linear-gradient(90deg, $sw-color-brand-primary 0%, $sw-color-brand-secondary 100%);
+        }
+    }
+
+    &__brand { display: flex; align-items: center; justify-content: center; gap: 0.625rem; margin-bottom: 1.5rem; }
+
+    &__badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem; height: 3rem;
+        font-family: $elfbar-font-headline;
+        font-weight: 700;
+        font-size: 1.125rem;
+        color: #fff;
+        border-radius: 50%;
+        background: linear-gradient(135deg, $sw-color-brand-primary 0%, $sw-color-brand-secondary 100%);
+        box-shadow: 0 6px 18px rgba($sw-color-brand-primary, 0.35);
+    }
+
+    &__brand-name {
+        font-family: $elfbar-font-headline;
+        font-weight: 600;
+        font-size: 1.25rem;
+        letter-spacing: 0.01em;
+        color: $elfbar-color-ink;
+    }
+
+    &__title {
+        margin: 0 0 0.875rem;
+        font-family: $elfbar-font-headline;
+        font-weight: 700;
+        font-size: 1.6rem;
+        line-height: 1.2;
+        color: $elfbar-color-ink;
+    }
+
+    &__text {
+        margin: 0 0 1.75rem;
+        font-family: $elfbar-font-base;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: rgba($elfbar-color-ink, 0.72);
+    }
+
+    &__actions { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+
+    &__btn {
+        appearance: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0.9rem 1.5rem;
+        font-family: $elfbar-font-headline;
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 1.2;
+        cursor: pointer;
+        border-radius: calc(#{$border-radius} * 1.5);
+        transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+
+        &:focus-visible { outline: 3px solid rgba($sw-color-brand-secondary, 0.55); outline-offset: 2px; }
+        &:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+    }
+
+    &__btn--confirm {
+        color: #fff;
+        border: none;
+        background: linear-gradient(135deg, $sw-color-brand-primary 0%, darken($sw-color-brand-primary, 8%) 100%);
+        box-shadow: 0 6px 18px rgba($sw-color-brand-primary, 0.3);
+
+        &:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 10px 26px rgba($sw-color-brand-primary, 0.4); }
+        &:active:not(:disabled) { transform: translateY(0); }
+    }
+
+    &__btn--deny {
+        color: $elfbar-color-ink;
+        background: transparent;
+        border: 2px solid rgba($elfbar-color-ink, 0.18);
+
+        &:hover:not(:disabled) { border-color: $sw-color-brand-primary; color: $sw-color-brand-primary; background: rgba($sw-color-brand-primary, 0.04); }
+    }
+
+    &__legal { margin: 0; font-family: $elfbar-font-base; font-size: 0.75rem; line-height: 1.5; color: rgba($elfbar-color-ink, 0.5); }
+
+    &__blocked {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba($elfbar-color-ink, 0.1);
+        &[hidden] { display: none; }
+    }
+
+    &__blocked-title { margin: 0 0 0.5rem; font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.125rem; color: $elfbar-color-sale; }
+    &__blocked-text { margin: 0; font-family: $elfbar-font-base; font-size: 0.875rem; line-height: 1.55; color: rgba($elfbar-color-ink, 0.7); }
+}
+
+@keyframes elfbar-age-gate-in {
+    from { opacity: 0; transform: translateY(16px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .elfbar-age-gate__card { animation: none; }
+}
+
+// =====================================================================
+// 📱 MOBİL ANASAYFA OPTİMİZASYONU (<= 991px)
+// Kullanıcı: üst marketing şeridi gizli (yukarıda), sidebar gizli,
+// Bestseller + Deals YATAY SLIDER (yer kaplamasın).
+// =====================================================================
+@media (max-width: 991.98px) {
+
+    // --- SOL SIDEBAR'I GİZLE (mobilde gereksiz, çok uzuyordu ~1130px) ---
+    // Kategorilere erişim hamburger menü + "Kategorien" vitrini ile zaten var.
+    .elfbar-body .elfbar-sidebar { display: none !important; }
+    .elfbar-body { display: block; margin-top: 1rem; padding: 0 1rem; }
+    .elfbar-body__main { width: 100%; }
+
+    // --- BESTSELLER: CMS ürün grid'ini YATAY SLIDER yap ---
+    // Bootstrap .cms-listing-row (flex-wrap) → tek satır yatay kaydırma.
+    .elfbar-body__cms {
+        .cms-listing-row {
+            flex-wrap: nowrap !important;
+            overflow-x: auto; overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; margin: 0 -.25rem;
+            &::-webkit-scrollbar { display: none; }
+        }
+        .cms-listing-col {
+            flex: 0 0 72% !important; max-width: 72% !important;
+            scroll-snap-align: start;
+            padding: .4rem;
+            // mobilde 8 sınırı kalksın — slider'da hepsi gezilebilir
+            &:nth-of-type(n+9) { display: block !important; }
+        }
+        @media (max-width: 575.98px) {
+            .cms-listing-col { flex: 0 0 80% !important; max-width: 80% !important; }
+        }
+    }
+
+    // --- DEALS DES TAGES: 3'lü grid → YATAY SLIDER ---
+    .elfbar-deals-row {
+        display: flex !important; flex-wrap: nowrap;
+        grid-template-columns: none;
+        overflow-x: auto; overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        // ilk kutu ekrana bitişik kalmasın → negatif margin YOK, sol padding ver
+        gap: .85rem; margin: 1rem 0 0; padding: .25rem .25rem;
+        scrollbar-width: none; &::-webkit-scrollbar { display: none; }
+    }
+    .elfbar-deals-row .elfbar-deal {
+        flex: 0 0 82%; max-width: 82%;
+        scroll-snap-align: start;
+        @media (max-width: 575.98px) { flex: 0 0 88%; max-width: 88%; }
+    }
+
+    // section başlıkları mobilde sıkışmasın
+    .elfbar-section-head { padding: 0 .25rem; }
+
+    // --- KATEGORIEN vitrini (mobil) — görsel solda + isim sağda, kompakt 2 kolon ---
+    .elfbar-cattiles { gap: .6rem; margin-bottom: 1.25rem; }
+    .elfbar-cattile {
+        padding: .55rem .65rem; gap: .55rem;
+        justify-content: flex-start; text-align: left;
+        border-radius: 12px; min-height: 56px;
+        // hover yükselme mobilde kapalı (dokunmada gereksiz)
+        &:hover { transform: none; box-shadow: 0 2px 8px rgba($elfbar-color-ink, 0.06); }
+        // görsel mobilde de görünür ama küçük (taşmasın)
+        &__img {
+            display: grid !important;
+            width: 40px; height: 40px; border-radius: 9px;
+            flex: 0 0 40px;
+            svg { width: 20px; height: 20px; }
+        }
+        &__name {
+            font-size: .8rem; font-weight: 600; line-height: 1.2;
+            min-width: 0;                                  // taşmayı önler
+            overflow: hidden; text-overflow: ellipsis;
+        }
+    }
+}
+
+// =====================================================================
+// 📱 MOBİL HEADER (<= 991px) — düzen: ☰ hamburger SOL | LOGO orta | 🔍👤🛒 SAĞ
+// Tüm ikonlar tek satırda, dikey ortalı (kullanıcı isteği).
+// =====================================================================
+@media (max-width: 991.98px) {
+    // ⛔ Mobilde yatay kaymaya (sağa-sola oynama) karşı global koruma
+    html, body { overflow-x: hidden; max-width: 100%; }
+    // Cookie banner taşmasını da sınırla
+    .cookie-permission-container { max-width: 100%; overflow-x: hidden; }
+
+    .header-main { padding: .6rem 0; }
+    .elfbar-header-pill { padding: .45rem .6rem; border-radius: 14px; }
+
+    // Satır: 3 zon (sol toggle | orta logo | sağ aksiyon), sarma yok, dikey ortalı
+    .elfbar-header-pill .elfbar-header-row {
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+    }
+    // d-none olanları (desktop top menü) EZME — sadece görünür col'lara flex ver
+    .elfbar-header-pill .elfbar-header-row > .col:not(.d-none),
+    .elfbar-header-pill .elfbar-header-row > [class*="col-"]:not(.d-none) {
+        padding: 0; display: flex; align-items: center;
+    }
+    // Desktop top menü mobilde kesin gizli (yatay taşmaya sebep oluyordu)
+    .elfbar-header-pill .elfbar-header-row > .d-none.d-lg-block { display: none !important; }
+    // Boş arama placeholder'ı mobilde tamamen kalksın (artık logo ortalıyor)
+    .elfbar-header-pill .elfbar-header-row > .col:empty { display: none !important; }
+
+    // SOL: hamburger
+    .elfbar-mobile-toggle-col { flex: 0 0 auto; order: 1; }
+
+    // ORTA: logo — kalan tüm alanı kaplar, içerik ortalı
+    .header-logo-col {
+        order: 2; flex: 1 1 auto; min-width: 0;
+        justify-content: center; margin: 0 !important;
+    }
+    .header-logo-main { max-height: 34px; width: auto; margin: 0 auto; }
+    .header-logo-main-link { display: inline-flex; }
+    .header-logo-main-link, .header-logo-main-img { max-width: 150px; height: auto; }
+
+    // SAĞ: aksiyon ikonları (search/account/cart) — hamburger kümeden gizli
+    .header-actions-col { order: 3; flex: 0 0 auto; margin: 0 !important; }
+    .header-actions-col > .row {
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        gap: 0; margin: 0;
+    }
+    // Tüm header ikon butonları aynı boy + DİKEY ORTALI (yukarı-aşağı kayma fix)
+    .elfbar-header-pill .header-actions-btn,
+    .elfbar-header-pill .header-actions-col .btn,
+    .elfbar-mobile-toggle {
+        width: 38px; height: 38px; padding: 0; margin: 0;
+        display: inline-flex !important; align-items: center; justify-content: center;
+        svg { width: 21px; height: 21px; display: block; }
+    }
+    // ⭐ TÜM header ikonlarını AYNI hizaya getir: cart'ın ekstra .header-cart-icon
+    // wrapper'ı (search/account'ta yok) ikonu yukarı kaydırıyordu.
+    // İç sarmalayıcıları (.icon, .header-cart-icon, .header-cart-icon-wrapper) flex-ortala + svg block.
+    .elfbar-header-pill .header-actions-btn {
+        line-height: 0;
+        .icon, .header-cart-icon, .header-cart-icon-wrapper {
+            display: inline-flex !important; align-items: center; justify-content: center;
+            margin: 0; line-height: 0;
+        }
+        svg { width: 21px; height: 21px; display: block; margin: 0; vertical-align: middle; }
+    }
+    // Bootstrap col padding'i ikonu dikey kaydırıyordu — sıfırla (d-none'u EZME)
+    .header-actions-col .col:not(.d-none),
+    .header-actions-col .col-auto:not(.d-none) { padding: 0; display: flex; align-items: center; }
+    .header-cart, .account-menu, .menu-button { display: flex; align-items: center; }
+    // Aksiyonlar içindeki ESKİ hamburger (menu-button) mobilde gizli — sola taşındı
+    .header-actions-col .menu-button { display: none !important; }
+    // "Jetzt einkaufen" CTA mobilde gizli (desktop d-none idi, kuralım ezmişti)
+    .header-actions-col .elfbar-header-cta,
+    .header-actions-col .d-none.d-lg-block { display: none !important; }
+    // sepet yazısı (total) mobilde gizli
+    .header-cart .header-cart-total { display: none; }
+}
+
+// =====================================================================
+// 📱 MOBİL KATEGORİ SAYFASI (<= 991px)
+// "Alle Kategorien" + "Filter" = yan yana 2 buton → alttan açılan
+// BOTTOM-SHEET (mobil app hissi). Ürün kartları = kompakt liste satırı.
+// =====================================================================
+@media (max-width: 991.98px) {
+    .elfbar-cat { margin-top: .75rem; padding: 0 1rem; gap: 0; }
+    .elfbar-cat__title { font-size: 1.5rem; margin: .25rem 0 .85rem; }
+
+    // --- Yan yana 2 buton (sticky, başlık altında) ---
+    .elfbar-cat__mobilebar {
+        display: grid !important; grid-template-columns: 1fr 1fr; gap: .6rem;
+        position: sticky; top: .5rem; z-index: 40; margin-bottom: 1rem;
+    }
+    .elfbar-cat__mbtn {
+        display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+        background: #fff; border: 1px solid rgba($sw-color-brand-primary, 0.35);
+        color: $sw-color-brand-primary; font-weight: 700; font-size: .92rem;
+        border-radius: 12px; padding: .8rem 1rem; cursor: pointer;
+        box-shadow: 0 2px 8px rgba($elfbar-color-ink, 0.06);
+        .icon { width: 18px; height: 18px; } .icon svg { color: $sw-color-brand-primary; }
+        &:active { transform: scale(.98); }
+    }
+
+    // --- BOTTOM-SHEET: aside (Kategorien) + filtersheet (Filter) ---
+    // Normalde gizli; .is-open ile alttan yukarı kayar.
+    .elfbar-cat__aside,
+    .elfbar-cat__filtersheet {
+        position: fixed; left: 0; right: 0; bottom: 0; top: auto;
+        z-index: 1200; max-height: 82vh; overflow-y: auto;
+        background: #fff; border-radius: 18px 18px 0 0;
+        box-shadow: 0 -12px 40px rgba($elfbar-color-ink, 0.25);
+        transform: translateY(100%); transition: transform .28s cubic-bezier(.4,0,.2,1);
+        padding-bottom: env(safe-area-inset-bottom, .5rem);
+        margin: 0 !important;
+        &.is-open { transform: translateY(0); }
+    }
+    // Sheet başlığı = sticky tutaç (başlık + ✕)
+    .elfbar-cat__aside .elfbar-cat__aside-head,
+    .elfbar-cat__filtersheet .elfbar-cat__aside-head {
+        display: flex !important; align-items: center; justify-content: space-between;
+        position: sticky; top: 0; z-index: 2;
+        border-radius: 18px 18px 0 0; font-size: .95rem;
+        padding: 1rem 1.1rem;
+    }
+    // tutaç çizgisi (drag handle görünümü)
+    .elfbar-cat__aside::before,
+    .elfbar-cat__filtersheet::before {
+        content: ""; position: sticky; top: 0; display: block;
+        width: 40px; height: 4px; margin: .5rem auto -.25rem;
+        background: rgba(#fff, 0.5); border-radius: 999px; z-index: 3;
+    }
+    .elfbar-sheet__close {
+        display: inline-flex !important; align-items: center; justify-content: center;
+        width: 30px; height: 30px; border-radius: 50%; border: none; cursor: pointer;
+        background: rgba(#fff, 0.2); color: #fff; font-size: 1rem; line-height: 1;
+    }
+    // mega menü panelleri sheet içinde statik (zaten <992px statik) — düzgün liste
+    .elfbar-cat__aside .elfbar-mega { border: none; border-radius: 0; }
+
+    // --- Backdrop (ortak) ---
+    .elfbar-sheet__backdrop {
+        position: fixed; inset: 0; z-index: 1150;
+        background: rgba($elfbar-color-ink, 0.5);
+        opacity: 0; transition: opacity .25s ease;
+        &.is-shown { opacity: 1; }
+        &[hidden] { display: none; }
+    }
+    // sheet açıkken arka plan kaymasın
+    html.elfbar-sheet-open, html.elfbar-sheet-open body { overflow: hidden; }
+
+    // --- Filtre paneli sheet içinde tam genişlik dikey ---
+    .elfbar-cat__filtersheet .elfbar-cat__filterslot { margin: 0; padding: 1rem 1.1rem; }
+
+    // =================================================================
+    // ÜRÜN KARTLARI = KOMPAKT LİSTE SATIRI (desktop gibi ince-uzun)
+    // küçük görsel sol | bilgi orta | fiyat+sepet sağ. Açıklama YOK.
+    // =================================================================
+    .elfbar-cat__cms .elfbar-listrow__inner {
+        grid-template-columns: 72px 1fr !important;
+        grid-template-areas: "media info" "media price" "buy buy" !important;
+        grid-template-rows: auto auto auto;
+        gap: .15rem .8rem !important; padding: .7rem .8rem !important;
+        align-items: start;
+    }
+    .elfbar-cat__cms .elfbar-listrow__media {
+        grid-area: media; width: 72px !important; height: 72px !important;
+        align-self: start;
+    }
+    .elfbar-cat__cms .elfbar-listrow__info { grid-area: info; min-width: 0; }
+    // açıklamayı GİZLE (kullanıcı isteği — minimalist)
+    .elfbar-cat__cms .elfbar-listrow__desc { display: none !important; }
+    .elfbar-cat__cms .elfbar-listrow__name { font-size: .92rem; margin: .05rem 0 .2rem; }
+    .elfbar-cat__cms .elfbar-listrow__brand { font-size: .64rem; }
+    .elfbar-cat__cms .elfbar-listrow__stars { font-size: .74rem; margin-bottom: 0; }
+    // fiyat = AYRI satır (görsel yanında, bilginin altında — üst üste binmez)
+    .elfbar-cat__cms .elfbar-listrow__price { grid-area: price; text-align: left; margin: .15rem 0 0; align-self: center; }
+    .elfbar-cat__cms .elfbar-listrow__from { display: inline; margin-right: .35rem; }
+    .elfbar-cat__cms .elfbar-listrow__amount { font-size: 1.05rem; }
+    .elfbar-cat__cms .elfbar-listrow__tax { display: inline; margin-left: .35rem; }
+    // satın alma satırı = sadece CANLI stepper (+/− sepete yazar), büyük dokunmatik
+    .elfbar-cat__cms .elfbar-listrow__buy { grid-area: buy; }
+    .elfbar-cat__cms .elfbar-listrow .elfbar-qty--live {
+        display: flex !important; height: 46px; width: 100%; max-width: none;
+        .elfbar-qty__btn { width: auto !important; height: 46px; flex: 1 1 0; font-size: 1.5rem; }
+        .elfbar-qty__input { width: auto !important; height: 46px; flex: 1.6 1 0; font-size: 1.05rem; }
+    }
+    .elfbar-cat__cms .elfbar-listrow { margin-bottom: .6rem; }
+}
+
+// =====================================================================
+// B2B CANLI SEPET — satır +/− stepper sepete yazar + sticky sepet özeti bar
+// =====================================================================
+// Canlı stepper: sepette olunca vurgulu, işlem sırasında "busy"
+.elfbar-qty--live {
+    transition: border-color .15s ease, box-shadow .15s ease;
+    .elfbar-qty__btn[data-cartqty="plus"] { color: $sw-color-brand-primary; font-weight: 700; }
+    &.is-in-cart {
+        border-color: rgba($sw-color-brand-primary, 0.6);
+        box-shadow: 0 0 0 1px rgba($sw-color-brand-primary, 0.3);
+        .elfbar-qty__input { color: $sw-color-brand-primary; font-weight: 700; }
+    }
+    &.is-busy { opacity: .65; pointer-events: none; }
+}
+// Sepette olan satır hafif vurgu
+.elfbar-listrow.is-bulk-selected {
+    border-color: rgba($sw-color-brand-primary, 0.4) !important;
+    box-shadow: 0 0 0 1px rgba($sw-color-brand-primary, 0.18) inset;
+}
+
+// --- Sticky alt bar (tüm cihazlar) ---
+.elfbar-bulkbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 1090;
+    background: #fff; border-top: 1px solid rgba($elfbar-color-ink, 0.1);
+    box-shadow: 0 -8px 30px rgba($elfbar-color-ink, 0.14);
+    padding: .7rem 1rem; padding-bottom: calc(.7rem + env(safe-area-inset-bottom, 0px));
+    transform: translateY(110%); transition: transform .3s cubic-bezier(.4,0,.2,1);
+    &.is-visible { transform: translateY(0); }
+    &[hidden] { display: none; }
+
+    &__inner {
+        max-width: 1600px; margin: 0 auto;
+        display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    &__info {
+        display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap;
+        font-size: .95rem; color: $elfbar-color-ink;
+        b { font-family: $elfbar-font-headline; font-size: 1.15rem; color: $sw-color-brand-primary; }
+    }
+    &__sep { color: rgba($elfbar-color-ink, 0.3); }
+    &__total { font-weight: 700; color: rgba($elfbar-color-ink, 0.6); font-size: .9rem; }
+    &__actions { display: flex; align-items: center; gap: .6rem; flex: 0 0 auto; }
+    &__clear {
+        background: none; border: none; color: rgba($elfbar-color-ink, 0.55);
+        font-weight: 600; font-size: .85rem; cursor: pointer; padding: .5rem .4rem;
+        &:hover { color: $elfbar-color-sale; text-decoration: underline; }
+    }
+    &__submit {
+        background: $sw-color-brand-primary; color: #fff; border: none;
+        border-radius: 12px; padding: .8rem 1.5rem; font-weight: 700; font-size: .95rem;
+        display: inline-flex; align-items: center; gap: .5rem; cursor: pointer; white-space: nowrap;
+        box-shadow: 0 4px 14px rgba($sw-color-brand-primary, 0.32);
+        .icon { width: 18px; height: 18px; } .icon svg { color: #fff; }
+        &:hover { background: darken($sw-color-brand-primary, 8%); }
+        &:active { transform: scale(.98); }
+    }
+
+    // Mobilde kompakt
+    @media (max-width: 575.98px) {
+        padding: .6rem .75rem; padding-bottom: calc(.6rem + env(safe-area-inset-bottom, 0px));
+        &__info { font-size: .82rem; b { font-size: 1rem; } }
+        &__total { flex: 1 0 100%; order: 3; margin-top: -.2rem; }
+        &__submit { padding: .7rem 1rem; font-size: .85rem; }
+        &__clear { padding: .5rem .3rem; }
+    }
+}
+// bar açıkken sayfa altına nefes payı (içerik bar arkasında kalmasın)
+body.has-elfbar-bulkbar { padding-bottom: 80px; }
+
+// =====================================================================
+// LOGIN / REGISTRIERUNG sayfası — modern 2 kart, mavi tema, B2B vurgu
+// =====================================================================
+.elfbar-auth {
+    max-width: 1500px; margin: 2rem auto 3rem; padding: 0 2rem;
+
+    // --- Başlık bloğu (ortalı) ---
+    &__head { text-align: center; margin-bottom: 2rem; }
+    &__eyebrow {
+        display: inline-block; background: rgba($sw-color-brand-primary, 0.1);
+        color: $sw-color-brand-primary; font-weight: 700; font-size: .8rem;
+        padding: .4rem 1rem; border-radius: 999px; margin-bottom: .85rem;
+    }
+    &__title { font-family: $elfbar-font-headline; font-weight: 700; font-size: 2.1rem;
+        color: $elfbar-color-ink; margin: 0 0 .5rem; }
+    &__sub { color: rgba($elfbar-color-ink, 0.6); font-size: 1rem; margin: 0; }
+
+    // --- 2 kolon grid (login | register) ---
+    &__grid {
+        display: grid; grid-template-columns: 5fr 7fr; gap: 1.5rem; align-items: start;
+        @media (max-width: 767.98px) { grid-template-columns: 1fr; }
+    }
+
+    // --- Kartlar (login.html.twig + register.html.twig .card kullanır) ---
+    .card {
+        border: 1px solid rgba($elfbar-color-ink, 0.08);
+        border-radius: 16px; background: #fff;
+        box-shadow: 0 8px 30px rgba($elfbar-color-ink, 0.06);
+        overflow: hidden;
+    }
+    .card-body { padding: 1.75rem; }
+    .card-title { font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.3rem;
+        color: $elfbar-color-ink; margin-bottom: 1.1rem;
+        padding-bottom: .85rem; border-bottom: 2px solid rgba($sw-color-brand-primary, 0.12); }
+
+    // Form genel
+    .form-label { font-weight: 600; font-size: .85rem; color: rgba($elfbar-color-ink, 0.75); }
+    .form-control, .form-select {
+        border-radius: 10px; border: 1px solid rgba($elfbar-color-ink, 0.15);
+        padding: .7rem .9rem; font-size: .95rem;
+        &:focus { border-color: $sw-color-brand-primary; box-shadow: 0 0 0 .2rem rgba($sw-color-brand-primary, 0.15); }
+    }
+    .login-form-description { color: rgba($elfbar-color-ink, 0.6); font-size: .9rem; margin-bottom: 1.1rem; }
+    .login-password-recover a { color: $sw-color-brand-primary; font-weight: 600; font-size: .88rem; text-decoration: none;
+        &:hover { text-decoration: underline; } }
+
+    // Butonlar → mavi tema (yazı beyaz)
+    .btn-primary {
+        background: $sw-color-brand-primary; border-color: $sw-color-brand-primary;
+        color: #fff;
+        border-radius: 10px; padding: .75rem 1.6rem; font-weight: 700;
+        box-shadow: 0 4px 14px rgba($sw-color-brand-primary, 0.28);
+        &:hover, &:focus, &:active { background: darken($sw-color-brand-primary, 8%); border-color: darken($sw-color-brand-primary, 8%); color: #fff; }
+    }
+    .login-submit { margin-top: .25rem; }
+
+    // --- B2B avantaj rozetleri (login kartının altında) ---
+    &__adv {
+        margin-top: 1.25rem; background: rgba($sw-color-brand-primary, 0.05);
+        border: 1px solid rgba($sw-color-brand-primary, 0.12);
+        border-radius: 14px; padding: 1.25rem 1.4rem;
+    }
+    &__adv-title { font-weight: 700; font-size: .95rem; color: $elfbar-color-ink; margin-bottom: .85rem; }
+    &__adv-list {
+        list-style: none; margin: 0; padding: 0;
+        display: grid; gap: .7rem;
+        li { display: flex; align-items: center; gap: .7rem; font-size: .9rem; font-weight: 600; color: rgba($elfbar-color-ink, 0.8); }
+    }
+    &__adv-ico {
+        flex: 0 0 auto; width: 34px; height: 34px; border-radius: 9px;
+        background: rgba($sw-color-brand-primary, 0.12); color: $sw-color-brand-primary;
+        display: grid; place-items: center;
+        .icon { width: 18px; height: 18px; } .icon svg { color: $sw-color-brand-primary; }
+    }
+
+    // --- Passwort-Wiederherstellung (recover) varyantı ---
+    &--recover {
+        max-width: 980px; // tek form + bilgi kartı, daha kompakt ortala
+
+        .elfbar-auth__eyebrow {
+            display: inline-flex; align-items: center; gap: .4rem;
+            .icon { width: 14px; height: 14px; }
+            .icon svg { color: $sw-color-brand-primary; }
+        }
+    }
+    // 7fr/5fr: form solda biraz geniş, bilgi kartı sağda
+    &__grid--recover {
+        grid-template-columns: 7fr 5fr;
+        @media (max-width: 767.98px) { grid-template-columns: 1fr; }
+    }
+    // Recover form butonları: Anfordern dolu + Zurück outline yan yana
+    &__recover-actions {
+        display: flex; gap: .75rem; margin-top: 1.25rem; flex-wrap: wrap;
+        .btn { border-radius: 10px; }
+        .btn-primary { flex: 1 1 auto; }
+        .btn-outline-secondary {
+            color: $sw-color-brand-primary; border-color: rgba($sw-color-brand-primary, 0.4);
+            font-weight: 600;
+            &:hover { background: rgba($sw-color-brand-primary, 0.06); color: $sw-color-brand-primary; }
+        }
+    }
+    // Sağ bilgi kartı recover'da sticky değil, içeriğe yapışsın
+    &__adv--recover { margin-top: 0; align-self: stretch; }
+    &__recover-help {
+        margin: 1rem 0 0; padding-top: .9rem;
+        border-top: 1px solid rgba($sw-color-brand-primary, 0.12);
+        font-size: .85rem; color: rgba($elfbar-color-ink, 0.6); line-height: 1.5;
+    }
+}
+
+// =====================================================================
+// HESAP ALANI (Mein Konto) — modern panel + kartlar, mavi tema
+// =====================================================================
+.account {
+    max-width: 1500px; margin: 2rem auto 3rem; padding: 0 2rem;
+
+    // --- SOL SIDEBAR (panel) ---
+    .account-content-aside { padding-right: 1.5rem; }
+    .account-aside .account-menu-inner,
+    .account-menu-inner {
+        border: 1px solid rgba($elfbar-color-ink, 0.08);
+        border-radius: 16px; overflow: hidden;
+        box-shadow: 0 8px 30px rgba($elfbar-color-ink, 0.06);
+        background: #fff; position: sticky; top: 1.5rem;
+    }
+    // Selam başlığı (avatar + isim)
+    .elfbar-acc-aside__head {
+        display: flex; align-items: center; gap: .75rem;
+        background: linear-gradient(135deg, $sw-color-brand-primary, darken($sw-color-brand-primary, 10%));
+        color: #fff; border: none; padding: 1.1rem 1.1rem;
+    }
+    .elfbar-acc-aside__avatar {
+        flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%;
+        background: rgba(#fff, 0.2); color: #fff; font-weight: 700; font-size: .95rem;
+        display: grid; place-items: center; letter-spacing: .02em;
+    }
+    .elfbar-acc-aside__hi {
+        display: flex; flex-direction: column; line-height: 1.25; min-width: 0;
+        small { font-size: .72rem; opacity: .8; }
+        b { font-size: .98rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    }
+    // Nav öğeleri (ikonlu)
+    .account-aside-list-group { padding: .6rem; }
+    .elfbar-acc-aside__item {
+        display: flex !important; align-items: center; gap: .75rem;
+        border: none !important; border-radius: 10px; margin-bottom: .2rem;
+        padding: .7rem .85rem; font-weight: 600; font-size: .92rem; color: $elfbar-color-ink;
+        background: transparent; transition: background .12s ease, color .12s ease;
+        &:hover { background: rgba($sw-color-brand-primary, 0.07); color: $sw-color-brand-primary; }
+        &.is-active {
+            background: $sw-color-brand-primary !important; color: #fff !important;
+            box-shadow: 0 4px 12px rgba($sw-color-brand-primary, 0.3);
+            .elfbar-acc-aside__ico .icon svg { color: #fff; }
+        }
+    }
+    .elfbar-acc-aside__ico {
+        flex: 0 0 auto; width: 22px; height: 22px; display: grid; place-items: center;
+        .icon { width: 19px; height: 19px; } .icon svg { color: currentColor; }
+    }
+    // Logout footer
+    .account-aside-footer { border-top: 1px solid rgba($elfbar-color-ink, 0.08); padding: .6rem; }
+    .account-aside-btn {
+        color: $elfbar-color-sale; font-weight: 700; text-decoration: none;
+        display: flex; align-items: center; gap: .5rem; padding: .6rem .85rem;
+        .icon { width: 18px; height: 18px; } .icon svg { color: $elfbar-color-sale; }
+        &:hover { color: darken($elfbar-color-sale, 10%); }
+    }
+
+    // --- SAĞ İÇERİK ---
+    .account-content-main { min-width: 0; }
+
+    // --- VioRepresentativeLogin AGENT menüsü (kendi core class'larını kullanır) ---
+    // Vio'nun agent sidebar'ını ElfbarTheme görünümüne eşitle (.agent-menu scope).
+    .agent-menu {
+        .account-menu-inner {
+            border: 1px solid rgba($elfbar-color-ink, 0.08);
+            border-radius: 16px; overflow: hidden;
+            box-shadow: 0 8px 30px rgba($elfbar-color-ink, 0.06);
+            background: #fff; position: sticky; top: 1.5rem;
+        }
+        // Selam başlığı → gradient (elfbar-acc-aside__head ile aynı)
+        .account-aside-header {
+            background: linear-gradient(135deg, $sw-color-brand-primary, darken($sw-color-brand-primary, 10%));
+            color: #fff; border: none; padding: 1.1rem 1.1rem;
+            font-weight: 700; font-size: .98rem;
+        }
+        .account-aside-list-group { padding: .6rem; border: none; }
+        // Nav linkleri → pill (elfbar-acc-aside__item ile aynı)
+        .account-aside-item {
+            display: flex; align-items: center; gap: .75rem;
+            border: none !important; border-radius: 10px; margin-bottom: .2rem;
+            padding: .7rem .85rem; font-weight: 600; font-size: .92rem; color: $elfbar-color-ink;
+            background: transparent; transition: background .12s ease, color .12s ease;
+            &:hover { background: rgba($sw-color-brand-primary, 0.07); color: $sw-color-brand-primary; }
+            &.is-active {
+                background: $sw-color-brand-primary !important; color: #fff !important;
+                box-shadow: 0 4px 12px rgba($sw-color-brand-primary, 0.3);
+            }
+        }
+        // Çıkış footer (Abmelden)
+        .account-aside-footer { border-top: 1px solid rgba($elfbar-color-ink, 0.08); padding: .6rem; }
+        .account-aside-btn {
+            color: $elfbar-color-sale; font-weight: 700; text-decoration: none;
+            display: flex; align-items: center; gap: .5rem; padding: .6rem .85rem;
+            .icon { width: 18px; height: 18px; } .icon svg { color: $elfbar-color-sale; }
+            &:hover { color: darken($elfbar-color-sale, 10%); }
+        }
+    }
+}
+
+// Hoşgeldin başlık bloğu
+.elfbar-acc-welcome {
+    margin-bottom: 1.75rem;
+    &__eyebrow {
+        display: inline-block; background: rgba($sw-color-brand-primary, 0.1);
+        color: $sw-color-brand-primary; font-weight: 700; font-size: .78rem;
+        padding: .35rem .9rem; border-radius: 999px; margin-bottom: .7rem;
+    }
+    &__title { font-family: $elfbar-font-headline; font-weight: 700; font-size: 2rem; color: $elfbar-color-ink; margin: 0 0 .4rem; }
+    &__sub { color: rgba($elfbar-color-ink, 0.6); font-size: .98rem; margin: 0; }
+}
+
+// --- TÜM hesap tab'ları (overview/profil/adres/sipariş) ortak içerik teması ---
+.account-content-main {
+    // Sayfa başlıkları (Übersicht/Profil/Adressen/Bestellungen)
+    h1 { font-family: $elfbar-font-headline; font-weight: 700; font-size: 2rem; color: $elfbar-color-ink; margin: 0 0 .35rem; }
+    .account-welcome > p, .account-profile > p, .account-address > p, .account-orders > p,
+    > .account-overview > .account-welcome p { color: rgba($elfbar-color-ink, 0.6); }
+
+    // Kartlar
+    .card {
+        border: 1px solid rgba($elfbar-color-ink, 0.08) !important;
+        border-radius: 16px !important; background: #fff;
+        box-shadow: 0 6px 24px rgba($elfbar-color-ink, 0.05) !important;
+        margin-bottom: 1.25rem; overflow: hidden;
+    }
+    .card-body { padding: 1.5rem; }
+    .card-title {
+        font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.15rem; color: $elfbar-color-ink;
+        padding-bottom: .75rem; margin-bottom: 1rem;
+        border-bottom: 2px solid rgba($sw-color-brand-primary, 0.12);
+    }
+
+    // Ara başlıklar (Persönliche Daten, Zugangsdaten, Standard-Rechnungsadresse vb.)
+    // bunlar <div class="card-title h.."> ya da düz başlık → mavi alt çizgi
+    .account-profile-personal-data, .account-profile-payment {
+        margin-bottom: 1.5rem;
+    }
+
+    a { color: $sw-color-brand-primary; &:hover { color: darken($sw-color-brand-primary, 10%); } }
+
+    // Form alanları tema
+    .form-label { font-weight: 600; font-size: .85rem; color: rgba($elfbar-color-ink, 0.75); }
+    .form-control, .form-select {
+        border-radius: 10px; border: 1px solid rgba($elfbar-color-ink, 0.15); padding: .65rem .9rem;
+        &:focus { border-color: $sw-color-brand-primary; box-shadow: 0 0 0 .2rem rgba($sw-color-brand-primary, 0.15); }
+    }
+
+    // Butonlar
+    .btn-primary {
+        background: $sw-color-brand-primary; border-color: $sw-color-brand-primary; color: #fff;
+        border-radius: 10px; font-weight: 700; padding: .65rem 1.4rem;
+        &:hover, &:focus, &:active { background: darken($sw-color-brand-primary, 8%); border-color: darken($sw-color-brand-primary, 8%); color: #fff; }
+    }
+    .btn-outline-primary, .btn-light {
+        border-radius: 10px; font-weight: 700; border-color: rgba($sw-color-brand-primary, 0.4); color: $sw-color-brand-primary;
+        &:hover { background: rgba($sw-color-brand-primary, 0.08); color: $sw-color-brand-primary; }
+    }
+
+    // PROFİL sayfası: form'u kart hissi ver (default kartsızdı)
+    .account-profile {
+        background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.08);
+        border-radius: 16px; box-shadow: 0 6px 24px rgba($elfbar-color-ink, 0.05);
+        padding: 1.75rem; margin-top: .5rem;
+        // içindeki bölüm başlıkları (Persönliche Daten / Zugangsdaten)
+        .card-title, h2, .h4, .h5 {
+            font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.1rem; color: $elfbar-color-ink;
+            padding-bottom: .6rem; border-bottom: 2px solid rgba($sw-color-brand-primary, 0.12); margin: 0 0 1.1rem;
+        }
+        hr { display: none; }
+    }
+
+    // --- ADRES KARTLARI (address-manager) ---
+    // Sayfa başlığı + açıklama
+    h1.account-welcome { margin-bottom: .25rem; }
+    .address-manager-list-base h2 {
+        font-family: $elfbar-font-headline; font-weight: 700; font-size: 1.15rem; color: $elfbar-color-ink;
+        margin: 1.75rem 0 1rem;
+    }
+    // Kart: köşeli border → yumuşak kart (radius, gölge, hover)
+    .address-manager-select-address {
+        border: 1px solid rgba($elfbar-color-ink, 0.1) !important;
+        border-radius: 14px !important; background: #fff;
+        padding: 1.25rem 1.35rem !important;
+        box-shadow: 0 4px 16px rgba($elfbar-color-ink, 0.04);
+        transition: box-shadow .15s ease, border-color .15s ease;
+        &:hover { box-shadow: 0 8px 26px rgba($sw-color-brand-primary, 0.1); border-color: rgba($sw-color-brand-primary, 0.3) !important; }
+        address, p { color: rgba($elfbar-color-ink, 0.78); line-height: 1.55; font-style: normal; }
+    }
+    // "⋮" dropdown butonu belirginleş
+    .address-manager-select-address .dropdown .bg-transparent {
+        color: rgba($elfbar-color-ink, 0.5); border-radius: 8px;
+        &:hover { background: rgba($elfbar-color-ink, 0.06) !important; color: $elfbar-color-ink; }
+    }
+    // Standard rozeti: text-bg-info (turkuaz) → mavi tema, küçük pill
+    .address-item-default-badge {
+        background: rgba($sw-color-brand-primary, 0.12) !important; color: $sw-color-brand-primary !important;
+        font-size: .72rem !important; font-weight: 700 !important;
+        padding: .3rem .8rem !important; border-radius: 999px !important;
+    }
+    // arama + "Neue Adresse hinzufügen" satırı
+    .address-manager-list-search { border-radius: 10px; }
+
+    // --- BESTELLUNGEN (sipariş geçmişi) ---
+    .account-orders .account-welcome { margin-bottom: 1.25rem; }
+    // Boş durum alert'i → yumuşak kart
+    .account-orders .alert {
+        border-radius: 14px; border: 1px solid rgba($elfbar-color-ink, 0.1);
+        background: #fff; box-shadow: 0 4px 16px rgba($elfbar-color-ink, 0.04);
+        padding: 1.5rem 1.75rem;
+    }
+    // Sipariş kartı — SADECE dış sarmalayıcı .order-item (doğrudan .account-orders çocuğu).
+    // DİKKAT: iç hücreler de "order-item order-item-actions" gibi .order-item taşıyor →
+    // hepsine kart stili verilince actions hücresi beyaz/borderlı blok oluyordu.
+    .account-orders > .order-item,
+    .account-orders > div > .order-item:not(.order-item-actions):not([class*="body-cell"]) {
+        border: 1px solid rgba($elfbar-color-ink, 0.1) !important;
+        border-radius: 14px !important; background: #fff; overflow: hidden;
+        box-shadow: 0 4px 16px rgba($elfbar-color-ink, 0.04); margin-bottom: 1rem;
+    }
+    // iç hücreler (actions/body-cell) kart stilinden muaf + beyaz bg temizle
+    .order-item.order-item-actions,
+    .order-item[class*="body-cell"] {
+        border: none !important; border-radius: 0 !important; box-shadow: none !important;
+        background: transparent !important; margin-bottom: 0 !important;
+    }
+    .order-item-header, .order-table-header {
+        background: rgba($sw-color-brand-primary, 0.04);
+        border-bottom: 1px solid rgba($elfbar-color-ink, 0.08);
+        padding: 1rem 1.25rem;
+    }
+    .order-table-header-order-number, .order-table-header-heading { font-weight: 700; color: $elfbar-color-ink; }
+    // sipariş durum rozeti tema mavisi
+    .order-item-status-badge, [class*="order-item-status-badge-"] {
+        border-radius: 999px; font-weight: 700; font-size: .75rem; padding: .3rem .8rem;
+    }
+    // "Details anzeigen / ausblenden" butonu — btn-light beyazlığı yerine mavi outline
+    .order-hide-btn, .order-view-btn {
+        background: #fff !important; border: 1px solid rgba($sw-color-brand-primary, 0.35) !important;
+        border-radius: 10px !important; padding: .45rem .9rem !important;
+        color: $sw-color-brand-primary !important;
+        &:hover { background: rgba($sw-color-brand-primary, 0.07) !important; }
+    }
+    .order-view-btn-text, .order-hide-btn-text { color: $sw-color-brand-primary; font-weight: 600; }
+    // sipariş tekrar / detay butonları
+    .account-orders .btn-primary { background: $sw-color-brand-primary; border-color: $sw-color-brand-primary; }
+
+    // --- Sipariş aksiyon butonları: tablo satırının SAĞ hücresinde, alt alta ---
+    // İçerik (Lieferstatus vb.) solda kalır, butonlar sağda dikey dizilir.
+    .elfbar-order-actions {
+        display: flex; flex-direction: column; align-items: stretch; gap: .55rem;
+        // Butonlar sağ hücrede makul genişlik
+        .elfbar-order-reorder-form { margin: 0; display: flex; width: 100%; }
+        .elfbar-order-reorder-form .elfbar-order-btn { width: 100%; }
+        .elfbar-order-btn { width: 100%; }
+        // Mobil: hücre tam genişlik, butonlar da
+        @media (max-width: 575.98px) { width: 100%; margin-top: 1rem; }
+    }
+    .elfbar-order-btn {
+        display: inline-flex; align-items: center; justify-content: flex-start; gap: .55rem;
+        border-radius: 10px !important; padding: .6rem 1.1rem !important;
+        font-weight: 600; white-space: nowrap;
+        // İkon rengi = buton metin rengi (currentColor); ikon solda sabit, metin hizalı
+        .icon { width: 16px; height: 16px; color: currentColor; flex: 0 0 auto; margin-bottom: 10px; }
+        .icon svg, svg { display: block; color: currentColor; }
+        span { text-align: left; }
+        @media (max-width: 575.98px) { width: 100%; }
+    }
+    // "Erneut bestellen" = dolu mavi (en belirgin, ana aksiyon). İkon beyaz (currentColor=#fff)
+    .elfbar-order-btn--reorder {
+        background: $sw-color-brand-primary !important; border: 1px solid $sw-color-brand-primary !important;
+        color: #fff !important;
+        &:hover { background: darken($sw-color-brand-primary, 8%) !important; transform: translateY(-1px); }
+    }
+    // DHL takip = mavi outline. İkon mavi (currentColor=mavi)
+    .elfbar-order-btn--track {
+        background: #fff !important; border: 1px solid rgba($sw-color-brand-primary, 0.45) !important;
+        color: $sw-color-brand-primary !important;
+        &:hover { background: rgba($sw-color-brand-primary, 0.07) !important; }
+    }
+    // Details = açık/outline mavi. İkon mavi
+    .elfbar-order-btn--details {
+        background: #fff !important; border: 1px solid rgba($sw-color-brand-primary, 0.35) !important;
+        color: $sw-color-brand-primary !important;
+        .order-view-btn-text, .order-hide-btn-text { color: $sw-color-brand-primary !important; }
+        &:hover { background: rgba($sw-color-brand-primary, 0.07) !important; }
+    }
+
+    // --- Meine Top-Produkte (en çok alınan ürünler listesi) ---
+    .elfbar-topprod {
+        display: flex; flex-direction: column; gap: .75rem;
+    }
+    .elfbar-topprod__row {
+        display: grid;
+        grid-template-columns: 64px 1fr auto auto;
+        align-items: center; gap: 1rem;
+        background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.08);
+        border-radius: 14px; padding: .85rem 1.1rem;
+        transition: box-shadow .15s ease, border-color .15s ease;
+        &:hover { box-shadow: 0 8px 22px rgba($sw-color-brand-primary, 0.1); border-color: rgba($sw-color-brand-primary, 0.25); }
+        @media (max-width: 767.98px) {
+            grid-template-columns: 56px 1fr; gap: .75rem .9rem;
+        }
+    }
+    .elfbar-topprod__media {
+        width: 64px; height: 64px; border-radius: 10px; overflow: hidden;
+        background: rgba($elfbar-color-ink, 0.03); display: grid; place-items: center;
+        color: rgba($elfbar-color-ink, 0.3);
+        img { width: 100%; height: 100%; object-fit: cover; }
+        @media (max-width: 767.98px) { width: 56px; height: 56px; }
+    }
+    .elfbar-topprod__info { min-width: 0; }
+    .elfbar-topprod__brand {
+        display: block; font-size: .68rem; font-weight: 700; text-transform: uppercase;
+        letter-spacing: .04em; color: rgba($elfbar-color-ink, 0.5);
+    }
+    .elfbar-topprod__name {
+        display: block; font-weight: 700; font-size: .95rem; color: $elfbar-color-ink;
+        text-decoration: none; line-height: 1.3;
+        &:hover { color: $sw-color-brand-primary; }
+    }
+    .elfbar-topprod__stats { margin-top: .25rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+    .elfbar-topprod__stat {
+        font-size: .72rem; font-weight: 600; color: $sw-color-brand-primary;
+        background: rgba($sw-color-brand-primary, 0.1); padding: .15rem .5rem; border-radius: 999px;
+        &--muted { color: rgba($elfbar-color-ink, 0.55); background: rgba($elfbar-color-ink, 0.06); }
+    }
+    .elfbar-topprod__price {
+        font-weight: 700; color: $sw-color-brand-primary; white-space: nowrap; text-align: right;
+        small { display: block; font-size: .66rem; font-weight: 500; color: rgba($elfbar-color-ink, 0.5); }
+        @media (max-width: 767.98px) { grid-column: 2; text-align: left; }
+    }
+    .elfbar-topprod__action {
+        form { margin: 0; }
+        .elfbar-topprod__btn {
+            display: inline-flex; align-items: center; gap: .4rem; white-space: nowrap;
+            border-radius: 10px !important; font-weight: 600;
+            background: $sw-color-brand-primary; border-color: $sw-color-brand-primary; color: #fff;
+            .icon { width: 15px; height: 15px; margin-bottom: 10px; color: #fff; } svg { display: block; }
+        }
+        @media (max-width: 767.98px) { grid-column: 1 / -1; .elfbar-topprod__btn { width: 100%; justify-content: center; } }
+    }
+
+    // --- Rechnungen & Dokumente (belge listesi) ---
+    .elfbar-docs { display: flex; flex-direction: column; gap: .6rem; }
+    .elfbar-docs__row {
+        display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 1rem;
+        background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.08);
+        border-radius: 12px; padding: .8rem 1.1rem;
+        transition: box-shadow .15s ease, border-color .15s ease;
+        &:hover { box-shadow: 0 8px 22px rgba($sw-color-brand-primary, 0.1); border-color: rgba($sw-color-brand-primary, 0.25); }
+        @media (max-width: 575.98px) { grid-template-columns: 40px 1fr; gap: .6rem .8rem; }
+    }
+    .elfbar-docs__icon {
+        width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center;
+        background: rgba($sw-color-brand-primary, 0.1); color: $sw-color-brand-primary;
+        .icon { width: 20px; height: 20px; } svg { display: block; }
+        // tip rengi
+        &--delivery_note { background: rgba(#2e9e6b, 0.12); color: #2e9e6b; }
+        &--credit_note { background: rgba(#e0992b, 0.14); color: #c97f12; }
+        &--storno, &--zugferd_cancellation_invoice { background: rgba($elfbar-color-sale, 0.12); color: $elfbar-color-sale; }
+        @media (max-width: 575.98px) { width: 40px; height: 40px; }
+    }
+    .elfbar-docs__info { min-width: 0; }
+    .elfbar-docs__type { display: block; font-weight: 700; font-size: .95rem; color: $elfbar-color-ink; }
+    .elfbar-docs__meta { display: block; font-size: .78rem; color: rgba($elfbar-color-ink, 0.55); margin-top: .15rem; }
+    .elfbar-docs__btn {
+        display: inline-flex; align-items: center; gap: .4rem; white-space: nowrap;
+        border-radius: 10px !important; font-weight: 600;
+        background: $sw-color-brand-primary; border-color: $sw-color-brand-primary; color: #fff;
+        .icon { width: 16px; height: 16px; color: #fff; } svg { display: block; }
+        @media (max-width: 575.98px) { grid-column: 1 / -1; width: 100%; justify-content: center; }
+    }
+
+    // --- Schnellbestellung (SKU ile hızlı sipariş formu) ---
+    .elfbar-quick {
+        background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.08);
+        border-radius: 14px; padding: 1.25rem;
+    }
+    .elfbar-quick__head {
+        display: grid; grid-template-columns: 1fr 110px; gap: .75rem;
+        font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em;
+        color: rgba($elfbar-color-ink, 0.5); padding: 0 .25rem .5rem;
+        @media (max-width: 575.98px) { grid-template-columns: 1fr 80px; }
+    }
+    .elfbar-quick__rows { display: flex; flex-direction: column; gap: .5rem; }
+    .elfbar-quick__row {
+        display: grid; grid-template-columns: 1fr 110px; gap: .75rem;
+        @media (max-width: 575.98px) { grid-template-columns: 1fr 80px; }
+        .form-control { border-radius: 10px; }
+    }
+    .elfbar-quick__foot {
+        display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+        margin-top: 1.1rem; flex-wrap: wrap;
+        @media (max-width: 575.98px) { flex-direction: column-reverse; align-items: stretch; }
+    }
+    .elfbar-quick__addrow {
+        display: inline-flex; align-items: center; gap: .4rem; border-radius: 10px !important;
+        font-weight: 600; color: $sw-color-brand-primary !important;
+        border: 1px dashed rgba($sw-color-brand-primary, 0.4) !important; background: #fff !important;
+        .icon { width: 15px; height: 15px; } svg { display: block; }
+        &:hover { background: rgba($sw-color-brand-primary, 0.06) !important; }
+    }
+    .elfbar-quick__submit {
+        display: inline-flex; align-items: center; gap: .45rem; border-radius: 10px !important;
+        font-weight: 600; background: $sw-color-brand-primary; border-color: $sw-color-brand-primary; color: #fff;
+        padding: .6rem 1.4rem;
+        .icon { width: 16px; height: 16px; color: #fff; } svg { display: block; }
+    }
+
+    // Übersicht "Persönliche Daten" kartı: ad/firma/email satırları arası boşluk azalt,
+    // company yoksa render olan BOŞ <p> (kocaman boşluk yapıyordu) gizle
+    .account-overview-profile .card-body {
+        p { margin-bottom: .35rem; line-height: 1.5; }
+        p:empty { display: none; }
+        .card-actions { margin-top: .75rem; }
+    }
+}
+
+// Mobil: hesap içeriği kompakt + sidebar BOTTOM-SHEET
+@media (max-width: 991.98px) {
+    .account { padding: 0 .75rem; margin-top: .85rem; margin-bottom: 2rem; }
+
+    // ⭐ MOBİL GENİŞLİK FIX: .account-content-main'in 0 20px yan padding'i +
+    // Bootstrap kolon padding'i + iç kart padding'i ÜST ÜSTE binip içeriği
+    // ekranın yarısına sıkıştırıyordu (form ~237px, soldan ~76px boşluk).
+    // Yan padding'leri sıfırla → kartlar tam genişlik, içerik ferah.
+    .account-content-main { padding-left: 0 !important; padding-right: 0 !important; }
+    .account-content-aside { padding-left: 0 !important; padding-right: 0 !important; }
+    .account .row { margin-left: 0 !important; margin-right: 0 !important; }
+    .account-content-main [class*="col-"] { padding-left: 0 !important; padding-right: 0 !important; }
+
+    // --- Başlık bloğu kompakt ---
+    .elfbar-acc-welcome { margin-bottom: 1rem; }
+    .elfbar-acc-welcome__eyebrow { font-size: .72rem; padding: .3rem .75rem; margin-bottom: .5rem; }
+    .elfbar-acc-welcome__title { font-size: 1.5rem; }
+    .elfbar-acc-welcome__sub { font-size: .9rem; }
+    .account-content-main h1 { font-size: 1.5rem; }
+
+    // --- Kartlar tam genişlik + ferah iç boşluk ---
+    .account-content-main .card { margin-bottom: .85rem; border-radius: 14px !important; }
+    .account-content-main .card-body,
+    .account-content-main .account-profile { padding: 1.25rem 1.25rem; }
+    .account-content-main .card-title { font-size: 1.05rem; padding-bottom: .6rem; margin-bottom: .85rem; }
+    // çift kart iç içe (profil formu kart içinde kart): iç kartı düzleştir
+    .account-content-main .card .card { border: none !important; box-shadow: none !important; margin: 0 !important; }
+    .account-content-main .card .card .card-body { padding: 0 !important; }
+
+    // =================================================================
+    // MOBİL: üstteki "Mein Konto" tetik butonu
+    // =================================================================
+    .elfbar-acc-mobilebar { padding: 0; margin-bottom: 1rem; }
+    .elfbar-acc-mobilebar__btn {
+        display: flex; align-items: center; gap: .8rem; width: 100%;
+        background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.08);
+        border-radius: 14px; padding: .75rem .9rem; cursor: pointer; text-align: left;
+        box-shadow: 0 6px 20px rgba($elfbar-color-ink, 0.06);
+        &:active { transform: scale(.99); }
+    }
+    .elfbar-acc-mobilebar__ava {
+        flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%;
+        background: linear-gradient(135deg, $sw-color-brand-primary, darken($sw-color-brand-primary, 12%));
+        color: #fff; font-weight: 700; font-size: .95rem; letter-spacing: .02em;
+        display: grid; place-items: center;
+    }
+    .elfbar-acc-mobilebar__txt {
+        display: flex; flex-direction: column; line-height: 1.2; flex: 1; min-width: 0;
+        small { font-size: .72rem; color: rgba($elfbar-color-ink, 0.55); }
+        b { font-size: .98rem; font-weight: 700; color: $elfbar-color-ink; }
+    }
+    .elfbar-acc-mobilebar__chev {
+        flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center;
+        width: 26px; height: 26px; border-radius: 50%; line-height: 0; padding: 0;
+        background: rgba($sw-color-brand-primary, 0.1);
+        .icon {
+            width: 20px; height: 20px; display: block; line-height: 0; margin-bottom: 5px;
+        }
+        .icon svg {
+            color: $sw-color-brand-primary; display: block;
+            width: 100%; height: 100%; vertical-align: middle;
+        }
+    }
+
+    // =================================================================
+    // MOBİL: sidebar = alttan açılan bottom-sheet
+    // =================================================================
+    .elfbar-acc-aside-wrap[data-elfbar-sheet="account"] {
+        position: fixed; left: 0; right: 0; bottom: 0; top: auto;
+        z-index: 1200; max-height: 82vh; overflow-y: auto;
+        background: #fff; border-radius: 0;
+        box-shadow: 0 -12px 40px rgba($elfbar-color-ink, 0.25);
+        transform: translateY(100%); transition: transform .28s cubic-bezier(.4,0,.2,1);
+        padding: 0 0 env(safe-area-inset-bottom, .5rem); margin: 0 !important; width: 100%;
+        &.is-open { transform: translateY(0); }
+
+        // içerideki sticky panel kabuğunu sıfırla (mobilde sheet'in kendisi kabuk)
+        .account-menu-inner { position: static; border: none; border-radius: 0; box-shadow: none; }
+        // selam başlığı (avatar + isim) de düz köşe (mobilde radius YOK)
+        .elfbar-acc-aside__head { border-radius: 0; }
+    }
+    // Sheet başlığı (başlık + ✕)
+    .elfbar-acc-sheet__head {
+        display: flex; align-items: center; justify-content: space-between;
+        position: sticky; top: 0; z-index: 2;
+        background: linear-gradient(135deg, $sw-color-brand-primary, darken($sw-color-brand-primary, 10%));
+        color: #fff; padding: 1rem 1.1rem; border-radius: 0;
+        b { font-size: 1rem; font-weight: 700; }
+    }
+    .elfbar-acc-sheet__close {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 30px; height: 30px; border-radius: 50%; border: none; cursor: pointer;
+        background: rgba(#fff, 0.2); color: #fff;
+        padding: 0 !important; line-height: 0; flex: 0 0 auto;
+        .icon { width: 16px; height: 16px; display: block; line-height: 0; margin-bottom: 5px; }
+        .icon svg { color: #fff; display: block; width: 100%; height: 100%; vertical-align: middle; }
+    }
+}
+
+// =====================================================================
+// CHECKOUT (cart → confirm → finish) — markaya uygun modern düzen
+// =====================================================================
+
+// --- Minimal header (confirm/finish/address sayfaları) ---
+.header-minimal {
+    background: $sw-color-brand-primary;
+    padding: .85rem 0;
+    box-shadow: 0 4px 18px rgba($elfbar-color-ink, 0.12);
+    margin-bottom: 2rem;
+
+    .header-minimal-row { align-items: center; }
+    .header-logo-main-img, .header-logo-main { max-height: 36px; width: auto; }
+    .header-minimal-logo img { max-height: 36px; width: auto; }
+
+    .header-minimal-contact {
+        text-align: center; color: rgba(#fff, 0.92);
+        font-size: .9rem; font-weight: 600;
+    }
+    .header-minimal-back-to-shop { text-align: right; }
+    .header-minimal-back-to-shop-button {
+        background: #fff; border: none; color: $sw-color-brand-primary;
+        font-weight: 700; border-radius: 10px; padding: .5rem 1rem;
+        &:hover { background: rgba(#fff, 0.9); color: darken($sw-color-brand-primary, 8%); }
+    }
+}
+
+// --- Genel checkout container ---
+.is-ctl-checkout {
+    background: $elfbar-color-bg;
+
+    .checkout-main { padding-bottom: 3rem; }
+
+    // Sayfa başlıkları (Warenkorb / Bestellung abschließen)
+    .cart-main-header h1,
+    .confirm-main-header h1,
+    .finish-header h1,
+    h1 {
+        font-family: $elfbar-font-headline; font-weight: 700;
+        color: $elfbar-color-ink;
+    }
+    .cart-main-header-item-counter,
+    .confirm-main-header-item-counter { color: rgba($elfbar-color-ink, 0.55); font-weight: 500; }
+}
+
+// --- CONFIRM: adres/ödeme/teslimat kartları (.checkout-card) ---
+.checkout-card,
+.card.checkout-card {
+    border: 1px solid rgba($elfbar-color-ink, 0.08) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 6px 24px rgba($elfbar-color-ink, 0.05) !important;
+    background: #fff; margin-bottom: 1.25rem; overflow: hidden;
+
+    .card-title, .card-header {
+        font-family: $elfbar-font-headline; font-weight: 700;
+        font-size: 1.1rem; color: $elfbar-color-ink;
+        border-bottom: 2px solid rgba($sw-color-brand-primary, 0.12);
+        padding-bottom: .65rem; margin-bottom: 1rem;
+        background: transparent; border-radius: 0;
+    }
+    .card-body { padding: 1.4rem 1.5rem; }
+}
+
+// adres değiştir / bağlantılar
+.is-ctl-checkout {
+    .confirm-address a, .checkout-card a { color: $sw-color-brand-primary; font-weight: 600; }
+    .confirm-address a:hover, .checkout-card a:hover { color: darken($sw-color-brand-primary, 10%); }
+
+    // Ödeme/teslimat radio seçenekleri
+    .payment-method, .shipping-method,
+    .payment-methods .custom-control, .shipping-methods .custom-control {
+        padding: .5rem 0;
+    }
+    .custom-control-input:checked ~ .custom-control-label,
+    input[type="radio"]:checked + label { color: $sw-color-brand-primary; font-weight: 700; }
+}
+
+// --- ÖZET kutusu (sağ aside) — cart + confirm ortak ---
+// STICKY tüm container'a verilir (özet + Gutscheincode + buton birlikte yapışır).
+// Tek tek elemana sticky verilince scroll'da üst üste biniyorlardı (kupon ↔ özet çakışması).
+.checkout-aside {
+    .checkout-aside-container {
+        position: sticky; top: 1.5rem;
+        display: flex; flex-direction: column; gap: 1rem;
+    }
+    // Özet kutusu = beyaz kart (sticky DEĞİL artık, parent sticky)
+    .checkout-aside-summary,
+    .checkout-aside-summary-container {
+        background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.08);
+        border-radius: 16px; padding: 1.4rem 1.5rem;
+        box-shadow: 0 8px 30px rgba($elfbar-color-ink, 0.06);
+        position: static; margin-bottom: 0;
+    }
+    .checkout-aside-summary-header,
+    .checkout-aside-product-header h2 {
+        font-family: $elfbar-font-headline; font-weight: 700;
+        font-size: 1.2rem; color: $elfbar-color-ink; margin-bottom: 1rem;
+    }
+    .checkout-aside-summary-total .checkout-aside-summary-label,
+    .checkout-aside-summary-total .checkout-aside-summary-value {
+        font-weight: 800; font-size: 1.15rem; color: $elfbar-color-ink;
+    }
+    .checkout-aside-summary-value { color: $sw-color-brand-primary; }
+
+    // Gutscheincode + Zur Kasse: özetin altında ayrı dursun (binmesin)
+    .checkout-aside-action { margin: 0; }
+}
+
+// --- Büyük aksiyon butonları (Zur Kasse / Zahlungspflichtig bestellen) ---
+.is-ctl-checkout {
+    .checkout-aside-action .btn-primary,
+    .checkout-btn, .begin-checkout-btn,
+    button[type="submit"].btn-primary {
+        background: $sw-color-brand-primary; border-color: $sw-color-brand-primary;
+        color: #fff !important; font-weight: 700; border-radius: 12px;
+        padding: .85rem 1rem; box-shadow: 0 6px 18px rgba($sw-color-brand-primary, 0.35);
+        transition: transform .12s ease, box-shadow .12s ease;
+        &:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba($sw-color-brand-primary, 0.45); }
+    }
+}
+
+// --- Ürün tablosu kartı + satırları (line-item) cart + confirm ---
+.is-ctl-checkout {
+    // Ürünleri saran kart düzgün beyaz kart olsun (border görünmezdi)
+    .card.checkout-product-table {
+        border: 1px solid rgba($elfbar-color-ink, 0.08) !important;
+        border-radius: 16px !important;
+        box-shadow: 0 6px 24px rgba($elfbar-color-ink, 0.05) !important;
+        overflow: hidden; background: #fff;
+    }
+    // Kartın iç boşluğu: card-body + başlık satırı + satırlar yatay padding
+    // (padding 0'dı → içerik kartın sol kenarına yapışıyordu)
+    .checkout-product-table .card-body { padding: 0; }
+    .checkout-product-table .cart-table-header { padding: 1.1rem 1.5rem .85rem; margin: 0; }
+    // line-item = satır (KART DEĞİL): radius YOK, sadece yumuşak alt ayraç + iç padding.
+    // (radius + alt border birleşince ürünler arası garip yarım-çerçeve oluşuyordu)
+    .line-item, .cart-item {
+        border-radius: 0 !important;
+        border-bottom: 1px solid rgba($elfbar-color-ink, 0.08) !important;
+        padding: 1.25rem 1.5rem !important;
+    }
+    // son satırın ayraç çizgisi olmasın
+    .checkout-product-table .line-item:last-child,
+    .checkout-product-table .card-body > .line-item:last-of-type { border-bottom: none !important; }
+
+    .line-item-img-link img, .cart-item-img img {
+        border-radius: 10px; border: 1px solid rgba($elfbar-color-ink, 0.08);
+    }
+    .line-item-total-price, .cart-item-total-price,
+    .line-item-price { color: $sw-color-brand-primary; font-weight: 700; }
+    // ⭐ Miktar stepper FIX (cart sayfası) — drawer'daki ile aynı dil.
+    // Sorun: input width 4.875px'e sıkışıp sayı görünmüyordu.
+    .line-item-quantity-group.quantity-selector-group,
+    .quantity-selector-group {
+        display: inline-flex !important; flex-wrap: nowrap !important; width: auto !important;
+        border: 1px solid rgba($elfbar-color-ink, 0.15); border-radius: 10px; overflow: hidden;
+
+        .btn-minus, .btn-plus {
+            flex: 0 0 auto !important; width: 44px; height: 46px; padding: 0;
+            border: none !important; border-radius: 0 !important;
+            background: rgba($elfbar-color-ink, 0.04); color: $elfbar-color-ink;
+            display: grid; place-items: center;
+            &:hover { background: rgba($sw-color-brand-primary, 0.12); color: $sw-color-brand-primary; }
+            .icon.icon-minus, .icon.icon-plus { margin-bottom: 5px; }
+        }
+        .js-quantity-selector, input.form-control {
+            flex: 0 0 56px !important; width: 56px !important; min-width: 56px !important; height: 46px;
+            border: none !important;
+            border-left: 1px solid rgba($elfbar-color-ink, 0.1) !important;
+            border-right: 1px solid rgba($elfbar-color-ink, 0.1) !important;
+            border-radius: 0 !important; text-align: center; font-weight: 700;
+            box-shadow: none !important; padding: 0 !important; -moz-appearance: textfield;
+            &::-webkit-outer-spin-button, &::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        }
+    }
+}
+
+// --- Gutschein / kupon input ---
+.is-ctl-checkout {
+    .checkout-aside-add-code, .cart-add-promotion {
+        .form-control { border-radius: 10px; }
+    }
+}
+
+// --- FINISH (sipariş tamam) ---
+.finish-header,
+.finish-ordernumber {
+    text-align: center;
+}
+.is-ctl-checkout .finish-teaser,
+.finish-order-confirmation-alert {
+    border-radius: 14px;
+}
+
+// --- AGB/Widerruf onay kutuları ---
+.is-ctl-checkout {
+    .checkout-confirm-tos, .confirm-tos {
+        background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.08);
+        border-radius: 14px; padding: 1.1rem 1.25rem; margin-bottom: 1.25rem;
+    }
+    .custom-control-input:checked { background-color: $sw-color-brand-primary; border-color: $sw-color-brand-primary; }
+}
+
+// --- MOBİL checkout ---
+@media (max-width: 991.98px) {
+    .header-minimal {
+        margin-bottom: 1.25rem; padding: .65rem 0;
+        .header-minimal-contact { display: none; } // mobilde iletişim metni gizle
+        .header-minimal-logo { text-align: left; }
+    }
+    .checkout-card .card-body { padding: 1.1rem 1.15rem; }
+    // cart ürün satırı + başlık mobilde kompakt padding
+    .checkout-product-table .cart-table-header { padding: .9rem 1.1rem .7rem; }
+    .line-item, .cart-item { padding: 1rem 1.1rem !important; }
+    // mobilde sticky kapalı (özet alta normal aksın)
+    .checkout-aside .checkout-aside-container { position: static !important; }
+    .checkout-aside-summary,
+    .checkout-aside-summary-container { margin-top: 1.25rem; padding: 1.15rem 1.2rem; }
+    .is-ctl-checkout h1 { font-size: 1.5rem; }
+}
+
+// =====================================================================
+// ACCOUNT MENÜ (header dropdown + mobil off-canvas) — "Ihr Konto" başlığı
+// Sorun: .account-menu-header ('Ihr Konto') dropdown-header olarak nav'ın
+// yanına saçma şekilde düşüyordu. Düzgün tam genişlik üst başlık yap.
+// =====================================================================
+// ⚠️ KÖK SEBEP: mobil header kuralı (.account-menu { display:flex }) off-canvas'taki
+// .account-menu'yü de flex ROW yapıyordu → "Ihr Konto" başlığı yana itiliyordu.
+// Off-canvas içinde block'a zorla (header'daki account butonu flex kalsın).
+.offcanvas-body .account-menu,
+.offcanvas .account-menu {
+    display: block !important; align-items: initial !important;
+
+    .account-menu-header {
+        display: block; width: 100%; float: none;
+        font-family: $elfbar-font-headline; font-weight: 700;
+        background: linear-gradient(135deg, $sw-color-brand-primary, darken($sw-color-brand-primary, 10%));
+        color: #fff; border: none; border-radius: 0;
+        padding: 1rem 1.1rem; margin: 0; font-size: 1.05rem; white-space: normal;
+    }
+    .account-menu-links { display: block; width: 100%; }
+    .account-aside-list-group { padding: .5rem; }
+    // off-canvas'ta sidebar kabuğunu düz yap (kart değil)
+    .account-menu-inner, .card {
+        border: none !important; box-shadow: none !important; border-radius: 0 !important;
+        position: static !important; margin: 0 !important;
+    }
+    // selam başlığı (sidebar header) off-canvas'ta gizli (zaten Ihr Konto başlığı var)
+    .elfbar-acc-aside__head { display: none !important; }
+}
+
+// =====================================================================
+// B2B LOGIN-GATING — Preise & Warenkorb nur für eingeloggte Kunden
+// (Mike-Regel: context.customer). Giriş yapmadan fiyat/sepet GÖRÜNMEZ.
+// =====================================================================
+
+// Liste satırı (kategori sayfası): "Preise nach Login" + Anmelden butonu
+.elfbar-listrow__login-price {
+    display: inline-flex; align-items: center; gap: .35rem;
+    font-size: .8rem; font-weight: 600; color: rgba($elfbar-color-ink, 0.55);
+    .icon { width: 14px; height: 14px; margin-bottom: 5px; }
+    .icon svg { color: rgba($elfbar-color-ink, 0.45); }
+}
+.elfbar-listrow__cart.is-login {
+    background: $sw-color-brand-primary; color: #fff !important;
+    border: none; display: inline-flex; align-items: center; gap: .4rem;
+    font-weight: 600;
+    .icon { width: 16px; height: 16px; margin-bottom: 10px; }
+    .icon svg { color: #fff; }
+    &:hover { background: darken($sw-color-brand-primary, 8%); }
+}
+
+// Anasayfa ürün kartı (Bestseller grid): "Preise nach Login"
+.elfbar-card-loginprice {
+    margin-top: auto;
+    .elfbar-card-loginprice__txt {
+        display: inline-flex; align-items: center; gap: .35rem;
+        font-size: .82rem; font-weight: 600; color: rgba($elfbar-color-ink, 0.55);
+        .icon { width: 14px; height: 14px; margin-bottom: 5px; }
+        .icon svg { color: rgba($elfbar-color-ink, 0.45); }
+    }
+}
+// kartlardaki "+" buton → girişsizken kilit ikonu (login)
+.elfbar-add-btn.is-login {
+    background: rgba($sw-color-brand-primary, 0.12) !important;
+    .elfbar-add-plus .icon { width: 16px; height: 16px; margin-bottom: 15px; }
+    .elfbar-add-plus .icon svg { color: $sw-color-brand-primary; }
+    &:hover { background: $sw-color-brand-primary !important;
+        .elfbar-add-plus .icon svg { color: #fff; } }
+}
+
+// Anasayfa Deals & Neuheiten: girişsiz fiyat → "Login"
+.elfbar-deal__price.is-login, .elfbar-pcard__price.is-login {
+    display: inline-flex; align-items: center; gap: .3rem;
+    font-size: .9rem; font-weight: 700; color: rgba($elfbar-color-ink, 0.5);
+    .icon { width: 14px; height: 14px; margin-bottom: 6px; }
+}
+.elfbar-deal__price.is-login .icon svg { color: rgba($elfbar-color-ink, 0.45); }
+.elfbar-pcard__add.is-login {
+    background: rgba($sw-color-brand-primary, 0.12); color: $sw-color-brand-primary;
+    display: inline-flex; align-items: center; justify-content: center;
+    .icon { width: 15px; height: 15px; margin-bottom: 13px; }
+    .icon svg { color: $sw-color-brand-primary; }
+}
+
+// Ürün detay sayfası: büyük login-gate kartı (fiyat+sepet yerine)
+.elfbar-buybox-login {
+    display: flex; flex-direction: column; align-items: flex-start; gap: .5rem;
+    background: rgba($sw-color-brand-primary, 0.06);
+    border: 1px solid rgba($sw-color-brand-primary, 0.18);
+    border-radius: $elfbar-radius; padding: 1.4rem 1.5rem; margin-bottom: 1rem;
+    &__ico {
+        display: inline-flex; width: 44px; height: 44px; border-radius: 12px;
+        align-items: center; justify-content: center;
+        background: rgba($sw-color-brand-primary, 0.12);
+        .icon { width: 22px; height: 22px; }
+        .icon svg { color: $sw-color-brand-primary; }
+    }
+    &__title {
+        font-family: $elfbar-font-headline; font-weight: 700;
+        font-size: 1.25rem; color: $elfbar-color-ink;
+    }
+    &__text { font-size: .9rem; color: rgba($elfbar-color-ink, 0.6); line-height: 1.5; }
+    &__actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .4rem; }
+    &__btn {
+        display: inline-flex; align-items: center; gap: .4rem;
+        padding: .65rem 1.3rem; border-radius: 10px; font-weight: 700;
+        .icon { width: 16px; height: 16px; margin-bottom: 11px; }
+        &.is-primary {
+            background: $sw-color-brand-primary; color: #fff !important; border: none;
+            .icon svg { color: #fff; }
+            &:hover { background: darken($sw-color-brand-primary, 8%); }
+        }
+        &.is-ghost {
+            background: #fff; color: $sw-color-brand-primary !important;
+            border: 1px solid rgba($sw-color-brand-primary, 0.4);
+            &:hover { background: rgba($sw-color-brand-primary, 0.08); }
+        }
+    }
+}
+
+// =====================================================================
+// ANASAYFA CONFIG GÖRSELLERİ — panelden yüklenen <img> kutuya otursun
+// (theme config 'media' alanları; görsel yoksa eski SVG placeholder kalır)
+// =====================================================================
+.elfbar-hero__media-big img,
+.elfbar-hero__media-small img,
+.elfbar-promo-img img,
+.elfbar-sidebar__promo img,
+.elfbar-cattile__img img,
+.elfbar-deal__img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+// Marka logosu yüklendiğinde: dairede ve şerit item'da düzgün otursun
+.elfbar-brandnav__circle img {
+    display: block; width: 100%; height: 100%; object-fit: contain;
+}
+.elfbar-brandslider__item img {
+    display: block; max-width: 100%; max-height: 60px; width: auto; object-fit: contain;
+}
+// Mega menü promo görseli (config'ten yüklenince kutuya otursun)
+.elfbar-mega__promo-img img {
+    display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;
+}
+
+// =====================================================================
+// Kullanıcı düzeltmeleri (header mobil, belge buton ikonu, b2b başlık, login buton)
+// =====================================================================
+@media (max-width: 991.98px) {
+    // Mobil logo: YÜKSEKLİK ile sınırla (görsel kare-ish olduğundan max-width
+    // 225px verince 108px yükseklik oluyordu, header'ı şişiriyordu). max-height
+    // 40px → header'a sığar, taşmaz. block + contain ile temiz ölçek.
+    .header-main .header-logo-main-img,
+    .header-logo-main-link .header-logo-main-img {
+        display: block;
+        max-height: 40px !important;
+        max-width: 160px !important;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain;
+    }
+    .header-logo-main-link { display: inline-flex; align-items: center; }
+    .header-main .elfbar-header-pill .elfbar-header-row { width: 100%; margin-left: 0; }
+}
+
+// Belge indir butonu ikonu (Rechnungen & Dokumente)
+.account-content-main .elfbar-docs__btn .icon {
+    width: 16px; height: 16px; color: #fff; margin-bottom: 10px;
+}
+
+// B2B CTA banner başlığı (beyaz + Space Grotesk)
+.elfbar-b2b__title {
+    font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+    font-weight: 700; font-size: 1.7rem; line-height: 1.2; margin: 0 0 0.8rem; color: #fff;
+}
+
+// Login/register dropdown'undaki "Anmelden" butonu yazısı beyaz
+a.btn.btn-primary.account-menu-login-button { color: #fff; }
+
+// ---------------------------------------------------------------------
+// DESKTOP header dikey ortalama (kullanıcı: ".header-row padding-bottom
+// kaldırılmalı, ortalı değil"). Native Shopware .header-row { padding: $spacer-sm 0 }
+// → pill içinde logo (44px) diğer elemanlardan yüksek olunca alt boşluk
+// görsel kayıklık yapıyordu. ÇÖZÜM (margin-top:-10px hack yerine temiz):
+// padding'i sıfırla + row gerçekten align-items:center + logo column'daki
+// fazladan my-2 (Bootstrap top+bottom margin) nötrle → her şey dikeyde ortalı.
+@media (min-width: 992px) {
+    .header-main .elfbar-header-pill .elfbar-header-row {
+        padding-top: 0;
+        padding-bottom: 0;
+        align-items: center;
+    }
+    // Logo column'ın my-2'si (üst+alt .5rem) artık gerekmez — ortalama row'dan gelir
+    .header-main .elfbar-header-pill .header-logo-col.my-2 {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    // GERÇEK SORUN: logo <img> display:inline + doğal yükseklik 59px → 44px'lik
+    // link kabını AŞIYOR (alta sarkıyor), logo optik merkezi pill merkezinden ~8px
+    // aşağı kalıyordu. margin-top:-10px hack'i yerine img'i kabıyla eşitle:
+    // block + max-height:44px → taşma biter, dikey ortalama mükemmel.
+    .header-main .elfbar-header-pill .header-logo-main-img {
+        display: block;
+        max-height: 44px;
+        width: auto;
+        object-fit: contain;
+    }
+}
+
+// Schnellbestellung (SKU hızlı sipariş) buton ikonları dikey hizası
+// (kullanıcı: submit ikon mb 10px, "Weitere Zeile" ekle ikon mb 11px)
+.account-content-main .elfbar-quick__submit .icon {
+    width: 16px; height: 16px; color: #fff; margin-bottom: 10px;
+}
+.account-content-main .elfbar-quick__addrow .icon {
+    width: 15px; height: 15px; color: #538ad0; margin-bottom: 11px;
+}
+
+// =====================================================================
+// ★★★  PREMIUM MODERNIZASYON KATMANI (en sona yüklenir, override eder)
+//      Glassy gradient look — Elfbar #ff5ea7 → #c85aff → #5a74ff
+// =====================================================================
+
+// Yeniden kullanılabilir gölge/efekt değişkenleri
+$elf-shadow-sm: 0 2px 8px rgba(31, 22, 51, 0.06);
+$elf-shadow-md: 0 12px 30px -10px rgba(120, 60, 200, 0.22);
+$elf-shadow-lg: 0 24px 60px -18px rgba(120, 60, 200, 0.32);
+$elf-ring: 0 0 0 1px rgba(200, 90, 255, 0.14);
+
+// --- Sayfa zemini: çok hafif gradient sis (düz beyazdan daha sıcak) ---
+body {
+    background:
+        radial-gradient(80rem 50rem at 110% -10%, rgba(255, 94, 167, 0.06) 0%, transparent 55%),
+        radial-gradient(70rem 50rem at -10% 5%, rgba(90, 116, 255, 0.06) 0%, transparent 55%),
+        $elfbar-color-bg;
+    background-attachment: fixed;
+}
+
+// --- HEADER: düz mor yerine marka gradient bant ---
+.header-main {
+    background: linear-gradient(120deg, #ff5ea7 0%, #c85aff 52%, #5a74ff 100%) !important;
+    position: relative;
+    &::after { // alt kenara yumuşak ışık
+        content: ""; position: absolute; left: 0; right: 0; bottom: -24px; height: 24px;
+        background: linear-gradient(180deg, rgba(120,60,200,0.12), transparent);
+        pointer-events: none;
+    }
+    .elfbar-header-pill {
+        border-radius: 18px;
+        box-shadow: 0 10px 34px -8px rgba(31, 22, 51, 0.30);
+        backdrop-filter: saturate(1.1);
+    }
+}
+
+// --- USP / info şeridi ikonları: gradient daire ---
+.elfbar-usp .elfbar-usp-icon {
+    background: $elfbar-gradient !important;
+    color: #fff !important;
+    box-shadow: $elf-shadow-md;
+}
+
+// --- Bölüm başlıkları: gradient alt-çizgi + daha iddialı tipografi ---
+.elfbar-section-head__title {
+    position: relative;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    padding-bottom: .55rem;
+    &::after {
+        content: ""; position: absolute; left: 0; bottom: 0;
+        width: 48px; height: 4px; border-radius: 999px;
+        background: $elfbar-gradient;
+    }
+}
+.elfbar-section-head__link {
+    font-weight: 700;
+    background: $elfbar-gradient;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    &:hover { text-decoration: none; opacity: .85; }
+}
+
+// --- HERO: cam panel görselleri + daha yumuşak metin gölgesi + CTA ---
+.elfbar-hero {
+    &__eyebrow {
+        background: rgba(#fff, 0.18);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(#fff, 0.25);
+        box-shadow: $elf-shadow-sm;
+    }
+    &__title { text-shadow: 0 2px 24px rgba(31, 22, 51, 0.18); }
+    &__cta {
+        background: #fff;
+        background-image: linear-gradient(#fff, #fff);
+        font-weight: 700;
+        box-shadow: 0 10px 30px -6px rgba(31, 22, 51, 0.35);
+        &:hover { transform: translateY(-2px) scale(1.02); }
+    }
+    &__media-big, &__media-small {
+        background: rgba(#fff, 0.14);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(#fff, 0.28);
+        box-shadow: 0 16px 40px -16px rgba(31, 22, 51, 0.4);
+    }
+}
+
+// --- Glassmorphism kart temel hissi: marka nav, kategori tile, top-marken, kampanya ---
+.elfbar-brandnav__item,
+.elfbar-cattile,
+.elfbar-brandslider__item,
+.elfbar-campaign {
+    background: rgba(#fff, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(#fff, 0.6);
+    box-shadow: $elf-shadow-sm;
+    border-radius: 16px;
+    transition: transform .22s cubic-bezier(.2,.7,.3,1), box-shadow .22s ease, border-color .22s ease;
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: $elf-shadow-lg;
+        border-color: rgba(200, 90, 255, 0.4);
+    }
+}
+
+// Marka nav dairesi + kategori tile ikonu: gradient dolgu
+.elfbar-brandnav__circle,
+.elfbar-cattile__img {
+    background: $elfbar-gradient !important;
+    color: #fff !important;
+    box-shadow: $elf-shadow-md;
+}
+
+// --- DEAL kartları: koyu cam + gradient vurgular ---
+.elfbar-deal {
+    background:
+        radial-gradient(120% 80% at 100% 0%, rgba(200, 90, 255, 0.35) 0%, transparent 55%),
+        radial-gradient(120% 80% at 0% 100%, rgba(90, 116, 255, 0.30) 0%, transparent 55%),
+        #1f1633;
+    border-radius: 20px;
+    box-shadow: $elf-shadow-md;
+    transition: transform .22s ease, box-shadow .22s ease;
+    &:hover { transform: translateY(-4px); box-shadow: $elf-shadow-lg; }
+
+    &__card { border-radius: 14px; box-shadow: 0 8px 20px -10px rgba(0,0,0,0.5); }
+    &__price {
+        background: $elfbar-gradient;
+        -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    &__btn {
+        background: $elfbar-gradient !important;
+        box-shadow: 0 6px 18px -4px rgba(200, 90, 255, 0.5);
+        transition: transform .15s ease, box-shadow .15s ease;
+        &:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -4px rgba(200, 90, 255, 0.6); }
+    }
+    &__tag { background: rgba(200, 90, 255, 0.14) !important; color: #c85aff !important; }
+}
+
+// --- Ürün kartı (.elfbar-pcard): cam + gradient hover halkası ---
+.elfbar-pcard {
+    background: rgba(#fff, 0.78);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(#fff, 0.7);
+    border-radius: 18px;
+    box-shadow: $elf-shadow-sm;
+    transition: transform .22s cubic-bezier(.2,.7,.3,1), box-shadow .22s ease, border-color .22s ease;
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: $elf-shadow-lg;
+        border-color: rgba(200, 90, 255, 0.4);
+    }
+    &__badge {
+        background: $elfbar-gradient !important;
+        color: #fff !important;
+        box-shadow: 0 4px 12px -2px rgba(200, 90, 255, 0.5);
+        border-radius: 999px;
+    }
+    &__age {
+        background: rgba(31, 22, 51, 0.7) !important; color: #fff !important;
+        backdrop-filter: blur(4px); border-radius: 999px;
+    }
+}
+
+// --- Sidebar (sol kategori paneli): cam panel ---
+.elfbar-sidebar,
+.elfbar-cat__aside {
+    background: rgba(#fff, 0.72);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(#fff, 0.6);
+    border-radius: 18px;
+    box-shadow: $elf-shadow-sm;
+}
+
+// Sidebar CTA kutusu (B2B Vorteil): gradient zaten var → derinlik + parlama ekle
+.elfbar-sidebar__cta,
+.elfbar-sidebar .elfbar-cta {
+    box-shadow: $elf-shadow-md;
+    position: relative; overflow: hidden;
+    &::before {
+        content: ""; position: absolute; inset: 0;
+        background: radial-gradient(80% 60% at 80% 0%, rgba(#fff, 0.25), transparent 60%);
+        pointer-events: none;
+    }
+}
+
+// --- B2B büyük banner: gradient + parlama + içerik derinliği ---
+.elfbar-b2b {
+    position: relative; overflow: hidden;
+    box-shadow: $elf-shadow-lg;
+    &::before {
+        content: ""; position: absolute; inset: 0;
+        background:
+            radial-gradient(60% 80% at 85% 10%, rgba(#fff, 0.22), transparent 55%),
+            radial-gradient(50% 70% at 5% 100%, rgba(#fff, 0.12), transparent 55%);
+        pointer-events: none;
+    }
+    &__stat, .elfbar-b2b__stat {
+        background: rgba(#fff, 0.14) !important;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(#fff, 0.22);
+        border-radius: 14px;
+    }
+}
+
+// --- Butonlar (genel): yumuşak gradient + micro-interaction zaten .btn-primary'de.
+//     Outline/secondary linkler için gradient metin hover ---
+a.elfbar-link, .elfbar-more-link {
+    background: $elfbar-gradient;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+// --- Footer: üst kenara ince gradient hairline + newsletter cam ---
+.footer-main, footer {
+    position: relative;
+    &::before {
+        content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+        background: $elfbar-gradient;
+    }
+}
+
+// --- Yaş kapısı (18+) modal: gradient buton zaten .btn-primary'den gelir;
+//     modal kartına derinlik + logo dairesine gradient ---
+.elfbar-age-gate, .age-gate, [class*="age"] .modal-content {
+    border-radius: 22px;
+    box-shadow: $elf-shadow-lg;
+}
+
+// --- Genel: tüm odak halkaları marka moruna ---
+:focus-visible {
+    outline: 2px solid rgba(200, 90, 255, 0.6);
+    outline-offset: 2px;
+}
+
+// --- Daha ferah bölüm boşlukları (premium nefes alma) ---
+.elfbar-section-head { margin-top: 3rem; }
+.elfbar-body__main > .elfbar-section-head:first-of-type { margin-top: .5rem; }
+
+// Hareketi azalt tercihi olanlar için animasyonları kapat
+@media (prefers-reduced-motion: reduce) {
+    .elfbar-brandnav__item, .elfbar-cattile, .elfbar-pcard, .elfbar-deal,
+    .elfbar-brandslider__item, .elfbar-campaign, .elfbar-hero__cta {
+        transition: none !important;
+    }
+    .elfbar-brandslider__track { animation: none !important; }
+}

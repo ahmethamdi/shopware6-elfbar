@@ -1,0 +1,18 @@
+{
+  "name": "elfbar/theme",
+  "description": "Elfbar B2B Theme",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "ElfbarTheme\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "ElfbarTheme\\ElfbarTheme",
+    "label": {
+      "de-DE": "Elfbar B2B Theme",
+      "en-GB": "Elfbar B2B Theme"
+    }
+  }
+}

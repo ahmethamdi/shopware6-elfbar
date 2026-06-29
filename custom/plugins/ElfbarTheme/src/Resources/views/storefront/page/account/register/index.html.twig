@@ -1,0 +1,70 @@
+{% sw_extends '@Storefront/storefront/page/account/register/index.html.twig' %}
+
+{# =====================================================================
+   ElfbarTheme — Login/Registrierung sayfası: modern 2 kart, ortalanmış,
+   mavi tema + B2B (Händler) vurgusu. Diğer sayfalarla uyumlu.
+   ===================================================================== #}
+
+{% block page_account_register %}
+    <div class="account-register elfbar-auth">
+
+        {% block page_account_register_header %}
+            <div class="elfbar-auth__head">
+                <span class="elfbar-auth__eyebrow">★ Großhandel für den Fachhandel</span>
+                <h1 class="elfbar-auth__title">{{ 'account.loginRegistrationHeader'|trans|sw_sanitize }}</h1>
+                <p class="elfbar-auth__sub">Melde dich an oder registriere dich als Händler — B2B-Preise erst nach Login.</p>
+            </div>
+        {% endblock %}
+
+        {% block page_account_register_inner %}
+            <div class="elfbar-auth__grid">
+
+                {# --- SOL: Giriş kartı + B2B avantaj rozetleri --- #}
+                {% block page_account_register_login_container %}
+                    <div class="elfbar-auth__col elfbar-auth__col--login">
+                        {% sw_include '@Storefront/storefront/component/account/login.html.twig' with {
+                            cardTitle: 'account.loginHeader'|trans|sw_sanitize
+                        } %}
+
+                        {% block page_account_register_advantages %}
+                            <div class="login-advantages elfbar-auth__adv">
+                                {% block page_account_register_advantages_title %}
+                                    <div class="elfbar-auth__adv-title">
+                                        {{ 'account.registerAdvantagesHeader'|trans|sw_sanitize }}
+                                    </div>
+                                {% endblock %}
+
+                                {% block page_account_register_advantages_list %}
+                                    <ul class="elfbar-auth__adv-list">
+                                        {% block page_account_register_advantages_entry1 %}
+                                            <li><span class="elfbar-auth__adv-ico">{% sw_icon 'rocket' %}</span>{{ 'account.registerAdvantage1'|trans|sw_sanitize }}</li>
+                                        {% endblock %}
+                                        {% block page_account_register_advantages_entry2 %}
+                                            <li><span class="elfbar-auth__adv-ico">{% sw_icon 'lock-closed' %}</span>{{ 'account.registerAdvantage2'|trans|sw_sanitize }}</li>
+                                        {% endblock %}
+                                        {% block page_account_register_advantages_entry3 %}
+                                            <li><span class="elfbar-auth__adv-ico">{% sw_icon 'truck' %}</span>{{ 'account.registerAdvantage3'|trans|sw_sanitize }}</li>
+                                        {% endblock %}
+                                        {% block page_account_register_advantages_entry4 %}
+                                            <li><span class="elfbar-auth__adv-ico">{% sw_icon 'marketing' %}</span>{{ 'account.registerAdvantage4'|trans|sw_sanitize }}</li>
+                                        {% endblock %}
+                                    </ul>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+
+                {# --- SAĞ: Kayıt kartı (Händler/Neukunde) --- #}
+                {% block page_account_register_container %}
+                    <div class="elfbar-auth__col elfbar-auth__col--register">
+                        {% sw_include '@Storefront/storefront/component/account/register.html.twig' with {
+                            cardTitle: 'account.registerPersonalHeader'|trans|sw_sanitize
+                        } %}
+                    </div>
+                {% endblock %}
+
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
