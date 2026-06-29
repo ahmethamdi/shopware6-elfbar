@@ -671,15 +671,20 @@ $elfbar-radius: 12px;
     &__media-big { grid-row: 1 / 3; }
 
     // --- Responsive görsel: desktop vs mobil (panelden ayrı yüklenebilir) ---
-    // Varsayılan (desktop ≥992px): desktop görselini göster, mobil görselini gizle.
-    &__img--mobile { display: none; }
+    // Varsayılan (desktop ≥992px): desktop görselini göster, mobil görselini DAİMA gizle.
+    // (Bu kurallar media query DIŞINDA → desktop'ta her zaman geçerli.)
+    &__img--mobile { display: none !important; }
     &__img--desktop { display: block; }
+
+    // Mobilde (≤991.98px): "has-mobile" kutularda mobil göster, desktop gizle.
+    // has-mobile YOKSA desktop görseli mobilde de görünür (fallback).
+    // ÖNEMLİ: bu blok media query İÇİNDE kalmalı; aksi halde desktop'ta da
+    // mobil görsel gösterilir (eski bug). &__media-big & ref ile sağlam tutuldu.
     @media (max-width: 991.98px) {
-        // Mobilde: "has-mobile" (panelde mobil görsel dolu) kutularda mobil göster,
-        // desktop gizle. has-mobile YOKSA desktop görseli mobilde de görünür (fallback).
-        .has-mobile {
+        .elfbar-hero__media-big.has-mobile,
+        .elfbar-hero__media-small.has-mobile {
             .elfbar-hero__img--desktop { display: none; }
-            .elfbar-hero__img--mobile { display: block; }
+            .elfbar-hero__img--mobile { display: block !important; }
         }
     }
 }
