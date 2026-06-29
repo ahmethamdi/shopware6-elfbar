@@ -48,7 +48,9 @@
       "Bash(php -d memory_limit=512M bin/console lint:twig custom/plugins/ElfbarTheme/src/Resources/views)",
       "Bash(cd /Applications/XAMPP/xamppfiles/htdocs/Shopware6-Elfbar/custom/plugins/ElfbarTheme/src/Resources/app/storefront/src/scss *)",
       "Read(//Applications/views/storefront/page/content/**)",
-      "Bash(xargs -n1 basename)"
+      "Bash(xargs -n1 basename)",
+      "Bash(sed -i '' \"s/{% sw_icon 'check' %}/{% sw_icon 'shield' %}/g\" index.html.twig)",
+      "Bash(sed -i '' \"s/{% sw_icon 'box' %}/{% sw_icon 'products' %}/g\" index.html.twig)"
     ]
   }
 }
