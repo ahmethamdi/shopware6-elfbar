@@ -4523,7 +4523,7 @@ a.elfbar-link, .elfbar-more-link {
     display: grid;
     grid-template-columns: 270px 1fr;
     gap: 1.25rem;
-    margin: 0 0 3.5rem;
+    margin: 40px 0 3.5rem;
     align-items: stretch;
     @media (max-width: 860px) { grid-template-columns: 1fr; }
 
@@ -4668,13 +4668,13 @@ a.elfbar-link, .elfbar-more-link {
 
 /* ---- VITRINE compact (sidebar yanı, sağ ana alan üstü — tam ekran değil) ---- */
 .elfbar-vitrine--compact {
-    grid-template-columns: 200px 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
     padding: 1.75rem;
     margin: 0 0 1.5rem;
     border-radius: $elfbar-radius;
-    .elfbar-vitrine__cabinet { max-width: 170px; }
-    .elfbar-vitrine__title { font-size: clamp(1.3rem, 2.5vw, 1.7rem); margin-bottom: 0.6rem; }
+    .elfbar-vitrine__cabinet { max-width: 280px; }
+    .elfbar-vitrine__title { font-size: clamp(1.4rem, 2.6vw, 1.8rem); margin-bottom: 0.6rem; }
     .elfbar-vitrine__text { font-size: 0.92rem; margin-bottom: 1rem; }
     .elfbar-vitrine__features { margin-bottom: 1.1rem; }
     .elfbar-btn { min-height: 42px; font-size: 0.9rem; padding: 0 1.2rem; }

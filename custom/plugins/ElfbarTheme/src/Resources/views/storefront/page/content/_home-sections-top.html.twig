@@ -31,31 +31,4 @@
     </div>
 </section>
 
-{# ---- UNSERE MARKENWELT — Brand World Banner Cards ---- #}
-<section class="elfbar-brandworld" aria-labelledby="elfbar-brandworld-title">
-    <header class="elfbar-shead">
-        <p class="elfbar-shead__eyebrow">Markenwelt</p>
-        <h2 class="elfbar-shead__title" id="elfbar-brandworld-title">Unsere Markenwelt</h2>
-        <p class="elfbar-shead__sub">Die stärksten Vape-Marken – exklusiv im B2B-Sortiment.</p>
-    </header>
-    <div class="elfbar-brandworld__grid">
-        {% set elfbar_brands = [
-            { letter: 'E', name: 'ELFBAR', desc: 'Der Bestseller. Einweg-Vapes in über 30 Geschmacksrichtungen.', tone: 'pink' },
-            { letter: 'L', name: 'Lost Mary', desc: 'Trendiges Design trifft auf intensiven Geschmack.', tone: 'violet' },
-            { letter: 'Q', name: 'ELFLIQ', desc: 'Premium-Liquids &amp; Nic-Salts für jedes Pod-System.', tone: 'blue' },
-            { letter: 'A', name: 'ELFA', desc: 'Das nachfüllbare Pod-System der nächsten Generation.', tone: 'mix' }
-        ] %}
-        {% for brand in elfbar_brands %}
-            <article class="elfbar-brand-card elfbar-brand-card--{{ brand.tone }}">
-                <div class="elfbar-brand-card__media" aria-hidden="true">
-                    <span class="elfbar-brand-card__letter">{{ brand.letter }}</span>
-                </div>
-                <div class="elfbar-brand-card__body">
-                    <h3 class="elfbar-brand-card__name">{{ brand.name }}</h3>
-                    <p class="elfbar-brand-card__desc">{{ brand.desc|raw }}</p>
-                    <a href="#" class="elfbar-brand-card__link">Entdecken {% sw_icon 'arrow-right' %}</a>
-                </div>
-            </article>
-        {% endfor %}
-    </div>
-</section>
+{# UNSERE MARKENWELT section KALDIRILDI (kullanıcı isteği). #}
