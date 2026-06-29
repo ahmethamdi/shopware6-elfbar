@@ -50,7 +50,20 @@
       "Read(//Applications/views/storefront/page/content/**)",
       "Bash(xargs -n1 basename)",
       "Bash(sed -i '' \"s/{% sw_icon 'check' %}/{% sw_icon 'shield' %}/g\" index.html.twig)",
-      "Bash(sed -i '' \"s/{% sw_icon 'box' %}/{% sw_icon 'products' %}/g\" index.html.twig)"
+      "Bash(sed -i '' \"s/{% sw_icon 'box' %}/{% sw_icon 'products' %}/g\" index.html.twig)",
+      "Bash(lsof -ti:8001)",
+      "Bash(xargs kill -9)",
+      "Bash(curl -s http://127.0.0.1:8001/)",
+      "Bash(python3 -c ' *)",
+      "Bash(git restore *)",
+      "Bash(python3 /private/tmp/claude-501/-Applications-XAMPP-xamppfiles-htdocs-Shopware6-Elfbar/43ea73ce-3cbd-411a-9afc-0ffcc137fff1/scratchpad/add_sections.py)",
+      "Bash(python3 -c \"import json; json.load\\(open\\('custom/plugins/ElfbarTheme/src/Resources/theme.json'\\)\\); print\\('VALID JSON'\\)\")",
+      "Bash(php -d memory_limit=512M bin/console lint:twig custom/plugins/ElfbarTheme/src/Resources/views/storefront/page/content/index.html.twig custom/plugins/ElfbarTheme/src/Resources/views/storefront/page/content/_home-sections-bottom.html.twig)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8001/)",
+      "Bash(sort -t: -k2 -n)",
+      "Bash(python3 -c \"import json;json.load\\(open\\('custom/plugins/ElfbarTheme/src/Resources/theme.json'\\)\\);print\\('VALID'\\)\")",
+      "Bash(/opt/homebrew/opt/mysql@8.0/bin/mysql -h 127.0.0.1 -P 3307 -u root shopware_elfbar -N -e ' *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8001/)"
     ]
   }
 }
