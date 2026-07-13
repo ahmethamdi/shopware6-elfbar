@@ -190,10 +190,6 @@
                 {# --- SAĞ: section'lar. Sıra panelden (CSS order), her biri aç/kapa.
                        body__main flex-column → her section'a style="order:N" ile sıralanır. --- #}
                 <div class="elfbar-body__main elfbar-body__main--ordered">
-                    {# B2B marka sitesi: hero altı marka ikon şeridi KALDIRILDI
-                       (markalar zaten header + sidebar'da → tekrar gereksiz). #}
-                    {% block elfbar_home_brands %}{% endblock %}
-
                     {# ============ VERKAUFSVITRINE PRO — kompakt ============ #}
                     {% if theme_config('elfbar-sec-vitrine-enabled') is not same as(false) %}
                     <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-vitrine-order')|default(elfbarSecOrderDefaults.vitrine) }}">
@@ -275,10 +271,6 @@
                     {% endblock %}
                     </div>
                     {% endif %}
-
-                    {# B2B marka sitesi: "Kategorien" vitrini KALDIRILDI
-                       (kategoriler zaten sol sidebar + header mega menüde). #}
-                    {% block elfbar_home_categories %}{% endblock %}
 
                     {% if theme_config('elfbar-sec-deals-enabled') is not same as(false) %}
                     <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-deals-order')|default(elfbarSecOrderDefaults.deals) }}">
@@ -445,10 +437,6 @@
                     {% endblock %}
                     </div>
                     {% endif %}
-
-                    {# B2B marka sitesi: Top-Marken logo slider KALDIRILDI
-                       (tek marka B2B → logo şeridi tekrar/gereksiz). #}
-                    {% block elfbar_home_brand_slider %}{% endblock %}
 
                     {# ============ B2B avantaj / kayıt CTA banner ============ #}
                     {% if theme_config('elfbar-sec-b2b-enabled') is not same as(false) %}
