@@ -4360,7 +4360,7 @@
           "tr-TR": "Başlık altı açıklama."
         },
         "type": "text",
-        "value": "Jetzt anmelden und 50€ Gutschein sichern!",
+        "value": "",
         "editable": true,
         "block": "elfbarFooter",
         "order": 1740,
