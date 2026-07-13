@@ -3470,7 +3470,7 @@
           "tr-TR": "Kategori slider 2 – sıra"
         },
         "type": "int",
-        "value": 120,
+        "value": 35,
         "editable": true,
         "block": "elfbarSections",
         "order": 101350,
