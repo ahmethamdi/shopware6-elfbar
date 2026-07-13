@@ -4320,7 +4320,9 @@ a.elfbar-link, .elfbar-more-link {
     background: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(14px);
     box-shadow: $elf-shadow-sm; transition: transform 0.3s ease, box-shadow 0.3s ease;
     &:hover { transform: translateY(-5px); box-shadow: $elf-shadow-md; }
-    &__stars { display: flex; gap: 2px; margin-bottom: 0.8rem; .icon { width: 18px; height: 18px; color: #ffb43b; } }
+    &__stars { display: flex; gap: 2px; margin-bottom: 0.8rem;
+        .icon { width: 18px; height: 18px; color: #ffb43b; }
+        .elfbar-star { width: 18px; height: 18px; color: #ffb43b; flex: 0 0 auto; } }
     &__text { font-family: $elfbar-font-base; font-size: 0.92rem; line-height: 1.6; color: rgba($elfbar-color-ink, 0.78); margin: 0 0 1.2rem; flex: 1; }
     &__author { display: flex; align-items: center; gap: 0.7rem; }
     &__avatar {
@@ -4513,14 +4515,37 @@ a.elfbar-link, .elfbar-more-link {
 }
 
 /* ---- Reviews slider: kartlar sabit genişlik, yatay kayar ---- */
-.elfbar-reviews__slider .elfbar-cardslider__track { gap: 1rem; }
-.elfbar-reviews__slider .elfbar-review-card {
-    flex: 0 0 320px; max-width: 320px;
-    @media (max-width: 560px) { flex-basis: 82%; max-width: 82%; }
+.elfbar-reviews__slider {
+    // Mobil scroll iyileştirme: snap + momentum + kenar boşluğu
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 1rem;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    .elfbar-cardslider__track { gap: 1rem; }
+    .elfbar-review-card {
+        flex: 0 0 320px; max-width: 320px;
+        scroll-snap-align: start;
+        // kartlar eşit yükseklik (kısa/uzun metinlerde bozulmasın)
+        min-height: 100%;
+    }
 }
 
 /* slider içindeki review kartı: metin alta yaslı değil, üstte düzgün dursun */
 .elfbar-reviews__slider .elfbar-review-card__text { flex: 0 1 auto; margin-bottom: 0; }
+
+/* MOBİL (≤560px): tek kart neredeyse tam genişlik + kenar padding ile
+   önceki/sonraki kartın ucu görünür (scroll edilebilir olduğu belli olur) */
+@media (max-width: 560px) {
+    .elfbar-reviews__slider {
+        padding: 0 1rem;                  // kenar boşluğu → kartlar ekran kenarına yapışmaz
+        margin-left: -1rem; margin-right: -1rem;  // container padding'ini telafi et (tam genişlik kayar)
+        .elfbar-cardslider__track { gap: .75rem; }
+        .elfbar-review-card {
+            flex: 0 0 86%; max-width: 86%;
+            padding: 1.25rem 1.1rem;
+        }
+    }
+}
 
 /* ---- VITRINE compact (sidebar yanı, sağ ana alan üstü — tam ekran değil) ---- */
 .elfbar-vitrine--compact {

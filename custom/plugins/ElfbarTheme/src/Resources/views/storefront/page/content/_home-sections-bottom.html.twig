@@ -113,7 +113,8 @@
             {% for text in elfbar_reviews %}
                 <article class="elfbar-review-card">
                     <div class="elfbar-review-card__stars" aria-label="5 von 5 Sternen">
-                        {% for i in 1..5 %}{% sw_icon 'star' %}{% endfor %}
+                        {# Dolu (filled) yıldız — sw_icon 'star' outline olduğu için inline SVG #}
+                        {% for i in 1..5 %}<svg class="elfbar-star" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2.5l2.9 6.06 6.6.72-4.9 4.48 1.32 6.5L12 17.9 6.08 20.76 7.4 14.26 2.5 9.78l6.6-.72L12 2.5z"/></svg>{% endfor %}
                     </div>
                     <p class="elfbar-review-card__text">{{ text }}</p>
                 </article>
