@@ -2048,8 +2048,8 @@ $elfbar-radius: 12px;
 
     // çok kolonlu marka/alt-kategori grid'i
     // body: sol marka grid + sağ görsel promo kolonu
-    &__body { display: grid; grid-template-columns: 1fr 200px; gap: 1.5rem; align-items: start;
-        @media (max-width: 1200px) { grid-template-columns: 1fr 170px; } }
+    // Görsel promo kolonu KALDIRILDI → panel tek kolon (sadece alt kategoriler)
+    &__body { display: block; }
     &__grid {
         display: grid; grid-template-columns: repeat(4, 1fr);
         gap: .15rem 1.5rem;
@@ -2063,34 +2063,13 @@ $elfbar-radius: 12px;
         &:hover { color: $sw-color-brand-primary; padding-left: .4rem; text-decoration: none; }
     }
 
-    // sağ görsel promo kolonu
-    &__promos { display: flex; flex-direction: column; gap: 1rem; }
-    &__promo {
-        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4rem;
-        background: rgba($sw-color-brand-primary, 0.07);
-        border: 1px solid rgba($sw-color-brand-primary, 0.14);
-        border-radius: $elfbar-radius; padding: 1.1rem .85rem; text-decoration: none;
-        text-align: center; transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
-        &:hover { background: rgba($sw-color-brand-primary, 0.13); transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba($sw-color-brand-primary, 0.14); text-decoration: none; }
-    }
-    &__promo-img {
-        width: 100%; aspect-ratio: 4/3; border-radius: 8px; margin-bottom: .35rem;
-        background: rgba($sw-color-brand-primary, 0.1); color: rgba($sw-color-brand-primary, 0.5);
-        display: grid; place-items: center;
-    }
-    &__promo-cap { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: $sw-color-brand-primary; }
-    &__promo-sub { font-weight: 700; font-size: .9rem; color: $elfbar-color-ink; line-height: 1.2; }
-
     // Mobilde panel'i alta aç (sonra mobil turunda JS toggle)
     @media (max-width: 991.98px) {
         &__panel { position: static; width: auto; max-width: none; max-height: none; box-shadow: none;
             border: none; padding: .25rem 1.1rem 1rem; opacity: 1; visibility: visible; transform: none;
             pointer-events: auto; display: none; overflow: visible; }
         &__item.has-children.is-open .elfbar-mega__panel { display: block; }
-        &__body { grid-template-columns: 1fr; }
         &__grid { grid-template-columns: 1fr 1fr; }
-        &__promos { display: none; } // mobilde promo gizli
     }
 }
 
@@ -3895,10 +3874,6 @@ body.has-elfbar-bulkbar { padding-bottom: 80px; }
 }
 .elfbar-brandslider__item img {
     display: block; max-width: 100%; max-height: 60px; width: auto; object-fit: contain;
-}
-// Mega menü promo görseli (config'ten yüklenince kutuya otursun)
-.elfbar-mega__promo-img img {
-    display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;
 }
 
 // =====================================================================
