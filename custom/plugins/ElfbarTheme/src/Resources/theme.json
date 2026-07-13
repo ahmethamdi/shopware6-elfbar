@@ -107,13 +107,6 @@
                     "tr-TR": "11) Neuheiten slider"
                 }
             },
-            "elfbarShowcase": {
-                "label": {
-                    "de-DE": "12) Vitrine-Banner (Showcase)",
-                    "en-GB": "12) Showcase banner",
-                    "tr-TR": "12) Vitrine banner"
-                }
-            },
             "elfbarBestseller": {
                 "label": {
                     "de-DE": "13) Bestseller-Grid",
@@ -1707,196 +1700,6 @@
                 "scss": false,
                 "tab": "elfbar"
             },
-            "elfbar-showcase-img": {
-                "label": {
-                    "de-DE": "Vitrine Bild (Desktop)",
-                    "en-GB": "Showcase image (desktop)",
-                    "tr-TR": "Vitrin görsel (masaüstü)"
-                },
-                "helpText": {
-                    "de-DE": "Bild links im Vitrine-Banner (z. B. ELFBAR COMPACT PRO MAX). Leer = ganzer Block ausgeblendet.",
-                    "en-GB": "Image on the left of the showcase banner (e.g. ELFBAR COMPACT PRO MAX). Empty = whole block hidden.",
-                    "tr-TR": "Vitrin banner'ında sol görsel (örn. ELFBAR COMPACT PRO MAX). Boş = tüm blok gizli."
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "block": "elfbarShowcase",
-                "order": 1060,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-showcase-img-mobile": {
-                "label": {
-                    "de-DE": "Vitrine Bild (Mobil, optional)",
-                    "en-GB": "Showcase image (mobile, optional)",
-                    "tr-TR": "Vitrin görsel (mobil, opsiyonel)"
-                },
-                "helpText": {
-                    "de-DE": "Optional. Auf Smartphones statt des Desktop-Bildes. Leer = Desktop-Bild wird verwendet.",
-                    "en-GB": "Optional. Shown on phones instead of the desktop image. Empty = desktop image is used.",
-                    "tr-TR": "Opsiyonel. Telefonda masaüstü görsel yerine. Boş = masaüstü görseli kullanılır."
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "block": "elfbarShowcase",
-                "order": 1070,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-showcase-title-img": {
-                "label": {
-                    "de-DE": "Vitrine Titel-Bild (rechts)",
-                    "en-GB": "Showcase title image (right)",
-                    "tr-TR": "Vitrin başlık görseli (sağ)"
-                },
-                "helpText": {
-                    "de-DE": "Bild statt Überschrift im rechten Bereich (z. B. Logo/Schriftzug). Leer = Text-Titel wird verwendet.",
-                    "en-GB": "Image instead of the heading in the right area (e.g. logo/wordmark). Empty = text title is used.",
-                    "tr-TR": "Sağ alanda başlık metni yerine görsel (örn. logo/yazı). Boş = metin başlık kullanılır."
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "block": "elfbarShowcase",
-                "order": 1080,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-showcase-title": {
-                "label": {
-                    "de-DE": "Vitrine Titel (Text, falls kein Bild)",
-                    "en-GB": "Showcase title (text, if no image)",
-                    "tr-TR": "Vitrin başlık (metin, görsel yoksa)"
-                },
-                "helpText": {
-                    "de-DE": "Text-Überschrift. Wird nur angezeigt, wenn KEIN Titel-Bild gesetzt ist. Leer = ausgeblendet.",
-                    "en-GB": "Text heading. Shown only when NO title image is set. Empty = hidden.",
-                    "tr-TR": "Metin başlık. Sadece başlık görseli YOKSA görünür. Boş = gizli."
-                },
-                "type": "text",
-                "value": "Präsentieren wie nie zuvor!",
-                "editable": true,
-                "block": "elfbarShowcase",
-                "order": 1090,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-showcase-text": {
-                "label": {
-                    "de-DE": "Vitrine Text",
-                    "en-GB": "Showcase text",
-                    "tr-TR": "Vitrin metin"
-                },
-                "helpText": {
-                    "de-DE": "Beschreibungstext unter dem Titel. Leer = ausgeblendet.",
-                    "en-GB": "Description text below the title. Empty = hidden.",
-                    "tr-TR": "Başlık altı açıklama metni. Boş = gizli."
-                },
-                "type": "text",
-                "value": "Mit den Elfbar Premium Verkaufsvitrinen nicht nur sichtbar sein, sondern auch mehr Umsatz generieren!",
-                "editable": true,
-                "block": "elfbarShowcase",
-                "order": 1100,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-showcase-note": {
-                "label": {
-                    "de-DE": "Vitrine Kleingedrucktes",
-                    "en-GB": "Showcase fine print",
-                    "tr-TR": "Vitrin dipnot"
-                },
-                "helpText": {
-                    "de-DE": "Kleiner Hinweistext (z. B. *Kostenlos im Rahmen ...). Leer = ausgeblendet.",
-                    "en-GB": "Small note text. Empty = hidden.",
-                    "tr-TR": "Küçük dipnot. Boş = gizli."
-                },
-                "type": "text",
-                "value": "*Kostenlos im Rahmen einer individuellen Einkaufsvereinbarung. Details und Voraussetzungen werden nach Ihrer Anfrage mitgeteilt.",
-                "editable": true,
-                "block": "elfbarShowcase",
-                "order": 1110,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-showcase-btn-text": {
-                "label": {
-                    "de-DE": "Vitrine Button Text",
-                    "en-GB": "Showcase button text",
-                    "tr-TR": "Vitrin buton metni"
-                },
-                "helpText": {
-                    "de-DE": "Button-Beschriftung. Leer = Button ausgeblendet.",
-                    "en-GB": "Button label. Empty = button hidden.",
-                    "tr-TR": "Buton yazısı. Boş = buton gizli."
-                },
-                "type": "text",
-                "value": "Jetzt kostenlos anfragen",
-                "editable": true,
-                "block": "elfbarShowcase",
-                "order": 1120,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-showcase-btn-link": {
-                "label": {
-                    "de-DE": "Vitrine Button Link",
-                    "en-GB": "Showcase button link",
-                    "tr-TR": "Vitrin buton link"
-                },
-                "helpText": {
-                    "de-DE": "Ziel des Buttons (z. B. /Kontakt/, mailto:anfrage@..., volle URL). Leer = Button ausgeblendet.",
-                    "en-GB": "Button target (e.g. /Kontakt/, mailto:..., full URL). Empty = button hidden.",
-                    "tr-TR": "Buton hedefi (örn. /Kontakt/, mailto:..., tam URL). Boş = buton gizli."
-                },
-                "type": "text",
-                "value": "#",
-                "editable": true,
-                "block": "elfbarShowcase",
-                "order": 1130,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-showcase-btn2-text": {
-                "label": {
-                    "de-DE": "Vitrine 2. Button Text",
-                    "en-GB": "Showcase 2nd button text",
-                    "tr-TR": "Vitrin 2. buton metni"
-                },
-                "helpText": {
-                    "de-DE": "Zweiter Button (Umriss-Stil), z. B. 'Download'. Leer = ausgeblendet.",
-                    "en-GB": "Second button (outline), e.g. 'Download'. Empty = hidden.",
-                    "tr-TR": "İkinci buton (çerçeveli), örn. 'Download'. Boş = gizli."
-                },
-                "type": "text",
-                "value": "Dowload",
-                "editable": true,
-                "block": "elfbarShowcase",
-                "order": 1140,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-showcase-btn2-link": {
-                "label": {
-                    "de-DE": "Vitrine 2. Button Link",
-                    "en-GB": "Showcase 2nd button link",
-                    "tr-TR": "Vitrin 2. buton link"
-                },
-                "helpText": {
-                    "de-DE": "Ziel des 2. Buttons (z. B. PDF-URL, /Download/, volle URL). Leer = ausgeblendet.",
-                    "en-GB": "2nd button target (e.g. PDF URL, /Download/, full URL). Empty = hidden.",
-                    "tr-TR": "2. buton hedefi (örn. PDF URL, /Download/, tam URL). Boş = gizli."
-                },
-                "type": "text",
-                "value": "#",
-                "editable": true,
-                "block": "elfbarShowcase",
-                "order": 1150,
-                "scss": false,
-                "tab": "elfbar"
-            },
             "elfbar-bestseller-category": {
                 "label": {
                     "de-DE": "Bestseller Kategorie-ID (leer = Standard)",
@@ -2165,9 +1968,9 @@
             },
             "elfbar-catslider1-img": {
                 "label": {
-                    "de-DE": "Kategorie-Kachel · Bild (statt Farbe+Buchstabe)",
-                    "en-GB": "Category tile image",
-                    "tr-TR": "Kategori kartı görseli (renk+harf yerine)"
+                    "de-DE": "Linke Kachel · Hintergrundbild (Kategorie-Karte)",
+                    "en-GB": "Left tile · background image",
+                    "tr-TR": "Sol kutucuk · arka plan görseli"
                 },
                 "type": "media",
                 "value": "",
@@ -2263,9 +2066,9 @@
             },
             "elfbar-catslider2-img": {
                 "label": {
-                    "de-DE": "Kategorie-Kachel · Bild (statt Farbe+Buchstabe)",
-                    "en-GB": "Category tile image",
-                    "tr-TR": "Kategori kartı görseli (renk+harf yerine)"
+                    "de-DE": "Linke Kachel · Hintergrundbild (Kategorie-Karte)",
+                    "en-GB": "Left tile · background image",
+                    "tr-TR": "Sol kutucuk · arka plan görseli"
                 },
                 "type": "media",
                 "value": "",
@@ -4682,32 +4485,6 @@
                 "editable": true,
                 "block": "elfbarSections",
                 "order": 100750,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-showcase-enabled": {
-                "label": {
-                    "de-DE": "Vitrine-Banner – anzeigen",
-                    "en-GB": "showcase – show",
-                    "tr-TR": "Vitrine banner – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100800,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-showcase-order": {
-                "label": {
-                    "de-DE": "Vitrine-Banner – Reihenfolge",
-                    "en-GB": "showcase – order",
-                    "tr-TR": "Vitrine banner – sıra"
-                },
-                "type": "int",
-                "value": 70,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100850,
                 "tab": "elfbar"
             },
             "elfbar-sec-bestseller-enabled": {

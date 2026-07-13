@@ -417,52 +417,7 @@
                     </div>
                     {% endif %}
 
-                    {# ============ Vitrine-Banner (Neuheiten ↔ Bestseller arası):
-                       görsel solda + başlık/metin/buton sağda, hepsi panelden.
-                       Görsel boşsa tüm blok gizli ============ #}
-                    {% if theme_config('elfbar-sec-showcase-enabled') is not same as(false) %}
-                    <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-showcase-order')|default(elfbarSecOrderDefaults.showcase) }}">
-                    {% block elfbar_home_showcase %}
-                        {% set scImg      = theme_config('elfbar-showcase-img') %}
-                        {% set scImgMob   = theme_config('elfbar-showcase-img-mobile') %}
-                        {% set scTitleImg = theme_config('elfbar-showcase-title-img') %}
-                        {% set scTitle    = theme_config('elfbar-showcase-title') %}
-                        {% set scText     = theme_config('elfbar-showcase-text') %}
-                        {% set scNote     = theme_config('elfbar-showcase-note') %}
-                        {% set scBtnTxt   = theme_config('elfbar-showcase-btn-text') %}
-                        {% set scBtnLnk   = theme_config('elfbar-showcase-btn-link') %}
-                        {% set scBtn2Txt  = theme_config('elfbar-showcase-btn2-text') %}
-                        {% set scBtn2Lnk  = theme_config('elfbar-showcase-btn2-link') %}
-                        {% if scImg or scImgMob %}
-                            <div class="elfbar-showcase{% if scImgMob %} has-mobile{% endif %}">
-                                <div class="elfbar-showcase__media">
-                                    {% if scImg %}<img class="elfbar-showcase__img elfbar-showcase__img--desktop" src="{{ scImg }}" alt="{{ scTitle }}" loading="lazy">{% endif %}
-                                    {% if scImgMob %}<img class="elfbar-showcase__img elfbar-showcase__img--mobile" src="{{ scImgMob }}" alt="{{ scTitle }}" loading="lazy">{% endif %}
-                                </div>
-                                <div class="elfbar-showcase__body">
-                                    {% if scTitleImg %}
-                                        <img class="elfbar-showcase__title-img" src="{{ scTitleImg }}" alt="{{ scTitle }}" loading="lazy">
-                                    {% elseif scTitle %}
-                                        <h3 class="elfbar-showcase__title">{{ scTitle }}</h3>
-                                    {% endif %}
-                                    {% if scText %}<p class="elfbar-showcase__text">{{ scText }}</p>{% endif %}
-                                    {% if (scBtnTxt and scBtnLnk) or (scBtn2Txt and scBtn2Lnk) %}
-                                        <div class="elfbar-showcase__btns">
-                                            {% if scBtnTxt and scBtnLnk %}
-                                                <a href="{{ scBtnLnk }}" class="elfbar-showcase__btn">{{ scBtnTxt }}</a>
-                                            {% endif %}
-                                            {% if scBtn2Txt and scBtn2Lnk %}
-                                                <a href="{{ scBtn2Lnk }}" class="elfbar-showcase__btn elfbar-showcase__btn--outline">{{ scBtn2Txt }}</a>
-                                            {% endif %}
-                                        </div>
-                                    {% endif %}
-                                    {% if scNote %}<p class="elfbar-showcase__note">{{ scNote }}</p>{% endif %}
-                                </div>
-                            </div>
-                        {% endif %}
-                    {% endblock %}
-                    </div>
-                    {% endif %}
+                    {# Vitrine-Banner (Showcase) KALDIRILDI — kullanılmıyordu. #}
 
                     {# ============ Bestseller-Grid ============ #}
                     {% if theme_config('elfbar-sec-bestseller-enabled') is not same as(false) %}
