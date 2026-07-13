@@ -551,6 +551,75 @@
                             </div>
                         {% endif %}
                     {% endblock %}
+
+                    {# ============ SERBEST BÖLÜMLER (panelden eklenen kendi blokların).
+                       Ekip yeni bölüm eklemek istediğinde: panelde "98) Freie Sektionen"
+                       altında boş bir slotun Typ'ını seçer, içeriğini doldurur, sıra verir.
+                       Aynı elfbar-sec + CSS order mekanizması → standart section'larla
+                       iç içe sıralanır. type='none' → hiç render edilmez. ============ #}
+                    {% block elfbar_home_free_sections %}
+                        {% for i in 1..6 %}
+                            {% set fp = 'elfbar-free-' ~ i %}
+                            {% set fType  = theme_config(fp ~ '-type')|default('none') %}
+                            {% if fType and fType != 'none' %}
+                                {% set fOrder = theme_config(fp ~ '-order')|default(200 + i * 10) %}
+                                {% set fTitle = theme_config(fp ~ '-title') %}
+                                {% set fText  = theme_config(fp ~ '-text') %}
+                                {% set fImg   = theme_config(fp ~ '-img') %}
+                                {% set fImg2  = theme_config(fp ~ '-img2') %}
+                                {% set fImgM  = theme_config(fp ~ '-img-mobile') %}
+                                {% set fLink  = theme_config(fp ~ '-link') %}
+                                {% set fBtnT  = theme_config(fp ~ '-btn-text') %}
+                                {% set fBtnL  = theme_config(fp ~ '-btn-link') %}
+                                <div class="elfbar-sec" style="order: {{ fOrder }}">
+                                    {% if fType == 'banner' %}
+                                        {% if fImg or fImgM %}
+                                            {% set bTag = fLink ? 'a' : 'div' %}
+                                            <{{ bTag }} class="elfbar-free elfbar-free--banner{% if fImgM %} has-mobile{% endif %}"{% if fLink %} href="{{ fLink }}"{% endif %}>
+                                                {% if fImg %}<img class="elfbar-free__img elfbar-free__img--desktop" src="{{ fImg }}" alt="{{ fTitle }}" loading="lazy">{% endif %}
+                                                {% if fImgM %}<img class="elfbar-free__img elfbar-free__img--mobile" src="{{ fImgM }}" alt="{{ fTitle }}" loading="lazy">{% endif %}
+                                            </{{ bTag }}>
+                                        {% endif %}
+                                    {% elseif fType == 'titletext' %}
+                                        {% if fTitle or fText %}
+                                            <section class="elfbar-free elfbar-free--titletext">
+                                                {% if fTitle %}<h2 class="elfbar-free__title">{{ fTitle }}</h2>{% endif %}
+                                                {% if fText %}<p class="elfbar-free__text">{{ fText }}</p>{% endif %}
+                                            </section>
+                                        {% endif %}
+                                    {% elseif fType == 'cta' %}
+                                        {% if fTitle or fText or fBtnT %}
+                                            <section class="elfbar-free elfbar-free--cta">
+                                                <div class="elfbar-free__cta-body">
+                                                    {% if fTitle %}<h2 class="elfbar-free__title">{{ fTitle }}</h2>{% endif %}
+                                                    {% if fText %}<p class="elfbar-free__text">{{ fText }}</p>{% endif %}
+                                                    {% if fBtnT %}<a href="{{ fBtnL ?: '#' }}" class="elfbar-btn elfbar-btn--gradient elfbar-free__btn">{{ fBtnT }} {% sw_icon 'arrow-right' %}</a>{% endif %}
+                                                </div>
+                                            </section>
+                                        {% endif %}
+                                    {% elseif fType == 'twoimg' %}
+                                        {% if fImg or fImg2 %}
+                                            <div class="elfbar-free elfbar-free--twoimg">
+                                                {% set t1 = fLink ? 'a' : 'div' %}
+                                                <{{ t1 }} class="elfbar-free__cell"{% if fLink %} href="{{ fLink }}"{% endif %}>{% if fImg %}<img src="{{ fImg }}" alt="{{ fTitle }}" loading="lazy">{% endif %}</{{ t1 }}>
+                                                <div class="elfbar-free__cell">{% if fImg2 %}<img src="{{ fImg2 }}" alt="{{ fTitle }}" loading="lazy">{% endif %}</div>
+                                            </div>
+                                        {% endif %}
+                                    {% elseif fType == 'stripe' %}
+                                        {% if fTitle or fText or fBtnT %}
+                                            {% set sTag = fBtnL ? 'a' : (fLink ? 'a' : 'div') %}
+                                            {% set sHref = fBtnL ?: fLink %}
+                                            <{{ sTag }} class="elfbar-free elfbar-free--stripe"{% if sHref %} href="{{ sHref }}"{% endif %}>
+                                                <span class="elfbar-free__stripe-ico">{% sw_icon 'products' %}</span>
+                                                <span class="elfbar-free__stripe-txt">{% if fTitle %}<b>{{ fTitle }}</b>{% endif %}{% if fText %} · {{ fText }}{% endif %}</span>
+                                                {% if fBtnT %}<span class="elfbar-free__stripe-cta">{{ fBtnT }} {% sw_icon 'arrow-right' %}</span>{% endif %}
+                                            </{{ sTag }}>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endblock %}
                 </div>
             </div>
         </div>

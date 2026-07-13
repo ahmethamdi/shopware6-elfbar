@@ -4693,3 +4693,99 @@ a.elfbar-link, .elfbar-more-link {
         .elfbar-vitrine__actions { justify-content: center; }
     }
 }
+
+/* =====================================================================
+   SERBEST BÖLÜMLER (Freie Sektionen) — panelden eklenen kendi bloklar.
+   5 tip: banner / titletext / cta / twoimg / stripe. Mevcut tasarım dili
+   (gradient, glassmorphism, $elfbar değişkenleri) ile uyumlu.
+   ===================================================================== */
+.elfbar-free {
+    display: block;
+
+    /* --- Bildbanner (breit) --- */
+    &--banner {
+        display: block; border-radius: $elfbar-radius; overflow: hidden;
+        box-shadow: $elf-shadow-sm; line-height: 0;
+        .elfbar-free__img { width: 100%; height: auto; display: block; }
+        .elfbar-free__img--mobile { display: none; }
+        &.has-mobile {
+            @media (max-width: 991.98px) {
+                .elfbar-free__img--desktop { display: none; }
+                .elfbar-free__img--mobile { display: block; }
+            }
+        }
+        transition: transform .25s ease, box-shadow .25s ease;
+        &:hover { transform: translateY(-3px); box-shadow: $elf-shadow-md; }
+    }
+
+    /* --- Titel + Text (ortalı, gradient başlık) --- */
+    &--titletext {
+        text-align: center; padding: 2rem 1.5rem;
+        .elfbar-free__title {
+            font-family: $elfbar-font-headline; font-weight: 800;
+            font-size: clamp(1.4rem, 3vw, 2rem); margin: 0 0 .6rem;
+            background: $elfbar-gradient; -webkit-background-clip: text;
+            background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .elfbar-free__text {
+            max-width: 720px; margin: 0 auto; color: rgba($elfbar-color-ink, 0.72);
+            font-size: 1.02rem; line-height: 1.6;
+        }
+    }
+
+    /* --- CTA-Box (gradient zemin + buton) --- */
+    &--cta {
+        border-radius: calc(#{$elfbar-radius} + 4px); padding: 2.4rem 2rem;
+        background: $elfbar-gradient; color: #fff; text-align: center;
+        box-shadow: $elf-shadow-md;
+        .elfbar-free__cta-body { max-width: 760px; margin: 0 auto; }
+        .elfbar-free__title {
+            font-family: $elfbar-font-headline; font-weight: 800; color: #fff;
+            font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 0 0 .6rem;
+        }
+        .elfbar-free__text { color: rgba(#fff, 0.92); margin: 0 0 1.4rem; font-size: 1.05rem; line-height: 1.55; }
+        .elfbar-free__btn {
+            background: #fff; color: $elfbar-color-ink;
+            &:hover { background: rgba(#fff, 0.9); }
+        }
+    }
+
+    /* --- 2 Bilder nebeneinander --- */
+    &--twoimg {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+        .elfbar-free__cell {
+            border-radius: $elfbar-radius; overflow: hidden; line-height: 0;
+            box-shadow: $elf-shadow-sm; background: rgba(#fff, 0.5); min-height: 120px;
+            display: block; transition: transform .25s ease, box-shadow .25s ease;
+            img { width: 100%; height: 100%; object-fit: cover; display: block; }
+            &:hover { transform: translateY(-3px); box-shadow: $elf-shadow-md; }
+        }
+        @media (max-width: 575.98px) { grid-template-columns: 1fr; }
+    }
+
+    /* --- Info-Streifen (schmal, koyu) --- */
+    &--stripe {
+        display: flex; align-items: center; gap: 1rem;
+        padding: 1rem 1.4rem; border-radius: $elfbar-radius;
+        background: linear-gradient(135deg, #1F1633, #2c1f4a); color: #fff;
+        box-shadow: $elf-shadow-sm; text-decoration: none;
+        transition: transform .25s ease, box-shadow .25s ease;
+        &:hover { transform: translateY(-3px); box-shadow: $elf-shadow-md; }
+        .elfbar-free__stripe-ico {
+            flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border-radius: 11px; background: $elfbar-gradient;
+            .icon { width: 20px; height: 20px; color: #fff; display: block; }
+            .icon svg { display: block; width: 100%; height: 100%; }
+        }
+        .elfbar-free__stripe-txt { flex: 1 1 auto; font-size: .95rem; b { font-weight: 700; } }
+        .elfbar-free__stripe-cta {
+            flex: 0 0 auto; font-weight: 700; white-space: nowrap;
+            display: inline-flex; align-items: center; gap: .35rem;
+            .icon { width: 16px; height: 16px; }
+        }
+        @media (max-width: 575.98px) {
+            flex-direction: column; text-align: center;
+            .elfbar-free__stripe-txt { text-align: center; }
+        }
+    }
+}
