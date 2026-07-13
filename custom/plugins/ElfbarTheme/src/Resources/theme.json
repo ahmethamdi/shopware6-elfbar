@@ -72,121 +72,114 @@
             },
             "elfbarCampaign": {
                 "label": {
-                    "de-DE": "08) Kampagnen-Streifen + Promo-Bilder",
-                    "en-GB": "08) Campaign + promo",
-                    "tr-TR": "08) Kampanya + promo görseller"
-                }
-            },
-            "elfbarTopBanner": {
-                "label": {
-                    "de-DE": "09) Top-Banner (breit)",
-                    "en-GB": "09) Top banner",
-                    "tr-TR": "09) Üst banner"
+                    "de-DE": "08) Kampagne + Top-Banner + Promo-Bilder",
+                    "en-GB": "08) Campaign + top banner + promo",
+                    "tr-TR": "08) Kampanya + üst banner + promo"
                 }
             },
             "elfbarDeals": {
                 "label": {
-                    "de-DE": "10) Deals des Tages",
-                    "en-GB": "10) Deals of the day",
-                    "tr-TR": "10) Günün fırsatları"
+                    "de-DE": "09) Deals des Tages",
+                    "en-GB": "09) Deals of the day",
+                    "tr-TR": "09) Günün fırsatları"
                 }
             },
             "elfbarHomeBanner": {
                 "label": {
-                    "de-DE": "11) Bildbanner (Deals↔Neu)",
-                    "en-GB": "11) Image banner",
-                    "tr-TR": "11) Görsel banner"
+                    "de-DE": "10) Bildbanner (Deals↔Neu)",
+                    "en-GB": "10) Image banner",
+                    "tr-TR": "10) Görsel banner"
                 }
             },
             "elfbarNeu": {
                 "label": {
-                    "de-DE": "12) Neuheiten-Slider",
-                    "en-GB": "12) New arrivals slider",
-                    "tr-TR": "12) Neuheiten slider"
+                    "de-DE": "11) Neuheiten-Slider",
+                    "en-GB": "11) New arrivals slider",
+                    "tr-TR": "11) Neuheiten slider"
                 }
             },
             "elfbarShowcase": {
                 "label": {
-                    "de-DE": "13) Vitrine-Banner (Showcase)",
-                    "en-GB": "13) Showcase banner",
-                    "tr-TR": "13) Vitrine banner"
+                    "de-DE": "12) Vitrine-Banner (Showcase)",
+                    "en-GB": "12) Showcase banner",
+                    "tr-TR": "12) Vitrine banner"
                 }
             },
             "elfbarBestseller": {
                 "label": {
-                    "de-DE": "14) Bestseller-Grid",
-                    "en-GB": "14) Bestseller grid",
-                    "tr-TR": "14) Bestseller grid"
+                    "de-DE": "13) Bestseller-Grid",
+                    "en-GB": "13) Bestseller grid",
+                    "tr-TR": "13) Bestseller grid"
                 }
             },
             "elfbarB2bBanner": {
                 "label": {
-                    "de-DE": "15) B2B-Banner (CTA)",
-                    "en-GB": "15) B2B banner",
-                    "tr-TR": "15) B2B banner"
+                    "de-DE": "14) B2B-Banner (CTA)",
+                    "en-GB": "14) B2B banner",
+                    "tr-TR": "14) B2B banner"
                 }
             },
             "elfbarCatslider1": {
                 "label": {
-                    "de-DE": "16) Kategorie-Slider 1",
-                    "en-GB": "16) Category slider 1",
-                    "tr-TR": "16) Kategori slider 1"
+                    "de-DE": "15) Kategorie-Slider 1",
+                    "en-GB": "15) Category slider 1",
+                    "tr-TR": "15) Kategori slider 1"
                 }
             },
             "elfbarUsp": {
                 "label": {
-                    "de-DE": "17) Warum ELFBAR (USP)",
-                    "en-GB": "17) Why ELFBAR (USP)",
-                    "tr-TR": "17) Neden ELFBAR (USP)"
+                    "de-DE": "16) Warum ELFBAR (USP)",
+                    "en-GB": "16) Why ELFBAR (USP)",
+                    "tr-TR": "16) Neden ELFBAR (USP)"
                 }
             },
             "elfbarCatslider2": {
                 "label": {
-                    "de-DE": "18) Kategorie-Slider 2",
-                    "en-GB": "18) Category slider 2",
-                    "tr-TR": "18) Kategori slider 2"
+                    "de-DE": "17) Kategorie-Slider 2",
+                    "en-GB": "17) Category slider 2",
+                    "tr-TR": "17) Kategori slider 2"
                 }
             },
             "elfbarHowto": {
                 "label": {
-                    "de-DE": "19) So funktioniert + FAQ",
-                    "en-GB": "19) How it works + FAQ",
-                    "tr-TR": "19) Nasıl çalışır + SSS"
+                    "de-DE": "18) So funktioniert + FAQ",
+                    "en-GB": "18) How it works + FAQ",
+                    "tr-TR": "18) Nasıl çalışır + SSS"
                 }
             },
             "elfbarReviews": {
                 "label": {
-                    "de-DE": "20) Bewertungen-Slider",
-                    "en-GB": "20) Reviews slider",
-                    "tr-TR": "20) Yorumlar slider"
+                    "de-DE": "19) Bewertungen-Slider",
+                    "en-GB": "19) Reviews slider",
+                    "tr-TR": "19) Yorumlar slider"
                 }
             },
             "elfbarB2b": {
                 "label": {
-                    "de-DE": "21) B2B-Optionen",
-                    "en-GB": "21) B2B options",
-                    "tr-TR": "21) B2B seçenekleri"
+                    "de-DE": "20) B2B-Optionen",
+                    "en-GB": "20) B2B options",
+                    "tr-TR": "20) B2B seçenekleri"
                 }
             },
             "elfbarFooter": {
                 "label": {
-                    "de-DE": "22) Footer",
-                    "en-GB": "22) Footer",
-                    "tr-TR": "22) Footer"
+                    "de-DE": "21) Footer",
+                    "en-GB": "21) Footer",
+                    "tr-TR": "21) Footer"
                 }
             },
             "elfbarFree": {
                 "label": {
-                    "de-DE": "23) Freie Sektionen",
-                    "en-GB": "23) Free sections",
-                    "tr-TR": "23) Serbest bölümler"
+                    "de-DE": "22) Freie Sektionen",
+                    "en-GB": "22) Free sections",
+                    "tr-TR": "22) Serbest bölümler"
                 }
             },
             "elfbarSections": {
                 "label": {
-                    "de-DE": "24) Sektionen: Anzeigen & Reihenfolge",
-                    "en-GB": "24) Sections: show & order",
-                    "tr-TR": "24) Bölümler: göster & sıra"
+                    "de-DE": "23) Sektionen: Anzeigen & Reihenfolge",
+                    "en-GB": "23) Sections: show & order",
+                    "tr-TR": "23) Bölümler: göster & sıra"
                 }
             }
         },
@@ -866,97 +859,6 @@
                 "editable": true,
                 "block": "elfbarNeu",
                 "order": 12010,
-                "scss": false
-            },
-            "elfbar-campaign-brand": {
-                "label": {
-                    "de-DE": "Marke/Badge",
-                    "en-GB": "Brand badge",
-                    "tr-TR": "Marka rozeti"
-                },
-                "type": "text",
-                "value": "Powered by ELFBAR",
-                "editable": true,
-                "block": "elfbarCampaign",
-                "order": 8000,
-                "scss": false
-            },
-            "elfbar-campaign-text": {
-                "label": {
-                    "de-DE": "Text",
-                    "en-GB": "Text",
-                    "tr-TR": "Metin"
-                },
-                "type": "text",
-                "value": "−10 % auf alle LOST MARY Produkte",
-                "editable": true,
-                "block": "elfbarCampaign",
-                "order": 8010,
-                "scss": false
-            },
-            "elfbar-campaign-link": {
-                "label": {
-                    "de-DE": "Link",
-                    "en-GB": "Link",
-                    "tr-TR": "Link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "block": "elfbarCampaign",
-                "order": 8020,
-                "scss": false
-            },
-            "elfbar-promo-img-1": {
-                "label": {
-                    "de-DE": "Promo-Banner Bild 1",
-                    "en-GB": "Promo image 1",
-                    "tr-TR": "Promo görsel 1"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "block": "elfbarCampaign",
-                "order": 8030,
-                "scss": false
-            },
-            "elfbar-promo-img-1-link": {
-                "label": {
-                    "de-DE": "Promo-Banner Bild 1 — Link",
-                    "en-GB": "Promo image 1 — link",
-                    "tr-TR": "Promo görsel 1 — link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "block": "elfbarCampaign",
-                "order": 8040,
-                "scss": false
-            },
-            "elfbar-promo-img-2": {
-                "label": {
-                    "de-DE": "Promo-Banner Bild 2",
-                    "en-GB": "Promo image 2",
-                    "tr-TR": "Promo görsel 2"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "block": "elfbarCampaign",
-                "order": 8050,
-                "scss": false
-            },
-            "elfbar-promo-img-2-link": {
-                "label": {
-                    "de-DE": "Promo-Banner Bild 2 — Link",
-                    "en-GB": "Promo image 2 — link",
-                    "tr-TR": "Promo görsel 2 — link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "block": "elfbarCampaign",
-                "order": 8060,
                 "scss": false
             },
             "elfbar-sidebar-cta-eyebrow": {
@@ -3882,45 +3784,6 @@
                 "order": 7100,
                 "scss": false
             },
-            "elfbar-topbanner-img": {
-                "label": {
-                    "de-DE": "Bild (breit, Desktop)",
-                    "en-GB": "Image (desktop)",
-                    "tr-TR": "Görsel (masaüstü)"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "block": "elfbarTopBanner",
-                "order": 9000,
-                "scss": false
-            },
-            "elfbar-topbanner-img-mobile": {
-                "label": {
-                    "de-DE": "Bild (Mobil)",
-                    "en-GB": "Image (mobile)",
-                    "tr-TR": "Görsel (mobil)"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "block": "elfbarTopBanner",
-                "order": 9010,
-                "scss": false
-            },
-            "elfbar-topbanner-link": {
-                "label": {
-                    "de-DE": "Link",
-                    "en-GB": "Link",
-                    "tr-TR": "Link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "block": "elfbarTopBanner",
-                "order": 9020,
-                "scss": false
-            },
             "elfbar-sec-hero-enabled": {
                 "label": {
                     "de-DE": "Hero (oben) – anzeigen",
@@ -4600,6 +4463,136 @@
                 "editable": true,
                 "block": "elfbarReviews",
                 "order": 20020,
+                "scss": false
+            },
+            "elfbar-campaign-brand": {
+                "label": {
+                    "de-DE": "Marke/Badge",
+                    "en-GB": "Brand badge",
+                    "tr-TR": "Marka rozeti"
+                },
+                "type": "text",
+                "value": "Powered by ELFBAR",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 8000,
+                "scss": false
+            },
+            "elfbar-campaign-text": {
+                "label": {
+                    "de-DE": "Text",
+                    "en-GB": "Text",
+                    "tr-TR": "Metin"
+                },
+                "type": "text",
+                "value": "−10 % auf alle LOST MARY Produkte",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 8010,
+                "scss": false
+            },
+            "elfbar-campaign-link": {
+                "label": {
+                    "de-DE": "Link",
+                    "en-GB": "Link",
+                    "tr-TR": "Link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 8020,
+                "scss": false
+            },
+            "elfbar-topbanner-img": {
+                "label": {
+                    "de-DE": "Top-Banner · Bild (breit, Desktop)",
+                    "en-GB": "Top banner image (desktop)",
+                    "tr-TR": "Üst banner görsel (masaüstü)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 8030,
+                "scss": false
+            },
+            "elfbar-topbanner-img-mobile": {
+                "label": {
+                    "de-DE": "Top-Banner · Bild (Mobil)",
+                    "en-GB": "Top banner image (mobile)",
+                    "tr-TR": "Üst banner görsel (mobil)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 8040,
+                "scss": false
+            },
+            "elfbar-topbanner-link": {
+                "label": {
+                    "de-DE": "Top-Banner · Link",
+                    "en-GB": "Top banner link",
+                    "tr-TR": "Üst banner link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 8050,
+                "scss": false
+            },
+            "elfbar-promo-img-1": {
+                "label": {
+                    "de-DE": "Promo-Banner Bild 1",
+                    "en-GB": "Promo image 1",
+                    "tr-TR": "Promo görsel 1"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 8060,
+                "scss": false
+            },
+            "elfbar-promo-img-1-link": {
+                "label": {
+                    "de-DE": "Promo-Banner Bild 1 — Link",
+                    "en-GB": "Promo image 1 — link",
+                    "tr-TR": "Promo görsel 1 — link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 8070,
+                "scss": false
+            },
+            "elfbar-promo-img-2": {
+                "label": {
+                    "de-DE": "Promo-Banner Bild 2",
+                    "en-GB": "Promo image 2",
+                    "tr-TR": "Promo görsel 2"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 8080,
+                "scss": false
+            },
+            "elfbar-promo-img-2-link": {
+                "label": {
+                    "de-DE": "Promo-Banner Bild 2 — Link",
+                    "en-GB": "Promo image 2 — link",
+                    "tr-TR": "Promo görsel 2 — link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCampaign",
+                "order": 8090,
                 "scss": false
             }
         }
