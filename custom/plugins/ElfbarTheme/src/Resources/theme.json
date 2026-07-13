@@ -4594,6 +4594,32 @@
                 "block": "elfbarCampaign",
                 "order": 8090,
                 "scss": false
+            },
+            "elfbar-catslider1-img": {
+                "label": {
+                    "de-DE": "Kategorie-Kachel · Bild (statt Farbe+Buchstabe)",
+                    "en-GB": "Category tile image",
+                    "tr-TR": "Kategori kartı görseli (renk+harf yerine)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCatslider1",
+                "order": 16030,
+                "scss": false
+            },
+            "elfbar-catslider2-img": {
+                "label": {
+                    "de-DE": "Kategorie-Kachel · Bild (statt Farbe+Buchstabe)",
+                    "en-GB": "Category tile image",
+                    "tr-TR": "Kategori kartı görseli (renk+harf yerine)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarCatslider2",
+                "order": 18030,
+                "scss": false
             }
         }
     }

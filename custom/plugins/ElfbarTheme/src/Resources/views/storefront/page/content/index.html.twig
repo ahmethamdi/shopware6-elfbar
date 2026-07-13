@@ -42,14 +42,20 @@
 {# Kategori vitrini: SOL gradient kategori görsel kartı + SAĞ yatay ürün slider.
    products = ürün listesi, loggedIn = B2B gate, badge, tone = renk varyantı,
    catName/catSub/catLink = sol kart metinleri. #}
-{% macro elfbarCatSlider(products, loggedIn, badge, tone, catName, catSub, catLink, eyebrow) %}
+{% macro elfbarCatSlider(products, loggedIn, badge, tone, catName, catSub, catLink, eyebrow, img) %}
     <section class="elfbar-catslider">
-        <a href="{{ catLink ?: '#' }}" class="elfbar-catslider__feature elfbar-catslider__feature--{{ tone }}">
+        <a href="{{ catLink ?: '#' }}" class="elfbar-catslider__feature elfbar-catslider__feature--{{ tone }}{% if img %} has-image{% endif %}">
+            {# Panelden görsel yüklenmişse gradient+harf yerine görsel arka plan.
+               Metinlerin okunması için üstüne koyu degrade overlay biner. #}
+            {% if img %}
+                <img class="elfbar-catslider__bg" src="{{ img }}" alt="{{ catName }}" loading="lazy">
+                <span class="elfbar-catslider__overlay" aria-hidden="true"></span>
+            {% endif %}
             <span class="elfbar-catslider__eyebrow">{{ eyebrow|default('Kategorie') }}</span>
             <span class="elfbar-catslider__name">{{ catName }}</span>
             <span class="elfbar-catslider__sub">{{ catSub }}</span>
             <span class="elfbar-catslider__cta">Alle anzeigen {% sw_icon 'arrow-right' %}</span>
-            <span class="elfbar-catslider__glyph" aria-hidden="true">{{ catName|first|upper }}</span>
+            {% if not img %}<span class="elfbar-catslider__glyph" aria-hidden="true">{{ catName|first|upper }}</span>{% endif %}
         </a>
         <div class="elfbar-catslider__main">
             <div class="elfbar-catslider__head">
@@ -542,7 +548,8 @@
                                 theme_config('elfbar-catslider1-title')|default('Bestseller'),
                                 theme_config('elfbar-catslider1-sub')|default('Die meistverkauften Produkte unserer Händler.'),
                                 path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId }),
-                                theme_config('elfbar-catslider1-eyebrow')|default('Kategorie')) }}
+                                theme_config('elfbar-catslider1-eyebrow')|default('Kategorie'),
+                                theme_config('elfbar-catslider1-img')) }}
                             </div>
                         {% endif %}
 
@@ -560,7 +567,8 @@
                                 theme_config('elfbar-catslider2-title')|default('Neuheiten'),
                                 theme_config('elfbar-catslider2-sub')|default('Frisch im Sortiment – jetzt als Erster bestellen.'),
                                 path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId }),
-                                theme_config('elfbar-catslider2-eyebrow')|default('Kategorie')) }}
+                                theme_config('elfbar-catslider2-eyebrow')|default('Kategorie'),
+                                theme_config('elfbar-catslider2-img')) }}
                             </div>
                         {% endif %}
 
