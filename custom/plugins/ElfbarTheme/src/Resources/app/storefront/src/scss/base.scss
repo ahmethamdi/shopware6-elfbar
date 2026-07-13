@@ -1002,7 +1002,7 @@ $elfbar-radius: 12px;
 
 // --- Deals des Tages (countdown) ---
 .elfbar-deals-row {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0 0;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0 0;
     @media (max-width: 767.98px) { grid-template-columns: 1fr; }
 }
 // Deal kartı — mockup birebir: koyu dış kart + flip-clock + beyaz iç ürün kartı
