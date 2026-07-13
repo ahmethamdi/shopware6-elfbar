@@ -8,9 +8,9 @@
 {% if elfbarShowHowto %}
 <section class="elfbar-howto" aria-labelledby="elfbar-howto-title">
     <header class="elfbar-shead">
-        <p class="elfbar-shead__eyebrow">So einfach geht's</p>
-        <h2 class="elfbar-shead__title" id="elfbar-howto-title">In 3 Schritten zum Händler</h2>
-        <p class="elfbar-shead__sub">Von der Anmeldung bis zur ersten Bestellung in unter 24 Stunden.</p>
+        {% if theme_config('elfbar-howto-eyebrow') %}<p class="elfbar-shead__eyebrow">{{ theme_config('elfbar-howto-eyebrow') }}</p>{% endif %}
+        {% if theme_config('elfbar-howto-title') %}<h2 class="elfbar-shead__title" id="elfbar-howto-title">{{ theme_config('elfbar-howto-title') }}</h2>{% endif %}
+        {% if theme_config('elfbar-howto-sub') %}<p class="elfbar-shead__sub">{{ theme_config('elfbar-howto-sub') }}</p>{% endif %}
     </header>
 
     <ol class="elfbar-steps">
@@ -40,7 +40,7 @@
         </a>
     </div>
 
-    <h3 class="elfbar-faq__head">Häufige Fragen</h3>
+    {% if theme_config('elfbar-faq-head') %}<h3 class="elfbar-faq__head">{{ theme_config('elfbar-faq-head') }}</h3>{% endif %}
     <div class="elfbar-faq elfbar-faq--grid">
         <div class="elfbar-faq__item">
             <button type="button" class="elfbar-faq__q">
@@ -88,9 +88,9 @@
 <section class="elfbar-reviews" aria-labelledby="elfbar-reviews-title">
     <div class="elfbar-shead elfbar-reviews__head">
         <div>
-            <p class="elfbar-shead__eyebrow">Vertrauen &amp; Qualität</p>
-            <h2 class="elfbar-shead__title" id="elfbar-reviews-title">Über 4.000 zufriedene Händler</h2>
-            <p class="elfbar-shead__sub">Das sagen unsere Partner aus dem Fachhandel.</p>
+            {% if theme_config('elfbar-reviews-eyebrow') %}<p class="elfbar-shead__eyebrow">{{ theme_config('elfbar-reviews-eyebrow') }}</p>{% endif %}
+            {% if theme_config('elfbar-reviews-title') %}<h2 class="elfbar-shead__title" id="elfbar-reviews-title">{{ theme_config('elfbar-reviews-title') }}</h2>{% endif %}
+            {% if theme_config('elfbar-reviews-sub') %}<p class="elfbar-shead__sub">{{ theme_config('elfbar-reviews-sub') }}</p>{% endif %}
         </div>
         <div class="elfbar-slider-nav">
             <button type="button" class="elfbar-slider-btn" data-slide="prev" aria-label="Zurück"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg></button>

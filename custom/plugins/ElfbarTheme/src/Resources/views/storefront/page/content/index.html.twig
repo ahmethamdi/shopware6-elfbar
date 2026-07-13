@@ -42,10 +42,10 @@
 {# Kategori vitrini: SOL gradient kategori görsel kartı + SAĞ yatay ürün slider.
    products = ürün listesi, loggedIn = B2B gate, badge, tone = renk varyantı,
    catName/catSub/catLink = sol kart metinleri. #}
-{% macro elfbarCatSlider(products, loggedIn, badge, tone, catName, catSub, catLink) %}
+{% macro elfbarCatSlider(products, loggedIn, badge, tone, catName, catSub, catLink, eyebrow) %}
     <section class="elfbar-catslider">
         <a href="{{ catLink ?: '#' }}" class="elfbar-catslider__feature elfbar-catslider__feature--{{ tone }}">
-            <span class="elfbar-catslider__eyebrow">Kategorie</span>
+            <span class="elfbar-catslider__eyebrow">{{ eyebrow|default('Kategorie') }}</span>
             <span class="elfbar-catslider__name">{{ catName }}</span>
             <span class="elfbar-catslider__sub">{{ catSub }}</span>
             <span class="elfbar-catslider__cta">Alle anzeigen {% sw_icon 'arrow-right' %}</span>
@@ -316,7 +316,10 @@
                     {% block elfbar_home_deals %}
                         {% set dealTextColor = theme_config('elfbar-deal-text-color') %}
                         <div class="elfbar-section-head">
-                            {% if theme_config('elfbar-deals-title') %}<h2 class="elfbar-section-head__title">{{ theme_config('elfbar-deals-title') }}</h2>{% endif %}
+                            <div class="elfbar-section-head__titles">
+                                {% if theme_config('elfbar-deals-title') %}<h2 class="elfbar-section-head__title">{{ theme_config('elfbar-deals-title') }}</h2>{% endif %}
+                                {% if theme_config('elfbar-deals-sub') %}<p class="elfbar-section-head__sub">{{ theme_config('elfbar-deals-sub') }}</p>{% endif %}
+                            </div>
                         </div>
                         <div class="elfbar-deals-row">
                             {# 3 Deal config'ten: name/brand/price/img/link/hours. İsim boşsa gizli. #}
@@ -387,7 +390,10 @@
                     <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-neu-order')|default(elfbarSecOrderDefaults.neu) }}">
                     {% block elfbar_home_neu %}
                         <div class="elfbar-section-head">
-                            {% if theme_config('elfbar-neu-title') %}<h2 class="elfbar-section-head__title">{{ theme_config('elfbar-neu-title') }}</h2>{% endif %}
+                            <div class="elfbar-section-head__titles">
+                                {% if theme_config('elfbar-neu-title') %}<h2 class="elfbar-section-head__title">{{ theme_config('elfbar-neu-title') }}</h2>{% endif %}
+                                {% if theme_config('elfbar-neu-sub') %}<p class="elfbar-section-head__sub">{{ theme_config('elfbar-neu-sub') }}</p>{% endif %}
+                            </div>
                             <div class="elfbar-slider-nav">
                                 <button type="button" class="elfbar-slider-btn" data-slide="prev" aria-label="Zurück"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg></button>
                                 <button type="button" class="elfbar-slider-btn" data-slide="next" aria-label="Weiter"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></button>
@@ -458,7 +464,10 @@
                     {% block elfbar_home_section_title %}
                         {% set elfbarBest = page.extensions.elfbarBestseller.products ?? [] %}
                         <div class="elfbar-section-head">
-                            {% if theme_config('elfbar-bestseller-title') %}<h2 class="elfbar-section-head__title">{{ theme_config('elfbar-bestseller-title') }}</h2>{% endif %}
+                            <div class="elfbar-section-head__titles">
+                                {% if theme_config('elfbar-bestseller-title') %}<h2 class="elfbar-section-head__title">{{ theme_config('elfbar-bestseller-title') }}</h2>{% endif %}
+                                {% if theme_config('elfbar-bestseller-sub') %}<p class="elfbar-section-head__sub">{{ theme_config('elfbar-bestseller-sub') }}</p>{% endif %}
+                            </div>
                             <a href="{{ path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId }) }}" class="elfbar-section-head__link">Alle anzeigen →</a>
                         </div>
                         {% if elfbarBest|length %}
@@ -530,8 +539,10 @@
                         {% if elfbarBest|length and theme_config('elfbar-sec-catslider1-enabled') is not same as(false) %}
                             <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-catslider1-order')|default(elfbarSecOrderDefaults.catslider1) }}">
                             {{ _self.elfbarCatSlider(elfbarBest, elfbarLoggedIn, 'Top', 'pink',
-                                'Bestseller', 'Die meistverkauften Produkte unserer Händler.',
-                                path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId })) }}
+                                theme_config('elfbar-catslider1-title')|default('Bestseller'),
+                                theme_config('elfbar-catslider1-sub')|default('Die meistverkauften Produkte unserer Händler.'),
+                                path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId }),
+                                theme_config('elfbar-catslider1-eyebrow')|default('Kategorie')) }}
                             </div>
                         {% endif %}
 
@@ -546,8 +557,10 @@
                         {% if elfbarNeu|length and theme_config('elfbar-sec-catslider2-enabled') is not same as(false) %}
                             <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-catslider2-order')|default(elfbarSecOrderDefaults.catslider2) }}">
                             {{ _self.elfbarCatSlider(elfbarNeu, elfbarLoggedIn, 'Neu', 'blue',
-                                'Neuheiten', 'Frisch im Sortiment – jetzt als Erster bestellen.',
-                                path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId })) }}
+                                theme_config('elfbar-catslider2-title')|default('Neuheiten'),
+                                theme_config('elfbar-catslider2-sub')|default('Frisch im Sortiment – jetzt als Erster bestellen.'),
+                                path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId }),
+                                theme_config('elfbar-catslider2-eyebrow')|default('Kategorie')) }}
                             </div>
                         {% endif %}
 

@@ -3,9 +3,9 @@
 {# ---- WARUM ELFBAR B2B? — USP Grid ---- #}
 <section class="elfbar-usps" aria-labelledby="elfbar-usps-title">
     <header class="elfbar-shead">
-        <p class="elfbar-shead__eyebrow">Ihre Vorteile</p>
-        <h2 class="elfbar-shead__title" id="elfbar-usps-title">Warum ELFBAR B2B?</h2>
-        <p class="elfbar-shead__sub">Der Großhandel, der für Ihren Erfolg gemacht ist.</p>
+        {% if theme_config('elfbar-usp-eyebrow') %}<p class="elfbar-shead__eyebrow">{{ theme_config('elfbar-usp-eyebrow') }}</p>{% endif %}
+        {% if theme_config('elfbar-usp-title') %}<h2 class="elfbar-shead__title" id="elfbar-usps-title">{{ theme_config('elfbar-usp-title') }}</h2>{% endif %}
+        {% if theme_config('elfbar-usp-sub') %}<p class="elfbar-shead__sub">{{ theme_config('elfbar-usp-sub') }}</p>{% endif %}
     </header>
     <div class="elfbar-usps__grid">
         <article class="elfbar-usp-card">
