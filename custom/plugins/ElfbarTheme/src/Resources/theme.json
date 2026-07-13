@@ -21,167 +21,195 @@
     ],
     "config": {
         "tabs": {
-            "elfbar": {
+            "elfGeneral": {
                 "label": {
-                    "de-DE": "ELFBAR Theme",
-                    "en-GB": "ELFBAR Theme",
-                    "tr-TR": "ELFBAR Tema"
+                    "de-DE": "Allgemein",
+                    "en-GB": "General",
+                    "tr-TR": "Genel"
+                }
+            },
+            "elfHeader": {
+                "label": {
+                    "de-DE": "Header",
+                    "en-GB": "Header",
+                    "tr-TR": "Header"
+                }
+            },
+            "elfHome": {
+                "label": {
+                    "de-DE": "Startseite",
+                    "en-GB": "Homepage",
+                    "tr-TR": "Anasayfa"
+                }
+            },
+            "elfSidebar": {
+                "label": {
+                    "de-DE": "Seitenleiste",
+                    "en-GB": "Sidebar",
+                    "tr-TR": "Sol menü"
+                }
+            },
+            "elfFooter": {
+                "label": {
+                    "de-DE": "Footer",
+                    "en-GB": "Footer",
+                    "tr-TR": "Footer"
                 }
             }
         },
         "blocks": {
             "elfbarColors": {
                 "label": {
-                    "de-DE": "01) Marken-Farben",
-                    "en-GB": "01) Brand colors",
-                    "tr-TR": "01) Marka renkleri"
+                    "de-DE": "Marken-Farben",
+                    "en-GB": "Brand colors",
+                    "tr-TR": "Marka renkleri"
                 }
             },
             "elfbarTypography": {
                 "label": {
-                    "de-DE": "02) Typografie",
-                    "en-GB": "02) Typography",
-                    "tr-TR": "02) Tipografi"
+                    "de-DE": "Typografie",
+                    "en-GB": "Typography",
+                    "tr-TR": "Tipografi"
                 }
             },
             "elfbarInfobar": {
                 "label": {
-                    "de-DE": "03) Info-Leiste (oben)",
-                    "en-GB": "03) Info bar (top)",
-                    "tr-TR": "03) Üst bilgi şeridi"
+                    "de-DE": "Info-Leiste (oben)",
+                    "en-GB": "Info bar (top)",
+                    "tr-TR": "Üst bilgi şeridi"
                 }
             },
             "elfbarHeader": {
                 "label": {
-                    "de-DE": "04) Header (Zahlung-Logos)",
-                    "en-GB": "04) Header",
-                    "tr-TR": "04) Header"
+                    "de-DE": "Header (Zahlung-Logos)",
+                    "en-GB": "Header",
+                    "tr-TR": "Header"
                 }
             },
             "elfbarHero": {
                 "label": {
-                    "de-DE": "05) Hero (Text + Bilder)",
-                    "en-GB": "05) Hero",
-                    "tr-TR": "05) Hero"
+                    "de-DE": "01) Hero (Text + Bilder)",
+                    "en-GB": "01) Hero",
+                    "tr-TR": "01) Hero"
                 }
             },
             "elfbarSidebar": {
                 "label": {
-                    "de-DE": "06) Seitenleiste (CTA + USP)",
-                    "en-GB": "06) Sidebar",
-                    "tr-TR": "06) Sol menü"
+                    "de-DE": "Seitenleiste (CTA + USP)",
+                    "en-GB": "Sidebar",
+                    "tr-TR": "Sol menü"
                 }
             },
             "elfbarVitrinePro": {
                 "label": {
-                    "de-DE": "07) Vitrine PRO",
-                    "en-GB": "07) Vitrine PRO",
-                    "tr-TR": "07) Vitrine PRO"
+                    "de-DE": "02) Vitrine PRO",
+                    "en-GB": "02) Vitrine PRO",
+                    "tr-TR": "02) Vitrine PRO"
                 }
             },
             "elfbarCampaign": {
                 "label": {
-                    "de-DE": "08) Kampagne + Top-Banner + Promo-Bilder",
-                    "en-GB": "08) Campaign + top banner + promo",
-                    "tr-TR": "08) Kampanya + üst banner + promo"
+                    "de-DE": "03) Kampagne + Top-Banner + Promo-Bilder",
+                    "en-GB": "03) Campaign + top banner + promo",
+                    "tr-TR": "03) Kampanya + üst banner + promo"
                 }
             },
             "elfbarDeals": {
                 "label": {
-                    "de-DE": "09) Deals des Tages",
-                    "en-GB": "09) Deals of the day",
-                    "tr-TR": "09) Günün fırsatları"
+                    "de-DE": "04) Deals des Tages",
+                    "en-GB": "04) Deals of the day",
+                    "tr-TR": "04) Günün fırsatları"
                 }
             },
             "elfbarHomeBanner": {
                 "label": {
-                    "de-DE": "10) Bildbanner (Deals↔Neuheiten)",
-                    "en-GB": "10) Image banner",
-                    "tr-TR": "10) Görsel banner"
+                    "de-DE": "05) Bildbanner (Deals↔Neuheiten)",
+                    "en-GB": "05) Image banner",
+                    "tr-TR": "05) Görsel banner"
                 }
             },
             "elfbarNeu": {
                 "label": {
-                    "de-DE": "11) Neuheiten-Slider",
-                    "en-GB": "11) New arrivals slider",
-                    "tr-TR": "11) Neuheiten slider"
+                    "de-DE": "06) Neuheiten-Slider",
+                    "en-GB": "06) New arrivals slider",
+                    "tr-TR": "06) Neuheiten slider"
                 }
             },
             "elfbarBestseller": {
                 "label": {
-                    "de-DE": "13) Bestseller-Grid",
-                    "en-GB": "13) Bestseller grid",
-                    "tr-TR": "13) Bestseller grid"
+                    "de-DE": "07) Bestseller-Grid",
+                    "en-GB": "07) Bestseller grid",
+                    "tr-TR": "07) Bestseller grid"
                 }
             },
             "elfbarB2bBanner": {
                 "label": {
-                    "de-DE": "14) B2B-Banner (CTA)",
-                    "en-GB": "14) B2B banner",
-                    "tr-TR": "14) B2B banner"
+                    "de-DE": "08) B2B-Banner (CTA)",
+                    "en-GB": "08) B2B banner",
+                    "tr-TR": "08) B2B banner"
                 }
             },
             "elfbarCatslider1": {
                 "label": {
-                    "de-DE": "15) Kategorie-Slider 1",
-                    "en-GB": "15) Category slider 1",
-                    "tr-TR": "15) Kategori slider 1"
+                    "de-DE": "09) Kategorie-Slider 1",
+                    "en-GB": "09) Category slider 1",
+                    "tr-TR": "09) Kategori slider 1"
                 }
             },
             "elfbarUsp": {
                 "label": {
-                    "de-DE": "16) Warum ELFBAR (USP)",
-                    "en-GB": "16) Why ELFBAR (USP)",
-                    "tr-TR": "16) Neden ELFBAR (USP)"
+                    "de-DE": "10) Warum ELFBAR (USP)",
+                    "en-GB": "10) Why ELFBAR (USP)",
+                    "tr-TR": "10) Neden ELFBAR (USP)"
                 }
             },
             "elfbarCatslider2": {
                 "label": {
-                    "de-DE": "17) Kategorie-Slider 2",
-                    "en-GB": "17) Category slider 2",
-                    "tr-TR": "17) Kategori slider 2"
+                    "de-DE": "11) Kategorie-Slider 2",
+                    "en-GB": "11) Category slider 2",
+                    "tr-TR": "11) Kategori slider 2"
                 }
             },
             "elfbarHowto": {
                 "label": {
-                    "de-DE": "18) So funktioniert + FAQ",
-                    "en-GB": "18) How it works + FAQ",
-                    "tr-TR": "18) Nasıl çalışır + SSS"
+                    "de-DE": "12) So funktioniert + FAQ",
+                    "en-GB": "12) How it works + FAQ",
+                    "tr-TR": "12) Nasıl çalışır + SSS"
                 }
             },
             "elfbarReviews": {
                 "label": {
-                    "de-DE": "19) Bewertungen-Slider",
-                    "en-GB": "19) Reviews slider",
-                    "tr-TR": "19) Yorumlar slider"
+                    "de-DE": "13) Bewertungen-Slider",
+                    "en-GB": "13) Reviews slider",
+                    "tr-TR": "13) Yorumlar slider"
                 }
             },
             "elfbarB2b": {
                 "label": {
-                    "de-DE": "20) B2B-Optionen",
-                    "en-GB": "20) B2B options",
-                    "tr-TR": "20) B2B seçenekleri"
+                    "de-DE": "B2B-Optionen",
+                    "en-GB": "B2B options",
+                    "tr-TR": "B2B seçenekleri"
                 }
             },
             "elfbarFooter": {
                 "label": {
-                    "de-DE": "21) Footer",
-                    "en-GB": "21) Footer",
-                    "tr-TR": "21) Footer"
+                    "de-DE": "Footer",
+                    "en-GB": "Footer",
+                    "tr-TR": "Footer"
                 }
             },
             "elfbarFree": {
                 "label": {
-                    "de-DE": "22) Freie Sektionen",
-                    "en-GB": "22) Free sections",
-                    "tr-TR": "22) Serbest bölümler"
+                    "de-DE": "14) Freie Sektionen",
+                    "en-GB": "14) Free sections",
+                    "tr-TR": "14) Serbest bölümler"
                 }
             },
             "elfbarSections": {
                 "label": {
-                    "de-DE": "23) Sektionen: Anzeigen & Reihenfolge",
-                    "en-GB": "23) Sections: show & order",
-                    "tr-TR": "23) Bölümler: göster & sıra"
+                    "de-DE": "15) Sektionen: Anzeigen & Reihenfolge",
+                    "en-GB": "15) Sections: show & order",
+                    "tr-TR": "15) Bölümler: göster & sıra"
                 }
             }
         },
@@ -197,7 +225,7 @@
                 "editable": true,
                 "block": "elfbarColors",
                 "order": 10,
-                "tab": "elfbar"
+                "tab": "elfGeneral"
             },
             "sw-color-brand-secondary": {
                 "label": {
@@ -210,7 +238,7 @@
                 "editable": true,
                 "block": "elfbarColors",
                 "order": 20,
-                "tab": "elfbar"
+                "tab": "elfGeneral"
             },
             "elfbar-color-ink": {
                 "label": {
@@ -223,7 +251,7 @@
                 "editable": true,
                 "block": "elfbarColors",
                 "order": 30,
-                "tab": "elfbar"
+                "tab": "elfGeneral"
             },
             "elfbar-color-bg": {
                 "label": {
@@ -236,7 +264,7 @@
                 "editable": true,
                 "block": "elfbarColors",
                 "order": 40,
-                "tab": "elfbar"
+                "tab": "elfGeneral"
             },
             "elfbar-color-success": {
                 "label": {
@@ -249,7 +277,7 @@
                 "editable": true,
                 "block": "elfbarColors",
                 "order": 50,
-                "tab": "elfbar"
+                "tab": "elfGeneral"
             },
             "elfbar-color-sale": {
                 "label": {
@@ -262,7 +290,7 @@
                 "editable": true,
                 "block": "elfbarColors",
                 "order": 60,
-                "tab": "elfbar"
+                "tab": "elfGeneral"
             },
             "elfbar-font-base": {
                 "label": {
@@ -276,7 +304,7 @@
                 "block": "elfbarTypography",
                 "order": 70,
                 "scss": true,
-                "tab": "elfbar"
+                "tab": "elfGeneral"
             },
             "elfbar-font-headline": {
                 "label": {
@@ -290,7 +318,7 @@
                 "block": "elfbarTypography",
                 "order": 80,
                 "scss": true,
-                "tab": "elfbar"
+                "tab": "elfGeneral"
             },
             "elfbar-infobar-1": {
                 "label": {
@@ -304,7 +332,7 @@
                 "block": "elfbarInfobar",
                 "order": 90,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-infobar-2": {
                 "label": {
@@ -318,7 +346,7 @@
                 "block": "elfbarInfobar",
                 "order": 100,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-infobar-3": {
                 "label": {
@@ -332,7 +360,7 @@
                 "block": "elfbarInfobar",
                 "order": 110,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-infobar-4": {
                 "label": {
@@ -346,7 +374,7 @@
                 "block": "elfbarInfobar",
                 "order": 120,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-infobar-5": {
                 "label": {
@@ -360,7 +388,7 @@
                 "block": "elfbarInfobar",
                 "order": 130,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-pay-1": {
                 "label": {
@@ -379,7 +407,7 @@
                 "block": "elfbarHeader",
                 "order": 140,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-pay-2": {
                 "label": {
@@ -393,7 +421,7 @@
                 "block": "elfbarHeader",
                 "order": 150,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-pay-3": {
                 "label": {
@@ -407,7 +435,7 @@
                 "block": "elfbarHeader",
                 "order": 160,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-pay-4": {
                 "label": {
@@ -421,7 +449,7 @@
                 "block": "elfbarHeader",
                 "order": 170,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-pay-5": {
                 "label": {
@@ -435,7 +463,7 @@
                 "block": "elfbarHeader",
                 "order": 180,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-pay-6": {
                 "label": {
@@ -449,7 +477,7 @@
                 "block": "elfbarHeader",
                 "order": 190,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-menu-1-name": {
                 "label": {
@@ -468,7 +496,7 @@
                 "block": "elfbarHeader",
                 "order": 200,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-menu-1-link": {
                 "label": {
@@ -487,7 +515,7 @@
                 "block": "elfbarHeader",
                 "order": 210,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-menu-2-name": {
                 "label": {
@@ -501,7 +529,7 @@
                 "block": "elfbarHeader",
                 "order": 220,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-menu-2-link": {
                 "label": {
@@ -515,7 +543,7 @@
                 "block": "elfbarHeader",
                 "order": 230,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-menu-3-name": {
                 "label": {
@@ -529,7 +557,7 @@
                 "block": "elfbarHeader",
                 "order": 240,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-menu-3-link": {
                 "label": {
@@ -543,7 +571,7 @@
                 "block": "elfbarHeader",
                 "order": 250,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-menu-4-name": {
                 "label": {
@@ -557,7 +585,7 @@
                 "block": "elfbarHeader",
                 "order": 260,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-menu-4-link": {
                 "label": {
@@ -571,7 +599,7 @@
                 "block": "elfbarHeader",
                 "order": 270,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-menu-5-name": {
                 "label": {
@@ -585,7 +613,7 @@
                 "block": "elfbarHeader",
                 "order": 280,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-menu-5-link": {
                 "label": {
@@ -599,7 +627,7 @@
                 "block": "elfbarHeader",
                 "order": 290,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-menu-6-name": {
                 "label": {
@@ -613,7 +641,7 @@
                 "block": "elfbarHeader",
                 "order": 300,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-header-menu-6-link": {
                 "label": {
@@ -627,7 +655,7 @@
                 "block": "elfbarHeader",
                 "order": 310,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHeader"
             },
             "elfbar-hero-eyebrow": {
                 "label": {
@@ -641,7 +669,7 @@
                 "block": "elfbarHero",
                 "order": 320,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-hero-title": {
                 "label": {
@@ -655,7 +683,7 @@
                 "block": "elfbarHero",
                 "order": 330,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-hero-subtitle": {
                 "label": {
@@ -669,7 +697,7 @@
                 "block": "elfbarHero",
                 "order": 340,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-hero-cta": {
                 "label": {
@@ -683,7 +711,7 @@
                 "block": "elfbarHero",
                 "order": 350,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-hero-cta-link": {
                 "label": {
@@ -697,7 +725,7 @@
                 "block": "elfbarHero",
                 "order": 360,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-hero-img-big": {
                 "label": {
@@ -711,7 +739,7 @@
                 "block": "elfbarHero",
                 "order": 370,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-hero-img-big-link": {
                 "label": {
@@ -725,7 +753,7 @@
                 "block": "elfbarHero",
                 "order": 380,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-hero-img-small-1": {
                 "label": {
@@ -739,7 +767,7 @@
                 "block": "elfbarHero",
                 "order": 390,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-hero-img-small-1-link": {
                 "label": {
@@ -753,7 +781,7 @@
                 "block": "elfbarHero",
                 "order": 400,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-hero-img-small-2": {
                 "label": {
@@ -767,7 +795,7 @@
                 "block": "elfbarHero",
                 "order": 410,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-hero-img-small-2-link": {
                 "label": {
@@ -781,7 +809,7 @@
                 "block": "elfbarHero",
                 "order": 420,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-hero-img-big-mobile": {
                 "label": {
@@ -800,7 +828,7 @@
                 "block": "elfbarHero",
                 "order": 430,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-hero-img-small-1-mobile": {
                 "label": {
@@ -819,7 +847,7 @@
                 "block": "elfbarHero",
                 "order": 440,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-hero-img-small-2-mobile": {
                 "label": {
@@ -838,175 +866,7 @@
                 "block": "elfbarHero",
                 "order": 450,
                 "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-sidebar-cta-eyebrow": {
-                "label": {
-                    "de-DE": "CTA Eyebrow",
-                    "en-GB": "CTA eyebrow",
-                    "tr-TR": "CTA üst etiket"
-                },
-                "type": "text",
-                "value": "B2B Vorteil",
-                "editable": true,
-                "block": "elfbarSidebar",
-                "order": 460,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-sidebar-cta-title": {
-                "label": {
-                    "de-DE": "CTA Titel",
-                    "en-GB": "CTA title",
-                    "tr-TR": "CTA başlık"
-                },
-                "type": "text",
-                "value": "Bis zu 40 % Marge für Händler",
-                "editable": true,
-                "block": "elfbarSidebar",
-                "order": 470,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-sidebar-cta-btn": {
-                "label": {
-                    "de-DE": "CTA Button",
-                    "en-GB": "CTA button",
-                    "tr-TR": "CTA buton"
-                },
-                "type": "text",
-                "value": "Jetzt registrieren →",
-                "editable": true,
-                "block": "elfbarSidebar",
-                "order": 480,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-sidebar-promo-img": {
-                "label": {
-                    "de-DE": "Promo-Bild",
-                    "en-GB": "Promo image",
-                    "tr-TR": "Promo görsel"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "block": "elfbarSidebar",
-                "order": 490,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-usp-1-title": {
-                "label": {
-                    "de-DE": "USP 1 Titel",
-                    "en-GB": "USP 1 title",
-                    "tr-TR": "USP 1 başlık"
-                },
-                "type": "text",
-                "value": "Kostenloser Versand",
-                "editable": true,
-                "block": "elfbarSidebar",
-                "order": 500,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-usp-1-sub": {
-                "label": {
-                    "de-DE": "USP 1 Untertitel",
-                    "en-GB": "USP 1 subtitle",
-                    "tr-TR": "USP 1 alt"
-                },
-                "type": "text",
-                "value": "ab 500 € Netto",
-                "editable": true,
-                "block": "elfbarSidebar",
-                "order": 510,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-usp-2-title": {
-                "label": {
-                    "de-DE": "USP 2 Titel",
-                    "en-GB": "USP 2 title",
-                    "tr-TR": "USP 2 başlık"
-                },
-                "type": "text",
-                "value": "Sichere Bezahlung",
-                "editable": true,
-                "block": "elfbarSidebar",
-                "order": 520,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-usp-2-sub": {
-                "label": {
-                    "de-DE": "USP 2 Untertitel",
-                    "en-GB": "USP 2 subtitle",
-                    "tr-TR": "USP 2 alt"
-                },
-                "type": "text",
-                "value": "PayPal & Kauf auf Rechnung",
-                "editable": true,
-                "block": "elfbarSidebar",
-                "order": 530,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-usp-3-title": {
-                "label": {
-                    "de-DE": "USP 3 Titel",
-                    "en-GB": "USP 3 title",
-                    "tr-TR": "USP 3 başlık"
-                },
-                "type": "text",
-                "value": "Schnelle Lieferung",
-                "editable": true,
-                "block": "elfbarSidebar",
-                "order": 540,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-usp-3-sub": {
-                "label": {
-                    "de-DE": "USP 3 Untertitel",
-                    "en-GB": "USP 3 subtitle",
-                    "tr-TR": "USP 3 alt"
-                },
-                "type": "text",
-                "value": "24–48h Versand",
-                "editable": true,
-                "block": "elfbarSidebar",
-                "order": 550,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-usp-4-title": {
-                "label": {
-                    "de-DE": "USP 4 Titel",
-                    "en-GB": "USP 4 title",
-                    "tr-TR": "USP 4 başlık"
-                },
-                "type": "text",
-                "value": "B2B Support",
-                "editable": true,
-                "block": "elfbarSidebar",
-                "order": 560,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-usp-4-sub": {
-                "label": {
-                    "de-DE": "USP 4 Untertitel",
-                    "en-GB": "USP 4 subtitle",
-                    "tr-TR": "USP 4 alt"
-                },
-                "type": "text",
-                "value": "Mo-Fr, 09:00 - 16:00 Uhr",
-                "editable": true,
-                "block": "elfbarSidebar",
-                "order": 570,
-                "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-vitrine-badge": {
                 "label": {
@@ -1020,7 +880,7 @@
                 "block": "elfbarVitrinePro",
                 "order": 580,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-vitrine-eyebrow": {
                 "label": {
@@ -1034,7 +894,7 @@
                 "block": "elfbarVitrinePro",
                 "order": 590,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-vitrine-title": {
                 "label": {
@@ -1048,7 +908,7 @@
                 "block": "elfbarVitrinePro",
                 "order": 600,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-vitrine-text": {
                 "label": {
@@ -1062,7 +922,7 @@
                 "block": "elfbarVitrinePro",
                 "order": 610,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-vitrine-img": {
                 "label": {
@@ -1076,7 +936,7 @@
                 "block": "elfbarVitrinePro",
                 "order": 620,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-vitrine-feature-1": {
                 "label": {
@@ -1090,7 +950,7 @@
                 "block": "elfbarVitrinePro",
                 "order": 630,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-vitrine-feature-2": {
                 "label": {
@@ -1104,7 +964,7 @@
                 "block": "elfbarVitrinePro",
                 "order": 640,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-vitrine-btn1-text": {
                 "label": {
@@ -1118,7 +978,7 @@
                 "block": "elfbarVitrinePro",
                 "order": 650,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-vitrine-btn1-link": {
                 "label": {
@@ -1132,7 +992,7 @@
                 "block": "elfbarVitrinePro",
                 "order": 660,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-vitrine-btn2-text": {
                 "label": {
@@ -1146,7 +1006,7 @@
                 "block": "elfbarVitrinePro",
                 "order": 670,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-vitrine-btn2-link": {
                 "label": {
@@ -1160,7 +1020,7 @@
                 "block": "elfbarVitrinePro",
                 "order": 680,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-campaign-brand": {
                 "label": {
@@ -1174,7 +1034,7 @@
                 "block": "elfbarCampaign",
                 "order": 690,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-campaign-text": {
                 "label": {
@@ -1188,7 +1048,7 @@
                 "block": "elfbarCampaign",
                 "order": 700,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-campaign-link": {
                 "label": {
@@ -1202,7 +1062,7 @@
                 "block": "elfbarCampaign",
                 "order": 710,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-topbanner-img": {
                 "label": {
@@ -1216,7 +1076,7 @@
                 "block": "elfbarCampaign",
                 "order": 720,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-topbanner-img-mobile": {
                 "label": {
@@ -1230,7 +1090,7 @@
                 "block": "elfbarCampaign",
                 "order": 730,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-topbanner-link": {
                 "label": {
@@ -1244,7 +1104,7 @@
                 "block": "elfbarCampaign",
                 "order": 740,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-promo-img-1": {
                 "label": {
@@ -1258,7 +1118,7 @@
                 "block": "elfbarCampaign",
                 "order": 750,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-promo-img-1-link": {
                 "label": {
@@ -1272,7 +1132,7 @@
                 "block": "elfbarCampaign",
                 "order": 760,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-promo-img-2": {
                 "label": {
@@ -1286,7 +1146,7 @@
                 "block": "elfbarCampaign",
                 "order": 770,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-promo-img-2-link": {
                 "label": {
@@ -1300,7 +1160,7 @@
                 "block": "elfbarCampaign",
                 "order": 780,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deals-title": {
                 "label": {
@@ -1314,7 +1174,7 @@
                 "block": "elfbarDeals",
                 "order": 790,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-text-color": {
                 "label": {
@@ -1333,7 +1193,7 @@
                 "block": "elfbarDeals",
                 "order": 800,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-1-name": {
                 "label": {
@@ -1347,7 +1207,7 @@
                 "block": "elfbarDeals",
                 "order": 810,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-1-brand": {
                 "label": {
@@ -1361,7 +1221,7 @@
                 "block": "elfbarDeals",
                 "order": 820,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-1-price": {
                 "label": {
@@ -1375,7 +1235,7 @@
                 "block": "elfbarDeals",
                 "order": 830,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-1-img": {
                 "label": {
@@ -1389,7 +1249,7 @@
                 "block": "elfbarDeals",
                 "order": 840,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-1-link": {
                 "label": {
@@ -1403,7 +1263,7 @@
                 "block": "elfbarDeals",
                 "order": 850,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-1-hours": {
                 "label": {
@@ -1417,7 +1277,7 @@
                 "block": "elfbarDeals",
                 "order": 860,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-2-name": {
                 "label": {
@@ -1431,7 +1291,7 @@
                 "block": "elfbarDeals",
                 "order": 870,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-2-brand": {
                 "label": {
@@ -1445,7 +1305,7 @@
                 "block": "elfbarDeals",
                 "order": 880,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-2-price": {
                 "label": {
@@ -1459,7 +1319,7 @@
                 "block": "elfbarDeals",
                 "order": 890,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-2-img": {
                 "label": {
@@ -1473,7 +1333,7 @@
                 "block": "elfbarDeals",
                 "order": 900,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-2-link": {
                 "label": {
@@ -1487,7 +1347,7 @@
                 "block": "elfbarDeals",
                 "order": 910,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-2-hours": {
                 "label": {
@@ -1501,7 +1361,7 @@
                 "block": "elfbarDeals",
                 "order": 920,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-3-name": {
                 "label": {
@@ -1515,7 +1375,7 @@
                 "block": "elfbarDeals",
                 "order": 930,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-3-brand": {
                 "label": {
@@ -1529,7 +1389,7 @@
                 "block": "elfbarDeals",
                 "order": 940,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-3-price": {
                 "label": {
@@ -1543,7 +1403,7 @@
                 "block": "elfbarDeals",
                 "order": 950,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-3-img": {
                 "label": {
@@ -1557,7 +1417,7 @@
                 "block": "elfbarDeals",
                 "order": 960,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-3-link": {
                 "label": {
@@ -1571,7 +1431,7 @@
                 "block": "elfbarDeals",
                 "order": 970,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deal-3-hours": {
                 "label": {
@@ -1585,7 +1445,7 @@
                 "block": "elfbarDeals",
                 "order": 980,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-deals-sub": {
                 "label": {
@@ -1599,7 +1459,7 @@
                 "block": "elfbarDeals",
                 "order": 990,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-home-banner-img": {
                 "label": {
@@ -1618,7 +1478,7 @@
                 "block": "elfbarHomeBanner",
                 "order": 1000,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-home-banner-img-mobile": {
                 "label": {
@@ -1637,7 +1497,7 @@
                 "block": "elfbarHomeBanner",
                 "order": 1010,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-home-banner-link": {
                 "label": {
@@ -1656,7 +1516,7 @@
                 "block": "elfbarHomeBanner",
                 "order": 1020,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-neu-category": {
                 "label": {
@@ -1670,7 +1530,7 @@
                 "block": "elfbarNeu",
                 "order": 1030,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-neu-title": {
                 "label": {
@@ -1684,7 +1544,7 @@
                 "block": "elfbarNeu",
                 "order": 1040,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-neu-sub": {
                 "label": {
@@ -1698,7 +1558,7 @@
                 "block": "elfbarNeu",
                 "order": 1050,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-bestseller-category": {
                 "label": {
@@ -1712,7 +1572,7 @@
                 "block": "elfbarBestseller",
                 "order": 1160,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-bestseller-title": {
                 "label": {
@@ -1726,7 +1586,7 @@
                 "block": "elfbarBestseller",
                 "order": 1170,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-bestseller-sub": {
                 "label": {
@@ -1740,7 +1600,7 @@
                 "block": "elfbarBestseller",
                 "order": 1180,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-b2b-eyebrow": {
                 "label": {
@@ -1754,7 +1614,7 @@
                 "block": "elfbarB2bBanner",
                 "order": 1190,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-b2b-title": {
                 "label": {
@@ -1768,7 +1628,7 @@
                 "block": "elfbarB2bBanner",
                 "order": 1200,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-b2b-text": {
                 "label": {
@@ -1782,7 +1642,7 @@
                 "block": "elfbarB2bBanner",
                 "order": 1210,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-b2b-btn-primary": {
                 "label": {
@@ -1796,7 +1656,7 @@
                 "block": "elfbarB2bBanner",
                 "order": 1220,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-b2b-btn-ghost": {
                 "label": {
@@ -1810,7 +1670,7 @@
                 "block": "elfbarB2bBanner",
                 "order": 1230,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-b2b-stat-1-n": {
                 "label": {
@@ -1824,7 +1684,7 @@
                 "block": "elfbarB2bBanner",
                 "order": 1240,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-b2b-stat-1-l": {
                 "label": {
@@ -1838,7 +1698,7 @@
                 "block": "elfbarB2bBanner",
                 "order": 1250,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-b2b-stat-2-n": {
                 "label": {
@@ -1852,7 +1712,7 @@
                 "block": "elfbarB2bBanner",
                 "order": 1260,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-b2b-stat-2-l": {
                 "label": {
@@ -1866,7 +1726,7 @@
                 "block": "elfbarB2bBanner",
                 "order": 1270,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-b2b-stat-3-n": {
                 "label": {
@@ -1880,7 +1740,7 @@
                 "block": "elfbarB2bBanner",
                 "order": 1280,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-b2b-stat-3-l": {
                 "label": {
@@ -1894,7 +1754,7 @@
                 "block": "elfbarB2bBanner",
                 "order": 1290,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-b2b-stat-4-n": {
                 "label": {
@@ -1908,7 +1768,7 @@
                 "block": "elfbarB2bBanner",
                 "order": 1300,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-b2b-stat-4-l": {
                 "label": {
@@ -1922,7 +1782,7 @@
                 "block": "elfbarB2bBanner",
                 "order": 1310,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-catslider1-title": {
                 "label": {
@@ -1936,7 +1796,7 @@
                 "block": "elfbarCatslider1",
                 "order": 1320,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-catslider1-sub": {
                 "label": {
@@ -1950,7 +1810,7 @@
                 "block": "elfbarCatslider1",
                 "order": 1330,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-catslider1-eyebrow": {
                 "label": {
@@ -1964,7 +1824,7 @@
                 "block": "elfbarCatslider1",
                 "order": 1340,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-catslider1-img": {
                 "label": {
@@ -1978,7 +1838,7 @@
                 "block": "elfbarCatslider1",
                 "order": 1350,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-usp-eyebrow": {
                 "label": {
@@ -1992,7 +1852,7 @@
                 "block": "elfbarUsp",
                 "order": 1360,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-usp-title": {
                 "label": {
@@ -2006,7 +1866,7 @@
                 "block": "elfbarUsp",
                 "order": 1370,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-usp-sub": {
                 "label": {
@@ -2020,7 +1880,7 @@
                 "block": "elfbarUsp",
                 "order": 1380,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-catslider2-title": {
                 "label": {
@@ -2034,7 +1894,7 @@
                 "block": "elfbarCatslider2",
                 "order": 1390,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-catslider2-sub": {
                 "label": {
@@ -2048,7 +1908,7 @@
                 "block": "elfbarCatslider2",
                 "order": 1400,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-catslider2-eyebrow": {
                 "label": {
@@ -2062,7 +1922,7 @@
                 "block": "elfbarCatslider2",
                 "order": 1410,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-catslider2-img": {
                 "label": {
@@ -2076,7 +1936,7 @@
                 "block": "elfbarCatslider2",
                 "order": 1420,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-howto-eyebrow": {
                 "label": {
@@ -2090,7 +1950,7 @@
                 "block": "elfbarHowto",
                 "order": 1430,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-howto-title": {
                 "label": {
@@ -2104,7 +1964,7 @@
                 "block": "elfbarHowto",
                 "order": 1440,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-howto-sub": {
                 "label": {
@@ -2118,7 +1978,7 @@
                 "block": "elfbarHowto",
                 "order": 1450,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-faq-head": {
                 "label": {
@@ -2132,7 +1992,7 @@
                 "block": "elfbarHowto",
                 "order": 1460,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-reviews-eyebrow": {
                 "label": {
@@ -2146,7 +2006,7 @@
                 "block": "elfbarReviews",
                 "order": 1470,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-reviews-title": {
                 "label": {
@@ -2160,7 +2020,7 @@
                 "block": "elfbarReviews",
                 "order": 1480,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
             },
             "elfbar-reviews-sub": {
                 "label": {
@@ -2174,7 +2034,1777 @@
                 "block": "elfbarReviews",
                 "order": 1490,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfHome"
+            },
+            "elfbar-free-1-type": {
+                "label": {
+                    "de-DE": "Sektion 1 · Typ",
+                    "en-GB": "Section 1 · type",
+                    "tr-TR": "Bölüm 1 · tip"
+                },
+                "type": "text",
+                "value": "none",
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "none",
+                            "label": {
+                                "de-DE": "— (leer/aus)",
+                                "en-GB": "— (empty/off)",
+                                "tr-TR": "— (boş/kapalı)"
+                            }
+                        },
+                        {
+                            "value": "banner",
+                            "label": {
+                                "de-DE": "Bildbanner (breit)",
+                                "en-GB": "Image banner",
+                                "tr-TR": "Görsel banner"
+                            }
+                        },
+                        {
+                            "value": "titletext",
+                            "label": {
+                                "de-DE": "Titel + Text",
+                                "en-GB": "Title + text",
+                                "tr-TR": "Başlık + metin"
+                            }
+                        },
+                        {
+                            "value": "cta",
+                            "label": {
+                                "de-DE": "CTA-Box (Titel+Text+Btn)",
+                                "en-GB": "CTA box",
+                                "tr-TR": "CTA kutu"
+                            }
+                        },
+                        {
+                            "value": "twoimg",
+                            "label": {
+                                "de-DE": "2 Bilder nebeneinander",
+                                "en-GB": "2 images",
+                                "tr-TR": "2 görsel"
+                            }
+                        },
+                        {
+                            "value": "stripe",
+                            "label": {
+                                "de-DE": "Info-Streifen (schmal)",
+                                "en-GB": "Info stripe",
+                                "tr-TR": "İnce şerit"
+                            }
+                        }
+                    ]
+                },
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 1930,
+                "tab": "elfHome"
+            },
+            "elfbar-free-1-order": {
+                "label": {
+                    "de-DE": "Sektion 1 · Reihenfolge",
+                    "en-GB": "Section 1 · order",
+                    "tr-TR": "Bölüm 1 · sıra"
+                },
+                "type": "int",
+                "value": 210,
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 1940,
+                "tab": "elfHome"
+            },
+            "elfbar-free-1-title": {
+                "label": {
+                    "de-DE": "Sektion 1 · Titel",
+                    "en-GB": "Section 1 · title",
+                    "tr-TR": "Bölüm 1 · başlık"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 1950,
+                "tab": "elfHome"
+            },
+            "elfbar-free-1-text": {
+                "label": {
+                    "de-DE": "Sektion 1 · Text",
+                    "en-GB": "Section 1 · text",
+                    "tr-TR": "Bölüm 1 · metin"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 1960,
+                "tab": "elfHome"
+            },
+            "elfbar-free-1-img": {
+                "label": {
+                    "de-DE": "Sektion 1 · Bild",
+                    "en-GB": "Section 1 · image",
+                    "tr-TR": "Bölüm 1 · görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 1970,
+                "tab": "elfHome"
+            },
+            "elfbar-free-1-img2": {
+                "label": {
+                    "de-DE": "Sektion 1 · Bild 2 (bei \"2 Bilder\")",
+                    "en-GB": "Section 1 · image 2",
+                    "tr-TR": "Bölüm 1 · görsel 2"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 1980,
+                "tab": "elfHome"
+            },
+            "elfbar-free-1-img-mobile": {
+                "label": {
+                    "de-DE": "Sektion 1 · Bild (Mobil)",
+                    "en-GB": "Section 1 · image (mobile)",
+                    "tr-TR": "Bölüm 1 · görsel (mobil)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 1990,
+                "tab": "elfHome"
+            },
+            "elfbar-free-1-link": {
+                "label": {
+                    "de-DE": "Sektion 1 · Link (Bild/Box)",
+                    "en-GB": "Section 1 · link",
+                    "tr-TR": "Bölüm 1 · link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2000,
+                "tab": "elfHome"
+            },
+            "elfbar-free-1-btn-text": {
+                "label": {
+                    "de-DE": "Sektion 1 · Button-Text",
+                    "en-GB": "Section 1 · button text",
+                    "tr-TR": "Bölüm 1 · buton metni"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2010,
+                "tab": "elfHome"
+            },
+            "elfbar-free-1-btn-link": {
+                "label": {
+                    "de-DE": "Sektion 1 · Button-Link",
+                    "en-GB": "Section 1 · button link",
+                    "tr-TR": "Bölüm 1 · buton link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2020,
+                "tab": "elfHome"
+            },
+            "elfbar-free-2-type": {
+                "label": {
+                    "de-DE": "Sektion 2 · Typ",
+                    "en-GB": "Section 2 · type",
+                    "tr-TR": "Bölüm 2 · tip"
+                },
+                "type": "text",
+                "value": "none",
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "none",
+                            "label": {
+                                "de-DE": "— (leer/aus)",
+                                "en-GB": "— (empty/off)",
+                                "tr-TR": "— (boş/kapalı)"
+                            }
+                        },
+                        {
+                            "value": "banner",
+                            "label": {
+                                "de-DE": "Bildbanner (breit)",
+                                "en-GB": "Image banner",
+                                "tr-TR": "Görsel banner"
+                            }
+                        },
+                        {
+                            "value": "titletext",
+                            "label": {
+                                "de-DE": "Titel + Text",
+                                "en-GB": "Title + text",
+                                "tr-TR": "Başlık + metin"
+                            }
+                        },
+                        {
+                            "value": "cta",
+                            "label": {
+                                "de-DE": "CTA-Box (Titel+Text+Btn)",
+                                "en-GB": "CTA box",
+                                "tr-TR": "CTA kutu"
+                            }
+                        },
+                        {
+                            "value": "twoimg",
+                            "label": {
+                                "de-DE": "2 Bilder nebeneinander",
+                                "en-GB": "2 images",
+                                "tr-TR": "2 görsel"
+                            }
+                        },
+                        {
+                            "value": "stripe",
+                            "label": {
+                                "de-DE": "Info-Streifen (schmal)",
+                                "en-GB": "Info stripe",
+                                "tr-TR": "İnce şerit"
+                            }
+                        }
+                    ]
+                },
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2030,
+                "tab": "elfHome"
+            },
+            "elfbar-free-2-order": {
+                "label": {
+                    "de-DE": "Sektion 2 · Reihenfolge",
+                    "en-GB": "Section 2 · order",
+                    "tr-TR": "Bölüm 2 · sıra"
+                },
+                "type": "int",
+                "value": 220,
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2040,
+                "tab": "elfHome"
+            },
+            "elfbar-free-2-title": {
+                "label": {
+                    "de-DE": "Sektion 2 · Titel",
+                    "en-GB": "Section 2 · title",
+                    "tr-TR": "Bölüm 2 · başlık"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2050,
+                "tab": "elfHome"
+            },
+            "elfbar-free-2-text": {
+                "label": {
+                    "de-DE": "Sektion 2 · Text",
+                    "en-GB": "Section 2 · text",
+                    "tr-TR": "Bölüm 2 · metin"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2060,
+                "tab": "elfHome"
+            },
+            "elfbar-free-2-img": {
+                "label": {
+                    "de-DE": "Sektion 2 · Bild",
+                    "en-GB": "Section 2 · image",
+                    "tr-TR": "Bölüm 2 · görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2070,
+                "tab": "elfHome"
+            },
+            "elfbar-free-2-img2": {
+                "label": {
+                    "de-DE": "Sektion 2 · Bild 2 (bei \"2 Bilder\")",
+                    "en-GB": "Section 2 · image 2",
+                    "tr-TR": "Bölüm 2 · görsel 2"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2080,
+                "tab": "elfHome"
+            },
+            "elfbar-free-2-img-mobile": {
+                "label": {
+                    "de-DE": "Sektion 2 · Bild (Mobil)",
+                    "en-GB": "Section 2 · image (mobile)",
+                    "tr-TR": "Bölüm 2 · görsel (mobil)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2090,
+                "tab": "elfHome"
+            },
+            "elfbar-free-2-link": {
+                "label": {
+                    "de-DE": "Sektion 2 · Link (Bild/Box)",
+                    "en-GB": "Section 2 · link",
+                    "tr-TR": "Bölüm 2 · link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2100,
+                "tab": "elfHome"
+            },
+            "elfbar-free-2-btn-text": {
+                "label": {
+                    "de-DE": "Sektion 2 · Button-Text",
+                    "en-GB": "Section 2 · button text",
+                    "tr-TR": "Bölüm 2 · buton metni"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2110,
+                "tab": "elfHome"
+            },
+            "elfbar-free-2-btn-link": {
+                "label": {
+                    "de-DE": "Sektion 2 · Button-Link",
+                    "en-GB": "Section 2 · button link",
+                    "tr-TR": "Bölüm 2 · buton link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2120,
+                "tab": "elfHome"
+            },
+            "elfbar-free-3-type": {
+                "label": {
+                    "de-DE": "Sektion 3 · Typ",
+                    "en-GB": "Section 3 · type",
+                    "tr-TR": "Bölüm 3 · tip"
+                },
+                "type": "text",
+                "value": "none",
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "none",
+                            "label": {
+                                "de-DE": "— (leer/aus)",
+                                "en-GB": "— (empty/off)",
+                                "tr-TR": "— (boş/kapalı)"
+                            }
+                        },
+                        {
+                            "value": "banner",
+                            "label": {
+                                "de-DE": "Bildbanner (breit)",
+                                "en-GB": "Image banner",
+                                "tr-TR": "Görsel banner"
+                            }
+                        },
+                        {
+                            "value": "titletext",
+                            "label": {
+                                "de-DE": "Titel + Text",
+                                "en-GB": "Title + text",
+                                "tr-TR": "Başlık + metin"
+                            }
+                        },
+                        {
+                            "value": "cta",
+                            "label": {
+                                "de-DE": "CTA-Box (Titel+Text+Btn)",
+                                "en-GB": "CTA box",
+                                "tr-TR": "CTA kutu"
+                            }
+                        },
+                        {
+                            "value": "twoimg",
+                            "label": {
+                                "de-DE": "2 Bilder nebeneinander",
+                                "en-GB": "2 images",
+                                "tr-TR": "2 görsel"
+                            }
+                        },
+                        {
+                            "value": "stripe",
+                            "label": {
+                                "de-DE": "Info-Streifen (schmal)",
+                                "en-GB": "Info stripe",
+                                "tr-TR": "İnce şerit"
+                            }
+                        }
+                    ]
+                },
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2130,
+                "tab": "elfHome"
+            },
+            "elfbar-free-3-order": {
+                "label": {
+                    "de-DE": "Sektion 3 · Reihenfolge",
+                    "en-GB": "Section 3 · order",
+                    "tr-TR": "Bölüm 3 · sıra"
+                },
+                "type": "int",
+                "value": 230,
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2140,
+                "tab": "elfHome"
+            },
+            "elfbar-free-3-title": {
+                "label": {
+                    "de-DE": "Sektion 3 · Titel",
+                    "en-GB": "Section 3 · title",
+                    "tr-TR": "Bölüm 3 · başlık"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2150,
+                "tab": "elfHome"
+            },
+            "elfbar-free-3-text": {
+                "label": {
+                    "de-DE": "Sektion 3 · Text",
+                    "en-GB": "Section 3 · text",
+                    "tr-TR": "Bölüm 3 · metin"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2160,
+                "tab": "elfHome"
+            },
+            "elfbar-free-3-img": {
+                "label": {
+                    "de-DE": "Sektion 3 · Bild",
+                    "en-GB": "Section 3 · image",
+                    "tr-TR": "Bölüm 3 · görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2170,
+                "tab": "elfHome"
+            },
+            "elfbar-free-3-img2": {
+                "label": {
+                    "de-DE": "Sektion 3 · Bild 2 (bei \"2 Bilder\")",
+                    "en-GB": "Section 3 · image 2",
+                    "tr-TR": "Bölüm 3 · görsel 2"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2180,
+                "tab": "elfHome"
+            },
+            "elfbar-free-3-img-mobile": {
+                "label": {
+                    "de-DE": "Sektion 3 · Bild (Mobil)",
+                    "en-GB": "Section 3 · image (mobile)",
+                    "tr-TR": "Bölüm 3 · görsel (mobil)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2190,
+                "tab": "elfHome"
+            },
+            "elfbar-free-3-link": {
+                "label": {
+                    "de-DE": "Sektion 3 · Link (Bild/Box)",
+                    "en-GB": "Section 3 · link",
+                    "tr-TR": "Bölüm 3 · link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2200,
+                "tab": "elfHome"
+            },
+            "elfbar-free-3-btn-text": {
+                "label": {
+                    "de-DE": "Sektion 3 · Button-Text",
+                    "en-GB": "Section 3 · button text",
+                    "tr-TR": "Bölüm 3 · buton metni"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2210,
+                "tab": "elfHome"
+            },
+            "elfbar-free-3-btn-link": {
+                "label": {
+                    "de-DE": "Sektion 3 · Button-Link",
+                    "en-GB": "Section 3 · button link",
+                    "tr-TR": "Bölüm 3 · buton link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2220,
+                "tab": "elfHome"
+            },
+            "elfbar-free-4-type": {
+                "label": {
+                    "de-DE": "Sektion 4 · Typ",
+                    "en-GB": "Section 4 · type",
+                    "tr-TR": "Bölüm 4 · tip"
+                },
+                "type": "text",
+                "value": "none",
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "none",
+                            "label": {
+                                "de-DE": "— (leer/aus)",
+                                "en-GB": "— (empty/off)",
+                                "tr-TR": "— (boş/kapalı)"
+                            }
+                        },
+                        {
+                            "value": "banner",
+                            "label": {
+                                "de-DE": "Bildbanner (breit)",
+                                "en-GB": "Image banner",
+                                "tr-TR": "Görsel banner"
+                            }
+                        },
+                        {
+                            "value": "titletext",
+                            "label": {
+                                "de-DE": "Titel + Text",
+                                "en-GB": "Title + text",
+                                "tr-TR": "Başlık + metin"
+                            }
+                        },
+                        {
+                            "value": "cta",
+                            "label": {
+                                "de-DE": "CTA-Box (Titel+Text+Btn)",
+                                "en-GB": "CTA box",
+                                "tr-TR": "CTA kutu"
+                            }
+                        },
+                        {
+                            "value": "twoimg",
+                            "label": {
+                                "de-DE": "2 Bilder nebeneinander",
+                                "en-GB": "2 images",
+                                "tr-TR": "2 görsel"
+                            }
+                        },
+                        {
+                            "value": "stripe",
+                            "label": {
+                                "de-DE": "Info-Streifen (schmal)",
+                                "en-GB": "Info stripe",
+                                "tr-TR": "İnce şerit"
+                            }
+                        }
+                    ]
+                },
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2230,
+                "tab": "elfHome"
+            },
+            "elfbar-free-4-order": {
+                "label": {
+                    "de-DE": "Sektion 4 · Reihenfolge",
+                    "en-GB": "Section 4 · order",
+                    "tr-TR": "Bölüm 4 · sıra"
+                },
+                "type": "int",
+                "value": 240,
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2240,
+                "tab": "elfHome"
+            },
+            "elfbar-free-4-title": {
+                "label": {
+                    "de-DE": "Sektion 4 · Titel",
+                    "en-GB": "Section 4 · title",
+                    "tr-TR": "Bölüm 4 · başlık"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2250,
+                "tab": "elfHome"
+            },
+            "elfbar-free-4-text": {
+                "label": {
+                    "de-DE": "Sektion 4 · Text",
+                    "en-GB": "Section 4 · text",
+                    "tr-TR": "Bölüm 4 · metin"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2260,
+                "tab": "elfHome"
+            },
+            "elfbar-free-4-img": {
+                "label": {
+                    "de-DE": "Sektion 4 · Bild",
+                    "en-GB": "Section 4 · image",
+                    "tr-TR": "Bölüm 4 · görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2270,
+                "tab": "elfHome"
+            },
+            "elfbar-free-4-img2": {
+                "label": {
+                    "de-DE": "Sektion 4 · Bild 2 (bei \"2 Bilder\")",
+                    "en-GB": "Section 4 · image 2",
+                    "tr-TR": "Bölüm 4 · görsel 2"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2280,
+                "tab": "elfHome"
+            },
+            "elfbar-free-4-img-mobile": {
+                "label": {
+                    "de-DE": "Sektion 4 · Bild (Mobil)",
+                    "en-GB": "Section 4 · image (mobile)",
+                    "tr-TR": "Bölüm 4 · görsel (mobil)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2290,
+                "tab": "elfHome"
+            },
+            "elfbar-free-4-link": {
+                "label": {
+                    "de-DE": "Sektion 4 · Link (Bild/Box)",
+                    "en-GB": "Section 4 · link",
+                    "tr-TR": "Bölüm 4 · link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2300,
+                "tab": "elfHome"
+            },
+            "elfbar-free-4-btn-text": {
+                "label": {
+                    "de-DE": "Sektion 4 · Button-Text",
+                    "en-GB": "Section 4 · button text",
+                    "tr-TR": "Bölüm 4 · buton metni"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2310,
+                "tab": "elfHome"
+            },
+            "elfbar-free-4-btn-link": {
+                "label": {
+                    "de-DE": "Sektion 4 · Button-Link",
+                    "en-GB": "Section 4 · button link",
+                    "tr-TR": "Bölüm 4 · buton link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2320,
+                "tab": "elfHome"
+            },
+            "elfbar-free-5-type": {
+                "label": {
+                    "de-DE": "Sektion 5 · Typ",
+                    "en-GB": "Section 5 · type",
+                    "tr-TR": "Bölüm 5 · tip"
+                },
+                "type": "text",
+                "value": "none",
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "none",
+                            "label": {
+                                "de-DE": "— (leer/aus)",
+                                "en-GB": "— (empty/off)",
+                                "tr-TR": "— (boş/kapalı)"
+                            }
+                        },
+                        {
+                            "value": "banner",
+                            "label": {
+                                "de-DE": "Bildbanner (breit)",
+                                "en-GB": "Image banner",
+                                "tr-TR": "Görsel banner"
+                            }
+                        },
+                        {
+                            "value": "titletext",
+                            "label": {
+                                "de-DE": "Titel + Text",
+                                "en-GB": "Title + text",
+                                "tr-TR": "Başlık + metin"
+                            }
+                        },
+                        {
+                            "value": "cta",
+                            "label": {
+                                "de-DE": "CTA-Box (Titel+Text+Btn)",
+                                "en-GB": "CTA box",
+                                "tr-TR": "CTA kutu"
+                            }
+                        },
+                        {
+                            "value": "twoimg",
+                            "label": {
+                                "de-DE": "2 Bilder nebeneinander",
+                                "en-GB": "2 images",
+                                "tr-TR": "2 görsel"
+                            }
+                        },
+                        {
+                            "value": "stripe",
+                            "label": {
+                                "de-DE": "Info-Streifen (schmal)",
+                                "en-GB": "Info stripe",
+                                "tr-TR": "İnce şerit"
+                            }
+                        }
+                    ]
+                },
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2330,
+                "tab": "elfHome"
+            },
+            "elfbar-free-5-order": {
+                "label": {
+                    "de-DE": "Sektion 5 · Reihenfolge",
+                    "en-GB": "Section 5 · order",
+                    "tr-TR": "Bölüm 5 · sıra"
+                },
+                "type": "int",
+                "value": 250,
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2340,
+                "tab": "elfHome"
+            },
+            "elfbar-free-5-title": {
+                "label": {
+                    "de-DE": "Sektion 5 · Titel",
+                    "en-GB": "Section 5 · title",
+                    "tr-TR": "Bölüm 5 · başlık"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2350,
+                "tab": "elfHome"
+            },
+            "elfbar-free-5-text": {
+                "label": {
+                    "de-DE": "Sektion 5 · Text",
+                    "en-GB": "Section 5 · text",
+                    "tr-TR": "Bölüm 5 · metin"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2360,
+                "tab": "elfHome"
+            },
+            "elfbar-free-5-img": {
+                "label": {
+                    "de-DE": "Sektion 5 · Bild",
+                    "en-GB": "Section 5 · image",
+                    "tr-TR": "Bölüm 5 · görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2370,
+                "tab": "elfHome"
+            },
+            "elfbar-free-5-img2": {
+                "label": {
+                    "de-DE": "Sektion 5 · Bild 2 (bei \"2 Bilder\")",
+                    "en-GB": "Section 5 · image 2",
+                    "tr-TR": "Bölüm 5 · görsel 2"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2380,
+                "tab": "elfHome"
+            },
+            "elfbar-free-5-img-mobile": {
+                "label": {
+                    "de-DE": "Sektion 5 · Bild (Mobil)",
+                    "en-GB": "Section 5 · image (mobile)",
+                    "tr-TR": "Bölüm 5 · görsel (mobil)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2390,
+                "tab": "elfHome"
+            },
+            "elfbar-free-5-link": {
+                "label": {
+                    "de-DE": "Sektion 5 · Link (Bild/Box)",
+                    "en-GB": "Section 5 · link",
+                    "tr-TR": "Bölüm 5 · link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2400,
+                "tab": "elfHome"
+            },
+            "elfbar-free-5-btn-text": {
+                "label": {
+                    "de-DE": "Sektion 5 · Button-Text",
+                    "en-GB": "Section 5 · button text",
+                    "tr-TR": "Bölüm 5 · buton metni"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2410,
+                "tab": "elfHome"
+            },
+            "elfbar-free-5-btn-link": {
+                "label": {
+                    "de-DE": "Sektion 5 · Button-Link",
+                    "en-GB": "Section 5 · button link",
+                    "tr-TR": "Bölüm 5 · buton link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2420,
+                "tab": "elfHome"
+            },
+            "elfbar-free-6-type": {
+                "label": {
+                    "de-DE": "Sektion 6 · Typ",
+                    "en-GB": "Section 6 · type",
+                    "tr-TR": "Bölüm 6 · tip"
+                },
+                "type": "text",
+                "value": "none",
+                "custom": {
+                    "componentName": "sw-single-select",
+                    "options": [
+                        {
+                            "value": "none",
+                            "label": {
+                                "de-DE": "— (leer/aus)",
+                                "en-GB": "— (empty/off)",
+                                "tr-TR": "— (boş/kapalı)"
+                            }
+                        },
+                        {
+                            "value": "banner",
+                            "label": {
+                                "de-DE": "Bildbanner (breit)",
+                                "en-GB": "Image banner",
+                                "tr-TR": "Görsel banner"
+                            }
+                        },
+                        {
+                            "value": "titletext",
+                            "label": {
+                                "de-DE": "Titel + Text",
+                                "en-GB": "Title + text",
+                                "tr-TR": "Başlık + metin"
+                            }
+                        },
+                        {
+                            "value": "cta",
+                            "label": {
+                                "de-DE": "CTA-Box (Titel+Text+Btn)",
+                                "en-GB": "CTA box",
+                                "tr-TR": "CTA kutu"
+                            }
+                        },
+                        {
+                            "value": "twoimg",
+                            "label": {
+                                "de-DE": "2 Bilder nebeneinander",
+                                "en-GB": "2 images",
+                                "tr-TR": "2 görsel"
+                            }
+                        },
+                        {
+                            "value": "stripe",
+                            "label": {
+                                "de-DE": "Info-Streifen (schmal)",
+                                "en-GB": "Info stripe",
+                                "tr-TR": "İnce şerit"
+                            }
+                        }
+                    ]
+                },
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2430,
+                "tab": "elfHome"
+            },
+            "elfbar-free-6-order": {
+                "label": {
+                    "de-DE": "Sektion 6 · Reihenfolge",
+                    "en-GB": "Section 6 · order",
+                    "tr-TR": "Bölüm 6 · sıra"
+                },
+                "type": "int",
+                "value": 260,
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2440,
+                "tab": "elfHome"
+            },
+            "elfbar-free-6-title": {
+                "label": {
+                    "de-DE": "Sektion 6 · Titel",
+                    "en-GB": "Section 6 · title",
+                    "tr-TR": "Bölüm 6 · başlık"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2450,
+                "tab": "elfHome"
+            },
+            "elfbar-free-6-text": {
+                "label": {
+                    "de-DE": "Sektion 6 · Text",
+                    "en-GB": "Section 6 · text",
+                    "tr-TR": "Bölüm 6 · metin"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2460,
+                "tab": "elfHome"
+            },
+            "elfbar-free-6-img": {
+                "label": {
+                    "de-DE": "Sektion 6 · Bild",
+                    "en-GB": "Section 6 · image",
+                    "tr-TR": "Bölüm 6 · görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2470,
+                "tab": "elfHome"
+            },
+            "elfbar-free-6-img2": {
+                "label": {
+                    "de-DE": "Sektion 6 · Bild 2 (bei \"2 Bilder\")",
+                    "en-GB": "Section 6 · image 2",
+                    "tr-TR": "Bölüm 6 · görsel 2"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2480,
+                "tab": "elfHome"
+            },
+            "elfbar-free-6-img-mobile": {
+                "label": {
+                    "de-DE": "Sektion 6 · Bild (Mobil)",
+                    "en-GB": "Section 6 · image (mobile)",
+                    "tr-TR": "Bölüm 6 · görsel (mobil)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2490,
+                "tab": "elfHome"
+            },
+            "elfbar-free-6-link": {
+                "label": {
+                    "de-DE": "Sektion 6 · Link (Bild/Box)",
+                    "en-GB": "Section 6 · link",
+                    "tr-TR": "Bölüm 6 · link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2500,
+                "tab": "elfHome"
+            },
+            "elfbar-free-6-btn-text": {
+                "label": {
+                    "de-DE": "Sektion 6 · Button-Text",
+                    "en-GB": "Section 6 · button text",
+                    "tr-TR": "Bölüm 6 · buton metni"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2510,
+                "tab": "elfHome"
+            },
+            "elfbar-free-6-btn-link": {
+                "label": {
+                    "de-DE": "Sektion 6 · Button-Link",
+                    "en-GB": "Section 6 · button link",
+                    "tr-TR": "Bölüm 6 · buton link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "scss": false,
+                "block": "elfbarFree",
+                "order": 2520,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-topbanner-enabled": {
+                "label": {
+                    "de-DE": "Top-Banner (breit) – anzeigen",
+                    "en-GB": "topbanner – show",
+                    "tr-TR": "Üst banner – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 80280,
+                "scss": false,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-topbanner-order": {
+                "label": {
+                    "de-DE": "Top-Banner (breit) – Reihenfolge",
+                    "en-GB": "topbanner – order",
+                    "tr-TR": "Üst banner – sıra"
+                },
+                "type": "int",
+                "value": 25,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 80300,
+                "scss": false,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-hero-enabled": {
+                "label": {
+                    "de-DE": "Hero (oben) – anzeigen",
+                    "en-GB": "hero – show",
+                    "tr-TR": "Hero (üst) – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100000,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-hero-order": {
+                "label": {
+                    "de-DE": "Hero (oben) – Reihenfolge",
+                    "en-GB": "hero – order",
+                    "tr-TR": "Hero (üst) – sıra"
+                },
+                "type": "int",
+                "value": 5,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100050,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-sidebar-enabled": {
+                "label": {
+                    "de-DE": "Seitenleiste (Kategorien) – anzeigen",
+                    "en-GB": "sidebar – show",
+                    "tr-TR": "Sol menü (kategoriler) – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100100,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-sidebar-order": {
+                "label": {
+                    "de-DE": "Seitenleiste (Kategorien) – Reihenfolge",
+                    "en-GB": "sidebar – order",
+                    "tr-TR": "Sol menü (kategoriler) – sıra"
+                },
+                "type": "int",
+                "value": 8,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100150,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-vitrine-enabled": {
+                "label": {
+                    "de-DE": "Verkaufsvitrine PRO – anzeigen",
+                    "en-GB": "vitrine – show",
+                    "tr-TR": "Vitrine PRO – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100200,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-vitrine-order": {
+                "label": {
+                    "de-DE": "Verkaufsvitrine PRO – Reihenfolge",
+                    "en-GB": "vitrine – order",
+                    "tr-TR": "Vitrine PRO – sıra"
+                },
+                "type": "int",
+                "value": 10,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100250,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-campaign-enabled": {
+                "label": {
+                    "de-DE": "Kampagnen-Streifen – anzeigen",
+                    "en-GB": "campaign – show",
+                    "tr-TR": "Kampanya şeridi – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100300,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-campaign-order": {
+                "label": {
+                    "de-DE": "Kampagnen-Streifen – Reihenfolge",
+                    "en-GB": "campaign – order",
+                    "tr-TR": "Kampanya şeridi – sıra"
+                },
+                "type": "int",
+                "value": 20,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100350,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-promo-enabled": {
+                "label": {
+                    "de-DE": "Promo-Bilder (2er) – anzeigen",
+                    "en-GB": "promo – show",
+                    "tr-TR": "Promo görseller (2li) – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100400,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-promo-order": {
+                "label": {
+                    "de-DE": "Promo-Bilder (2er) – Reihenfolge",
+                    "en-GB": "promo – order",
+                    "tr-TR": "Promo görseller (2li) – sıra"
+                },
+                "type": "int",
+                "value": 30,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100450,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-deals-enabled": {
+                "label": {
+                    "de-DE": "Deals des Tages – anzeigen",
+                    "en-GB": "deals – show",
+                    "tr-TR": "Günün fırsatları – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100500,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-deals-order": {
+                "label": {
+                    "de-DE": "Deals des Tages – Reihenfolge",
+                    "en-GB": "deals – order",
+                    "tr-TR": "Günün fırsatları – sıra"
+                },
+                "type": "int",
+                "value": 40,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100550,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-banner-enabled": {
+                "label": {
+                    "de-DE": "Bildbanner (Deals/Neu) – anzeigen",
+                    "en-GB": "banner – show",
+                    "tr-TR": "Görsel banner – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100600,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-banner-order": {
+                "label": {
+                    "de-DE": "Bildbanner (Deals/Neu) – Reihenfolge",
+                    "en-GB": "banner – order",
+                    "tr-TR": "Görsel banner – sıra"
+                },
+                "type": "int",
+                "value": 50,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100650,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-neu-enabled": {
+                "label": {
+                    "de-DE": "Neuheiten-Slider – anzeigen",
+                    "en-GB": "neu – show",
+                    "tr-TR": "Neuheiten slider – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100700,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-neu-order": {
+                "label": {
+                    "de-DE": "Neuheiten-Slider – Reihenfolge",
+                    "en-GB": "neu – order",
+                    "tr-TR": "Neuheiten slider – sıra"
+                },
+                "type": "int",
+                "value": 60,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100750,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-bestseller-enabled": {
+                "label": {
+                    "de-DE": "Bestseller-Grid – anzeigen",
+                    "en-GB": "bestseller – show",
+                    "tr-TR": "Bestseller grid – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100900,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-bestseller-order": {
+                "label": {
+                    "de-DE": "Bestseller-Grid – Reihenfolge",
+                    "en-GB": "bestseller – order",
+                    "tr-TR": "Bestseller grid – sıra"
+                },
+                "type": "int",
+                "value": 80,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 100950,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-b2b-enabled": {
+                "label": {
+                    "de-DE": "B2B-Banner (CTA) – anzeigen",
+                    "en-GB": "b2b – show",
+                    "tr-TR": "B2B banner (CTA) – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101000,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-b2b-order": {
+                "label": {
+                    "de-DE": "B2B-Banner (CTA) – Reihenfolge",
+                    "en-GB": "b2b – order",
+                    "tr-TR": "B2B banner (CTA) – sıra"
+                },
+                "type": "int",
+                "value": 90,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101050,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-catslider1-enabled": {
+                "label": {
+                    "de-DE": "Kategorie-Slider 1 (Best.) – anzeigen",
+                    "en-GB": "catslider1 – show",
+                    "tr-TR": "Kategori slider 1 – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101100,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-catslider1-order": {
+                "label": {
+                    "de-DE": "Kategorie-Slider 1 (Best.) – Reihenfolge",
+                    "en-GB": "catslider1 – order",
+                    "tr-TR": "Kategori slider 1 – sıra"
+                },
+                "type": "int",
+                "value": 100,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101150,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-usp-enabled": {
+                "label": {
+                    "de-DE": "Warum ELFBAR (USP) – anzeigen",
+                    "en-GB": "usp – show",
+                    "tr-TR": "Neden ELFBAR (USP) – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101200,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-usp-order": {
+                "label": {
+                    "de-DE": "Warum ELFBAR (USP) – Reihenfolge",
+                    "en-GB": "usp – order",
+                    "tr-TR": "Neden ELFBAR (USP) – sıra"
+                },
+                "type": "int",
+                "value": 110,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101250,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-catslider2-enabled": {
+                "label": {
+                    "de-DE": "Kategorie-Slider 2 (Neu) – anzeigen",
+                    "en-GB": "catslider2 – show",
+                    "tr-TR": "Kategori slider 2 – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101300,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-catslider2-order": {
+                "label": {
+                    "de-DE": "Kategorie-Slider 2 (Neu) – Reihenfolge",
+                    "en-GB": "catslider2 – order",
+                    "tr-TR": "Kategori slider 2 – sıra"
+                },
+                "type": "int",
+                "value": 120,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101350,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-stripe2-enabled": {
+                "label": {
+                    "de-DE": "VITRINE-Streifen – anzeigen",
+                    "en-GB": "stripe2 – show",
+                    "tr-TR": "Vitrine şeridi – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101400,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-stripe2-order": {
+                "label": {
+                    "de-DE": "VITRINE-Streifen – Reihenfolge",
+                    "en-GB": "stripe2 – order",
+                    "tr-TR": "Vitrine şeridi – sıra"
+                },
+                "type": "int",
+                "value": 130,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101450,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-howtofaq-enabled": {
+                "label": {
+                    "de-DE": "So funktioniert + FAQ – anzeigen",
+                    "en-GB": "howtofaq – show",
+                    "tr-TR": "Nasıl çalışır + SSS – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101500,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-howtofaq-order": {
+                "label": {
+                    "de-DE": "So funktioniert + FAQ – Reihenfolge",
+                    "en-GB": "howtofaq – order",
+                    "tr-TR": "Nasıl çalışır + SSS – sıra"
+                },
+                "type": "int",
+                "value": 140,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101550,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-reviews-enabled": {
+                "label": {
+                    "de-DE": "Bewertungen-Slider – anzeigen",
+                    "en-GB": "reviews – show",
+                    "tr-TR": "Yorumlar slider – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101600,
+                "tab": "elfHome"
+            },
+            "elfbar-sec-reviews-order": {
+                "label": {
+                    "de-DE": "Bewertungen-Slider – Reihenfolge",
+                    "en-GB": "reviews – order",
+                    "tr-TR": "Yorumlar slider – sıra"
+                },
+                "type": "int",
+                "value": 150,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 101650,
+                "tab": "elfHome"
+            },
+            "elfbar-sidebar-cta-eyebrow": {
+                "label": {
+                    "de-DE": "CTA Eyebrow",
+                    "en-GB": "CTA eyebrow",
+                    "tr-TR": "CTA üst etiket"
+                },
+                "type": "text",
+                "value": "B2B Vorteil",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 460,
+                "scss": false,
+                "tab": "elfSidebar"
+            },
+            "elfbar-sidebar-cta-title": {
+                "label": {
+                    "de-DE": "CTA Titel",
+                    "en-GB": "CTA title",
+                    "tr-TR": "CTA başlık"
+                },
+                "type": "text",
+                "value": "Bis zu 40 % Marge für Händler",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 470,
+                "scss": false,
+                "tab": "elfSidebar"
+            },
+            "elfbar-sidebar-cta-btn": {
+                "label": {
+                    "de-DE": "CTA Button",
+                    "en-GB": "CTA button",
+                    "tr-TR": "CTA buton"
+                },
+                "type": "text",
+                "value": "Jetzt registrieren →",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 480,
+                "scss": false,
+                "tab": "elfSidebar"
+            },
+            "elfbar-sidebar-promo-img": {
+                "label": {
+                    "de-DE": "Promo-Bild",
+                    "en-GB": "Promo image",
+                    "tr-TR": "Promo görsel"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 490,
+                "scss": false,
+                "tab": "elfSidebar"
+            },
+            "elfbar-usp-1-title": {
+                "label": {
+                    "de-DE": "USP 1 Titel",
+                    "en-GB": "USP 1 title",
+                    "tr-TR": "USP 1 başlık"
+                },
+                "type": "text",
+                "value": "Kostenloser Versand",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 500,
+                "scss": false,
+                "tab": "elfSidebar"
+            },
+            "elfbar-usp-1-sub": {
+                "label": {
+                    "de-DE": "USP 1 Untertitel",
+                    "en-GB": "USP 1 subtitle",
+                    "tr-TR": "USP 1 alt"
+                },
+                "type": "text",
+                "value": "ab 500 € Netto",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 510,
+                "scss": false,
+                "tab": "elfSidebar"
+            },
+            "elfbar-usp-2-title": {
+                "label": {
+                    "de-DE": "USP 2 Titel",
+                    "en-GB": "USP 2 title",
+                    "tr-TR": "USP 2 başlık"
+                },
+                "type": "text",
+                "value": "Sichere Bezahlung",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 520,
+                "scss": false,
+                "tab": "elfSidebar"
+            },
+            "elfbar-usp-2-sub": {
+                "label": {
+                    "de-DE": "USP 2 Untertitel",
+                    "en-GB": "USP 2 subtitle",
+                    "tr-TR": "USP 2 alt"
+                },
+                "type": "text",
+                "value": "PayPal & Kauf auf Rechnung",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 530,
+                "scss": false,
+                "tab": "elfSidebar"
+            },
+            "elfbar-usp-3-title": {
+                "label": {
+                    "de-DE": "USP 3 Titel",
+                    "en-GB": "USP 3 title",
+                    "tr-TR": "USP 3 başlık"
+                },
+                "type": "text",
+                "value": "Schnelle Lieferung",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 540,
+                "scss": false,
+                "tab": "elfSidebar"
+            },
+            "elfbar-usp-3-sub": {
+                "label": {
+                    "de-DE": "USP 3 Untertitel",
+                    "en-GB": "USP 3 subtitle",
+                    "tr-TR": "USP 3 alt"
+                },
+                "type": "text",
+                "value": "24–48h Versand",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 550,
+                "scss": false,
+                "tab": "elfSidebar"
+            },
+            "elfbar-usp-4-title": {
+                "label": {
+                    "de-DE": "USP 4 Titel",
+                    "en-GB": "USP 4 title",
+                    "tr-TR": "USP 4 başlık"
+                },
+                "type": "text",
+                "value": "B2B Support",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 560,
+                "scss": false,
+                "tab": "elfSidebar"
+            },
+            "elfbar-usp-4-sub": {
+                "label": {
+                    "de-DE": "USP 4 Untertitel",
+                    "en-GB": "USP 4 subtitle",
+                    "tr-TR": "USP 4 alt"
+                },
+                "type": "text",
+                "value": "Mo-Fr, 09:00 - 16:00 Uhr",
+                "editable": true,
+                "block": "elfbarSidebar",
+                "order": 570,
+                "scss": false,
+                "tab": "elfSidebar"
             },
             "elfbar-show-net-prices": {
                 "label": {
@@ -2187,7 +3817,7 @@
                 "editable": true,
                 "block": "elfbarB2b",
                 "order": 1500,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-usp-1-icon": {
                 "label": {
@@ -2270,7 +3900,7 @@
                         }
                     ]
                 },
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-usp-1-title": {
                 "label": {
@@ -2289,7 +3919,7 @@
                 "block": "elfbarFooter",
                 "order": 1520,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-usp-1-sub": {
                 "label": {
@@ -2303,7 +3933,7 @@
                 "block": "elfbarFooter",
                 "order": 1530,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-usp-2-icon": {
                 "label": {
@@ -2386,7 +4016,7 @@
                         }
                     ]
                 },
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-usp-2-title": {
                 "label": {
@@ -2400,7 +4030,7 @@
                 "block": "elfbarFooter",
                 "order": 1550,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-usp-2-sub": {
                 "label": {
@@ -2414,7 +4044,7 @@
                 "block": "elfbarFooter",
                 "order": 1560,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-usp-3-icon": {
                 "label": {
@@ -2497,7 +4127,7 @@
                         }
                     ]
                 },
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-usp-3-title": {
                 "label": {
@@ -2511,7 +4141,7 @@
                 "block": "elfbarFooter",
                 "order": 1580,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-usp-3-sub": {
                 "label": {
@@ -2525,7 +4155,7 @@
                 "block": "elfbarFooter",
                 "order": 1590,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-usp-4-icon": {
                 "label": {
@@ -2608,7 +4238,7 @@
                         }
                     ]
                 },
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-usp-4-title": {
                 "label": {
@@ -2622,7 +4252,7 @@
                 "block": "elfbarFooter",
                 "order": 1610,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-usp-4-sub": {
                 "label": {
@@ -2636,7 +4266,7 @@
                 "block": "elfbarFooter",
                 "order": 1620,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-blurb": {
                 "label": {
@@ -2650,7 +4280,7 @@
                 "block": "elfbarFooter",
                 "order": 1630,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-phone": {
                 "label": {
@@ -2664,7 +4294,7 @@
                 "block": "elfbarFooter",
                 "order": 1640,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-email": {
                 "label": {
@@ -2678,7 +4308,7 @@
                 "block": "elfbarFooter",
                 "order": 1650,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-hours": {
                 "label": {
@@ -2692,7 +4322,7 @@
                 "block": "elfbarFooter",
                 "order": 1660,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-social-instagram": {
                 "label": {
@@ -2706,7 +4336,7 @@
                 "block": "elfbarFooter",
                 "order": 1670,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-social-facebook": {
                 "label": {
@@ -2720,7 +4350,7 @@
                 "block": "elfbarFooter",
                 "order": 1680,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-social-whatsapp": {
                 "label": {
@@ -2734,7 +4364,7 @@
                 "block": "elfbarFooter",
                 "order": 1690,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-b2b-cta-text": {
                 "label": {
@@ -2748,7 +4378,7 @@
                 "block": "elfbarFooter",
                 "order": 1700,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-b2b-cta-link": {
                 "label": {
@@ -2762,7 +4392,7 @@
                 "block": "elfbarFooter",
                 "order": 1710,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-logo": {
                 "label": {
@@ -2781,7 +4411,7 @@
                 "block": "elfbarFooter",
                 "order": 1720,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-newsletter-title": {
                 "label": {
@@ -2800,7 +4430,7 @@
                 "block": "elfbarFooter",
                 "order": 1730,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-newsletter-text": {
                 "label": {
@@ -2819,7 +4449,7 @@
                 "block": "elfbarFooter",
                 "order": 1740,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-newsletter-note": {
                 "label": {
@@ -2838,7 +4468,7 @@
                 "block": "elfbarFooter",
                 "order": 1750,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-trust-1": {
                 "label": {
@@ -2857,7 +4487,7 @@
                 "block": "elfbarFooter",
                 "order": 1760,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-trust-1-link": {
                 "label": {
@@ -2871,7 +4501,7 @@
                 "block": "elfbarFooter",
                 "order": 1770,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-trust-2": {
                 "label": {
@@ -2885,7 +4515,7 @@
                 "block": "elfbarFooter",
                 "order": 1780,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-trust-2-link": {
                 "label": {
@@ -2899,7 +4529,7 @@
                 "block": "elfbarFooter",
                 "order": 1790,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-trust-3": {
                 "label": {
@@ -2913,7 +4543,7 @@
                 "block": "elfbarFooter",
                 "order": 1800,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-trust-3-link": {
                 "label": {
@@ -2927,7 +4557,7 @@
                 "block": "elfbarFooter",
                 "order": 1810,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-trust-4": {
                 "label": {
@@ -2941,7 +4571,7 @@
                 "block": "elfbarFooter",
                 "order": 1820,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-trust-4-link": {
                 "label": {
@@ -2955,7 +4585,7 @@
                 "block": "elfbarFooter",
                 "order": 1830,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-pay-1": {
                 "label": {
@@ -2974,7 +4604,7 @@
                 "block": "elfbarFooter",
                 "order": 1840,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-pay-2": {
                 "label": {
@@ -2988,7 +4618,7 @@
                 "block": "elfbarFooter",
                 "order": 1850,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-pay-3": {
                 "label": {
@@ -3002,7 +4632,7 @@
                 "block": "elfbarFooter",
                 "order": 1860,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-pay-4": {
                 "label": {
@@ -3016,7 +4646,7 @@
                 "block": "elfbarFooter",
                 "order": 1870,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-pay-5": {
                 "label": {
@@ -3030,7 +4660,7 @@
                 "block": "elfbarFooter",
                 "order": 1880,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-ship-1": {
                 "label": {
@@ -3049,7 +4679,7 @@
                 "block": "elfbarFooter",
                 "order": 1890,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-ship-2": {
                 "label": {
@@ -3063,7 +4693,7 @@
                 "block": "elfbarFooter",
                 "order": 1900,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-ship-3": {
                 "label": {
@@ -3077,7 +4707,7 @@
                 "block": "elfbarFooter",
                 "order": 1910,
                 "scss": false,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             },
             "elfbar-footer-ship-4": {
                 "label": {
@@ -3091,1609 +4721,7 @@
                 "block": "elfbarFooter",
                 "order": 1920,
                 "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-free-1-type": {
-                "label": {
-                    "de-DE": "Sektion 1 · Typ",
-                    "en-GB": "Section 1 · type",
-                    "tr-TR": "Bölüm 1 · tip"
-                },
-                "type": "text",
-                "value": "none",
-                "custom": {
-                    "componentName": "sw-single-select",
-                    "options": [
-                        {
-                            "value": "none",
-                            "label": {
-                                "de-DE": "— (leer/aus)",
-                                "en-GB": "— (empty/off)",
-                                "tr-TR": "— (boş/kapalı)"
-                            }
-                        },
-                        {
-                            "value": "banner",
-                            "label": {
-                                "de-DE": "Bildbanner (breit)",
-                                "en-GB": "Image banner",
-                                "tr-TR": "Görsel banner"
-                            }
-                        },
-                        {
-                            "value": "titletext",
-                            "label": {
-                                "de-DE": "Titel + Text",
-                                "en-GB": "Title + text",
-                                "tr-TR": "Başlık + metin"
-                            }
-                        },
-                        {
-                            "value": "cta",
-                            "label": {
-                                "de-DE": "CTA-Box (Titel+Text+Btn)",
-                                "en-GB": "CTA box",
-                                "tr-TR": "CTA kutu"
-                            }
-                        },
-                        {
-                            "value": "twoimg",
-                            "label": {
-                                "de-DE": "2 Bilder nebeneinander",
-                                "en-GB": "2 images",
-                                "tr-TR": "2 görsel"
-                            }
-                        },
-                        {
-                            "value": "stripe",
-                            "label": {
-                                "de-DE": "Info-Streifen (schmal)",
-                                "en-GB": "Info stripe",
-                                "tr-TR": "İnce şerit"
-                            }
-                        }
-                    ]
-                },
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 1930,
-                "tab": "elfbar"
-            },
-            "elfbar-free-1-order": {
-                "label": {
-                    "de-DE": "Sektion 1 · Reihenfolge",
-                    "en-GB": "Section 1 · order",
-                    "tr-TR": "Bölüm 1 · sıra"
-                },
-                "type": "int",
-                "value": 210,
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 1940,
-                "tab": "elfbar"
-            },
-            "elfbar-free-1-title": {
-                "label": {
-                    "de-DE": "Sektion 1 · Titel",
-                    "en-GB": "Section 1 · title",
-                    "tr-TR": "Bölüm 1 · başlık"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 1950,
-                "tab": "elfbar"
-            },
-            "elfbar-free-1-text": {
-                "label": {
-                    "de-DE": "Sektion 1 · Text",
-                    "en-GB": "Section 1 · text",
-                    "tr-TR": "Bölüm 1 · metin"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 1960,
-                "tab": "elfbar"
-            },
-            "elfbar-free-1-img": {
-                "label": {
-                    "de-DE": "Sektion 1 · Bild",
-                    "en-GB": "Section 1 · image",
-                    "tr-TR": "Bölüm 1 · görsel"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 1970,
-                "tab": "elfbar"
-            },
-            "elfbar-free-1-img2": {
-                "label": {
-                    "de-DE": "Sektion 1 · Bild 2 (bei \"2 Bilder\")",
-                    "en-GB": "Section 1 · image 2",
-                    "tr-TR": "Bölüm 1 · görsel 2"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 1980,
-                "tab": "elfbar"
-            },
-            "elfbar-free-1-img-mobile": {
-                "label": {
-                    "de-DE": "Sektion 1 · Bild (Mobil)",
-                    "en-GB": "Section 1 · image (mobile)",
-                    "tr-TR": "Bölüm 1 · görsel (mobil)"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 1990,
-                "tab": "elfbar"
-            },
-            "elfbar-free-1-link": {
-                "label": {
-                    "de-DE": "Sektion 1 · Link (Bild/Box)",
-                    "en-GB": "Section 1 · link",
-                    "tr-TR": "Bölüm 1 · link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2000,
-                "tab": "elfbar"
-            },
-            "elfbar-free-1-btn-text": {
-                "label": {
-                    "de-DE": "Sektion 1 · Button-Text",
-                    "en-GB": "Section 1 · button text",
-                    "tr-TR": "Bölüm 1 · buton metni"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2010,
-                "tab": "elfbar"
-            },
-            "elfbar-free-1-btn-link": {
-                "label": {
-                    "de-DE": "Sektion 1 · Button-Link",
-                    "en-GB": "Section 1 · button link",
-                    "tr-TR": "Bölüm 1 · buton link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2020,
-                "tab": "elfbar"
-            },
-            "elfbar-free-2-type": {
-                "label": {
-                    "de-DE": "Sektion 2 · Typ",
-                    "en-GB": "Section 2 · type",
-                    "tr-TR": "Bölüm 2 · tip"
-                },
-                "type": "text",
-                "value": "none",
-                "custom": {
-                    "componentName": "sw-single-select",
-                    "options": [
-                        {
-                            "value": "none",
-                            "label": {
-                                "de-DE": "— (leer/aus)",
-                                "en-GB": "— (empty/off)",
-                                "tr-TR": "— (boş/kapalı)"
-                            }
-                        },
-                        {
-                            "value": "banner",
-                            "label": {
-                                "de-DE": "Bildbanner (breit)",
-                                "en-GB": "Image banner",
-                                "tr-TR": "Görsel banner"
-                            }
-                        },
-                        {
-                            "value": "titletext",
-                            "label": {
-                                "de-DE": "Titel + Text",
-                                "en-GB": "Title + text",
-                                "tr-TR": "Başlık + metin"
-                            }
-                        },
-                        {
-                            "value": "cta",
-                            "label": {
-                                "de-DE": "CTA-Box (Titel+Text+Btn)",
-                                "en-GB": "CTA box",
-                                "tr-TR": "CTA kutu"
-                            }
-                        },
-                        {
-                            "value": "twoimg",
-                            "label": {
-                                "de-DE": "2 Bilder nebeneinander",
-                                "en-GB": "2 images",
-                                "tr-TR": "2 görsel"
-                            }
-                        },
-                        {
-                            "value": "stripe",
-                            "label": {
-                                "de-DE": "Info-Streifen (schmal)",
-                                "en-GB": "Info stripe",
-                                "tr-TR": "İnce şerit"
-                            }
-                        }
-                    ]
-                },
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2030,
-                "tab": "elfbar"
-            },
-            "elfbar-free-2-order": {
-                "label": {
-                    "de-DE": "Sektion 2 · Reihenfolge",
-                    "en-GB": "Section 2 · order",
-                    "tr-TR": "Bölüm 2 · sıra"
-                },
-                "type": "int",
-                "value": 220,
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2040,
-                "tab": "elfbar"
-            },
-            "elfbar-free-2-title": {
-                "label": {
-                    "de-DE": "Sektion 2 · Titel",
-                    "en-GB": "Section 2 · title",
-                    "tr-TR": "Bölüm 2 · başlık"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2050,
-                "tab": "elfbar"
-            },
-            "elfbar-free-2-text": {
-                "label": {
-                    "de-DE": "Sektion 2 · Text",
-                    "en-GB": "Section 2 · text",
-                    "tr-TR": "Bölüm 2 · metin"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2060,
-                "tab": "elfbar"
-            },
-            "elfbar-free-2-img": {
-                "label": {
-                    "de-DE": "Sektion 2 · Bild",
-                    "en-GB": "Section 2 · image",
-                    "tr-TR": "Bölüm 2 · görsel"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2070,
-                "tab": "elfbar"
-            },
-            "elfbar-free-2-img2": {
-                "label": {
-                    "de-DE": "Sektion 2 · Bild 2 (bei \"2 Bilder\")",
-                    "en-GB": "Section 2 · image 2",
-                    "tr-TR": "Bölüm 2 · görsel 2"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2080,
-                "tab": "elfbar"
-            },
-            "elfbar-free-2-img-mobile": {
-                "label": {
-                    "de-DE": "Sektion 2 · Bild (Mobil)",
-                    "en-GB": "Section 2 · image (mobile)",
-                    "tr-TR": "Bölüm 2 · görsel (mobil)"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2090,
-                "tab": "elfbar"
-            },
-            "elfbar-free-2-link": {
-                "label": {
-                    "de-DE": "Sektion 2 · Link (Bild/Box)",
-                    "en-GB": "Section 2 · link",
-                    "tr-TR": "Bölüm 2 · link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2100,
-                "tab": "elfbar"
-            },
-            "elfbar-free-2-btn-text": {
-                "label": {
-                    "de-DE": "Sektion 2 · Button-Text",
-                    "en-GB": "Section 2 · button text",
-                    "tr-TR": "Bölüm 2 · buton metni"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2110,
-                "tab": "elfbar"
-            },
-            "elfbar-free-2-btn-link": {
-                "label": {
-                    "de-DE": "Sektion 2 · Button-Link",
-                    "en-GB": "Section 2 · button link",
-                    "tr-TR": "Bölüm 2 · buton link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2120,
-                "tab": "elfbar"
-            },
-            "elfbar-free-3-type": {
-                "label": {
-                    "de-DE": "Sektion 3 · Typ",
-                    "en-GB": "Section 3 · type",
-                    "tr-TR": "Bölüm 3 · tip"
-                },
-                "type": "text",
-                "value": "none",
-                "custom": {
-                    "componentName": "sw-single-select",
-                    "options": [
-                        {
-                            "value": "none",
-                            "label": {
-                                "de-DE": "— (leer/aus)",
-                                "en-GB": "— (empty/off)",
-                                "tr-TR": "— (boş/kapalı)"
-                            }
-                        },
-                        {
-                            "value": "banner",
-                            "label": {
-                                "de-DE": "Bildbanner (breit)",
-                                "en-GB": "Image banner",
-                                "tr-TR": "Görsel banner"
-                            }
-                        },
-                        {
-                            "value": "titletext",
-                            "label": {
-                                "de-DE": "Titel + Text",
-                                "en-GB": "Title + text",
-                                "tr-TR": "Başlık + metin"
-                            }
-                        },
-                        {
-                            "value": "cta",
-                            "label": {
-                                "de-DE": "CTA-Box (Titel+Text+Btn)",
-                                "en-GB": "CTA box",
-                                "tr-TR": "CTA kutu"
-                            }
-                        },
-                        {
-                            "value": "twoimg",
-                            "label": {
-                                "de-DE": "2 Bilder nebeneinander",
-                                "en-GB": "2 images",
-                                "tr-TR": "2 görsel"
-                            }
-                        },
-                        {
-                            "value": "stripe",
-                            "label": {
-                                "de-DE": "Info-Streifen (schmal)",
-                                "en-GB": "Info stripe",
-                                "tr-TR": "İnce şerit"
-                            }
-                        }
-                    ]
-                },
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2130,
-                "tab": "elfbar"
-            },
-            "elfbar-free-3-order": {
-                "label": {
-                    "de-DE": "Sektion 3 · Reihenfolge",
-                    "en-GB": "Section 3 · order",
-                    "tr-TR": "Bölüm 3 · sıra"
-                },
-                "type": "int",
-                "value": 230,
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2140,
-                "tab": "elfbar"
-            },
-            "elfbar-free-3-title": {
-                "label": {
-                    "de-DE": "Sektion 3 · Titel",
-                    "en-GB": "Section 3 · title",
-                    "tr-TR": "Bölüm 3 · başlık"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2150,
-                "tab": "elfbar"
-            },
-            "elfbar-free-3-text": {
-                "label": {
-                    "de-DE": "Sektion 3 · Text",
-                    "en-GB": "Section 3 · text",
-                    "tr-TR": "Bölüm 3 · metin"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2160,
-                "tab": "elfbar"
-            },
-            "elfbar-free-3-img": {
-                "label": {
-                    "de-DE": "Sektion 3 · Bild",
-                    "en-GB": "Section 3 · image",
-                    "tr-TR": "Bölüm 3 · görsel"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2170,
-                "tab": "elfbar"
-            },
-            "elfbar-free-3-img2": {
-                "label": {
-                    "de-DE": "Sektion 3 · Bild 2 (bei \"2 Bilder\")",
-                    "en-GB": "Section 3 · image 2",
-                    "tr-TR": "Bölüm 3 · görsel 2"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2180,
-                "tab": "elfbar"
-            },
-            "elfbar-free-3-img-mobile": {
-                "label": {
-                    "de-DE": "Sektion 3 · Bild (Mobil)",
-                    "en-GB": "Section 3 · image (mobile)",
-                    "tr-TR": "Bölüm 3 · görsel (mobil)"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2190,
-                "tab": "elfbar"
-            },
-            "elfbar-free-3-link": {
-                "label": {
-                    "de-DE": "Sektion 3 · Link (Bild/Box)",
-                    "en-GB": "Section 3 · link",
-                    "tr-TR": "Bölüm 3 · link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2200,
-                "tab": "elfbar"
-            },
-            "elfbar-free-3-btn-text": {
-                "label": {
-                    "de-DE": "Sektion 3 · Button-Text",
-                    "en-GB": "Section 3 · button text",
-                    "tr-TR": "Bölüm 3 · buton metni"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2210,
-                "tab": "elfbar"
-            },
-            "elfbar-free-3-btn-link": {
-                "label": {
-                    "de-DE": "Sektion 3 · Button-Link",
-                    "en-GB": "Section 3 · button link",
-                    "tr-TR": "Bölüm 3 · buton link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2220,
-                "tab": "elfbar"
-            },
-            "elfbar-free-4-type": {
-                "label": {
-                    "de-DE": "Sektion 4 · Typ",
-                    "en-GB": "Section 4 · type",
-                    "tr-TR": "Bölüm 4 · tip"
-                },
-                "type": "text",
-                "value": "none",
-                "custom": {
-                    "componentName": "sw-single-select",
-                    "options": [
-                        {
-                            "value": "none",
-                            "label": {
-                                "de-DE": "— (leer/aus)",
-                                "en-GB": "— (empty/off)",
-                                "tr-TR": "— (boş/kapalı)"
-                            }
-                        },
-                        {
-                            "value": "banner",
-                            "label": {
-                                "de-DE": "Bildbanner (breit)",
-                                "en-GB": "Image banner",
-                                "tr-TR": "Görsel banner"
-                            }
-                        },
-                        {
-                            "value": "titletext",
-                            "label": {
-                                "de-DE": "Titel + Text",
-                                "en-GB": "Title + text",
-                                "tr-TR": "Başlık + metin"
-                            }
-                        },
-                        {
-                            "value": "cta",
-                            "label": {
-                                "de-DE": "CTA-Box (Titel+Text+Btn)",
-                                "en-GB": "CTA box",
-                                "tr-TR": "CTA kutu"
-                            }
-                        },
-                        {
-                            "value": "twoimg",
-                            "label": {
-                                "de-DE": "2 Bilder nebeneinander",
-                                "en-GB": "2 images",
-                                "tr-TR": "2 görsel"
-                            }
-                        },
-                        {
-                            "value": "stripe",
-                            "label": {
-                                "de-DE": "Info-Streifen (schmal)",
-                                "en-GB": "Info stripe",
-                                "tr-TR": "İnce şerit"
-                            }
-                        }
-                    ]
-                },
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2230,
-                "tab": "elfbar"
-            },
-            "elfbar-free-4-order": {
-                "label": {
-                    "de-DE": "Sektion 4 · Reihenfolge",
-                    "en-GB": "Section 4 · order",
-                    "tr-TR": "Bölüm 4 · sıra"
-                },
-                "type": "int",
-                "value": 240,
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2240,
-                "tab": "elfbar"
-            },
-            "elfbar-free-4-title": {
-                "label": {
-                    "de-DE": "Sektion 4 · Titel",
-                    "en-GB": "Section 4 · title",
-                    "tr-TR": "Bölüm 4 · başlık"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2250,
-                "tab": "elfbar"
-            },
-            "elfbar-free-4-text": {
-                "label": {
-                    "de-DE": "Sektion 4 · Text",
-                    "en-GB": "Section 4 · text",
-                    "tr-TR": "Bölüm 4 · metin"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2260,
-                "tab": "elfbar"
-            },
-            "elfbar-free-4-img": {
-                "label": {
-                    "de-DE": "Sektion 4 · Bild",
-                    "en-GB": "Section 4 · image",
-                    "tr-TR": "Bölüm 4 · görsel"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2270,
-                "tab": "elfbar"
-            },
-            "elfbar-free-4-img2": {
-                "label": {
-                    "de-DE": "Sektion 4 · Bild 2 (bei \"2 Bilder\")",
-                    "en-GB": "Section 4 · image 2",
-                    "tr-TR": "Bölüm 4 · görsel 2"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2280,
-                "tab": "elfbar"
-            },
-            "elfbar-free-4-img-mobile": {
-                "label": {
-                    "de-DE": "Sektion 4 · Bild (Mobil)",
-                    "en-GB": "Section 4 · image (mobile)",
-                    "tr-TR": "Bölüm 4 · görsel (mobil)"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2290,
-                "tab": "elfbar"
-            },
-            "elfbar-free-4-link": {
-                "label": {
-                    "de-DE": "Sektion 4 · Link (Bild/Box)",
-                    "en-GB": "Section 4 · link",
-                    "tr-TR": "Bölüm 4 · link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2300,
-                "tab": "elfbar"
-            },
-            "elfbar-free-4-btn-text": {
-                "label": {
-                    "de-DE": "Sektion 4 · Button-Text",
-                    "en-GB": "Section 4 · button text",
-                    "tr-TR": "Bölüm 4 · buton metni"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2310,
-                "tab": "elfbar"
-            },
-            "elfbar-free-4-btn-link": {
-                "label": {
-                    "de-DE": "Sektion 4 · Button-Link",
-                    "en-GB": "Section 4 · button link",
-                    "tr-TR": "Bölüm 4 · buton link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2320,
-                "tab": "elfbar"
-            },
-            "elfbar-free-5-type": {
-                "label": {
-                    "de-DE": "Sektion 5 · Typ",
-                    "en-GB": "Section 5 · type",
-                    "tr-TR": "Bölüm 5 · tip"
-                },
-                "type": "text",
-                "value": "none",
-                "custom": {
-                    "componentName": "sw-single-select",
-                    "options": [
-                        {
-                            "value": "none",
-                            "label": {
-                                "de-DE": "— (leer/aus)",
-                                "en-GB": "— (empty/off)",
-                                "tr-TR": "— (boş/kapalı)"
-                            }
-                        },
-                        {
-                            "value": "banner",
-                            "label": {
-                                "de-DE": "Bildbanner (breit)",
-                                "en-GB": "Image banner",
-                                "tr-TR": "Görsel banner"
-                            }
-                        },
-                        {
-                            "value": "titletext",
-                            "label": {
-                                "de-DE": "Titel + Text",
-                                "en-GB": "Title + text",
-                                "tr-TR": "Başlık + metin"
-                            }
-                        },
-                        {
-                            "value": "cta",
-                            "label": {
-                                "de-DE": "CTA-Box (Titel+Text+Btn)",
-                                "en-GB": "CTA box",
-                                "tr-TR": "CTA kutu"
-                            }
-                        },
-                        {
-                            "value": "twoimg",
-                            "label": {
-                                "de-DE": "2 Bilder nebeneinander",
-                                "en-GB": "2 images",
-                                "tr-TR": "2 görsel"
-                            }
-                        },
-                        {
-                            "value": "stripe",
-                            "label": {
-                                "de-DE": "Info-Streifen (schmal)",
-                                "en-GB": "Info stripe",
-                                "tr-TR": "İnce şerit"
-                            }
-                        }
-                    ]
-                },
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2330,
-                "tab": "elfbar"
-            },
-            "elfbar-free-5-order": {
-                "label": {
-                    "de-DE": "Sektion 5 · Reihenfolge",
-                    "en-GB": "Section 5 · order",
-                    "tr-TR": "Bölüm 5 · sıra"
-                },
-                "type": "int",
-                "value": 250,
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2340,
-                "tab": "elfbar"
-            },
-            "elfbar-free-5-title": {
-                "label": {
-                    "de-DE": "Sektion 5 · Titel",
-                    "en-GB": "Section 5 · title",
-                    "tr-TR": "Bölüm 5 · başlık"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2350,
-                "tab": "elfbar"
-            },
-            "elfbar-free-5-text": {
-                "label": {
-                    "de-DE": "Sektion 5 · Text",
-                    "en-GB": "Section 5 · text",
-                    "tr-TR": "Bölüm 5 · metin"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2360,
-                "tab": "elfbar"
-            },
-            "elfbar-free-5-img": {
-                "label": {
-                    "de-DE": "Sektion 5 · Bild",
-                    "en-GB": "Section 5 · image",
-                    "tr-TR": "Bölüm 5 · görsel"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2370,
-                "tab": "elfbar"
-            },
-            "elfbar-free-5-img2": {
-                "label": {
-                    "de-DE": "Sektion 5 · Bild 2 (bei \"2 Bilder\")",
-                    "en-GB": "Section 5 · image 2",
-                    "tr-TR": "Bölüm 5 · görsel 2"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2380,
-                "tab": "elfbar"
-            },
-            "elfbar-free-5-img-mobile": {
-                "label": {
-                    "de-DE": "Sektion 5 · Bild (Mobil)",
-                    "en-GB": "Section 5 · image (mobile)",
-                    "tr-TR": "Bölüm 5 · görsel (mobil)"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2390,
-                "tab": "elfbar"
-            },
-            "elfbar-free-5-link": {
-                "label": {
-                    "de-DE": "Sektion 5 · Link (Bild/Box)",
-                    "en-GB": "Section 5 · link",
-                    "tr-TR": "Bölüm 5 · link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2400,
-                "tab": "elfbar"
-            },
-            "elfbar-free-5-btn-text": {
-                "label": {
-                    "de-DE": "Sektion 5 · Button-Text",
-                    "en-GB": "Section 5 · button text",
-                    "tr-TR": "Bölüm 5 · buton metni"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2410,
-                "tab": "elfbar"
-            },
-            "elfbar-free-5-btn-link": {
-                "label": {
-                    "de-DE": "Sektion 5 · Button-Link",
-                    "en-GB": "Section 5 · button link",
-                    "tr-TR": "Bölüm 5 · buton link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2420,
-                "tab": "elfbar"
-            },
-            "elfbar-free-6-type": {
-                "label": {
-                    "de-DE": "Sektion 6 · Typ",
-                    "en-GB": "Section 6 · type",
-                    "tr-TR": "Bölüm 6 · tip"
-                },
-                "type": "text",
-                "value": "none",
-                "custom": {
-                    "componentName": "sw-single-select",
-                    "options": [
-                        {
-                            "value": "none",
-                            "label": {
-                                "de-DE": "— (leer/aus)",
-                                "en-GB": "— (empty/off)",
-                                "tr-TR": "— (boş/kapalı)"
-                            }
-                        },
-                        {
-                            "value": "banner",
-                            "label": {
-                                "de-DE": "Bildbanner (breit)",
-                                "en-GB": "Image banner",
-                                "tr-TR": "Görsel banner"
-                            }
-                        },
-                        {
-                            "value": "titletext",
-                            "label": {
-                                "de-DE": "Titel + Text",
-                                "en-GB": "Title + text",
-                                "tr-TR": "Başlık + metin"
-                            }
-                        },
-                        {
-                            "value": "cta",
-                            "label": {
-                                "de-DE": "CTA-Box (Titel+Text+Btn)",
-                                "en-GB": "CTA box",
-                                "tr-TR": "CTA kutu"
-                            }
-                        },
-                        {
-                            "value": "twoimg",
-                            "label": {
-                                "de-DE": "2 Bilder nebeneinander",
-                                "en-GB": "2 images",
-                                "tr-TR": "2 görsel"
-                            }
-                        },
-                        {
-                            "value": "stripe",
-                            "label": {
-                                "de-DE": "Info-Streifen (schmal)",
-                                "en-GB": "Info stripe",
-                                "tr-TR": "İnce şerit"
-                            }
-                        }
-                    ]
-                },
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2430,
-                "tab": "elfbar"
-            },
-            "elfbar-free-6-order": {
-                "label": {
-                    "de-DE": "Sektion 6 · Reihenfolge",
-                    "en-GB": "Section 6 · order",
-                    "tr-TR": "Bölüm 6 · sıra"
-                },
-                "type": "int",
-                "value": 260,
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2440,
-                "tab": "elfbar"
-            },
-            "elfbar-free-6-title": {
-                "label": {
-                    "de-DE": "Sektion 6 · Titel",
-                    "en-GB": "Section 6 · title",
-                    "tr-TR": "Bölüm 6 · başlık"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2450,
-                "tab": "elfbar"
-            },
-            "elfbar-free-6-text": {
-                "label": {
-                    "de-DE": "Sektion 6 · Text",
-                    "en-GB": "Section 6 · text",
-                    "tr-TR": "Bölüm 6 · metin"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2460,
-                "tab": "elfbar"
-            },
-            "elfbar-free-6-img": {
-                "label": {
-                    "de-DE": "Sektion 6 · Bild",
-                    "en-GB": "Section 6 · image",
-                    "tr-TR": "Bölüm 6 · görsel"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2470,
-                "tab": "elfbar"
-            },
-            "elfbar-free-6-img2": {
-                "label": {
-                    "de-DE": "Sektion 6 · Bild 2 (bei \"2 Bilder\")",
-                    "en-GB": "Section 6 · image 2",
-                    "tr-TR": "Bölüm 6 · görsel 2"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2480,
-                "tab": "elfbar"
-            },
-            "elfbar-free-6-img-mobile": {
-                "label": {
-                    "de-DE": "Sektion 6 · Bild (Mobil)",
-                    "en-GB": "Section 6 · image (mobile)",
-                    "tr-TR": "Bölüm 6 · görsel (mobil)"
-                },
-                "type": "media",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2490,
-                "tab": "elfbar"
-            },
-            "elfbar-free-6-link": {
-                "label": {
-                    "de-DE": "Sektion 6 · Link (Bild/Box)",
-                    "en-GB": "Section 6 · link",
-                    "tr-TR": "Bölüm 6 · link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2500,
-                "tab": "elfbar"
-            },
-            "elfbar-free-6-btn-text": {
-                "label": {
-                    "de-DE": "Sektion 6 · Button-Text",
-                    "en-GB": "Section 6 · button text",
-                    "tr-TR": "Bölüm 6 · buton metni"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2510,
-                "tab": "elfbar"
-            },
-            "elfbar-free-6-btn-link": {
-                "label": {
-                    "de-DE": "Sektion 6 · Button-Link",
-                    "en-GB": "Section 6 · button link",
-                    "tr-TR": "Bölüm 6 · buton link"
-                },
-                "type": "text",
-                "value": "",
-                "editable": true,
-                "scss": false,
-                "block": "elfbarFree",
-                "order": 2520,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-topbanner-enabled": {
-                "label": {
-                    "de-DE": "Top-Banner (breit) – anzeigen",
-                    "en-GB": "topbanner – show",
-                    "tr-TR": "Üst banner – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 80280,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-topbanner-order": {
-                "label": {
-                    "de-DE": "Top-Banner (breit) – Reihenfolge",
-                    "en-GB": "topbanner – order",
-                    "tr-TR": "Üst banner – sıra"
-                },
-                "type": "int",
-                "value": 25,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 80300,
-                "scss": false,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-hero-enabled": {
-                "label": {
-                    "de-DE": "Hero (oben) – anzeigen",
-                    "en-GB": "hero – show",
-                    "tr-TR": "Hero (üst) – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100000,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-hero-order": {
-                "label": {
-                    "de-DE": "Hero (oben) – Reihenfolge",
-                    "en-GB": "hero – order",
-                    "tr-TR": "Hero (üst) – sıra"
-                },
-                "type": "int",
-                "value": 5,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100050,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-sidebar-enabled": {
-                "label": {
-                    "de-DE": "Seitenleiste (Kategorien) – anzeigen",
-                    "en-GB": "sidebar – show",
-                    "tr-TR": "Sol menü (kategoriler) – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100100,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-sidebar-order": {
-                "label": {
-                    "de-DE": "Seitenleiste (Kategorien) – Reihenfolge",
-                    "en-GB": "sidebar – order",
-                    "tr-TR": "Sol menü (kategoriler) – sıra"
-                },
-                "type": "int",
-                "value": 8,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100150,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-vitrine-enabled": {
-                "label": {
-                    "de-DE": "Verkaufsvitrine PRO – anzeigen",
-                    "en-GB": "vitrine – show",
-                    "tr-TR": "Vitrine PRO – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100200,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-vitrine-order": {
-                "label": {
-                    "de-DE": "Verkaufsvitrine PRO – Reihenfolge",
-                    "en-GB": "vitrine – order",
-                    "tr-TR": "Vitrine PRO – sıra"
-                },
-                "type": "int",
-                "value": 10,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100250,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-campaign-enabled": {
-                "label": {
-                    "de-DE": "Kampagnen-Streifen – anzeigen",
-                    "en-GB": "campaign – show",
-                    "tr-TR": "Kampanya şeridi – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100300,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-campaign-order": {
-                "label": {
-                    "de-DE": "Kampagnen-Streifen – Reihenfolge",
-                    "en-GB": "campaign – order",
-                    "tr-TR": "Kampanya şeridi – sıra"
-                },
-                "type": "int",
-                "value": 20,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100350,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-promo-enabled": {
-                "label": {
-                    "de-DE": "Promo-Bilder (2er) – anzeigen",
-                    "en-GB": "promo – show",
-                    "tr-TR": "Promo görseller (2li) – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100400,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-promo-order": {
-                "label": {
-                    "de-DE": "Promo-Bilder (2er) – Reihenfolge",
-                    "en-GB": "promo – order",
-                    "tr-TR": "Promo görseller (2li) – sıra"
-                },
-                "type": "int",
-                "value": 30,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100450,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-deals-enabled": {
-                "label": {
-                    "de-DE": "Deals des Tages – anzeigen",
-                    "en-GB": "deals – show",
-                    "tr-TR": "Günün fırsatları – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100500,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-deals-order": {
-                "label": {
-                    "de-DE": "Deals des Tages – Reihenfolge",
-                    "en-GB": "deals – order",
-                    "tr-TR": "Günün fırsatları – sıra"
-                },
-                "type": "int",
-                "value": 40,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100550,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-banner-enabled": {
-                "label": {
-                    "de-DE": "Bildbanner (Deals/Neu) – anzeigen",
-                    "en-GB": "banner – show",
-                    "tr-TR": "Görsel banner – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100600,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-banner-order": {
-                "label": {
-                    "de-DE": "Bildbanner (Deals/Neu) – Reihenfolge",
-                    "en-GB": "banner – order",
-                    "tr-TR": "Görsel banner – sıra"
-                },
-                "type": "int",
-                "value": 50,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100650,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-neu-enabled": {
-                "label": {
-                    "de-DE": "Neuheiten-Slider – anzeigen",
-                    "en-GB": "neu – show",
-                    "tr-TR": "Neuheiten slider – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100700,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-neu-order": {
-                "label": {
-                    "de-DE": "Neuheiten-Slider – Reihenfolge",
-                    "en-GB": "neu – order",
-                    "tr-TR": "Neuheiten slider – sıra"
-                },
-                "type": "int",
-                "value": 60,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100750,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-bestseller-enabled": {
-                "label": {
-                    "de-DE": "Bestseller-Grid – anzeigen",
-                    "en-GB": "bestseller – show",
-                    "tr-TR": "Bestseller grid – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100900,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-bestseller-order": {
-                "label": {
-                    "de-DE": "Bestseller-Grid – Reihenfolge",
-                    "en-GB": "bestseller – order",
-                    "tr-TR": "Bestseller grid – sıra"
-                },
-                "type": "int",
-                "value": 80,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 100950,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-b2b-enabled": {
-                "label": {
-                    "de-DE": "B2B-Banner (CTA) – anzeigen",
-                    "en-GB": "b2b – show",
-                    "tr-TR": "B2B banner (CTA) – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101000,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-b2b-order": {
-                "label": {
-                    "de-DE": "B2B-Banner (CTA) – Reihenfolge",
-                    "en-GB": "b2b – order",
-                    "tr-TR": "B2B banner (CTA) – sıra"
-                },
-                "type": "int",
-                "value": 90,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101050,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-catslider1-enabled": {
-                "label": {
-                    "de-DE": "Kategorie-Slider 1 (Best.) – anzeigen",
-                    "en-GB": "catslider1 – show",
-                    "tr-TR": "Kategori slider 1 – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101100,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-catslider1-order": {
-                "label": {
-                    "de-DE": "Kategorie-Slider 1 (Best.) – Reihenfolge",
-                    "en-GB": "catslider1 – order",
-                    "tr-TR": "Kategori slider 1 – sıra"
-                },
-                "type": "int",
-                "value": 100,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101150,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-usp-enabled": {
-                "label": {
-                    "de-DE": "Warum ELFBAR (USP) – anzeigen",
-                    "en-GB": "usp – show",
-                    "tr-TR": "Neden ELFBAR (USP) – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101200,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-usp-order": {
-                "label": {
-                    "de-DE": "Warum ELFBAR (USP) – Reihenfolge",
-                    "en-GB": "usp – order",
-                    "tr-TR": "Neden ELFBAR (USP) – sıra"
-                },
-                "type": "int",
-                "value": 110,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101250,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-catslider2-enabled": {
-                "label": {
-                    "de-DE": "Kategorie-Slider 2 (Neu) – anzeigen",
-                    "en-GB": "catslider2 – show",
-                    "tr-TR": "Kategori slider 2 – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101300,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-catslider2-order": {
-                "label": {
-                    "de-DE": "Kategorie-Slider 2 (Neu) – Reihenfolge",
-                    "en-GB": "catslider2 – order",
-                    "tr-TR": "Kategori slider 2 – sıra"
-                },
-                "type": "int",
-                "value": 120,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101350,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-stripe2-enabled": {
-                "label": {
-                    "de-DE": "VITRINE-Streifen – anzeigen",
-                    "en-GB": "stripe2 – show",
-                    "tr-TR": "Vitrine şeridi – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101400,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-stripe2-order": {
-                "label": {
-                    "de-DE": "VITRINE-Streifen – Reihenfolge",
-                    "en-GB": "stripe2 – order",
-                    "tr-TR": "Vitrine şeridi – sıra"
-                },
-                "type": "int",
-                "value": 130,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101450,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-howtofaq-enabled": {
-                "label": {
-                    "de-DE": "So funktioniert + FAQ – anzeigen",
-                    "en-GB": "howtofaq – show",
-                    "tr-TR": "Nasıl çalışır + SSS – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101500,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-howtofaq-order": {
-                "label": {
-                    "de-DE": "So funktioniert + FAQ – Reihenfolge",
-                    "en-GB": "howtofaq – order",
-                    "tr-TR": "Nasıl çalışır + SSS – sıra"
-                },
-                "type": "int",
-                "value": 140,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101550,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-reviews-enabled": {
-                "label": {
-                    "de-DE": "Bewertungen-Slider – anzeigen",
-                    "en-GB": "reviews – show",
-                    "tr-TR": "Yorumlar slider – göster"
-                },
-                "type": "bool",
-                "value": true,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101600,
-                "tab": "elfbar"
-            },
-            "elfbar-sec-reviews-order": {
-                "label": {
-                    "de-DE": "Bewertungen-Slider – Reihenfolge",
-                    "en-GB": "reviews – order",
-                    "tr-TR": "Yorumlar slider – sıra"
-                },
-                "type": "int",
-                "value": 150,
-                "editable": true,
-                "block": "elfbarSections",
-                "order": 101650,
-                "tab": "elfbar"
+                "tab": "elfFooter"
             }
         }
     }
