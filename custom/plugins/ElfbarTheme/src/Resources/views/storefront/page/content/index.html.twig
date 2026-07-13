@@ -194,10 +194,26 @@
                     {% if theme_config('elfbar-sec-vitrine-enabled') is not same as(false) %}
                     <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-vitrine-order')|default(elfbarSecOrderDefaults.vitrine) }}">
                     {% block elfbar_home_vitrine %}
+                        {# Vitrine PRO — tüm içerik panelden (theme_config). Görsel doluysa
+                           SVG çizim yerine gerçek foto gösterilir. #}
+                        {% set vpBadge   = theme_config('elfbar-vitrine-badge')|default('Neu · Exklusiv für Händler') %}
+                        {% set vpEyebrow = theme_config('elfbar-vitrine-eyebrow')|default('VITRINE PRO') %}
+                        {% set vpTitle   = theme_config('elfbar-vitrine-title')|default('Premium Verkaufsvitrine für Ihren Store') %}
+                        {% set vpText    = theme_config('elfbar-vitrine-text') %}
+                        {% set vpImg     = theme_config('elfbar-vitrine-img') %}
+                        {% set vpF1      = theme_config('elfbar-vitrine-feature-1') %}
+                        {% set vpF2      = theme_config('elfbar-vitrine-feature-2') %}
+                        {% set vpB1T     = theme_config('elfbar-vitrine-btn1-text') %}
+                        {% set vpB1L     = theme_config('elfbar-vitrine-btn1-link') %}
+                        {% set vpB2T     = theme_config('elfbar-vitrine-btn2-text') %}
+                        {% set vpB2L     = theme_config('elfbar-vitrine-btn2-link') %}
                         <section class="elfbar-vitrine elfbar-vitrine--compact" aria-labelledby="elfbar-vitrine-title">
                             <div class="elfbar-vitrine__glow elfbar-vitrine__glow--a" aria-hidden="true"></div>
                             <div class="elfbar-vitrine__media">
-                                <span class="elfbar-vitrine__badge">Neu · Exklusiv für Händler</span>
+                                {% if vpBadge %}<span class="elfbar-vitrine__badge">{{ vpBadge }}</span>{% endif %}
+                                {% if vpImg %}
+                                    <div class="elfbar-vitrine__photo"><img src="{{ vpImg }}" alt="{{ vpTitle }}" loading="lazy"></div>
+                                {% else %}
                                 <div class="elfbar-vitrine__cabinet" aria-hidden="true">
                                     <svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Verkaufsvitrine">
                                         <rect x="22" y="14" width="156" height="252" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
@@ -219,24 +235,24 @@
                                         </defs>
                                     </svg>
                                 </div>
+                                {% endif %}
                             </div>
                             <div class="elfbar-vitrine__content">
-                                <p class="elfbar-vitrine__eyebrow">VITRINE PRO</p>
-                                <h2 class="elfbar-vitrine__title" id="elfbar-vitrine-title">Premium Verkaufsvitrine für Ihren Store</h2>
-                                <p class="elfbar-vitrine__text">
-                                    Abschließbar, beleuchtet und sofort einsatzbereit – das perfekte Highlight für
-                                    Kiosk, Tankstelle und Fachhandel. Für Bestandskunden auf Wunsch kostenlos.
-                                </p>
-                                <ul class="elfbar-vitrine__features">
-                                    <li>{% sw_icon 'shield' %} Abschließbar &amp; LED-beleuchtet</li>
-                                    <li>{% sw_icon 'shield' %} Markenkonform gebrandet</li>
-                                </ul>
-                                <div class="elfbar-vitrine__actions">
-                                    <a href="{{ path('frontend.account.register.page') }}" class="elfbar-btn elfbar-btn--gradient">
-                                        Jetzt kostenlos anfragen {% sw_icon 'arrow-right' %}
-                                    </a>
-                                    <a href="#" class="elfbar-btn elfbar-btn--outline">Datenblatt</a>
-                                </div>
+                                {% if vpEyebrow %}<p class="elfbar-vitrine__eyebrow">{{ vpEyebrow }}</p>{% endif %}
+                                {% if vpTitle %}<h2 class="elfbar-vitrine__title" id="elfbar-vitrine-title">{{ vpTitle }}</h2>{% endif %}
+                                {% if vpText %}<p class="elfbar-vitrine__text">{{ vpText }}</p>{% endif %}
+                                {% if vpF1 or vpF2 %}
+                                    <ul class="elfbar-vitrine__features">
+                                        {% if vpF1 %}<li>{% sw_icon 'shield' %} {{ vpF1 }}</li>{% endif %}
+                                        {% if vpF2 %}<li>{% sw_icon 'shield' %} {{ vpF2 }}</li>{% endif %}
+                                    </ul>
+                                {% endif %}
+                                {% if vpB1T or vpB2T %}
+                                    <div class="elfbar-vitrine__actions">
+                                        {% if vpB1T %}<a href="{{ vpB1L ?: path('frontend.account.register.page') }}" class="elfbar-btn elfbar-btn--gradient">{{ vpB1T }} {% sw_icon 'arrow-right' %}</a>{% endif %}
+                                        {% if vpB2T %}<a href="{{ vpB2L ?: '#' }}" class="elfbar-btn elfbar-btn--outline">{{ vpB2T }}</a>{% endif %}
+                                    </div>
+                                {% endif %}
                             </div>
                         </section>
                     {% endblock %}
@@ -252,6 +268,29 @@
                                 {% if theme_config('elfbar-campaign-brand') %}<span class="elfbar-campaign__brand">{{ theme_config('elfbar-campaign-brand') }}</span>{% endif %}
                                 {% if theme_config('elfbar-campaign-text') %}<span class="elfbar-campaign__text">{{ theme_config('elfbar-campaign-text') }}</span>{% endif %}
                             </a>
+                        {% endif %}
+                    {% endblock %}
+                    </div>
+                    {% endif %}
+
+                    {# ============ TOP-BANNER (tam genişlik, promo görsellerin ÜSTÜNDE).
+                       col-12, height = promo görselleriyle aynı (aspect 16/3). Görsel
+                       boşsa gizli. Panelden: img / img-mobile / link. ============ #}
+                    {% if theme_config('elfbar-sec-topbanner-enabled') is not same as(false) %}
+                    <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-topbanner-order')|default(25) }}">
+                    {% block elfbar_home_topbanner %}
+                        {% set tbImg    = theme_config('elfbar-topbanner-img') %}
+                        {% set tbImgMob = theme_config('elfbar-topbanner-img-mobile') %}
+                        {% set tbLink   = theme_config('elfbar-topbanner-link') %}
+                        {% if tbImg or tbImgMob %}
+                            {% set tbTag = tbLink ? 'a' : 'div' %}
+                            <{{ tbTag }} class="elfbar-topbanner{% if tbImgMob %} has-mobile{% endif %}"{% if tbLink %} href="{{ tbLink }}"{% endif %}>
+                                {% if tbImg %}<img class="elfbar-topbanner__img elfbar-topbanner__img--desktop" src="{{ tbImg }}" alt="" loading="lazy">{% endif %}
+                                {% if tbImgMob %}<img class="elfbar-topbanner__img elfbar-topbanner__img--mobile" src="{{ tbImgMob }}" alt="" loading="lazy">{% endif %}
+                            </{{ tbTag }}>
+                        {% else %}
+                            {# Görsel yoksa placeholder (promo ile aynı görünüm) #}
+                            <div class="elfbar-topbanner elfbar-topbanner--empty">{{ mediaSvg }}</div>
                         {% endif %}
                     {% endblock %}
                     </div>

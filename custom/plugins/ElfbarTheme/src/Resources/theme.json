@@ -126,6 +126,20 @@
                     "tr-TR": "18) Vitrin banner (Neuheiten & Bestseller arası)"
                 }
             },
+            "elfbarVitrinePro": {
+                "label": {
+                    "de-DE": "20) Vitrine PRO (Text + Bild + Buttons)",
+                    "en-GB": "20) Vitrine PRO",
+                    "tr-TR": "20) Vitrine PRO"
+                }
+            },
+            "elfbarTopBanner": {
+                "label": {
+                    "de-DE": "21) Top-Banner (breit, über Promo-Bildern)",
+                    "en-GB": "21) Top banner (full width)",
+                    "tr-TR": "21) Üst banner (tam genişlik)"
+                }
+            },
             "elfbarFree": {
                 "label": {
                     "de-DE": "98) Freie Sektionen (eigene Blöcke)",
@@ -3690,6 +3704,188 @@
                 "block": "elfbarFree",
                 "order": 91180
             },
+            "elfbar-vitrine-badge": {
+                "label": {
+                    "de-DE": "Badge (oben)",
+                    "en-GB": "Badge",
+                    "tr-TR": "Rozet"
+                },
+                "type": "text",
+                "value": "Neu · Exklusiv für Händler",
+                "editable": true,
+                "block": "elfbarVitrinePro",
+                "order": 80000,
+                "scss": false
+            },
+            "elfbar-vitrine-eyebrow": {
+                "label": {
+                    "de-DE": "Eyebrow (klein)",
+                    "en-GB": "Eyebrow",
+                    "tr-TR": "Üst etiket"
+                },
+                "type": "text",
+                "value": "VITRINE PRO",
+                "editable": true,
+                "block": "elfbarVitrinePro",
+                "order": 80020,
+                "scss": false
+            },
+            "elfbar-vitrine-title": {
+                "label": {
+                    "de-DE": "Titel",
+                    "en-GB": "Title",
+                    "tr-TR": "Başlık"
+                },
+                "type": "text",
+                "value": "Premium Verkaufsvitrine für Ihren Store",
+                "editable": true,
+                "block": "elfbarVitrinePro",
+                "order": 80040,
+                "scss": false
+            },
+            "elfbar-vitrine-text": {
+                "label": {
+                    "de-DE": "Text",
+                    "en-GB": "Text",
+                    "tr-TR": "Metin"
+                },
+                "type": "text",
+                "value": "Abschließbar, beleuchtet und sofort einsatzbereit – das perfekte Highlight für Kiosk, Tankstelle und Fachhandel. Für Bestandskunden auf Wunsch kostenlos.",
+                "editable": true,
+                "block": "elfbarVitrinePro",
+                "order": 80060,
+                "scss": false
+            },
+            "elfbar-vitrine-img": {
+                "label": {
+                    "de-DE": "Bild (statt Grafik)",
+                    "en-GB": "Image",
+                    "tr-TR": "Görsel (çizim yerine)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarVitrinePro",
+                "order": 80080,
+                "scss": false
+            },
+            "elfbar-vitrine-feature-1": {
+                "label": {
+                    "de-DE": "Vorteil 1",
+                    "en-GB": "Feature 1",
+                    "tr-TR": "Özellik 1"
+                },
+                "type": "text",
+                "value": "Abschließbar & LED-beleuchtet",
+                "editable": true,
+                "block": "elfbarVitrinePro",
+                "order": 80100,
+                "scss": false
+            },
+            "elfbar-vitrine-feature-2": {
+                "label": {
+                    "de-DE": "Vorteil 2",
+                    "en-GB": "Feature 2",
+                    "tr-TR": "Özellik 2"
+                },
+                "type": "text",
+                "value": "Markenkonform gebrandet",
+                "editable": true,
+                "block": "elfbarVitrinePro",
+                "order": 80120,
+                "scss": false
+            },
+            "elfbar-vitrine-btn1-text": {
+                "label": {
+                    "de-DE": "Button 1 · Text",
+                    "en-GB": "Button 1 text",
+                    "tr-TR": "Buton 1 metin"
+                },
+                "type": "text",
+                "value": "Jetzt kostenlos anfragen",
+                "editable": true,
+                "block": "elfbarVitrinePro",
+                "order": 80140,
+                "scss": false
+            },
+            "elfbar-vitrine-btn1-link": {
+                "label": {
+                    "de-DE": "Button 1 · Link (leer=Registrierung)",
+                    "en-GB": "Button 1 link",
+                    "tr-TR": "Buton 1 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarVitrinePro",
+                "order": 80160,
+                "scss": false
+            },
+            "elfbar-vitrine-btn2-text": {
+                "label": {
+                    "de-DE": "Button 2 · Text",
+                    "en-GB": "Button 2 text",
+                    "tr-TR": "Buton 2 metin"
+                },
+                "type": "text",
+                "value": "Datenblatt",
+                "editable": true,
+                "block": "elfbarVitrinePro",
+                "order": 80180,
+                "scss": false
+            },
+            "elfbar-vitrine-btn2-link": {
+                "label": {
+                    "de-DE": "Button 2 · Link",
+                    "en-GB": "Button 2 link",
+                    "tr-TR": "Buton 2 link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarVitrinePro",
+                "order": 80200,
+                "scss": false
+            },
+            "elfbar-topbanner-img": {
+                "label": {
+                    "de-DE": "Bild (breit, Desktop)",
+                    "en-GB": "Image (desktop)",
+                    "tr-TR": "Görsel (masaüstü)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopBanner",
+                "order": 80220,
+                "scss": false
+            },
+            "elfbar-topbanner-img-mobile": {
+                "label": {
+                    "de-DE": "Bild (Mobil)",
+                    "en-GB": "Image (mobile)",
+                    "tr-TR": "Görsel (mobil)"
+                },
+                "type": "media",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopBanner",
+                "order": 80240,
+                "scss": false
+            },
+            "elfbar-topbanner-link": {
+                "label": {
+                    "de-DE": "Link",
+                    "en-GB": "Link",
+                    "tr-TR": "Link"
+                },
+                "type": "text",
+                "value": "",
+                "editable": true,
+                "block": "elfbarTopBanner",
+                "order": 80260,
+                "scss": false
+            },
             "elfbar-sec-hero-enabled": {
                 "label": {
                     "de-DE": "Hero (oben) – anzeigen",
@@ -4097,6 +4293,32 @@
                 "editable": true,
                 "block": "elfbarSections",
                 "order": 101650
+            },
+            "elfbar-sec-topbanner-enabled": {
+                "label": {
+                    "de-DE": "Top-Banner (breit) – anzeigen",
+                    "en-GB": "topbanner – show",
+                    "tr-TR": "Üst banner – göster"
+                },
+                "type": "bool",
+                "value": true,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 80280,
+                "scss": false
+            },
+            "elfbar-sec-topbanner-order": {
+                "label": {
+                    "de-DE": "Top-Banner (breit) – Reihenfolge",
+                    "en-GB": "topbanner – order",
+                    "tr-TR": "Üst banner – sıra"
+                },
+                "type": "int",
+                "value": 25,
+                "editable": true,
+                "block": "elfbarSections",
+                "order": 80300,
+                "scss": false
             }
         }
     }

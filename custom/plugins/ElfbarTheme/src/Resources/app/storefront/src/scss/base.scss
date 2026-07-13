@@ -4764,3 +4764,43 @@ a.elfbar-link, .elfbar-more-link {
         }
     }
 }
+
+/* =====================================================================
+   TOP-BANNER (tam genişlik, promo görsellerin üstünde).
+   col-12; height = promo görselleriyle AYNI. Promo tek kutu aspect 8/3 +
+   2 kolon → tam genişlikte aynı yüksekliği vermek için aspect 16/3.
+   ===================================================================== */
+.elfbar-topbanner {
+    display: block; width: 100%;
+    aspect-ratio: 16 / 3;             // tek promo (8/3) × 2 kolon = aynı height
+    min-height: 0; overflow: hidden;
+    border-radius: $elfbar-radius; margin-bottom: 1.5rem;
+    background: rgba($sw-color-brand-primary, 0.12);
+    border: 1px solid rgba($sw-color-brand-primary, 0.18);
+    box-shadow: $elf-shadow-sm; line-height: 0;
+    transition: transform .25s ease, box-shadow .25s ease;
+    &:hover { transform: translateY(-3px); box-shadow: $elf-shadow-md; }
+
+    .elfbar-topbanner__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .elfbar-topbanner__img--mobile { display: none; }
+    &.has-mobile {
+        @media (max-width: 991.98px) {
+            .elfbar-topbanner__img--desktop { display: none; }
+            .elfbar-topbanner__img--mobile { display: block; }
+        }
+    }
+
+    // Görsel yokken placeholder (promo boş kutusuyla aynı görünüm)
+    &--empty {
+        display: grid; place-items: center;
+        color: rgba($sw-color-brand-primary, 0.45);
+        &:hover { transform: none; box-shadow: $elf-shadow-sm; }
+    }
+}
+
+/* Vitrine PRO — panelden gerçek foto yüklenince (SVG çizim yerine) */
+.elfbar-vitrine__photo {
+    width: 100%; border-radius: $elfbar-radius; overflow: hidden; line-height: 0;
+    box-shadow: $elf-shadow-sm;
+    img { width: 100%; height: 100%; object-fit: cover; display: block; max-height: 280px; }
+}
