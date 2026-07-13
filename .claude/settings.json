@@ -63,7 +63,9 @@
       "Bash(sort -t: -k2 -n)",
       "Bash(python3 -c \"import json;json.load\\(open\\('custom/plugins/ElfbarTheme/src/Resources/theme.json'\\)\\);print\\('VALID'\\)\")",
       "Bash(/opt/homebrew/opt/mysql@8.0/bin/mysql -h 127.0.0.1 -P 3307 -u root shopware_elfbar -N -e ' *)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8001/)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8001/)",
+      "Bash(lsof -ti:8019)",
+      "Bash(sed -i '' 's|^APP_URL=.*|APP_URL=http://127.0.0.1:8619|' .env)"
     ]
   }
 }
