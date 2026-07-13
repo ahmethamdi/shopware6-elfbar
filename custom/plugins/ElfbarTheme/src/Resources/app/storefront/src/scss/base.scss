@@ -4346,11 +4346,35 @@ a.elfbar-link, .elfbar-more-link {
         &__features { justify-items: center; li { justify-content: center; } }
         &__actions { justify-content: center; }
     }
-    .elfbar-usps__grid, .elfbar-brandworld__grid, .elfbar-reviews__grid { grid-template-columns: 1fr; }
-    .elfbar-steps { grid-template-columns: 1fr; &::before { display: none; } }
+    // USP: mobilde 2'li grid (4'ü alt alta çok uzuyordu → ikişerli)
+    .elfbar-usps__grid { grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+    .elfbar-usp-card { padding: 1.1rem .9rem;
+        &__icon { width: 42px; height: 42px; margin-bottom: .7rem; .icon { width: 20px; height: 20px; } }
+        &__title { font-size: .98rem; }
+        &__text { font-size: .82rem; line-height: 1.45; }
+    }
+    .elfbar-brandworld__grid, .elfbar-reviews__grid { grid-template-columns: 1fr; }
     .elfbar-btn { width: 100%; }
 }
 @media (min-width: 721px) and (max-width: 860px) { .elfbar-reviews__grid { grid-template-columns: 1fr; } }
+
+/* MOBİL: "In 3 Schritten" adımları alt alta uzamasın → tek satır yatay scroll */
+@media (max-width: 720px) {
+    .elfbar-steps {
+        display: flex; grid-template-columns: none; gap: .8rem;
+        overflow-x: auto; overflow-y: hidden;
+        scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none; &::-webkit-scrollbar { display: none; }
+        // container padding'ini telafi et → kenara yapışmadan tam genişlik kayar
+        margin-left: -1rem; margin-right: -1rem; padding: .25rem 1rem;
+        &::before { display: none; }        // bağlayıcı çizgi yatay scroll'da anlamsız
+    }
+    .elfbar-step {
+        flex: 0 0 72%; max-width: 72%;      // sonraki adımın ucu görünür → kaydırılabilir belli olur
+        scroll-snap-align: start;
+    }
+}
 
 @media (prefers-reduced-motion: reduce) {
     .elfbar-vitrine__glow, .elfbar-vitrine__cabinet { animation: none; }
@@ -4533,17 +4557,27 @@ a.elfbar-link, .elfbar-more-link {
 /* slider içindeki review kartı: metin alta yaslı değil, üstte düzgün dursun */
 .elfbar-reviews__slider .elfbar-review-card__text { flex: 0 1 auto; margin-bottom: 0; }
 
-/* MOBİL (≤560px): tek kart neredeyse tam genişlik + kenar padding ile
-   önceki/sonraki kartın ucu görünür (scroll edilebilir olduğu belli olur) */
-@media (max-width: 560px) {
+/* MOBİL/TABLET (≤767.98px): kart ekran İÇİNE tam sığar (taşmaz/kesilmez), metin
+   belli bir yerden kesilir (yorum uzadıkça kart uzamaz → hepsi eşit boy).
+   Genişlik viewport'a kilitli (calc(100vw ...)) → max-content track'ten
+   bağımsız, sağ kenardan asla taşmaz. */
+@media (max-width: 767.98px) {
     .elfbar-reviews__slider {
-        padding: 0 1rem;                  // kenar boşluğu → kartlar ekran kenarına yapışmaz
-        margin-left: -1rem; margin-right: -1rem;  // container padding'ini telafi et (tam genişlik kayar)
+        scroll-padding-left: 0;
         .elfbar-cardslider__track { gap: .75rem; }
         .elfbar-review-card {
-            flex: 0 0 86%; max-width: 86%;
+            // viewport eksi: soldaki container padding (~1rem) + sağdaki ipucu payı (~1.5rem)
+            flex: 0 0 calc(100vw - 2.5rem);
+            max-width: calc(100vw - 2.5rem);
             padding: 1.25rem 1.1rem;
         }
+    }
+    // METNİ KES: 4 satırdan sonra "…" → yorum ne kadar uzun olursa olsun kart sabit
+    .elfbar-reviews__slider .elfbar-review-card__text {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 }
 
