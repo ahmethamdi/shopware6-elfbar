@@ -26,161 +26,184 @@
                     "de-DE": "01) Marken-Farben",
                     "en-GB": "01) Brand colors",
                     "tr-TR": "01) Marka renkleri"
-                }
+                },
+                "order": 100
             },
             "elfbarTypography": {
                 "label": {
                     "de-DE": "02) Typografie",
                     "en-GB": "02) Typography",
                     "tr-TR": "02) Tipografi"
-                }
+                },
+                "order": 200
             },
             "elfbarInfobar": {
                 "label": {
                     "de-DE": "03) Info-Leiste (oben)",
                     "en-GB": "03) Info bar (top)",
                     "tr-TR": "03) Üst bilgi şeridi"
-                }
+                },
+                "order": 300
             },
             "elfbarHeader": {
                 "label": {
                     "de-DE": "04) Header (Zahlung-Logos)",
                     "en-GB": "04) Header",
                     "tr-TR": "04) Header"
-                }
+                },
+                "order": 400
             },
             "elfbarHero": {
                 "label": {
                     "de-DE": "05) Hero (Text + Bilder)",
                     "en-GB": "05) Hero",
                     "tr-TR": "05) Hero"
-                }
+                },
+                "order": 500
             },
             "elfbarSidebar": {
                 "label": {
                     "de-DE": "06) Seitenleiste (CTA + USP)",
                     "en-GB": "06) Sidebar",
                     "tr-TR": "06) Sol menü"
-                }
+                },
+                "order": 600
             },
             "elfbarVitrinePro": {
                 "label": {
                     "de-DE": "07) Vitrine PRO",
                     "en-GB": "07) Vitrine PRO",
                     "tr-TR": "07) Vitrine PRO"
-                }
+                },
+                "order": 700
             },
             "elfbarCampaign": {
                 "label": {
                     "de-DE": "08) Kampagne + Top-Banner + Promo-Bilder",
                     "en-GB": "08) Campaign + top banner + promo",
                     "tr-TR": "08) Kampanya + üst banner + promo"
-                }
+                },
+                "order": 800
             },
             "elfbarDeals": {
                 "label": {
                     "de-DE": "09) Deals des Tages",
                     "en-GB": "09) Deals of the day",
                     "tr-TR": "09) Günün fırsatları"
-                }
+                },
+                "order": 900
             },
             "elfbarHomeBanner": {
                 "label": {
                     "de-DE": "10) Bildbanner (Deals↔Neuheiten)",
                     "en-GB": "10) Image banner",
                     "tr-TR": "10) Görsel banner"
-                }
+                },
+                "order": 1000
             },
             "elfbarNeu": {
                 "label": {
                     "de-DE": "11) Neuheiten-Slider",
                     "en-GB": "11) New arrivals slider",
                     "tr-TR": "11) Neuheiten slider"
-                }
+                },
+                "order": 1100
             },
             "elfbarShowcase": {
                 "label": {
                     "de-DE": "12) Vitrine-Banner (Showcase)",
                     "en-GB": "12) Showcase banner",
                     "tr-TR": "12) Vitrine banner"
-                }
+                },
+                "order": 1200
             },
             "elfbarBestseller": {
                 "label": {
                     "de-DE": "13) Bestseller-Grid",
                     "en-GB": "13) Bestseller grid",
                     "tr-TR": "13) Bestseller grid"
-                }
+                },
+                "order": 1300
             },
             "elfbarB2bBanner": {
                 "label": {
                     "de-DE": "14) B2B-Banner (CTA)",
                     "en-GB": "14) B2B banner",
                     "tr-TR": "14) B2B banner"
-                }
+                },
+                "order": 1400
             },
             "elfbarCatslider1": {
                 "label": {
                     "de-DE": "15) Kategorie-Slider 1",
                     "en-GB": "15) Category slider 1",
                     "tr-TR": "15) Kategori slider 1"
-                }
+                },
+                "order": 1500
             },
             "elfbarUsp": {
                 "label": {
                     "de-DE": "16) Warum ELFBAR (USP)",
                     "en-GB": "16) Why ELFBAR (USP)",
                     "tr-TR": "16) Neden ELFBAR (USP)"
-                }
+                },
+                "order": 1600
             },
             "elfbarCatslider2": {
                 "label": {
                     "de-DE": "17) Kategorie-Slider 2",
                     "en-GB": "17) Category slider 2",
                     "tr-TR": "17) Kategori slider 2"
-                }
+                },
+                "order": 1700
             },
             "elfbarHowto": {
                 "label": {
                     "de-DE": "18) So funktioniert + FAQ",
                     "en-GB": "18) How it works + FAQ",
                     "tr-TR": "18) Nasıl çalışır + SSS"
-                }
+                },
+                "order": 1800
             },
             "elfbarReviews": {
                 "label": {
                     "de-DE": "19) Bewertungen-Slider",
                     "en-GB": "19) Reviews slider",
                     "tr-TR": "19) Yorumlar slider"
-                }
+                },
+                "order": 1900
             },
             "elfbarB2b": {
                 "label": {
                     "de-DE": "20) B2B-Optionen",
                     "en-GB": "20) B2B options",
                     "tr-TR": "20) B2B seçenekleri"
-                }
+                },
+                "order": 2000
             },
             "elfbarFooter": {
                 "label": {
                     "de-DE": "21) Footer",
                     "en-GB": "21) Footer",
                     "tr-TR": "21) Footer"
-                }
+                },
+                "order": 2100
             },
             "elfbarFree": {
                 "label": {
                     "de-DE": "22) Freie Sektionen",
                     "en-GB": "22) Free sections",
                     "tr-TR": "22) Serbest bölümler"
-                }
+                },
+                "order": 2200
             },
             "elfbarSections": {
                 "label": {
                     "de-DE": "23) Sektionen: Anzeigen & Reihenfolge",
                     "en-GB": "23) Sections: show & order",
                     "tr-TR": "23) Bölümler: göster & sıra"
-                }
+                },
+                "order": 2300
             }
         },
         "fields": {
