@@ -86,7 +86,7 @@
             },
             "elfbarHomeBanner": {
                 "label": {
-                    "de-DE": "10) Bildbanner (Deals↔Neu)",
+                    "de-DE": "10) Bildbanner (Deals↔Neuheiten)",
                     "en-GB": "10) Image banner",
                     "tr-TR": "10) Görsel banner"
                 }
@@ -554,7 +554,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarBestseller",
-                "order": 14000,
+                "order": 13000,
                 "scss": false
             },
             "elfbar-bestseller-title": {
@@ -567,7 +567,7 @@
                 "value": "Bestseller",
                 "editable": true,
                 "block": "elfbarBestseller",
-                "order": 14010,
+                "order": 13010,
                 "scss": false
             },
             "elfbar-deals-title": {
@@ -580,7 +580,7 @@
                 "value": "Deals des Tages",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10000,
+                "order": 9000,
                 "scss": false
             },
             "elfbar-deal-text-color": {
@@ -598,7 +598,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10010,
+                "order": 9010,
                 "scss": false
             },
             "elfbar-deal-1-name": {
@@ -611,7 +611,7 @@
                 "value": "LOSTMARY QM600 10+1",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10020,
+                "order": 9020,
                 "scss": false
             },
             "elfbar-deal-1-brand": {
@@ -624,7 +624,7 @@
                 "value": "ELFBAR LOST MARY",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10030,
+                "order": 9030,
                 "scss": false
             },
             "elfbar-deal-1-price": {
@@ -637,7 +637,7 @@
                 "value": "45,00 €",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10040,
+                "order": 9040,
                 "scss": false
             },
             "elfbar-deal-1-img": {
@@ -650,7 +650,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10050,
+                "order": 9050,
                 "scss": false
             },
             "elfbar-deal-1-link": {
@@ -663,7 +663,7 @@
                 "value": "/E-Zigaretten-Vapes/ELFBAR-Lost-Mary-QM600/",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10060,
+                "order": 9060,
                 "scss": false
             },
             "elfbar-deal-1-hours": {
@@ -676,7 +676,7 @@
                 "value": "18",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10070,
+                "order": 9070,
                 "scss": false
             },
             "elfbar-deal-2-name": {
@@ -689,7 +689,7 @@
                 "value": "WAVI Prefilled Pods",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10080,
+                "order": 9080,
                 "scss": false
             },
             "elfbar-deal-2-brand": {
@@ -702,7 +702,7 @@
                 "value": "ELFBAR LOST MARY",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10090,
+                "order": 9090,
                 "scss": false
             },
             "elfbar-deal-2-price": {
@@ -715,7 +715,7 @@
                 "value": "45,00 €",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10100,
+                "order": 9100,
                 "scss": false
             },
             "elfbar-deal-2-img": {
@@ -728,7 +728,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10110,
+                "order": 9110,
                 "scss": false
             },
             "elfbar-deal-2-link": {
@@ -741,7 +741,7 @@
                 "value": "/Pods-Akkutraeger/Lost-Mary-WAVI/",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10120,
+                "order": 9120,
                 "scss": false
             },
             "elfbar-deal-2-hours": {
@@ -754,7 +754,7 @@
                 "value": "24",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10130,
+                "order": 9130,
                 "scss": false
             },
             "elfbar-deal-3-name": {
@@ -767,7 +767,7 @@
                 "value": "WAVI Prefilled Pods",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10140,
+                "order": 9140,
                 "scss": false
             },
             "elfbar-deal-3-brand": {
@@ -780,7 +780,7 @@
                 "value": "ELFBAR LOST MARY",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10150,
+                "order": 9150,
                 "scss": false
             },
             "elfbar-deal-3-price": {
@@ -793,7 +793,7 @@
                 "value": "45,00 €",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10160,
+                "order": 9160,
                 "scss": false
             },
             "elfbar-deal-3-img": {
@@ -806,7 +806,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10170,
+                "order": 9170,
                 "scss": false
             },
             "elfbar-deal-3-link": {
@@ -819,7 +819,7 @@
                 "value": "/Pods-Akkutraeger/IVG-Air-4in1/",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10180,
+                "order": 9180,
                 "scss": false
             },
             "elfbar-deal-3-hours": {
@@ -832,7 +832,7 @@
                 "value": "30",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10190,
+                "order": 9190,
                 "scss": false
             },
             "elfbar-neu-category": {
@@ -845,7 +845,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarNeu",
-                "order": 12000,
+                "order": 11000,
                 "scss": false
             },
             "elfbar-neu-title": {
@@ -858,7 +858,7 @@
                 "value": "Neuheiten",
                 "editable": true,
                 "block": "elfbarNeu",
-                "order": 12010,
+                "order": 11010,
                 "scss": false
             },
             "elfbar-sidebar-cta-eyebrow": {
@@ -1027,7 +1027,7 @@
                 "value": "★ Werde Elfbar-Handelspartner",
                 "editable": true,
                 "block": "elfbarB2bBanner",
-                "order": 15000,
+                "order": 14000,
                 "scss": false
             },
             "elfbar-b2b-title": {
@@ -1040,7 +1040,7 @@
                 "value": "Großhandelspreise. Schnelle Lieferung.<br>Persönlicher B2B-Support.",
                 "editable": true,
                 "block": "elfbarB2bBanner",
-                "order": 15010,
+                "order": 14010,
                 "scss": false
             },
             "elfbar-b2b-text": {
@@ -1053,7 +1053,7 @@
                 "value": "Registriere dich jetzt als Händler und sieh deine Netto-Einkaufspreise – über 4.000 zufriedene Partner vertrauen uns.",
                 "editable": true,
                 "block": "elfbarB2bBanner",
-                "order": 15020,
+                "order": 14020,
                 "scss": false
             },
             "elfbar-b2b-btn-primary": {
@@ -1066,7 +1066,7 @@
                 "value": "Jetzt registrieren",
                 "editable": true,
                 "block": "elfbarB2bBanner",
-                "order": 15030,
+                "order": 14030,
                 "scss": false
             },
             "elfbar-b2b-btn-ghost": {
@@ -1079,7 +1079,7 @@
                 "value": "Anmelden",
                 "editable": true,
                 "block": "elfbarB2bBanner",
-                "order": 15040,
+                "order": 14040,
                 "scss": false
             },
             "elfbar-b2b-stat-1-n": {
@@ -1092,7 +1092,7 @@
                 "value": "4.000+",
                 "editable": true,
                 "block": "elfbarB2bBanner",
-                "order": 15050,
+                "order": 14050,
                 "scss": false
             },
             "elfbar-b2b-stat-1-l": {
@@ -1105,7 +1105,7 @@
                 "value": "Händler",
                 "editable": true,
                 "block": "elfbarB2bBanner",
-                "order": 15060,
+                "order": 14060,
                 "scss": false
             },
             "elfbar-b2b-stat-2-n": {
@@ -1118,7 +1118,7 @@
                 "value": "8.000+",
                 "editable": true,
                 "block": "elfbarB2bBanner",
-                "order": 15070,
+                "order": 14070,
                 "scss": false
             },
             "elfbar-b2b-stat-2-l": {
@@ -1131,7 +1131,7 @@
                 "value": "Produkte",
                 "editable": true,
                 "block": "elfbarB2bBanner",
-                "order": 15080,
+                "order": 14080,
                 "scss": false
             },
             "elfbar-b2b-stat-3-n": {
@@ -1144,7 +1144,7 @@
                 "value": "24h",
                 "editable": true,
                 "block": "elfbarB2bBanner",
-                "order": 15090,
+                "order": 14090,
                 "scss": false
             },
             "elfbar-b2b-stat-3-l": {
@@ -1157,7 +1157,7 @@
                 "value": "Versand",
                 "editable": true,
                 "block": "elfbarB2bBanner",
-                "order": 15100,
+                "order": 14100,
                 "scss": false
             },
             "elfbar-b2b-stat-4-n": {
@@ -1170,7 +1170,7 @@
                 "value": "40 %",
                 "editable": true,
                 "block": "elfbarB2bBanner",
-                "order": 15110,
+                "order": 14110,
                 "scss": false
             },
             "elfbar-b2b-stat-4-l": {
@@ -1183,7 +1183,7 @@
                 "value": "Marge",
                 "editable": true,
                 "block": "elfbarB2bBanner",
-                "order": 15120,
+                "order": 14120,
                 "scss": false
             },
             "elfbar-show-net-prices": {
@@ -1196,7 +1196,7 @@
                 "value": true,
                 "editable": true,
                 "block": "elfbarB2b",
-                "order": 21000
+                "order": 20000
             },
             "elfbar-footer-usp-1-icon": {
                 "label": {
@@ -1208,7 +1208,7 @@
                 "value": "truck",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22000,
+                "order": 21000,
                 "scss": false,
                 "custom": {
                     "componentName": "sw-single-select",
@@ -1295,7 +1295,7 @@
                 "value": "Kostenloser Versand",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22010,
+                "order": 21010,
                 "scss": false
             },
             "elfbar-footer-usp-1-sub": {
@@ -1308,7 +1308,7 @@
                 "value": "ab 500 € Netto",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22020,
+                "order": 21020,
                 "scss": false
             },
             "elfbar-footer-usp-2-icon": {
@@ -1321,7 +1321,7 @@
                 "value": "lock-closed",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22030,
+                "order": 21030,
                 "scss": false,
                 "custom": {
                     "componentName": "sw-single-select",
@@ -1403,7 +1403,7 @@
                 "value": "Sichere Bezahlung",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22040,
+                "order": 21040,
                 "scss": false
             },
             "elfbar-footer-usp-2-sub": {
@@ -1416,7 +1416,7 @@
                 "value": "PayPal & Rechnung",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22050,
+                "order": 21050,
                 "scss": false
             },
             "elfbar-footer-usp-3-icon": {
@@ -1429,7 +1429,7 @@
                 "value": "rocket",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22060,
+                "order": 21060,
                 "scss": false,
                 "custom": {
                     "componentName": "sw-single-select",
@@ -1511,7 +1511,7 @@
                 "value": "Schnelle Lieferung",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22070,
+                "order": 21070,
                 "scss": false
             },
             "elfbar-footer-usp-3-sub": {
@@ -1524,7 +1524,7 @@
                 "value": "24–48h Versand",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22080,
+                "order": 21080,
                 "scss": false
             },
             "elfbar-footer-usp-4-icon": {
@@ -1537,7 +1537,7 @@
                 "value": "headset",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22090,
+                "order": 21090,
                 "scss": false,
                 "custom": {
                     "componentName": "sw-single-select",
@@ -1619,7 +1619,7 @@
                 "value": "Persönlicher B2B-Support",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22100,
+                "order": 21100,
                 "scss": false
             },
             "elfbar-footer-usp-4-sub": {
@@ -1632,7 +1632,7 @@
                 "value": "Mo-Fr, 09:00 - 16:00 Uhr",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22110,
+                "order": 21110,
                 "scss": false
             },
             "elfbar-footer-blurb": {
@@ -1645,7 +1645,7 @@
                 "value": "Ihr zuverlässiger B2B-Partner für E-Zigaretten, Liquids und Zubehör. Großhandelskonditionen, schnelle Lieferung und persönliche Beratung für den Fachhandel.",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22120,
+                "order": 21120,
                 "scss": false
             },
             "elfbar-footer-phone": {
@@ -1658,7 +1658,7 @@
                 "value": "0212 / 520 821 00",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22130,
+                "order": 21130,
                 "scss": false
             },
             "elfbar-footer-email": {
@@ -1671,7 +1671,7 @@
                 "value": "info@elfbar-handel.de",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22140,
+                "order": 21140,
                 "scss": false
             },
             "elfbar-footer-hours": {
@@ -1684,7 +1684,7 @@
                 "value": "Mo-Fr, 09:00 - 16:00 Uhr",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22150,
+                "order": 21150,
                 "scss": false
             },
             "elfbar-footer-social-instagram": {
@@ -1697,7 +1697,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22160,
+                "order": 21160,
                 "scss": false
             },
             "elfbar-footer-social-facebook": {
@@ -1710,7 +1710,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22170,
+                "order": 21170,
                 "scss": false
             },
             "elfbar-footer-social-whatsapp": {
@@ -1723,7 +1723,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22180,
+                "order": 21180,
                 "scss": false
             },
             "elfbar-footer-b2b-cta-text": {
@@ -1736,7 +1736,7 @@
                 "value": "Jetzt Händler werden",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22190,
+                "order": 21190,
                 "scss": false
             },
             "elfbar-footer-b2b-cta-link": {
@@ -1749,7 +1749,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22200,
+                "order": 21200,
                 "scss": false
             },
             "elfbar-footer-logo": {
@@ -1767,7 +1767,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22210,
+                "order": 21210,
                 "scss": false
             },
             "elfbar-footer-newsletter-title": {
@@ -1785,7 +1785,7 @@
                 "value": "Newsletter",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22220,
+                "order": 21220,
                 "scss": false
             },
             "elfbar-footer-newsletter-text": {
@@ -1803,7 +1803,7 @@
                 "value": "Jetzt anmelden und 50€ Gutschein sichern!",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22230,
+                "order": 21230,
                 "scss": false
             },
             "elfbar-footer-newsletter-note": {
@@ -1821,7 +1821,7 @@
                 "value": "*Ab einem Warenwert von 500€",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22240,
+                "order": 21240,
                 "scss": false
             },
             "elfbar-footer-trust-1": {
@@ -1839,7 +1839,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22250,
+                "order": 21250,
                 "scss": false
             },
             "elfbar-footer-trust-1-link": {
@@ -1852,7 +1852,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22260,
+                "order": 21260,
                 "scss": false
             },
             "elfbar-footer-trust-2": {
@@ -1865,7 +1865,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22270,
+                "order": 21270,
                 "scss": false
             },
             "elfbar-footer-trust-2-link": {
@@ -1878,7 +1878,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22280,
+                "order": 21280,
                 "scss": false
             },
             "elfbar-footer-trust-3": {
@@ -1891,7 +1891,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22290,
+                "order": 21290,
                 "scss": false
             },
             "elfbar-footer-trust-3-link": {
@@ -1904,7 +1904,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22300,
+                "order": 21300,
                 "scss": false
             },
             "elfbar-footer-trust-4": {
@@ -1917,7 +1917,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22310,
+                "order": 21310,
                 "scss": false
             },
             "elfbar-footer-trust-4-link": {
@@ -1930,7 +1930,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22320,
+                "order": 21320,
                 "scss": false
             },
             "elfbar-footer-pay-1": {
@@ -1948,7 +1948,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22330,
+                "order": 21330,
                 "scss": false
             },
             "elfbar-footer-pay-2": {
@@ -1961,7 +1961,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22340,
+                "order": 21340,
                 "scss": false
             },
             "elfbar-footer-pay-3": {
@@ -1974,7 +1974,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22350,
+                "order": 21350,
                 "scss": false
             },
             "elfbar-footer-pay-4": {
@@ -1987,7 +1987,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22360,
+                "order": 21360,
                 "scss": false
             },
             "elfbar-footer-pay-5": {
@@ -2000,7 +2000,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22370,
+                "order": 21370,
                 "scss": false
             },
             "elfbar-footer-ship-1": {
@@ -2018,7 +2018,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22380,
+                "order": 21380,
                 "scss": false
             },
             "elfbar-footer-ship-2": {
@@ -2031,7 +2031,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22390,
+                "order": 21390,
                 "scss": false
             },
             "elfbar-footer-ship-3": {
@@ -2044,7 +2044,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22400,
+                "order": 21400,
                 "scss": false
             },
             "elfbar-footer-ship-4": {
@@ -2057,7 +2057,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarFooter",
-                "order": 22410,
+                "order": 21410,
                 "scss": false
             },
             "elfbar-header-pay-1": {
@@ -2324,7 +2324,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarHomeBanner",
-                "order": 11000,
+                "order": 10000,
                 "scss": false
             },
             "elfbar-home-banner-img-mobile": {
@@ -2342,7 +2342,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarHomeBanner",
-                "order": 11010,
+                "order": 10010,
                 "scss": false
             },
             "elfbar-home-banner-link": {
@@ -2360,7 +2360,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarHomeBanner",
-                "order": 11020,
+                "order": 10020,
                 "scss": false
             },
             "elfbar-showcase-img": {
@@ -2378,7 +2378,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarShowcase",
-                "order": 13000,
+                "order": 12000,
                 "scss": false
             },
             "elfbar-showcase-img-mobile": {
@@ -2396,7 +2396,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarShowcase",
-                "order": 13010,
+                "order": 12010,
                 "scss": false
             },
             "elfbar-showcase-title-img": {
@@ -2414,7 +2414,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarShowcase",
-                "order": 13020,
+                "order": 12020,
                 "scss": false
             },
             "elfbar-showcase-title": {
@@ -2432,7 +2432,7 @@
                 "value": "Präsentieren wie nie zuvor!",
                 "editable": true,
                 "block": "elfbarShowcase",
-                "order": 13030,
+                "order": 12030,
                 "scss": false
             },
             "elfbar-showcase-text": {
@@ -2450,7 +2450,7 @@
                 "value": "Mit den Elfbar Premium Verkaufsvitrinen nicht nur sichtbar sein, sondern auch mehr Umsatz generieren!",
                 "editable": true,
                 "block": "elfbarShowcase",
-                "order": 13040,
+                "order": 12040,
                 "scss": false
             },
             "elfbar-showcase-note": {
@@ -2468,7 +2468,7 @@
                 "value": "*Kostenlos im Rahmen einer individuellen Einkaufsvereinbarung. Details und Voraussetzungen werden nach Ihrer Anfrage mitgeteilt.",
                 "editable": true,
                 "block": "elfbarShowcase",
-                "order": 13050,
+                "order": 12050,
                 "scss": false
             },
             "elfbar-showcase-btn-text": {
@@ -2486,7 +2486,7 @@
                 "value": "Jetzt kostenlos anfragen",
                 "editable": true,
                 "block": "elfbarShowcase",
-                "order": 13060,
+                "order": 12060,
                 "scss": false
             },
             "elfbar-showcase-btn-link": {
@@ -2504,7 +2504,7 @@
                 "value": "#",
                 "editable": true,
                 "block": "elfbarShowcase",
-                "order": 13070,
+                "order": 12070,
                 "scss": false
             },
             "elfbar-showcase-btn2-text": {
@@ -2522,7 +2522,7 @@
                 "value": "Dowload",
                 "editable": true,
                 "block": "elfbarShowcase",
-                "order": 13080,
+                "order": 12080,
                 "scss": false
             },
             "elfbar-showcase-btn2-link": {
@@ -2540,7 +2540,7 @@
                 "value": "#",
                 "editable": true,
                 "block": "elfbarShowcase",
-                "order": 13090,
+                "order": 12090,
                 "scss": false
             },
             "elfbar-free-1-type": {
@@ -2607,7 +2607,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23000
+                "order": 22000
             },
             "elfbar-free-1-order": {
                 "label": {
@@ -2620,7 +2620,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23010
+                "order": 22010
             },
             "elfbar-free-1-title": {
                 "label": {
@@ -2633,7 +2633,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23020
+                "order": 22020
             },
             "elfbar-free-1-text": {
                 "label": {
@@ -2646,7 +2646,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23030
+                "order": 22030
             },
             "elfbar-free-1-img": {
                 "label": {
@@ -2659,7 +2659,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23040
+                "order": 22040
             },
             "elfbar-free-1-img2": {
                 "label": {
@@ -2672,7 +2672,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23050
+                "order": 22050
             },
             "elfbar-free-1-img-mobile": {
                 "label": {
@@ -2685,7 +2685,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23060
+                "order": 22060
             },
             "elfbar-free-1-link": {
                 "label": {
@@ -2698,7 +2698,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23070
+                "order": 22070
             },
             "elfbar-free-1-btn-text": {
                 "label": {
@@ -2711,7 +2711,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23080
+                "order": 22080
             },
             "elfbar-free-1-btn-link": {
                 "label": {
@@ -2724,7 +2724,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23090
+                "order": 22090
             },
             "elfbar-free-2-type": {
                 "label": {
@@ -2790,7 +2790,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23100
+                "order": 22100
             },
             "elfbar-free-2-order": {
                 "label": {
@@ -2803,7 +2803,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23110
+                "order": 22110
             },
             "elfbar-free-2-title": {
                 "label": {
@@ -2816,7 +2816,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23120
+                "order": 22120
             },
             "elfbar-free-2-text": {
                 "label": {
@@ -2829,7 +2829,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23130
+                "order": 22130
             },
             "elfbar-free-2-img": {
                 "label": {
@@ -2842,7 +2842,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23140
+                "order": 22140
             },
             "elfbar-free-2-img2": {
                 "label": {
@@ -2855,7 +2855,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23150
+                "order": 22150
             },
             "elfbar-free-2-img-mobile": {
                 "label": {
@@ -2868,7 +2868,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23160
+                "order": 22160
             },
             "elfbar-free-2-link": {
                 "label": {
@@ -2881,7 +2881,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23170
+                "order": 22170
             },
             "elfbar-free-2-btn-text": {
                 "label": {
@@ -2894,7 +2894,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23180
+                "order": 22180
             },
             "elfbar-free-2-btn-link": {
                 "label": {
@@ -2907,7 +2907,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23190
+                "order": 22190
             },
             "elfbar-free-3-type": {
                 "label": {
@@ -2973,7 +2973,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23200
+                "order": 22200
             },
             "elfbar-free-3-order": {
                 "label": {
@@ -2986,7 +2986,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23210
+                "order": 22210
             },
             "elfbar-free-3-title": {
                 "label": {
@@ -2999,7 +2999,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23220
+                "order": 22220
             },
             "elfbar-free-3-text": {
                 "label": {
@@ -3012,7 +3012,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23230
+                "order": 22230
             },
             "elfbar-free-3-img": {
                 "label": {
@@ -3025,7 +3025,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23240
+                "order": 22240
             },
             "elfbar-free-3-img2": {
                 "label": {
@@ -3038,7 +3038,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23250
+                "order": 22250
             },
             "elfbar-free-3-img-mobile": {
                 "label": {
@@ -3051,7 +3051,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23260
+                "order": 22260
             },
             "elfbar-free-3-link": {
                 "label": {
@@ -3064,7 +3064,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23270
+                "order": 22270
             },
             "elfbar-free-3-btn-text": {
                 "label": {
@@ -3077,7 +3077,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23280
+                "order": 22280
             },
             "elfbar-free-3-btn-link": {
                 "label": {
@@ -3090,7 +3090,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23290
+                "order": 22290
             },
             "elfbar-free-4-type": {
                 "label": {
@@ -3156,7 +3156,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23300
+                "order": 22300
             },
             "elfbar-free-4-order": {
                 "label": {
@@ -3169,7 +3169,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23310
+                "order": 22310
             },
             "elfbar-free-4-title": {
                 "label": {
@@ -3182,7 +3182,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23320
+                "order": 22320
             },
             "elfbar-free-4-text": {
                 "label": {
@@ -3195,7 +3195,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23330
+                "order": 22330
             },
             "elfbar-free-4-img": {
                 "label": {
@@ -3208,7 +3208,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23340
+                "order": 22340
             },
             "elfbar-free-4-img2": {
                 "label": {
@@ -3221,7 +3221,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23350
+                "order": 22350
             },
             "elfbar-free-4-img-mobile": {
                 "label": {
@@ -3234,7 +3234,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23360
+                "order": 22360
             },
             "elfbar-free-4-link": {
                 "label": {
@@ -3247,7 +3247,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23370
+                "order": 22370
             },
             "elfbar-free-4-btn-text": {
                 "label": {
@@ -3260,7 +3260,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23380
+                "order": 22380
             },
             "elfbar-free-4-btn-link": {
                 "label": {
@@ -3273,7 +3273,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23390
+                "order": 22390
             },
             "elfbar-free-5-type": {
                 "label": {
@@ -3339,7 +3339,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23400
+                "order": 22400
             },
             "elfbar-free-5-order": {
                 "label": {
@@ -3352,7 +3352,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23410
+                "order": 22410
             },
             "elfbar-free-5-title": {
                 "label": {
@@ -3365,7 +3365,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23420
+                "order": 22420
             },
             "elfbar-free-5-text": {
                 "label": {
@@ -3378,7 +3378,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23430
+                "order": 22430
             },
             "elfbar-free-5-img": {
                 "label": {
@@ -3391,7 +3391,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23440
+                "order": 22440
             },
             "elfbar-free-5-img2": {
                 "label": {
@@ -3404,7 +3404,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23450
+                "order": 22450
             },
             "elfbar-free-5-img-mobile": {
                 "label": {
@@ -3417,7 +3417,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23460
+                "order": 22460
             },
             "elfbar-free-5-link": {
                 "label": {
@@ -3430,7 +3430,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23470
+                "order": 22470
             },
             "elfbar-free-5-btn-text": {
                 "label": {
@@ -3443,7 +3443,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23480
+                "order": 22480
             },
             "elfbar-free-5-btn-link": {
                 "label": {
@@ -3456,7 +3456,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23490
+                "order": 22490
             },
             "elfbar-free-6-type": {
                 "label": {
@@ -3522,7 +3522,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23500
+                "order": 22500
             },
             "elfbar-free-6-order": {
                 "label": {
@@ -3535,7 +3535,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23510
+                "order": 22510
             },
             "elfbar-free-6-title": {
                 "label": {
@@ -3548,7 +3548,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23520
+                "order": 22520
             },
             "elfbar-free-6-text": {
                 "label": {
@@ -3561,7 +3561,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23530
+                "order": 22530
             },
             "elfbar-free-6-img": {
                 "label": {
@@ -3574,7 +3574,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23540
+                "order": 22540
             },
             "elfbar-free-6-img2": {
                 "label": {
@@ -3587,7 +3587,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23550
+                "order": 22550
             },
             "elfbar-free-6-img-mobile": {
                 "label": {
@@ -3600,7 +3600,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23560
+                "order": 22560
             },
             "elfbar-free-6-link": {
                 "label": {
@@ -3613,7 +3613,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23570
+                "order": 22570
             },
             "elfbar-free-6-btn-text": {
                 "label": {
@@ -3626,7 +3626,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23580
+                "order": 22580
             },
             "elfbar-free-6-btn-link": {
                 "label": {
@@ -3639,7 +3639,7 @@
                 "editable": true,
                 "scss": false,
                 "block": "elfbarFree",
-                "order": 23590
+                "order": 22590
             },
             "elfbar-vitrine-badge": {
                 "label": {
@@ -4228,7 +4228,7 @@
                 "value": "Nur für kurze Zeit – solange der Vorrat reicht.",
                 "editable": true,
                 "block": "elfbarDeals",
-                "order": 10200,
+                "order": 9200,
                 "scss": false
             },
             "elfbar-neu-sub": {
@@ -4241,7 +4241,7 @@
                 "value": "Frisch im Sortiment.",
                 "editable": true,
                 "block": "elfbarNeu",
-                "order": 12020,
+                "order": 11020,
                 "scss": false
             },
             "elfbar-bestseller-sub": {
@@ -4254,7 +4254,7 @@
                 "value": "Die meistverkauften Produkte.",
                 "editable": true,
                 "block": "elfbarBestseller",
-                "order": 14020,
+                "order": 13020,
                 "scss": false
             },
             "elfbar-catslider1-title": {
@@ -4267,7 +4267,7 @@
                 "value": "Bestseller",
                 "editable": true,
                 "block": "elfbarCatslider1",
-                "order": 16000,
+                "order": 15000,
                 "scss": false
             },
             "elfbar-catslider1-sub": {
@@ -4280,7 +4280,7 @@
                 "value": "Die meistverkauften Produkte unserer Händler.",
                 "editable": true,
                 "block": "elfbarCatslider1",
-                "order": 16010,
+                "order": 15010,
                 "scss": false
             },
             "elfbar-catslider1-eyebrow": {
@@ -4293,7 +4293,7 @@
                 "value": "Kategorie",
                 "editable": true,
                 "block": "elfbarCatslider1",
-                "order": 16020,
+                "order": 15020,
                 "scss": false
             },
             "elfbar-catslider2-title": {
@@ -4306,7 +4306,7 @@
                 "value": "Neuheiten",
                 "editable": true,
                 "block": "elfbarCatslider2",
-                "order": 18000,
+                "order": 17000,
                 "scss": false
             },
             "elfbar-catslider2-sub": {
@@ -4319,7 +4319,7 @@
                 "value": "Frisch im Sortiment – jetzt als Erster bestellen.",
                 "editable": true,
                 "block": "elfbarCatslider2",
-                "order": 18010,
+                "order": 17010,
                 "scss": false
             },
             "elfbar-catslider2-eyebrow": {
@@ -4332,7 +4332,7 @@
                 "value": "Kategorie",
                 "editable": true,
                 "block": "elfbarCatslider2",
-                "order": 18020,
+                "order": 17020,
                 "scss": false
             },
             "elfbar-usp-eyebrow": {
@@ -4345,7 +4345,7 @@
                 "value": "Ihre Vorteile",
                 "editable": true,
                 "block": "elfbarUsp",
-                "order": 17000,
+                "order": 16000,
                 "scss": false
             },
             "elfbar-usp-title": {
@@ -4358,7 +4358,7 @@
                 "value": "Warum ELFBAR B2B?",
                 "editable": true,
                 "block": "elfbarUsp",
-                "order": 17010,
+                "order": 16010,
                 "scss": false
             },
             "elfbar-usp-sub": {
@@ -4371,7 +4371,7 @@
                 "value": "Der Großhandel, der für Ihren Erfolg gemacht ist.",
                 "editable": true,
                 "block": "elfbarUsp",
-                "order": 17020,
+                "order": 16020,
                 "scss": false
             },
             "elfbar-howto-eyebrow": {
@@ -4384,7 +4384,7 @@
                 "value": "So einfach geht's",
                 "editable": true,
                 "block": "elfbarHowto",
-                "order": 19000,
+                "order": 18000,
                 "scss": false
             },
             "elfbar-howto-title": {
@@ -4397,7 +4397,7 @@
                 "value": "In 3 Schritten zum Händler",
                 "editable": true,
                 "block": "elfbarHowto",
-                "order": 19010,
+                "order": 18010,
                 "scss": false
             },
             "elfbar-howto-sub": {
@@ -4410,7 +4410,7 @@
                 "value": "Von der Anmeldung bis zur ersten Bestellung in unter 24 Stunden.",
                 "editable": true,
                 "block": "elfbarHowto",
-                "order": 19020,
+                "order": 18020,
                 "scss": false
             },
             "elfbar-faq-head": {
@@ -4423,7 +4423,7 @@
                 "value": "Häufige Fragen",
                 "editable": true,
                 "block": "elfbarHowto",
-                "order": 19030,
+                "order": 18030,
                 "scss": false
             },
             "elfbar-reviews-eyebrow": {
@@ -4436,7 +4436,7 @@
                 "value": "Vertrauen & Qualität",
                 "editable": true,
                 "block": "elfbarReviews",
-                "order": 20000,
+                "order": 19000,
                 "scss": false
             },
             "elfbar-reviews-title": {
@@ -4449,7 +4449,7 @@
                 "value": "Über 4.000 zufriedene Händler",
                 "editable": true,
                 "block": "elfbarReviews",
-                "order": 20010,
+                "order": 19010,
                 "scss": false
             },
             "elfbar-reviews-sub": {
@@ -4462,7 +4462,7 @@
                 "value": "Das sagen unsere Partner aus dem Fachhandel.",
                 "editable": true,
                 "block": "elfbarReviews",
-                "order": 20020,
+                "order": 19020,
                 "scss": false
             },
             "elfbar-campaign-brand": {
@@ -4605,7 +4605,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarCatslider1",
-                "order": 16030,
+                "order": 15030,
                 "scss": false
             },
             "elfbar-catslider2-img": {
@@ -4618,7 +4618,7 @@
                 "value": "",
                 "editable": true,
                 "block": "elfbarCatslider2",
-                "order": 18030,
+                "order": 17030,
                 "scss": false
             }
         }
