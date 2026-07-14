@@ -3494,6 +3494,8 @@ body.has-elfbar-bulkbar { padding-bottom: 80px; }
         // Sayfada ORTALA (sola yaslıydı) — Bootstrap container gibi
         max-width: 1320px; margin-left: auto !important; margin-right: auto !important;
         padding-left: 1rem; padding-right: 1rem;
+        // Header'a yapışmasın → üstten nefes payı (içerik biraz aşağıda başlasın)
+        padding-top: 2.5rem;
     }
     .checkout-main {
         flex: 1 1 auto; width: auto !important; max-width: none !important;
