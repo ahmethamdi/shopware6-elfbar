@@ -4232,6 +4232,13 @@ a.elfbar-link, .elfbar-more-link {
         }
     }
     &__actions { display: flex; flex-wrap: wrap; gap: 0.85rem; margin: 0 0 1.1rem; }
+    /* Vitrine artık AÇIK zemin → outline buton (Download) koyu/görünür olmalı
+       (genel --outline koyu zemin için beyaz; burada override) */
+    .elfbar-btn--outline {
+        background: #fff; color: $elfbar-color-ink;
+        border: 1.5px solid rgba($elfbar-color-ink, 0.18); backdrop-filter: none;
+        &:hover { border-color: $elfbar-grad-mid; color: $elfbar-grad-mid; }
+    }
     &__note { font-family: $elfbar-font-base; font-size: 0.78rem; color: rgba($elfbar-color-ink, 0.5); margin: 0; }
 }
 
