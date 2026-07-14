@@ -4232,6 +4232,12 @@ a.elfbar-link, .elfbar-more-link {
         }
     }
     &__actions { display: flex; flex-wrap: wrap; gap: 0.85rem; margin: 0 0 1.1rem; }
+    /* Gradient buton (anfragen) oku: beyaz + dikey hizalı.
+       sw_icon inline fill="#758CA3" verdiği için use'u !important ile ezmeli. */
+    .elfbar-btn--gradient .icon {
+        color: #fff; margin-top: -2px;
+        svg, svg use { fill: #fff !important; }
+    }
     /* Vitrine artık AÇIK zemin → outline buton (Download) koyu/görünür olmalı
        (genel --outline koyu zemin için beyaz; burada override) */
     .elfbar-btn--outline {
