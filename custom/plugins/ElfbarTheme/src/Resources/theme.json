@@ -917,7 +917,7 @@
           "tr-TR": "Metin"
         },
         "type": "text",
-        "value": "Abschließbar, beleuchtet und sofort einsatzbereit – das perfekte Highlight für Kiosk, Tankstelle und Fachhandel. Für Bestandskunden auf Wunsch kostenlos.",
+        "value": "Abschließbar, LED-beleuchtet und sofort einsatzbereit – das perfekte Highlight für Kiosk, Tankstelle und Fachhandel. Bringen Sie Ihre Bestseller direkt ins Blickfeld Ihrer Kunden und steigern Sie Ihren Impulsumsatz. Für Bestandskunden auf Wunsch kostenlos gestellt.",
         "editable": true,
         "block": "elfbarVitrinePro",
         "order": 610,
@@ -966,6 +966,34 @@
         "scss": false,
         "tab": "elfHome"
       },
+      "elfbar-vitrine-feature-3": {
+        "label": {
+          "de-DE": "Vitrine · Vorteil 3",
+          "en-GB": "Vitrine · Vorteil 3",
+          "tr-TR": "Vitrine · Vorteil 3"
+        },
+        "type": "text",
+        "value": "Sofort einsatzbereit geliefert",
+        "editable": true,
+        "block": "elfbarVitrinePro",
+        "order": 641,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-vitrine-feature-4": {
+        "label": {
+          "de-DE": "Vitrine · Vorteil 4",
+          "en-GB": "Vitrine · Vorteil 4",
+          "tr-TR": "Vitrine · Vorteil 4"
+        },
+        "type": "text",
+        "value": "Mehr Impulsumsatz an der Kasse",
+        "editable": true,
+        "block": "elfbarVitrinePro",
+        "order": 642,
+        "scss": false,
+        "tab": "elfHome"
+      },
       "elfbar-vitrine-btn1-text": {
         "label": {
           "de-DE": "Button 1 · Text",
@@ -1001,7 +1029,7 @@
           "tr-TR": "Buton 2 metin"
         },
         "type": "text",
-        "value": "Datenblatt",
+        "value": "Download",
         "editable": true,
         "block": "elfbarVitrinePro",
         "order": 670,

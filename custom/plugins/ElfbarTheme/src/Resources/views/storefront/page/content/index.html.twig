@@ -261,6 +261,8 @@
                         {% set vpImg     = theme_config('elfbar-vitrine-img') %}
                         {% set vpF1      = theme_config('elfbar-vitrine-feature-1') %}
                         {% set vpF2      = theme_config('elfbar-vitrine-feature-2') %}
+                        {% set vpF3      = theme_config('elfbar-vitrine-feature-3') %}
+                        {% set vpF4      = theme_config('elfbar-vitrine-feature-4') %}
                         {% set vpB1T     = theme_config('elfbar-vitrine-btn1-text') %}
                         {% set vpB1L     = theme_config('elfbar-vitrine-btn1-link') %}
                         {% set vpB2T     = theme_config('elfbar-vitrine-btn2-text') %}
@@ -299,10 +301,12 @@
                                 {% if vpEyebrow %}<p class="elfbar-vitrine__eyebrow">{{ vpEyebrow }}</p>{% endif %}
                                 {% if vpTitle %}<h2 class="elfbar-vitrine__title" id="elfbar-vitrine-title">{{ vpTitle }}</h2>{% endif %}
                                 {% if vpText %}<p class="elfbar-vitrine__text">{{ vpText }}</p>{% endif %}
-                                {% if vpF1 or vpF2 %}
+                                {% if vpF1 or vpF2 or vpF3 or vpF4 %}
                                     <ul class="elfbar-vitrine__features">
                                         {% if vpF1 %}<li>{% sw_icon 'shield' %} {{ vpF1 }}</li>{% endif %}
                                         {% if vpF2 %}<li>{% sw_icon 'shield' %} {{ vpF2 }}</li>{% endif %}
+                                        {% if vpF3 %}<li>{% sw_icon 'shield' %} {{ vpF3 }}</li>{% endif %}
+                                        {% if vpF4 %}<li>{% sw_icon 'shield' %} {{ vpF4 }}</li>{% endif %}
                                     </ul>
                                 {% endif %}
                                 {% if vpB1T or vpB2T %}
