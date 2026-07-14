@@ -3420,10 +3420,8 @@ body.has-elfbar-bulkbar { padding-bottom: 80px; }
         filter: brightness(0) invert(1);
     }
 
-    .header-minimal-contact {
-        text-align: center; color: rgba(#fff, 0.95);
-        font-size: .88rem; font-weight: 600; line-height: 1.35;
-    }
+    // Kontakt bilgisi (Fragen zu Ihrer Bestellung / telefon / saat) — B2B'de gereksiz, gizli
+    .header-minimal-contact { display: none; }
     .header-minimal-back-to-shop { text-align: right; }
     .header-minimal-back-to-shop-button {
         background: #fff; border: none; color: $elfbar-grad-mid;
@@ -3493,6 +3491,9 @@ body.has-elfbar-bulkbar { padding-bottom: 80px; }
 .is-ctl-checkout {
     .checkout-container {
         display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 2rem;
+        // Sayfada ORTALA (sola yaslıydı) — Bootstrap container gibi
+        max-width: 1320px; margin-left: auto !important; margin-right: auto !important;
+        padding-left: 1rem; padding-right: 1rem;
     }
     .checkout-main {
         flex: 1 1 auto; width: auto !important; max-width: none !important;
