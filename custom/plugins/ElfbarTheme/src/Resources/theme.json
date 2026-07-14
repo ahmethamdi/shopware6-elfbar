@@ -1812,6 +1812,342 @@
         "scss": false,
         "tab": "elfHome"
       },
+      "elfbar-catscroll-1-title": {
+        "label": {
+          "de-DE": "Karte 1 · Titel",
+          "en-GB": "Karte 1 · Titel",
+          "tr-TR": "Karte 1 · Titel"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1260,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-1-img": {
+        "label": {
+          "de-DE": "Karte 1 · Bild",
+          "en-GB": "Karte 1 · Bild",
+          "tr-TR": "Karte 1 · Bild"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1262,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-1-link": {
+        "label": {
+          "de-DE": "Karte 1 · Link (URL)",
+          "en-GB": "Karte 1 · Link (URL)",
+          "tr-TR": "Karte 1 · Link (URL)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1264,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-2-title": {
+        "label": {
+          "de-DE": "Karte 2 · Titel",
+          "en-GB": "Karte 2 · Titel",
+          "tr-TR": "Karte 2 · Titel"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1266,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-2-img": {
+        "label": {
+          "de-DE": "Karte 2 · Bild",
+          "en-GB": "Karte 2 · Bild",
+          "tr-TR": "Karte 2 · Bild"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1268,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-2-link": {
+        "label": {
+          "de-DE": "Karte 2 · Link (URL)",
+          "en-GB": "Karte 2 · Link (URL)",
+          "tr-TR": "Karte 2 · Link (URL)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1270,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-3-title": {
+        "label": {
+          "de-DE": "Karte 3 · Titel",
+          "en-GB": "Karte 3 · Titel",
+          "tr-TR": "Karte 3 · Titel"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1272,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-3-img": {
+        "label": {
+          "de-DE": "Karte 3 · Bild",
+          "en-GB": "Karte 3 · Bild",
+          "tr-TR": "Karte 3 · Bild"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1274,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-3-link": {
+        "label": {
+          "de-DE": "Karte 3 · Link (URL)",
+          "en-GB": "Karte 3 · Link (URL)",
+          "tr-TR": "Karte 3 · Link (URL)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1276,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-4-title": {
+        "label": {
+          "de-DE": "Karte 4 · Titel",
+          "en-GB": "Karte 4 · Titel",
+          "tr-TR": "Karte 4 · Titel"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1278,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-4-img": {
+        "label": {
+          "de-DE": "Karte 4 · Bild",
+          "en-GB": "Karte 4 · Bild",
+          "tr-TR": "Karte 4 · Bild"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1280,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-4-link": {
+        "label": {
+          "de-DE": "Karte 4 · Link (URL)",
+          "en-GB": "Karte 4 · Link (URL)",
+          "tr-TR": "Karte 4 · Link (URL)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1282,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-5-title": {
+        "label": {
+          "de-DE": "Karte 5 · Titel",
+          "en-GB": "Karte 5 · Titel",
+          "tr-TR": "Karte 5 · Titel"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1284,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-5-img": {
+        "label": {
+          "de-DE": "Karte 5 · Bild",
+          "en-GB": "Karte 5 · Bild",
+          "tr-TR": "Karte 5 · Bild"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1286,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-5-link": {
+        "label": {
+          "de-DE": "Karte 5 · Link (URL)",
+          "en-GB": "Karte 5 · Link (URL)",
+          "tr-TR": "Karte 5 · Link (URL)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1288,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-6-title": {
+        "label": {
+          "de-DE": "Karte 6 · Titel",
+          "en-GB": "Karte 6 · Titel",
+          "tr-TR": "Karte 6 · Titel"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1290,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-6-img": {
+        "label": {
+          "de-DE": "Karte 6 · Bild",
+          "en-GB": "Karte 6 · Bild",
+          "tr-TR": "Karte 6 · Bild"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1292,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-6-link": {
+        "label": {
+          "de-DE": "Karte 6 · Link (URL)",
+          "en-GB": "Karte 6 · Link (URL)",
+          "tr-TR": "Karte 6 · Link (URL)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1294,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-7-title": {
+        "label": {
+          "de-DE": "Karte 7 · Titel",
+          "en-GB": "Karte 7 · Titel",
+          "tr-TR": "Karte 7 · Titel"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1296,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-7-img": {
+        "label": {
+          "de-DE": "Karte 7 · Bild",
+          "en-GB": "Karte 7 · Bild",
+          "tr-TR": "Karte 7 · Bild"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1298,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-7-link": {
+        "label": {
+          "de-DE": "Karte 7 · Link (URL)",
+          "en-GB": "Karte 7 · Link (URL)",
+          "tr-TR": "Karte 7 · Link (URL)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1300,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-8-title": {
+        "label": {
+          "de-DE": "Karte 8 · Titel",
+          "en-GB": "Karte 8 · Titel",
+          "tr-TR": "Karte 8 · Titel"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1302,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-8-img": {
+        "label": {
+          "de-DE": "Karte 8 · Bild",
+          "en-GB": "Karte 8 · Bild",
+          "tr-TR": "Karte 8 · Bild"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1304,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-8-link": {
+        "label": {
+          "de-DE": "Karte 8 · Link (URL)",
+          "en-GB": "Karte 8 · Link (URL)",
+          "tr-TR": "Karte 8 · Link (URL)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1306,
+        "scss": false,
+        "tab": "elfHome"
+      },
       "elfbar-whyus-eyebrow": {
         "label": {
           "de-DE": "Warum-wir Eyebrow (klein)",
