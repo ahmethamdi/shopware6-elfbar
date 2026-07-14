@@ -31,13 +31,28 @@
                             <a href="{{ catUrl }}" class="elfbar-mega__all">Alle anzeigen →</a>
                         </div>
                         <div class="elfbar-mega__body">
-                            {# Sadece alt kategoriler (canlı navigasyondan). Görsel promo alanı
-                               kaldırıldı (panelde çok yer kaplıyordu). #}
+                            {# Alt kategoriler + (varsa) 3. seviye alt-alt kategoriler.
+                               Alt-altı olan kategori grup başlığı olur, altında liste;
+                               alt-altı olmayan tek link kalır (eskisi gibi). #}
                             <div class="elfbar-mega__grid">
                                 {% for childItem in children %}
                                     {% set child = childItem.category %}
                                     {% set childUrl = child.type == 'folder' ? '#' : (child.seoUrl ?: seoUrl('frontend.navigation.page', { navigationId: child.id })) %}
-                                    <a href="{{ childUrl }}" class="elfbar-mega__cell">{{ child.translated.name }}</a>
+                                    {% set grandChildren = childItem.children|default([]) %}
+                                    {% if grandChildren|length > 0 %}
+                                        <div class="elfbar-mega__group">
+                                            <a href="{{ childUrl }}" class="elfbar-mega__cell elfbar-mega__cell--head">{{ child.translated.name }}</a>
+                                            <ul class="elfbar-mega__sublist">
+                                                {% for gcItem in grandChildren %}
+                                                    {% set gc = gcItem.category %}
+                                                    {% set gcUrl = gc.type == 'folder' ? '#' : (gc.seoUrl ?: seoUrl('frontend.navigation.page', { navigationId: gc.id })) %}
+                                                    <li><a href="{{ gcUrl }}" class="elfbar-mega__sublink">{{ gc.translated.name }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% else %}
+                                        <a href="{{ childUrl }}" class="elfbar-mega__cell">{{ child.translated.name }}</a>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>

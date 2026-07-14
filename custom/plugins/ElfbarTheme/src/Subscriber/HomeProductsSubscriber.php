@@ -24,7 +24,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class HomeProductsSubscriber implements EventSubscriberInterface
 {
     private const LIMIT = 8;
-    private const NAV_DEPTH = 2;
+    // 3 seviye: ana kategori → alt kategori → alt-altın altı (3. seviye).
+    private const NAV_DEPTH = 3;
 
     public function __construct(
         private readonly SalesChannelRepository $productRepository,
