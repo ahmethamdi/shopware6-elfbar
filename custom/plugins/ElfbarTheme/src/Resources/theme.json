@@ -1756,6 +1756,315 @@
         "scss": false,
         "tab": "elfHome"
       },
+      "elfbar-whyus-eyebrow": {
+        "label": {
+          "de-DE": "Warum-wir Eyebrow (klein)",
+          "en-GB": "Warum-wir Eyebrow (klein)",
+          "tr-TR": "Warum-wir Eyebrow (klein)"
+        },
+        "type": "text",
+        "value": "Ihre Vorteile",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1300,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-title": {
+        "label": {
+          "de-DE": "Warum-wir Titel",
+          "en-GB": "Warum-wir Titel",
+          "tr-TR": "Warum-wir Titel"
+        },
+        "type": "text",
+        "value": "Ihr zuverlässiger Großhandelspartner",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1305,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-sub": {
+        "label": {
+          "de-DE": "Warum-wir Untertitel",
+          "en-GB": "Warum-wir Untertitel",
+          "tr-TR": "Warum-wir Untertitel"
+        },
+        "type": "text",
+        "value": "Vom Bestellprozess bis zur Lieferung – wir machen Großhandel einfach, sicher und planbar. Das erwartet Sie als Partner:",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1310,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-1-icon": {
+        "label": {
+          "de-DE": "Karte 1 · Icon (shield/truck/headset/lock-closed/rocket/products)",
+          "en-GB": "Karte 1 · Icon (shield/truck/headset/lock-closed/rocket/products)",
+          "tr-TR": "Karte 1 · Icon (shield/truck/headset/lock-closed/rocket/products)"
+        },
+        "helpText": {
+          "de-DE": "Shopware Icon-Name",
+          "en-GB": "Shopware Icon-Name",
+          "tr-TR": "Shopware Icon-Name"
+        },
+        "type": "text",
+        "value": "shield",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1315,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-1-title": {
+        "label": {
+          "de-DE": "Karte 1 · Titel",
+          "en-GB": "Karte 1 · Titel",
+          "tr-TR": "Karte 1 · Titel"
+        },
+        "type": "text",
+        "value": "100% Originalware",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1320,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-1-text": {
+        "label": {
+          "de-DE": "Karte 1 · Text",
+          "en-GB": "Karte 1 · Text",
+          "tr-TR": "Karte 1 · Text"
+        },
+        "type": "text",
+        "value": "Direkt vom autorisierten Distributor – keine Grauimporte, keine Fälschungen.",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1325,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-1-item-1": {
+        "label": {
+          "de-DE": "Karte 1 · Punkt 1",
+          "en-GB": "Karte 1 · Punkt 1",
+          "tr-TR": "Karte 1 · Punkt 1"
+        },
+        "type": "text",
+        "value": "Jede Charge geprüft & zertifiziert",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1330,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-1-item-2": {
+        "label": {
+          "de-DE": "Karte 1 · Punkt 2",
+          "en-GB": "Karte 1 · Punkt 2",
+          "tr-TR": "Karte 1 · Punkt 2"
+        },
+        "type": "text",
+        "value": "Deutsche Steuerbanderole",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1335,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-1-item-3": {
+        "label": {
+          "de-DE": "Karte 1 · Punkt 3",
+          "en-GB": "Karte 1 · Punkt 3",
+          "tr-TR": "Karte 1 · Punkt 3"
+        },
+        "type": "text",
+        "value": "Rechtssicher für den Wiederverkauf",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1340,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-2-icon": {
+        "label": {
+          "de-DE": "Karte 2 · Icon (shield/truck/headset/lock-closed/rocket/products)",
+          "en-GB": "Karte 2 · Icon (shield/truck/headset/lock-closed/rocket/products)",
+          "tr-TR": "Karte 2 · Icon (shield/truck/headset/lock-closed/rocket/products)"
+        },
+        "helpText": {
+          "de-DE": "Shopware Icon-Name",
+          "en-GB": "Shopware Icon-Name",
+          "tr-TR": "Shopware Icon-Name"
+        },
+        "type": "text",
+        "value": "truck",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1345,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-2-title": {
+        "label": {
+          "de-DE": "Karte 2 · Titel",
+          "en-GB": "Karte 2 · Titel",
+          "tr-TR": "Karte 2 · Titel"
+        },
+        "type": "text",
+        "value": "Schnell & zuverlässig",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1350,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-2-text": {
+        "label": {
+          "de-DE": "Karte 2 · Text",
+          "en-GB": "Karte 2 · Text",
+          "tr-TR": "Karte 2 · Text"
+        },
+        "type": "text",
+        "value": "Heute bestellt, in 24–48 h geliefert – planbar für Ihren Nachschub.",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1355,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-2-item-1": {
+        "label": {
+          "de-DE": "Karte 2 · Punkt 1",
+          "en-GB": "Karte 2 · Punkt 1",
+          "tr-TR": "Karte 2 · Punkt 1"
+        },
+        "type": "text",
+        "value": "Versand aus deutschem Lager",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1360,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-2-item-2": {
+        "label": {
+          "de-DE": "Karte 2 · Punkt 2",
+          "en-GB": "Karte 2 · Punkt 2",
+          "tr-TR": "Karte 2 · Punkt 2"
+        },
+        "type": "text",
+        "value": "Versandkostenfrei ab Mindestbestellwert",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1365,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-2-item-3": {
+        "label": {
+          "de-DE": "Karte 2 · Punkt 3",
+          "en-GB": "Karte 2 · Punkt 3",
+          "tr-TR": "Karte 2 · Punkt 3"
+        },
+        "type": "text",
+        "value": "Sendungsverfolgung inklusive",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1370,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-3-icon": {
+        "label": {
+          "de-DE": "Karte 3 · Icon (shield/truck/headset/lock-closed/rocket/products)",
+          "en-GB": "Karte 3 · Icon (shield/truck/headset/lock-closed/rocket/products)",
+          "tr-TR": "Karte 3 · Icon (shield/truck/headset/lock-closed/rocket/products)"
+        },
+        "helpText": {
+          "de-DE": "Shopware Icon-Name",
+          "en-GB": "Shopware Icon-Name",
+          "tr-TR": "Shopware Icon-Name"
+        },
+        "type": "text",
+        "value": "headset",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1375,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-3-title": {
+        "label": {
+          "de-DE": "Karte 3 · Titel",
+          "en-GB": "Karte 3 · Titel",
+          "tr-TR": "Karte 3 · Titel"
+        },
+        "type": "text",
+        "value": "Persönlicher B2B-Service",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1380,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-3-text": {
+        "label": {
+          "de-DE": "Karte 3 · Text",
+          "en-GB": "Karte 3 · Text",
+          "tr-TR": "Karte 3 · Text"
+        },
+        "type": "text",
+        "value": "Ein fester Ansprechpartner, faire Konditionen und flexible Zahlung.",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1385,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-3-item-1": {
+        "label": {
+          "de-DE": "Karte 3 · Punkt 1",
+          "en-GB": "Karte 3 · Punkt 1",
+          "tr-TR": "Karte 3 · Punkt 1"
+        },
+        "type": "text",
+        "value": "Kauf auf Rechnung für Gewerbekunden",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1390,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-3-item-2": {
+        "label": {
+          "de-DE": "Karte 3 · Punkt 2",
+          "en-GB": "Karte 3 · Punkt 2",
+          "tr-TR": "Karte 3 · Punkt 2"
+        },
+        "type": "text",
+        "value": "Staffelpreise & Mengenrabatte",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1395,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-whyus-3-item-3": {
+        "label": {
+          "de-DE": "Karte 3 · Punkt 3",
+          "en-GB": "Karte 3 · Punkt 3",
+          "tr-TR": "Karte 3 · Punkt 3"
+        },
+        "type": "text",
+        "value": "Beratung zu Sortiment & Aktionen",
+        "editable": true,
+        "block": "elfbarWhyus",
+        "order": 1400,
+        "scss": false,
+        "tab": "elfHome"
+      },
       "elfbar-usp-eyebrow": {
         "label": {
           "de-DE": "USP · Eyebrow",
@@ -3422,6 +3731,32 @@
         "editable": true,
         "block": "elfbarSections",
         "order": 101150,
+        "tab": "elfHome"
+      },
+      "elfbar-sec-whyus-enabled": {
+        "label": {
+          "de-DE": "Sektion: Warum wir · anzeigen",
+          "en-GB": "Sektion: Warum wir · anzeigen",
+          "tr-TR": "Sektion: Warum wir · anzeigen"
+        },
+        "type": "bool",
+        "value": true,
+        "editable": true,
+        "block": "elfbarSections",
+        "order": 101150,
+        "tab": "elfHome"
+      },
+      "elfbar-sec-whyus-order": {
+        "label": {
+          "de-DE": "Sektion: Warum wir · Reihenfolge",
+          "en-GB": "Sektion: Warum wir · Reihenfolge",
+          "tr-TR": "Sektion: Warum wir · Reihenfolge"
+        },
+        "type": "int",
+        "value": 5,
+        "editable": true,
+        "block": "elfbarSections",
+        "order": 101155,
         "tab": "elfHome"
       },
       "elfbar-sec-usp-enabled": {

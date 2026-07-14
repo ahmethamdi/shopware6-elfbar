@@ -95,7 +95,7 @@
         {# Panelden yönetilen section görünürlük + sıra okuyucular.
            secOn('x') → bool (boşsa varsayılan açık), secOrder('x') → int sıra. #}
         {% set elfbarSecOrderDefaults = {
-            'vitrine': 10, 'campaign': 20, 'promo': 30, 'catslider2': 35, 'deals': 40, 'banner': 50,
+            'whyus': 5, 'vitrine': 10, 'campaign': 20, 'promo': 30, 'catslider2': 35, 'deals': 40, 'banner': 50,
             'neu': 60, 'showcase': 70, 'bestseller': 80, 'b2b': 90, 'catslider1': 100,
             'usp': 110, 'stripe2': 130, 'howtofaq': 140, 'reviews': 150
         } %}
@@ -196,6 +196,58 @@
                 {# --- SAĞ: section'lar. Sıra panelden (CSS order), her biri aç/kapa.
                        body__main flex-column → her section'a style="order:N" ile sıralanır. --- #}
                 <div class="elfbar-body__main elfbar-body__main--ordered">
+                    {# ============ WARUM WIR — bilgi/güven section (hero altı, klasik)
+                       3 avantaj kartı, her biri başlık+metin+3 madde. Tümü panelden. ============ #}
+                    {% if theme_config('elfbar-sec-whyus-enabled') is not same as(false) %}
+                    <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-whyus-order')|default(elfbarSecOrderDefaults.whyus) }}">
+                    {% block elfbar_home_whyus %}
+                        {% set wuCards = [
+                            {
+                                icon: theme_config('elfbar-whyus-1-icon')|default('shield'),
+                                title: theme_config('elfbar-whyus-1-title')|default('100% Originalware'),
+                                text: theme_config('elfbar-whyus-1-text')|default('Direkt vom autorisierten Distributor – keine Grauimporte, keine Fälschungen.'),
+                                items: [theme_config('elfbar-whyus-1-item-1')|default('Jede Charge geprüft & zertifiziert'), theme_config('elfbar-whyus-1-item-2')|default('Deutsche Steuerbanderole'), theme_config('elfbar-whyus-1-item-3')|default('Rechtssicher für den Wiederverkauf')]
+                            },
+                            {
+                                icon: theme_config('elfbar-whyus-2-icon')|default('truck'),
+                                title: theme_config('elfbar-whyus-2-title')|default('Schnell & zuverlässig'),
+                                text: theme_config('elfbar-whyus-2-text')|default('Heute bestellt, in 24–48 h geliefert – planbar für Ihren Nachschub.'),
+                                items: [theme_config('elfbar-whyus-2-item-1')|default('Versand aus deutschem Lager'), theme_config('elfbar-whyus-2-item-2')|default('Versandkostenfrei ab Mindestbestellwert'), theme_config('elfbar-whyus-2-item-3')|default('Sendungsverfolgung inklusive')]
+                            },
+                            {
+                                icon: theme_config('elfbar-whyus-3-icon')|default('headset'),
+                                title: theme_config('elfbar-whyus-3-title')|default('Persönlicher B2B-Service'),
+                                text: theme_config('elfbar-whyus-3-text')|default('Ein fester Ansprechpartner, faire Konditionen und flexible Zahlung.'),
+                                items: [theme_config('elfbar-whyus-3-item-1')|default('Kauf auf Rechnung für Gewerbekunden'), theme_config('elfbar-whyus-3-item-2')|default('Staffelpreise & Mengenrabatte'), theme_config('elfbar-whyus-3-item-3')|default('Beratung zu Sortiment & Aktionen')]
+                            }
+                        ] %}
+                        <section class="elfbar-whyus" aria-labelledby="elfbar-whyus-title">
+                            <header class="elfbar-whyus__head">
+                                {% if theme_config('elfbar-whyus-eyebrow')|default('Ihre Vorteile') %}<p class="elfbar-whyus__eyebrow">{{ theme_config('elfbar-whyus-eyebrow')|default('Ihre Vorteile') }}</p>{% endif %}
+                                <h2 class="elfbar-whyus__title" id="elfbar-whyus-title">{{ theme_config('elfbar-whyus-title')|default('Ihr zuverlässiger Großhandelspartner') }}</h2>
+                                {% if theme_config('elfbar-whyus-sub')|default('Vom Bestellprozess bis zur Lieferung – wir machen Großhandel einfach, sicher und planbar. Das erwartet Sie als Partner:') %}<p class="elfbar-whyus__sub">{{ theme_config('elfbar-whyus-sub')|default('Vom Bestellprozess bis zur Lieferung – wir machen Großhandel einfach, sicher und planbar. Das erwartet Sie als Partner:') }}</p>{% endif %}
+                            </header>
+                            <div class="elfbar-whyus__grid">
+                                {% for c in wuCards %}
+                                    {% if c.title %}
+                                    <article class="elfbar-whycard">
+                                        <span class="elfbar-whycard__icon">{% sw_icon c.icon %}</span>
+                                        <h3 class="elfbar-whycard__title">{{ c.title }}</h3>
+                                        {% if c.text %}<p class="elfbar-whycard__text">{{ c.text }}</p>{% endif %}
+                                        <ul class="elfbar-whycard__list">
+                                            {% for it in c.items|filter(it => it) %}
+                                                <li><span class="elfbar-whycard__chk"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> {{ it }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </article>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </section>
+                    {% endblock %}
+                    </div>
+                    {% endif %}
+
                     {# ============ VERKAUFSVITRINE PRO — kompakt ============ #}
                     {% if theme_config('elfbar-sec-vitrine-enabled') is not same as(false) %}
                     <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-vitrine-order')|default(elfbarSecOrderDefaults.vitrine) }}">
