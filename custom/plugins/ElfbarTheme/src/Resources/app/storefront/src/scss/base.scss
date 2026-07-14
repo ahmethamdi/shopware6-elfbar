@@ -4923,3 +4923,74 @@ a.elfbar-link, .elfbar-more-link {
     .elfbar-catcard { flex: 0 0 138px; }
     .elfbar-catscroll__btn { width: 40px; height: 40px; }
 }
+
+/* ============================================================
+   📱 MOBİL ALT TAB-BAR (native app tarzı) — sabit, ekran altında.
+   Sadece ≤991px'te görünür; desktop'ta gizli.
+   ============================================================ */
+.elfbar-tabbar { display: none; }   // desktop'ta yok
+
+@media (max-width: 991.98px) {
+    .elfbar-tabbar {
+        display: flex; align-items: stretch;
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 1050;
+        background: rgba(#fff, 0.92);
+        -webkit-backdrop-filter: saturate(180%) blur(18px); backdrop-filter: saturate(180%) blur(18px);
+        border-top: 1px solid rgba($elfbar-color-ink, 0.08);
+        box-shadow: 0 -6px 24px rgba($elfbar-color-ink, 0.08);
+        // iPhone home-indicator güvenli alanı
+        padding-bottom: env(safe-area-inset-bottom, 0);
+
+        &__item {
+            flex: 1 1 0; min-width: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+            padding: .5rem .15rem .4rem; background: transparent; border: none; cursor: pointer;
+            text-decoration: none; color: rgba($elfbar-color-ink, 0.6);
+            font-family: $elfbar-font-base; transition: color .15s ease;
+            -webkit-tap-highlight-color: transparent;
+            &:hover, &:active, &:focus-visible { color: $elfbar-grad-mid; text-decoration: none; }
+        }
+        &__ico {
+            position: relative; display: inline-flex; align-items: center; justify-content: center;
+            width: 26px; height: 26px;
+            svg { width: 24px; height: 24px; display: block; }
+        }
+        &__label {
+            font-size: .66rem; font-weight: 600; letter-spacing: .01em; line-height: 1;
+            max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
+        // Sepet sayısı rozeti
+        &__badge {
+            position: absolute; top: -5px; right: -8px; min-width: 17px; height: 17px; padding: 0 4px;
+            display: flex; align-items: center; justify-content: center;
+            background: $elfbar-gradient; color: #fff; font-size: .62rem; font-weight: 700;
+            border-radius: 999px; border: 2px solid #fff; line-height: 1;
+        }
+    }
+
+    // Aktif sekme (bulunulan sayfa) — body class'ından
+    // Ana sayfa
+    body.is-ctl-index .elfbar-tabbar__item[href="/"],
+    // Hesap sayfaları
+    body[class*="is-ctl-account"] .elfbar-tabbar__item[href*="/account"],
+    // Sepet
+    body.is-ctl-checkout .elfbar-tabbar__item[href*="/checkout/cart"] {
+        color: $elfbar-grad-mid;
+        .elfbar-tabbar__label { font-weight: 700; }
+    }
+
+    // Tab-bar yer kaplasın → içerik altına binmesin (footer/son section görünür kalsın)
+    body { padding-bottom: calc(60px + env(safe-area-inset-bottom, 0)); }
+    // Checkout'ta alttaki "bestellen" butonu tab-bar'a çarpmasın diye biraz daha
+    body.is-ctl-checkout { padding-bottom: calc(66px + env(safe-area-inset-bottom, 0)); }
+}
+
+// Dark mode desteği (sistem)
+@media (max-width: 991.98px) and (prefers-color-scheme: dark) {
+    .elfbar-tabbar {
+        background: rgba(#17112a, 0.92);
+        border-top-color: rgba(#fff, 0.10);
+        &__item { color: rgba(#fff, 0.65); }
+        &__badge { border-color: #17112a; }
+    }
+}

@@ -162,4 +162,35 @@
             </div>
         </div>
     {% endblock %}
+
+    {# 📱 MOBİL ALT TAB-BAR (native app tarzı) — sadece mobilde (SCSS ile) görünür.
+       Ana Sayfa / Kategorien(drawer) / Suche / Konto / Warenkorb. #}
+    {% block elfbar_mobile_tabbar %}
+        {% set elfbarCartCount = page.cart.lineItems|default([])|length %}
+        <nav class="elfbar-tabbar" aria-label="Mobile Navigation">
+            <a class="elfbar-tabbar__item" href="{{ path('frontend.home.page') }}">
+                <span class="elfbar-tabbar__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></span>
+                <span class="elfbar-tabbar__label">Start</span>
+            </a>
+            <button type="button" class="elfbar-tabbar__item" data-off-canvas-menu="true" aria-label="Kategorien">
+                <span class="elfbar-tabbar__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+                <span class="elfbar-tabbar__label">Kategorien</span>
+            </button>
+            <button type="button" class="elfbar-tabbar__item js-search-toggle-btn" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-label="Suche">
+                <span class="elfbar-tabbar__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>
+                <span class="elfbar-tabbar__label">Suche</span>
+            </button>
+            <a class="elfbar-tabbar__item" href="{{ path('frontend.account.home.page') }}">
+                <span class="elfbar-tabbar__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
+                <span class="elfbar-tabbar__label">Konto</span>
+            </a>
+            <a class="elfbar-tabbar__item" href="{{ path('frontend.checkout.cart.page') }}">
+                <span class="elfbar-tabbar__ico">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/><path d="M2.5 3h2l2.2 12.4a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg>
+                    {% if elfbarCartCount > 0 %}<span class="elfbar-tabbar__badge" data-elfbar-tabbar-cart>{{ elfbarCartCount > 99 ? '99+' : elfbarCartCount }}</span>{% endif %}
+                </span>
+                <span class="elfbar-tabbar__label">Warenkorb</span>
+            </a>
+        </nav>
+    {% endblock %}
 {% endblock %}
