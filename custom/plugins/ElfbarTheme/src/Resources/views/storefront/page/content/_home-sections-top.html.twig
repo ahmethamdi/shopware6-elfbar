@@ -1,34 +1,31 @@
-{# Premium section'lar — ÜST grup: USP grid + Markenwelt. Başlıklar SOLA yaslı (.elfbar-shead). #}
+{# Premium section — "Unser Versprechen" (split banner: koyu sol + vaat listesi).
+   Eski USP grid'in yerini aldı (whyus ile duplicate'ti). Tümü panelden editlenebilir. #}
 
-{# ---- WARUM ELFBAR B2B? — USP Grid ---- #}
-<section class="elfbar-usps" aria-labelledby="elfbar-usps-title">
-    <header class="elfbar-shead">
-        {% if theme_config('elfbar-usp-eyebrow') %}<p class="elfbar-shead__eyebrow">{{ theme_config('elfbar-usp-eyebrow') }}</p>{% endif %}
-        {% if theme_config('elfbar-usp-title') %}<h2 class="elfbar-shead__title" id="elfbar-usps-title">{{ theme_config('elfbar-usp-title') }}</h2>{% endif %}
-        {% if theme_config('elfbar-usp-sub') %}<p class="elfbar-shead__sub">{{ theme_config('elfbar-usp-sub') }}</p>{% endif %}
-    </header>
-    <div class="elfbar-usps__grid">
-        <article class="elfbar-usp-card">
-            <span class="elfbar-usp-card__icon">{% sw_icon 'bag-product' %}</span>
-            <h3 class="elfbar-usp-card__title">Top-Margen für Händler</h3>
-            <p class="elfbar-usp-card__text">Attraktive Staffelpreise und Mengenrabatte sichern Ihnen erstklassige Gewinnspannen.</p>
-        </article>
-        <article class="elfbar-usp-card">
-            <span class="elfbar-usp-card__icon">{% sw_icon 'truck' %}</span>
-            <h3 class="elfbar-usp-card__title">Schnelle Lieferung 24–48h</h3>
-            <p class="elfbar-usp-card__text">Bestellt am Nachmittag, geliefert übermorgen – versandkostenfrei ab Mindestbestellwert.</p>
-        </article>
-        <article class="elfbar-usp-card">
-            <span class="elfbar-usp-card__icon">{% sw_icon 'lock-closed' %}</span>
-            <h3 class="elfbar-usp-card__title">Kauf auf Rechnung &amp; PayPal</h3>
-            <p class="elfbar-usp-card__text">Flexible Zahlung für Gewerbekunden – sicher, geprüft und ohne Vorkasse-Zwang.</p>
-        </article>
-        <article class="elfbar-usp-card">
-            <span class="elfbar-usp-card__icon">{% sw_icon 'headset' %}</span>
-            <h3 class="elfbar-usp-card__title">Persönlicher B2B-Support</h3>
-            <p class="elfbar-usp-card__text">Ihr fester Ansprechpartner berät Sie zu Sortiment, Aktionen und Nachschub.</p>
-        </article>
+{# ---- UNSER VERSPRECHEN — split banner ---- #}
+{% set vpEyebrow = theme_config('elfbar-promise-eyebrow')|default('Unser Versprechen') %}
+{% set vpTitle   = theme_config('elfbar-promise-title')|default('Mehr als nur ein Lieferant') %}
+{% set vpText    = theme_config('elfbar-promise-text')|default('Wir denken wie ein Partner – mit Leistungen, die Ihren Alltag im Handel wirklich einfacher machen.') %}
+{% set vpItems = [
+    { t: theme_config('elfbar-promise-1-title')|default('Gratis Displaymaterial'), d: theme_config('elfbar-promise-1-text')|default('Aufsteller & Werbemittel für Ihren Verkaufsraum.') },
+    { t: theme_config('elfbar-promise-2-title')|default('Frische-Garantie'), d: theme_config('elfbar-promise-2-text')|default('Kurze Lagerzeiten – immer aktuelle Chargen.') },
+    { t: theme_config('elfbar-promise-3-title')|default('Faire Mengenstaffel'), d: theme_config('elfbar-promise-3-text')|default('Je mehr Sie bestellen, desto besser Ihr Preis.') }
+]|filter(i => i.t) %}
+
+<section class="elfbar-promise" aria-labelledby="elfbar-promise-title">
+    <div class="elfbar-promise__left">
+        {% if vpEyebrow %}<p class="elfbar-promise__eyebrow">{{ vpEyebrow }}</p>{% endif %}
+        {% if vpTitle %}<h2 class="elfbar-promise__title" id="elfbar-promise-title">{{ vpTitle }}</h2>{% endif %}
+        {% if vpText %}<p class="elfbar-promise__text">{{ vpText }}</p>{% endif %}
+    </div>
+    <div class="elfbar-promise__right">
+        {% for it in vpItems %}
+            <div class="elfbar-promise__item">
+                <span class="elfbar-promise__check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div class="elfbar-promise__body">
+                    <b>{{ it.t }}</b>
+                    {% if it.d %}<span>{{ it.d }}</span>{% endif %}
+                </div>
+            </div>
+        {% endfor %}
     </div>
 </section>
-
-{# UNSERE MARKENWELT section KALDIRILDI (kullanıcı isteği). #}

@@ -2457,45 +2457,129 @@
         "scss": false,
         "tab": "elfHome"
       },
-      "elfbar-usp-eyebrow": {
+      "elfbar-promise-eyebrow": {
         "label": {
-          "de-DE": "USP · Eyebrow",
-          "en-GB": "USP eyebrow",
-          "tr-TR": "USP üst etiket"
+          "de-DE": "Versprechen · Eyebrow",
+          "en-GB": "Versprechen · Eyebrow",
+          "tr-TR": "Versprechen · Eyebrow"
         },
         "type": "text",
-        "value": "Ihre Vorteile",
+        "value": "Unser Versprechen",
         "editable": true,
-        "block": "elfbarUsp",
+        "block": "elfbarPromise",
         "order": 1360,
         "scss": false,
         "tab": "elfHome"
       },
-      "elfbar-usp-title": {
+      "elfbar-promise-title": {
         "label": {
-          "de-DE": "USP · Titel",
-          "en-GB": "USP title",
-          "tr-TR": "USP başlık"
+          "de-DE": "Versprechen · Titel",
+          "en-GB": "Versprechen · Titel",
+          "tr-TR": "Versprechen · Titel"
         },
         "type": "text",
-        "value": "Warum ELFBAR B2B?",
+        "value": "Mehr als nur ein Lieferant",
         "editable": true,
-        "block": "elfbarUsp",
+        "block": "elfbarPromise",
+        "order": 1362,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-promise-text": {
+        "label": {
+          "de-DE": "Versprechen · Text (links)",
+          "en-GB": "Versprechen · Text (links)",
+          "tr-TR": "Versprechen · Text (links)"
+        },
+        "type": "text",
+        "value": "Wir denken wie ein Partner – mit Leistungen, die Ihren Alltag im Handel wirklich einfacher machen.",
+        "editable": true,
+        "block": "elfbarPromise",
+        "order": 1364,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-promise-1-title": {
+        "label": {
+          "de-DE": "Punkt 1 · Titel",
+          "en-GB": "Punkt 1 · Titel",
+          "tr-TR": "Punkt 1 · Titel"
+        },
+        "type": "text",
+        "value": "Gratis Displaymaterial",
+        "editable": true,
+        "block": "elfbarPromise",
+        "order": 1366,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-promise-1-text": {
+        "label": {
+          "de-DE": "Punkt 1 · Text",
+          "en-GB": "Punkt 1 · Text",
+          "tr-TR": "Punkt 1 · Text"
+        },
+        "type": "text",
+        "value": "Aufsteller & Werbemittel für Ihren Verkaufsraum.",
+        "editable": true,
+        "block": "elfbarPromise",
+        "order": 1368,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-promise-2-title": {
+        "label": {
+          "de-DE": "Punkt 2 · Titel",
+          "en-GB": "Punkt 2 · Titel",
+          "tr-TR": "Punkt 2 · Titel"
+        },
+        "type": "text",
+        "value": "Frische-Garantie",
+        "editable": true,
+        "block": "elfbarPromise",
         "order": 1370,
         "scss": false,
         "tab": "elfHome"
       },
-      "elfbar-usp-sub": {
+      "elfbar-promise-2-text": {
         "label": {
-          "de-DE": "USP · Untertitel",
-          "en-GB": "USP subtitle",
-          "tr-TR": "USP açıklama"
+          "de-DE": "Punkt 2 · Text",
+          "en-GB": "Punkt 2 · Text",
+          "tr-TR": "Punkt 2 · Text"
         },
         "type": "text",
-        "value": "Der Großhandel, der für Ihren Erfolg gemacht ist.",
+        "value": "Kurze Lagerzeiten – immer aktuelle Chargen.",
         "editable": true,
-        "block": "elfbarUsp",
-        "order": 1380,
+        "block": "elfbarPromise",
+        "order": 1372,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-promise-3-title": {
+        "label": {
+          "de-DE": "Punkt 3 · Titel",
+          "en-GB": "Punkt 3 · Titel",
+          "tr-TR": "Punkt 3 · Titel"
+        },
+        "type": "text",
+        "value": "Faire Mengenstaffel",
+        "editable": true,
+        "block": "elfbarPromise",
+        "order": 1374,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-promise-3-text": {
+        "label": {
+          "de-DE": "Punkt 3 · Text",
+          "en-GB": "Punkt 3 · Text",
+          "tr-TR": "Punkt 3 · Text"
+        },
+        "type": "text",
+        "value": "Je mehr Sie bestellen, desto besser Ihr Preis.",
+        "editable": true,
+        "block": "elfbarPromise",
+        "order": 1376,
         "scss": false,
         "tab": "elfHome"
       },
@@ -4179,9 +4263,9 @@
       },
       "elfbar-sec-usp-enabled": {
         "label": {
-          "de-DE": "Warum ELFBAR (USP) – anzeigen",
-          "en-GB": "usp – show",
-          "tr-TR": "Neden ELFBAR (USP) – göster"
+          "de-DE": "Sektion: Unser Versprechen – anzeigen",
+          "en-GB": "Sektion: Unser Versprechen – anzeigen",
+          "tr-TR": "Sektion: Unser Versprechen – anzeigen"
         },
         "type": "bool",
         "value": true,
@@ -4192,9 +4276,9 @@
       },
       "elfbar-sec-usp-order": {
         "label": {
-          "de-DE": "Warum ELFBAR (USP) – Reihenfolge",
-          "en-GB": "usp – order",
-          "tr-TR": "Neden ELFBAR (USP) – sıra"
+          "de-DE": "Sektion: Unser Versprechen – Reihenfolge",
+          "en-GB": "Sektion: Unser Versprechen – Reihenfolge",
+          "tr-TR": "Sektion: Unser Versprechen – Reihenfolge"
         },
         "type": "int",
         "value": 110,

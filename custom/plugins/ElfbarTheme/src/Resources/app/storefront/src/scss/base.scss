@@ -4331,6 +4331,45 @@ a.elfbar-link, .elfbar-more-link {
     &__text { font-family: $elfbar-font-base; font-size: 0.9rem; line-height: 1.55; color: rgba($elfbar-color-ink, 0.62); margin: 0; }
 }
 
+/* ---- UNSER VERSPRECHEN — split banner (koyu sol + vaat listesi) ---- */
+.elfbar-promise {
+    display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 0;
+    margin: 0 0 3.5rem; border-radius: $elfbar-radius; overflow: hidden;
+    box-shadow: $elf-shadow-md; border: 1px solid rgba($elfbar-color-ink, 0.08);
+    &__left {
+        color: #fff; padding: 2.2rem;
+        display: flex; flex-direction: column; justify-content: center;
+        background:
+            radial-gradient(90% 120% at 20% 10%, rgba($elfbar-grad-mid, 0.35), transparent 55%),
+            linear-gradient(135deg, #1d1338, #120b26);
+    }
+    &__eyebrow {
+        font-family: $elfbar-font-headline; font-size: 0.78rem; font-weight: 700;
+        letter-spacing: 0.16em; text-transform: uppercase; color: #ff9ecd; margin: 0 0 0.45rem;
+    }
+    &__title { font-family: $elfbar-font-headline; font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.1; margin: 0 0 0.6rem; color: #fff; text-wrap: balance; }
+    &__text { font-family: $elfbar-font-base; font-size: 0.92rem; line-height: 1.55; color: rgba(255,255,255,0.78); margin: 0; }
+    &__right {
+        background: #fff; padding: 1.8rem 2rem;
+        display: grid; gap: 0.9rem; align-content: center;
+    }
+    &__item { display: flex; gap: 0.8rem; align-items: flex-start; }
+    &__check {
+        flex: 0 0 auto; width: 34px; height: 34px; border-radius: 10px;
+        background: rgba($elfbar-grad-mid, 0.12); display: grid; place-items: center;
+        svg { width: 18px; height: 18px; stroke: $elfbar-grad-mid; fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+    }
+    &__body {
+        b { display: block; font-family: $elfbar-font-headline; font-size: 1rem; color: $elfbar-color-ink; margin-bottom: 0.1rem; }
+        span { color: rgba($elfbar-color-ink, 0.6); font-size: 0.85rem; line-height: 1.45; }
+    }
+    @media (max-width: 760px) {
+        grid-template-columns: 1fr;
+        &__left { padding: 1.8rem 1.5rem; }
+        &__right { padding: 1.5rem; }
+    }
+}
+
 /* ---- 3. MARKENWELT ---- */
 .elfbar-brandworld { margin: 0 0 3.5rem; &__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; } }
 .elfbar-brand-card {
