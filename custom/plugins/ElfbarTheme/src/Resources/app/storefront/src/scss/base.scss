@@ -3400,7 +3400,7 @@ body.has-elfbar-bulkbar { padding-bottom: 80px; }
     background: $elfbar-gradient;
     padding: .7rem 0;
     box-shadow: 0 4px 18px rgba($elfbar-color-ink, 0.12);
-    margin-bottom: 2rem;
+    margin-bottom: 0;   // header↔içerik boşluğu .checkout padding-top'tan gelir
 
     // Tüm kolonlar dikey ORTALI → logo/contact/buton aynı hizada, alta düşmez
     .header-minimal-row {
@@ -3494,9 +3494,10 @@ body.has-elfbar-bulkbar { padding-bottom: 80px; }
         // Sayfada ORTALA (sola yaslıydı) — Bootstrap container gibi
         max-width: 1320px; margin-left: auto !important; margin-right: auto !important;
         padding-left: 1rem; padding-right: 1rem;
-        // Header'a yapışmasın → üstten nefes payı (içerik biraz aşağıda başlasın)
-        padding-top: 2.5rem;
+        padding-top: 0;   // ekstra boşluk yok
     }
+    // Header ↔ içerik boşluğu: Shopware default .checkout padding-top 70px çok fazlaydı → azalt
+    .checkout { padding-top: 1.5rem !important; }
     .checkout-main {
         flex: 1 1 auto; width: auto !important; max-width: none !important;
         margin-left: 0 !important;
