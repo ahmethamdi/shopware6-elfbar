@@ -4169,59 +4169,64 @@ a.elfbar-link, .elfbar-more-link {
 /* ---- 1. VERKAUFSVITRINE PRO ---- */
 .elfbar-vitrine {
     position: relative; overflow: hidden; display: grid;
-    grid-template-columns: 0.85fr 1fr; gap: 2rem; align-items: center;
-    margin: 0 0 3.5rem; padding: 2.5rem; border-radius: calc(#{$elfbar-radius} + 8px);
+    grid-template-columns: 1fr 0.9fr; gap: 2rem; align-items: center;
+    margin: 0 0 3.5rem; padding: 2.2rem; border-radius: calc(#{$elfbar-radius} + 8px);
+    /* AÇIK ZEMİN (koyu değil) — whyus ile uyumlu, gradient sadece köşe ipucu */
     background:
-        radial-gradient(120% 140% at 0% 0%, rgba($elfbar-grad-start, 0.35) 0%, transparent 55%),
-        radial-gradient(120% 140% at 100% 100%, rgba($elfbar-grad-end, 0.4) 0%, transparent 55%),
-        linear-gradient(160deg, #1a1230 0%, #100a22 100%);
-    box-shadow: $elf-shadow-lg; isolation: isolate;
+        radial-gradient(90% 120% at 100% 0%, rgba($elfbar-grad-mid, 0.10) 0%, transparent 55%),
+        #fff;
+    border: 1px solid rgba($elfbar-color-ink, 0.08);
+    box-shadow: $elf-shadow-md; isolation: isolate;
     &__glow {
-        position: absolute; width: 320px; height: 320px; border-radius: 50%;
-        filter: blur(90px); opacity: 0.55; z-index: -1; pointer-events: none;
-        &--a { top: -120px; left: -80px; background: $elfbar-grad-start; animation: elfbar-float 9s ease-in-out infinite; }
-        &--b { bottom: -140px; right: -90px; background: $elfbar-grad-end; animation: elfbar-float 11s ease-in-out infinite reverse; }
+        position: absolute; width: 300px; height: 300px; border-radius: 50%;
+        filter: blur(90px); opacity: 0.14; z-index: -1; pointer-events: none;
+        &--a { top: -120px; right: -80px; background: $elfbar-grad-mid; animation: elfbar-float 9s ease-in-out infinite; }
+        &--b { display: none; }
     }
     &__media { position: relative; display: flex; justify-content: center; }
     &__badge {
-        position: absolute; top: -8px; left: 50%; transform: translateX(-50%); z-index: 2;
+        position: absolute; top: -8px; left: 50%; transform: translateX(-50%); z-index: 3;
         white-space: nowrap; padding: 0.4rem 0.9rem; border-radius: 999px;
         font-family: $elfbar-font-base; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
-        color: #fff; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(10px);
+        color: #fff; background: $elfbar-gradient; box-shadow: 0 6px 16px rgba($elfbar-grad-mid, 0.4);
     }
+    /* Cabinet/foto — koyu foto AÇIK zeminde kaybolmasın diye gradient çerçeve + glow */
     &__cabinet {
-        position: relative; width: 100%; max-width: 230px; padding: 1rem; border-radius: $elfbar-radius;
-        background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
-        border: 1px solid rgba(255,255,255,0.16);
-        box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+        position: relative; width: 100%; max-width: 240px; padding: 6px; border-radius: calc(#{$elfbar-radius} + 4px);
+        background: $elfbar-gradient;
+        box-shadow: 0 20px 46px rgba($elfbar-grad-mid, 0.38);
         animation: elfbar-rise 0.8s ease both;
-        svg { width: 100%; height: auto; display: block; }
+        svg { width: 100%; height: auto; display: block; border-radius: $elfbar-radius; background: #100a22; }
+        &::before {
+            content: ""; position: absolute; inset: -3px; border-radius: inherit;
+            background: $elfbar-gradient; filter: blur(16px); opacity: 0.5; z-index: -1;
+        }
         &::after {
-            content: ""; position: absolute; inset: 0; border-radius: inherit;
-            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
-            opacity: 0; transition: opacity 0.4s ease;
+            content: ""; position: absolute; inset: 6px; border-radius: $elfbar-radius;
+            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.22) 50%, transparent 70%);
+            opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
         }
     }
     &:hover &__cabinet::after { opacity: 1; }
-    &__content { color: #fff; }
+    &__content { color: $elfbar-color-ink; }
     &__eyebrow {
-        font-family: $elfbar-font-headline; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.22em; margin: 0 0 0.5rem;
+        font-family: $elfbar-font-headline; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.18em; margin: 0 0 0.5rem;
         background: linear-gradient(90deg, $elfbar-grad-start, $elfbar-grad-mid); -webkit-background-clip: text; background-clip: text; color: transparent;
     }
     &__title {
         font-family: $elfbar-font-headline; font-size: clamp(1.8rem, 4.5vw, 2.6rem); font-weight: 700;
-        line-height: 1.08; margin: 0 0 0.9rem; color: #fff; hyphens: auto;
+        line-height: 1.08; margin: 0 0 0.9rem; color: $elfbar-color-ink; hyphens: auto;
     }
-    &__text { font-family: $elfbar-font-base; font-size: 1rem; line-height: 1.65; color: rgba(255,255,255,0.78); margin: 0 0 1.2rem; }
+    &__text { font-family: $elfbar-font-base; font-size: 1rem; line-height: 1.65; color: rgba($elfbar-color-ink, 0.62); margin: 0 0 1.2rem; }
     &__features {
         list-style: none; margin: 0 0 1.6rem; padding: 0; display: grid; gap: 0.55rem;
         li {
-            display: flex; align-items: center; gap: 0.55rem; font-family: $elfbar-font-base; font-size: 0.92rem; color: rgba(255,255,255,0.9);
-            .icon { width: 18px; height: 18px; flex: 0 0 auto; padding: 3px; border-radius: 50%; color: #fff; background: $elfbar-gradient; }
+            display: flex; align-items: center; gap: 0.55rem; font-family: $elfbar-font-base; font-size: 0.92rem; font-weight: 600; color: $elfbar-color-ink;
+            .icon { width: 20px; height: 20px; flex: 0 0 auto; padding: 4px; border-radius: 6px; color: #fff; background: $elfbar-gradient; }
         }
     }
     &__actions { display: flex; flex-wrap: wrap; gap: 0.85rem; margin: 0 0 1.1rem; }
-    &__note { font-family: $elfbar-font-base; font-size: 0.78rem; color: rgba(255,255,255,0.5); margin: 0; }
+    &__note { font-family: $elfbar-font-base; font-size: 0.78rem; color: rgba($elfbar-color-ink, 0.5); margin: 0; }
 }
 
 /* ---- 2. USPs ---- */
@@ -4733,11 +4738,17 @@ a.elfbar-link, .elfbar-more-link {
     }
 }
 
-/* Vitrine PRO — panelden gerçek foto yüklenince (SVG çizim yerine) */
+/* Vitrine PRO — panelden gerçek foto yüklenince (SVG çizim yerine).
+   Açık zeminde koyu foto kaybolmasın → gradient çerçeve + glow (mockup varyant 1). */
 .elfbar-vitrine__photo {
-    width: 100%; border-radius: $elfbar-radius; overflow: hidden; line-height: 0;
-    box-shadow: $elf-shadow-sm;
-    img { width: 100%; height: 100%; object-fit: cover; display: block; max-height: 280px; }
+    position: relative; width: 100%; border-radius: calc(#{$elfbar-radius} + 4px);
+    padding: 6px; line-height: 0; background: $elfbar-gradient;
+    box-shadow: 0 20px 46px rgba($elfbar-grad-mid, 0.38);
+    &::before {
+        content: ""; position: absolute; inset: -3px; border-radius: inherit;
+        background: $elfbar-gradient; filter: blur(16px); opacity: 0.5; z-index: -1;
+    }
+    img { width: 100%; height: 100%; object-fit: cover; display: block; max-height: 300px; border-radius: $elfbar-radius; }
 }
 
 /* ============================================================
