@@ -4694,10 +4694,13 @@ a.elfbar-link, .elfbar-more-link {
     @media (max-width: 700px) {
         grid-template-columns: 1fr; text-align: center;
         .elfbar-vitrine__media { order: -1; }
-        // Feature maddeleri tam SOLA dayalı (ortalama yok → hizalı düzgün liste)
+        // Feature maddeleri mobil hiza (kullanıcı testiyle bulundu):
+        // display:contents → grid'den çıkar, li'ler doğrudan akar, hizalı durur
         .elfbar-vitrine__features {
-            justify-items: stretch; text-align: left; width: 100%;
-            li { justify-content: flex-start; text-align: left; }
+            justify-items: center; text-align: left;
+            width: max-content; max-width: 100%; margin-left: auto; margin-right: auto;
+            display: contents;
+            li { justify-content: unset; margin-bottom: 10px; }
         }
         .elfbar-vitrine__actions { justify-content: center; }
     }
