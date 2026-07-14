@@ -4171,7 +4171,7 @@
           "tr-TR": "Sektion: Warum wir · Reihenfolge"
         },
         "type": "int",
-        "value": 45,
+        "value": 8,
         "editable": true,
         "block": "elfbarSections",
         "order": 101155,
