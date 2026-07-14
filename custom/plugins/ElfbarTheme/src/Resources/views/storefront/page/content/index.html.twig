@@ -95,7 +95,7 @@
         {# Panelden yönetilen section görünürlük + sıra okuyucular.
            secOn('x') → bool (boşsa varsayılan açık), secOrder('x') → int sıra. #}
         {% set elfbarSecOrderDefaults = {
-            'vitrine': 10, 'campaign': 20, 'promo': 30, 'catslider2': 35, 'deals': 40, 'whyus': 45, 'banner': 50,
+            'catscroll': 3, 'vitrine': 10, 'campaign': 20, 'promo': 30, 'catslider2': 35, 'deals': 40, 'whyus': 45, 'banner': 50,
             'neu': 60, 'showcase': 70, 'bestseller': 80, 'b2b': 90, 'catslider1': 100,
             'usp': 110, 'stripe2': 130, 'howtofaq': 140, 'reviews': 150
         } %}
@@ -196,6 +196,45 @@
                 {# --- SAĞ: section'lar. Sıra panelden (CSS order), her biri aç/kapa.
                        body__main flex-column → her section'a style="order:N" ile sıralanır. --- #}
                 <div class="elfbar-body__main elfbar-body__main--ordered">
+                    {# ============ KATEGORIE-SCROLL — yatay kaydırılabilir kategori kartları
+                       (hero altı). elfbarNavTree'den ana kategoriler; görsel varsa foto,
+                       yoksa gradient+harf. Ok butonları data-elfbar-cardslider JS ile. ============ #}
+                    {% if theme_config('elfbar-sec-catscroll-enabled') is not same as(false) and elfbarNavTree|length %}
+                    <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-catscroll-order')|default(elfbarSecOrderDefaults.catscroll) }}">
+                    {% block elfbar_home_catscroll %}
+                        <section class="elfbar-catscroll" aria-labelledby="elfbar-catscroll-title">
+                            <div class="elfbar-catscroll__head">
+                                <div class="elfbar-catscroll__titles">
+                                    {% if theme_config('elfbar-catscroll-eyebrow')|default('Sortiment') %}<p class="elfbar-catscroll__eyebrow">{{ theme_config('elfbar-catscroll-eyebrow')|default('Sortiment') }}</p>{% endif %}
+                                    <h2 class="elfbar-catscroll__title" id="elfbar-catscroll-title">{{ theme_config('elfbar-catscroll-title')|default('Nach Kategorie shoppen') }}</h2>
+                                </div>
+                                <div class="elfbar-catscroll__nav">
+                                    <button type="button" class="elfbar-catscroll__btn" data-slide="prev" aria-label="Zurück"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg></button>
+                                    <button type="button" class="elfbar-catscroll__btn" data-slide="next" aria-label="Weiter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></button>
+                                </div>
+                            </div>
+                            <div class="elfbar-catscroll__track" data-elfbar-cardslider>
+                                {% for treeItem in elfbarNavTree %}
+                                    {% set cat = treeItem.category %}
+                                    {% if cat.type != 'folder' %}
+                                        {% set catUrl = cat.seoUrl ?: seoUrl('frontend.navigation.page', { navigationId: cat.id }) %}
+                                        {% set catImg = cat.media.url|default('') %}
+                                        <a class="elfbar-catcard" href="{{ catUrl }}">
+                                            {% if catImg %}
+                                                <span class="elfbar-catcard__img"><img src="{{ catImg }}" alt="{{ cat.translated.name }}" loading="lazy"></span>
+                                            {% else %}
+                                                <span class="elfbar-catcard__letter">{{ cat.translated.name|first|upper }}</span>
+                                            {% endif %}
+                                            <span class="elfbar-catcard__name">{{ cat.translated.name }}</span>
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </section>
+                    {% endblock %}
+                    </div>
+                    {% endif %}
+
                     {# ============ WARUM WIR — bilgi/güven section (hero altı, klasik)
                        3 avantaj kartı, her biri başlık+metin+3 madde. Tümü panelden. ============ #}
                     {% if theme_config('elfbar-sec-whyus-enabled') is not same as(false) %}

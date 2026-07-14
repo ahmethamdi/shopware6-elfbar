@@ -1784,6 +1784,34 @@
         "scss": false,
         "tab": "elfHome"
       },
+      "elfbar-catscroll-eyebrow": {
+        "label": {
+          "de-DE": "Kategorie-Scroll · Eyebrow",
+          "en-GB": "Kategorie-Scroll · Eyebrow",
+          "tr-TR": "Kategorie-Scroll · Eyebrow"
+        },
+        "type": "text",
+        "value": "Sortiment",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1250,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-catscroll-title": {
+        "label": {
+          "de-DE": "Kategorie-Scroll · Titel",
+          "en-GB": "Kategorie-Scroll · Titel",
+          "tr-TR": "Kategorie-Scroll · Titel"
+        },
+        "type": "text",
+        "value": "Nach Kategorie shoppen",
+        "editable": true,
+        "block": "elfbarCatscroll",
+        "order": 1255,
+        "scss": false,
+        "tab": "elfHome"
+      },
       "elfbar-whyus-eyebrow": {
         "label": {
           "de-DE": "Warum-wir Eyebrow (klein)",
@@ -3759,6 +3787,32 @@
         "editable": true,
         "block": "elfbarSections",
         "order": 101150,
+        "tab": "elfHome"
+      },
+      "elfbar-sec-catscroll-enabled": {
+        "label": {
+          "de-DE": "Sektion: Kategorie-Scroll · anzeigen",
+          "en-GB": "Sektion: Kategorie-Scroll · anzeigen",
+          "tr-TR": "Sektion: Kategorie-Scroll · anzeigen"
+        },
+        "type": "bool",
+        "value": true,
+        "editable": true,
+        "block": "elfbarSections",
+        "order": 101140,
+        "tab": "elfHome"
+      },
+      "elfbar-sec-catscroll-order": {
+        "label": {
+          "de-DE": "Sektion: Kategorie-Scroll · Reihenfolge",
+          "en-GB": "Sektion: Kategorie-Scroll · Reihenfolge",
+          "tr-TR": "Sektion: Kategorie-Scroll · Reihenfolge"
+        },
+        "type": "int",
+        "value": 3,
+        "editable": true,
+        "block": "elfbarSections",
+        "order": 101145,
         "tab": "elfHome"
       },
       "elfbar-sec-whyus-enabled": {
