@@ -1819,7 +1819,7 @@
           "tr-TR": "Karte 1 · Titel"
         },
         "type": "text",
-        "value": "",
+        "value": "ELFLIQ",
         "editable": true,
         "block": "elfbarCatscroll",
         "order": 1260,
@@ -1861,7 +1861,7 @@
           "tr-TR": "Karte 2 · Titel"
         },
         "type": "text",
-        "value": "",
+        "value": "ELFBAR ELFA",
         "editable": true,
         "block": "elfbarCatscroll",
         "order": 1266,
@@ -1903,7 +1903,7 @@
           "tr-TR": "Karte 3 · Titel"
         },
         "type": "text",
-        "value": "",
+        "value": "ELFBAR 800",
         "editable": true,
         "block": "elfbarCatscroll",
         "order": 1272,
@@ -1945,7 +1945,7 @@
           "tr-TR": "Karte 4 · Titel"
         },
         "type": "text",
-        "value": "",
+        "value": "LOST MARY Wavi",
         "editable": true,
         "block": "elfbarCatscroll",
         "order": 1278,
@@ -1987,7 +1987,7 @@
           "tr-TR": "Karte 5 · Titel"
         },
         "type": "text",
-        "value": "",
+        "value": "Lost Mary Nicsalt",
         "editable": true,
         "block": "elfbarCatscroll",
         "order": 1284,
@@ -2029,7 +2029,7 @@
           "tr-TR": "Karte 6 · Titel"
         },
         "type": "text",
-        "value": "",
+        "value": "LOST MARY 800",
         "editable": true,
         "block": "elfbarCatscroll",
         "order": 1290,
@@ -2071,7 +2071,7 @@
           "tr-TR": "Karte 7 · Titel"
         },
         "type": "text",
-        "value": "",
+        "value": "Refillable Pods (Leerpods)",
         "editable": true,
         "block": "elfbarCatscroll",
         "order": 1296,
