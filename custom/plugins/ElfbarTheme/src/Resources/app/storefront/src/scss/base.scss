@@ -3487,6 +3487,31 @@ body.has-elfbar-bulkbar { padding-bottom: 80px; }
     input[type="radio"]:checked + label { color: $sw-color-brand-primary; font-weight: 700; }
 }
 
+// --- LAYOUT FIX: main solda + aside SAĞDA yan yana (aside alta düşüyordu) ---
+// Shopware'in çelişkili kuralları aside'a margin-left:58% veriyordu → main(66%)
+// ile çakışıp aside alta düşüyordu. Net grid ile main 2/3 + aside 1/3 sabitlenir.
+.is-ctl-checkout {
+    .checkout-container {
+        display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 2rem;
+    }
+    .checkout-main {
+        flex: 1 1 auto; width: auto !important; max-width: none !important;
+        margin-left: 0 !important;
+    }
+    .checkout-aside {
+        flex: 0 0 340px; width: 340px !important; max-width: 340px !important;
+        margin-left: 0 !important; margin-top: 0 !important;
+        padding-left: 0 !important; padding-right: 0 !important;
+    }
+    // Tablet/mobil: alt alta (aside tam genişlik, main altında)
+    @media (max-width: 991.98px) {
+        .checkout-container { flex-wrap: wrap; }
+        .checkout-main, .checkout-aside {
+            flex: 1 1 100%; width: 100% !important; max-width: 100% !important;
+        }
+    }
+}
+
 // --- ÖZET kutusu (sağ aside) — cart + confirm ortak ---
 // STICKY tüm container'a verilir (özet + Gutscheincode + buton birlikte yapışır).
 // Tek tek elemana sticky verilince scroll'da üst üste biniyorlardı (kupon ↔ özet çakışması).
