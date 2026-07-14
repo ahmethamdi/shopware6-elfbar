@@ -3395,26 +3395,45 @@ body.has-elfbar-bulkbar { padding-bottom: 80px; }
 // CHECKOUT (cart → confirm → finish) — markaya uygun modern düzen
 // =====================================================================
 
-// --- Minimal header (confirm/finish/address sayfaları) ---
+// --- Minimal header (confirm/finish/address sayfaları) — ince gradient şerit ---
 .header-minimal {
-    background: $sw-color-brand-primary;
-    padding: .85rem 0;
+    background: $elfbar-gradient;
+    padding: .7rem 0;
     box-shadow: 0 4px 18px rgba($elfbar-color-ink, 0.12);
     margin-bottom: 2rem;
 
-    .header-minimal-row { align-items: center; }
-    .header-logo-main-img, .header-logo-main { max-height: 36px; width: auto; }
-    .header-minimal-logo img { max-height: 36px; width: auto; }
+    // Tüm kolonlar dikey ORTALI → logo/contact/buton aynı hizada, alta düşmez
+    .header-minimal-row {
+        align-items: center;
+        flex-wrap: nowrap;   // mobilde bile tek satır, logo alta kaymasın
+    }
+
+    // Logo: sola dayalı + dikey ortalı + BEYAZ (gradient üstünde görünsün)
+    .header-minimal-logo {
+        display: flex; align-items: center;
+        .logo-main, a { display: flex; align-items: center; }
+    }
+    .header-logo-main-img, .header-logo-main,
+    .header-minimal-logo img {
+        max-height: 34px; width: auto; display: block;
+        // renkli/koyu logoyu beyaza çevir (gradient zeminde net dursun)
+        filter: brightness(0) invert(1);
+    }
 
     .header-minimal-contact {
-        text-align: center; color: rgba(#fff, 0.92);
-        font-size: .9rem; font-weight: 600;
+        text-align: center; color: rgba(#fff, 0.95);
+        font-size: .88rem; font-weight: 600; line-height: 1.35;
     }
     .header-minimal-back-to-shop { text-align: right; }
     .header-minimal-back-to-shop-button {
-        background: #fff; border: none; color: $sw-color-brand-primary;
-        font-weight: 700; border-radius: 10px; padding: .5rem 1rem;
-        &:hover { background: rgba(#fff, 0.9); color: darken($sw-color-brand-primary, 8%); }
+        background: #fff; border: none; color: $elfbar-grad-mid;
+        font-weight: 700; border-radius: 10px; padding: .5rem 1rem; white-space: nowrap;
+        &:hover { background: rgba(#fff, 0.92); color: darken($elfbar-grad-mid, 8%); }
+    }
+
+    // Mobil: contact metnini gizle (dar ekranda logo+buton yeter)
+    @media (max-width: 767.98px) {
+        .header-minimal-contact { display: none; }
     }
 }
 
