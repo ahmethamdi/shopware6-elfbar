@@ -2113,7 +2113,7 @@
           "tr-TR": "Karte 8 · Titel"
         },
         "type": "text",
-        "value": "",
+        "value": "ELFX Mini",
         "editable": true,
         "block": "elfbarCatscroll",
         "order": 1302,
