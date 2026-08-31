@@ -7,24 +7,77 @@
    Açıklama metni KALDIRILDI.
    ===================================================================== #}
 
-{# "Beliebt" rozeti — kartın sol üstüne #}
+{# VITRINEN-PRODUKT: Ist das Custom-Field "Produkt Ersatz Url"
+   (external_product_link) gefuellt → Produkt ist NICHT kaufbar:
+   kein Preis, kein Bestand, kein Warenkorb — stattdessen Link zum Anbieter.
+   Custom-Field-Name zentral hier: weicht der technische Name ab, NUR hier aendern. #}
+{% set elfbarExtUrl = product.translated.customFields.external_product_link|default(product.customFields.external_product_link|default(null)) %}
+
+{# "Beliebt" rozeti — kartın sol üstüne. Vitrinen-Produkt: kein Badge. #}
 {% block component_product_box_badges %}
-    <span class="elfbar-card-badge">Beliebt</span>
+    {% if not elfbarExtUrl %}
+        <span class="elfbar-card-badge">Beliebt</span>
+    {% endif %}
     <span class="elfbar-card-age">18+</span>
     {{ parent() }}
+{% endblock %}
+
+{# Foto-Link: Bei Vitrinen-Produkt → externe URL statt Detailseite.
+   Der Core legt den Bild-Link ueber die "stretched-link" am Namen. Wir
+   ueberschreiben den Namen-Block, damit der gesamte Karten-Klick (Foto
+   inkl.) auf die externe URL geht. #}
+{% block component_product_box_name %}
+    {% if elfbarExtUrl %}
+        {% if headlineLevel is not empty %}
+            {{ "<h#{headlineLevel} class=\"#{headlineClasses}\">"|raw }}
+                <a href="{{ elfbarExtUrl }}" title="{{ name }}" target="_blank" rel="noopener noreferrer"
+                   class="product-name stretched-link elfbar-ext-name">{{ name }}</a>
+            {{ "</h#{headlineLevel}>"|raw }}
+        {% else %}
+            <a href="{{ elfbarExtUrl }}" title="{{ name }}" target="_blank" rel="noopener noreferrer"
+               class="product-name stretched-link elfbar-ext-name">{{ name }}</a>
+        {% endif %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
 {% endblock %}
 
 {# Açıklama metnini gizle (mockup'ta yok) #}
 {% block component_product_box_description %}{% endblock %}
 
-{# B2B: Preise sichtbar für eingeloggte Kunden #}
+{# B2B: Preise sichtbar für eingeloggte Kunden.
+   Der Lagerbestand haengt hier mit dran — Gaeste sehen weder Preis noch Bestand. #}
 {% block component_product_box_price %}
-    {% if context.customer %}
-        {{ parent() }}
+    {% if elfbarExtUrl %}
+        {# Vitrine: kein Preis, kein Bestand #}
     {% else %}
-        <div class="product-price-info elfbar-card-loginprice">
-            <span class="elfbar-card-loginprice__txt">{% sw_icon 'lock-closed' %} Preise nach Login</span>
+        {% if context.customer %}
+            {{ parent() }}
+        {% else %}
+            <div class="product-price-info elfbar-card-loginprice">
+                <span class="elfbar-card-loginprice__txt">{% sw_icon 'lock-closed' %} Preise nach Login</span>
+            </div>
+        {% endif %}
+
+        {# --- Lagerbestand: NUR eingeloggte Kunden. Gaeste sehen nichts. --- #}
+        {% if context.customer %}
+            {% sw_include '@Storefront/storefront/component/product/elfbar-stock.html.twig' with {
+                product: product
+            } only %}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{# Action: Vitrinen-Produkt → "Anfragen" (externer Anbieter) statt Warenkorb. #}
+{% block component_product_box_action %}
+    {% if elfbarExtUrl %}
+        <div class="elfbar-add-wrap elfbar-ext-wrap">
+            <a href="{{ elfbarExtUrl }}" class="btn elfbar-ext-btn" target="_blank" rel="noopener noreferrer">
+                Anfragen
+            </a>
         </div>
+    {% else %}
+        {{ parent() }}
     {% endif %}
 {% endblock %}
 

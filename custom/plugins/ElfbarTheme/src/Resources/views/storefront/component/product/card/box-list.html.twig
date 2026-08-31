@@ -21,6 +21,13 @@
         {# Varyantlı ürün (childCount>0) listeden eklenemez → Details. Fiyat kademesi (displayFrom) eklenebilir. #}
         {% set canBuy = isAvailable and product.childCount <= 0 %}
         {% set detailUrl = seoUrl('frontend.detail.page', { productId: id }) %}
+        {# VITRINEN-PRODUKT: Custom-Field "Produkt Ersatz Url" gefuellt →
+           nicht kaufbar, Klick (Foto+Name) auf externe URL, kein Preis,
+           kein Bestand, "Anfragen" statt Warenkorb.
+           Custom-Field-Name zentral: bei Abweichung NUR hier aendern. #}
+        {% set elfbarExtUrl = product.translated.customFields.external_product_link|default(product.customFields.external_product_link|default(null)) %}
+        {# Foto/Name-Ziel: Vitrine → externe URL, sonst Detailseite #}
+        {% set rowTarget = elfbarExtUrl ?: detailUrl %}
         {# B2B: Preise & Warenkorb nur für eingeloggte Kunden. #}
         {% set elfbarLoggedIn = context.customer %}
 
@@ -30,7 +37,7 @@
             <div class="elfbar-listrow__inner">
 
                 {# --- Görsel --- #}
-                <a href="{{ detailUrl }}" class="elfbar-listrow__media" title="{{ name }}">
+                <a href="{{ rowTarget }}" class="elfbar-listrow__media" title="{{ name }}"{% if elfbarExtUrl %} target="_blank" rel="noopener noreferrer"{% endif %}>
                     {% if cover.url %}
                         {% sw_thumbnails 'elfbar-listrow-img' with {
                             media: cover,
@@ -46,7 +53,7 @@
                 {# --- Bilgi: marka + isim + açıklama + yıldız --- #}
                 <div class="elfbar-listrow__info">
                     {% if brand %}<span class="elfbar-listrow__brand">{{ brand }}</span>{% endif %}
-                    <a href="{{ detailUrl }}" class="elfbar-listrow__name" title="{{ name }}">{{ name }}</a>
+                    <a href="{{ rowTarget }}" class="elfbar-listrow__name" title="{{ name }}"{% if elfbarExtUrl %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ name }}</a>
                     {# NUR echte Bewertungen, keine Fake-Sterne (Wunsch Ahmet/Mike) #}
                     {% if product.ratingAverage > 0 %}
                         <div class="elfbar-listrow__stars">
@@ -56,12 +63,23 @@
                     <p class="elfbar-listrow__desc">{{ product.translated.description|striptags|slice(0, 130) }}</p>
                 </div>
 
-                {# --- Fiyat --- (B2B: nur für eingeloggte Kunden) #}
+                {# --- Fiyat --- (B2B: nur für eingeloggte Kunden)
+                     Vitrine → gar kein Preis. Lagerbestand haengt hier mit dran:
+                     nur eingeloggte Kunden sehen ihn, Gaeste nichts. #}
                 <div class="elfbar-listrow__price">
-                    {% if elfbarLoggedIn %}
+                    {% if elfbarExtUrl %}
+                        {# Vitrine: kein Preis, kein Bestand #}
+                    {% elseif elfbarLoggedIn %}
                         {% if displayFrom %}<span class="elfbar-listrow__from">{{ 'listing.listingTextFrom'|trans|sw_sanitize }}</span>{% endif %}
                         <span class="elfbar-listrow__amount">{{ real.unitPrice|currency }}</span>
                         <span class="elfbar-listrow__tax">{{ context.taxState == 'gross' ? 'inkl. MwSt.' : 'zzgl. MwSt.' }}</span>
+                        {# data-elfbar-stockwrap: die Variantenauswahl ersetzt den
+                           Inhalt live, wenn eine andere Variante gewaehlt wird. #}
+                        <span data-elfbar-stockwrap>
+                            {% sw_include '@Storefront/storefront/component/product/elfbar-stock.html.twig' with {
+                                product: product
+                            } only %}
+                        </span>
                     {% else %}
                         <span class="elfbar-listrow__login-price">{% sw_icon 'lock-closed' %} Preise nach Login</span>
                     {% endif %}
@@ -69,7 +87,13 @@
 
                 {# --- Menge stepper = CANLI SEPET (+ ekler / − çıkarır) --- (B2B-gated) #}
                 <div class="elfbar-listrow__buy">
-                    {% if not elfbarLoggedIn %}
+                    {% if elfbarExtUrl %}
+                        {# Vitrine: nicht kaufbar → Link zum Anbieter #}
+                        <a href="{{ elfbarExtUrl }}" class="btn elfbar-listrow__cart elfbar-listrow__cart--ext"
+                           target="_blank" rel="noopener noreferrer">
+                            Anfragen
+                        </a>
+                    {% elseif not elfbarLoggedIn %}
                         {# Nicht eingeloggt → Login-CTA statt Preis/Warenkorb #}
                         <a href="{{ path('frontend.account.login.page') }}" class="btn elfbar-listrow__cart is-login">
                             {% sw_icon 'avatar' %} Anmelden

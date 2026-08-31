@@ -9,10 +9,24 @@
 {# B2B: Preise sichtbar nur für eingeloggte Kunden. #}
 {% set elfbarCanSeePrices = context.customer %}
 
-{# B2B: Fiyat tablosu (Staffelpreise) + tax + reviews girişsizken GİZLE #}
+{# VITRINEN-PRODUKT: Falls jemand direkt auf die Detailseite kommt, ist das
+   Produkt nicht kaufbar → kein Preis/Bestand/Warenkorb, nur "Anfragen".
+   Custom-Field-Name zentral: bei Abweichung NUR hier aendern. #}
+{% set elfbarExtUrl = product.translated.customFields.external_product_link|default(product.customFields.external_product_link|default(null)) %}
+
+{# B2B: Fiyat tablosu (Staffelpreise) + tax + reviews girişsizken GİZLE.
+   Vitrine → Preis komplett aus. Lagerbestand haengt am Preis-Block:
+   nur eingeloggte Kunden sehen ihn, Gaeste nichts. #}
 {% block buy_widget_price %}
-    {% if elfbarCanSeePrices %}
+    {% if elfbarExtUrl %}
+        {# Vitrine: kein Preis, kein Bestand #}
+    {% elseif elfbarCanSeePrices %}
         {{ parent() }}
+        <div class="elfbar-buybox-stock">
+            {% sw_include '@Storefront/storefront/component/product/elfbar-stock.html.twig' with {
+                product: product
+            } only %}
+        </div>
     {% endif %}
 {% endblock %}
 
@@ -20,8 +34,15 @@
    kein Review-Link im Buy-Widget. Leerer Block überschreibt den Core-Block. #}
 {% block buy_widget_reviews %}{% endblock %}
 {% block buy_widget_buy_form %}
+    {# Vitrine: nicht kaufbar → nur "Anfragen"-Button, kein Warenkorb #}
+    {% if elfbarExtUrl %}
+        <div class="elfbar-buybox-ext">
+            <a href="{{ elfbarExtUrl }}" class="btn elfbar-buybox-ext__btn" target="_blank" rel="noopener noreferrer">
+                Anfragen
+            </a>
+        </div>
     {# B2B: Preise & Warenkorb für eingeloggte Kunden #}
-    {% if elfbarCanSeePrices %}
+    {% elseif elfbarCanSeePrices %}
         {{ parent() }}
     {% else %}
         {# Nicht eingeloggt → Login-Gate statt Preis/Warenkorb #}
@@ -36,10 +57,12 @@
         </div>
     {% endif %}
 
+    {# ⚠️ "Kostenloser Versand ab X € Netto" ist bewusst NICHT dabei —
+       ausdruecklicher Wunsch: soll nirgends stehen. #}
     {% if product.active %}
         <ul class="elfbar-buybox-usp">
             {% for usp in [
-                { i: 'truck', t: 'Kostenloser Versand ab 500 € Netto' },
+                { i: 'shield', t: '100% Originalware · direkt vom Distributor' },
                 { i: 'lock-closed', t: 'Sichere Bezahlung · PayPal & Rechnung' },
                 { i: 'rocket', t: 'Schnelle Lieferung · 24–48h Versand' },
                 { i: 'marketing', t: 'B2B-Großhandelspreise nach Login' }

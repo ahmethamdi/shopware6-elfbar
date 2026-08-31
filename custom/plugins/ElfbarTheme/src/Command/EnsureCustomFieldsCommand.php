@@ -1,61 +1,52 @@
 <?php declare(strict_types=1);
 
-namespace ElfbarTheme;
+namespace ElfbarTheme\Command;
 
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
-use Shopware\Core\Framework\Plugin;
-use Shopware\Core\Framework\Plugin\Context\ActivateContext;
-use Shopware\Storefront\Framework\ThemeInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
-class ElfbarTheme extends Plugin implements ThemeInterface
+/**
+ * Legt die Theme-Custom-Fields an, ohne dass das Plugin neu aktiviert
+ * werden muss (das Deaktivieren wuerde das Theme kurzzeitig abschalten).
+ *
+ * Dieselbe Definition steht in ElfbarTheme::ensureCustomFields() — dort
+ * greift sie bei einer frischen Installation (auch live). Dieser Befehl
+ * ist der Weg fuer bereits laufende Installationen.
+ */
+#[AsCommand(
+    name: 'elfbar:ensure-custom-fields',
+    description: 'Legt die Custom-Fields des ElfbarTheme an (idempotent).'
+)]
+class EnsureCustomFieldsCommand extends Command
 {
-    /**
-     * Custom-Fields, die das Theme braucht.
-     *
-     * Warum hier und nicht per Hand im Admin: Beide Felder werden von
-     * Templates gelesen. Legt man sie nur lokal an, fehlen sie live —
-     * das Feature ist dann still tot (die Templates rendern einfach
-     * nichts). Beim Aktivieren des Plugins entstehen sie ueberall
-     * automatisch, lokal wie live.
-     *
-     * ⚠️ Die technischen Namen sind FIX und duerfen nicht umbenannt werden:
-     *   - external_product_link       → Vitrinen-Produkt (Templates:
-     *     box-standard / box-list / buy-widget)
-     *   - customer_invoice_mail_field → abweichende Rechnungs-E-Mail;
-     *     dieser Name ist mit dem Connector abgestimmt (Vorgabe Mike),
-     *     der die Adresse dort ausliest.
-     */
     private const FIELD_SET = 'elfbar_theme_fields';
 
-    public function activate(ActivateContext $activateContext): void
+    public function __construct(private readonly EntityRepository $customFieldSetRepository)
     {
-        parent::activate($activateContext);
-
-        $this->ensureCustomFields($activateContext->getContext());
+        parent::__construct();
     }
 
-    /**
-     * Legt das Feld-Set samt Feldern an — idempotent: existiert es schon
-     * (z. B. weil das Plugin erneut aktiviert wird oder die Felder live
-     * bereits von Hand angelegt wurden), passiert nichts.
-     */
-    private function ensureCustomFields(Context $context): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        /** @var EntityRepository $setRepository */
-        $setRepository = $this->container->get('custom_field_set.repository');
+        $context = Context::createDefaultContext();
 
         $criteria = new Criteria();
         $criteria->addFilter(new EqualsFilter('name', self::FIELD_SET));
         $criteria->setLimit(1);
 
-        if ($setRepository->searchIds($criteria, $context)->getTotal() > 0) {
-            return;
+        if ($this->customFieldSetRepository->searchIds($criteria, $context)->getTotal() > 0) {
+            $output->writeln('<comment>Feld-Set existiert bereits — nichts zu tun.</comment>');
+
+            return Command::SUCCESS;
         }
 
-        $setRepository->create([[
+        $this->customFieldSetRepository->create([[
             'name' => self::FIELD_SET,
             'config' => [
                 'label' => [
@@ -106,5 +97,11 @@ class ElfbarTheme extends Plugin implements ThemeInterface
                 ],
             ],
         ]], $context);
+
+        $output->writeln('<info>Custom-Fields angelegt:</info>');
+        $output->writeln('  · external_product_link (product)');
+        $output->writeln('  · customer_invoice_mail_field (customer)');
+
+        return Command::SUCCESS;
     }
 }

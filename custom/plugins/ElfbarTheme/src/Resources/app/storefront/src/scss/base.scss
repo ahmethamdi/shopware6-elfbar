@@ -1889,15 +1889,27 @@ $elfbar-radius: 12px;
         box-shadow: 0 18px 50px rgba($elfbar-color-ink, 0.16);
         padding: 1.5rem 1.75rem;
         z-index: 60;
-        opacity: 0; visibility: hidden; transform: translateX(8px);
+        opacity: 0; visibility: hidden;
         transition: opacity .16s ease, transform .16s ease, visibility .16s;
         pointer-events: none;
+        // ⚠️ `scale(0)`: das geschlossene Panel darf keine Flaeche haben,
+        // sonst faengt es Klicks an falschen Stellen ab. Die Transition
+        // bleibt trotzdem weich.
+        transform: translateX(8px) scale(0);
+        transform-origin: left top;
     }
-    &__item.has-children:hover .elfbar-mega__panel {
-        opacity: 1; visibility: visible; transform: translateX(0); pointer-events: auto;
+    // (JS init'i .elfbar-mega-js class'ını <html>'e ekler → saf :hover fallback devre dışı)
+    // Panel açılması JS kontrollü (hover-intent): .is-open ile açılır.
+    // JS yoksa (fallback) saf :hover ile de açılır — ama JS varken banner
+    // erişimi için fare çıkışında gecikmeli kapanır.
+    &__item.has-children.is-open .elfbar-mega__panel,
+    html:not(.elfbar-mega-js) &__item.has-children:hover .elfbar-mega__panel {
+        opacity: 1; visibility: visible; pointer-events: auto;
+        transform: translateX(0) scale(1);
     }
     // panel ile menü arasında görünmez köprü (fare boşlukta kaybolmasın)
-    &__item.has-children:hover::after {
+    &__item.has-children.is-open::after,
+    html:not(.elfbar-mega-js) &__item.has-children:hover::after {
         content: ""; position: absolute; top: 0; left: 100%; width: 14px; height: 100%;
     }
 
@@ -4152,6 +4164,8 @@ a.elfbar-link, .elfbar-more-link {
 // Mega container ve item'lar da yüksek stacking
 .elfbar-mega { position: relative; z-index: 401; }
 .elfbar-mega__item { position: relative; }
+// JS (hover-intent) açıyorsa .is-open, JS yoksa :hover fallback'i geçerli.
+.elfbar-mega__item.has-children.is-open,
 .elfbar-mega__item.has-children:hover { z-index: 999; }
 
 // Açılan panel: HER ŞEYİN üstünde
@@ -5070,5 +5084,193 @@ a.elfbar-link, .elfbar-more-link {
         border-top-color: rgba(#fff, 0.10);
         &__item { color: rgba(#fff, 0.65); }
         &__badge { border-color: #17112a; }
+    }
+}
+
+/* =====================================================================
+   LAGERBESTAND (Ampel) — elfbar-stock.html.twig
+   Sichtbarkeit steuert IMMER der Aufrufer ({% if context.customer %}),
+   Gaeste sehen im B2B-Shop weder Preis noch Bestand.
+   ===================================================================== */
+.elfbar-stock {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    margin-top: .35rem;
+    padding: .2rem .5rem;
+    border-radius: 999px;
+    font-size: .75rem;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    border: 1px solid transparent;
+
+    // sw_icon rendert span.icon > svg. ⚠️ Der Core setzt in `.icon > svg`
+    // ein `position: relative; top: 0.25em` und schiebt das Icon nach unten.
+    // Diese Core-Regel steht in der kompilierten all.css NACH unserer und
+    // gewinnt bei gleicher Spezifitaet — deshalb bewusst `&.icon > svg`
+    // (hoehere Spezifitaet) + `position: static`.
+    .elfbar-stock__ico {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 13px;
+        height: 13px;
+        flex: 0 0 auto;
+        line-height: 0;
+        align-self: center;
+
+        &.icon > svg {
+            display: block;
+            width: 13px;
+            height: 13px;
+            position: static;   // hebt das relative Verschieben des Cores auf
+            top: auto;
+            margin-top: -3px;   // optische Feinjustierung in der Pille
+        }
+    }
+
+    // genug Ware
+    &--ok {
+        background: rgba(#16a34a, 0.10);
+        color: #15803d;
+        border-color: rgba(#16a34a, 0.22);
+        .elfbar-stock__ico svg { color: #16a34a; }
+    }
+    // knapp (<= 10)
+    &--low {
+        background: rgba(#f59e0b, 0.12);
+        color: #b45309;
+        border-color: rgba(#f59e0b, 0.28);
+        .elfbar-stock__ico svg { color: #f59e0b; }
+    }
+    // leer
+    &--out {
+        background: rgba(#dc2626, 0.10);
+        color: #b91c1c;
+        border-color: rgba(#dc2626, 0.22);
+        .elfbar-stock__ico svg { color: #dc2626; }
+    }
+    // Variantenartikel: Bestand liegt bei den Kindern → neutral grau
+    &--parent {
+        background: rgba($elfbar-color-ink, 0.06);
+        color: rgba($elfbar-color-ink, 0.65);
+        border-color: rgba($elfbar-color-ink, 0.14);
+        .elfbar-stock__ico svg { color: rgba($elfbar-color-ink, 0.55); }
+    }
+}
+
+// Detailseite: etwas mehr Luft unter der Produktnummer
+.elfbar-buybox-stock { margin-top: .5rem; }
+
+// Startseiten-Karte (.elfbar-pcard): Bestand unter dem Preis-Fuss
+.elfbar-pcard__stock {
+    margin-top: .4rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* =====================================================================
+   VITRINEN-PRODUKT (external_product_link):
+   Produkt ist nicht kaufbar → kein Warenkorb, Link zum externen Anbieter.
+   ===================================================================== */
+.elfbar-ext-btn,
+.elfbar-listrow__cart--ext,
+.elfbar-buybox-ext__btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    background: $elfbar-gradient;
+    color: #fff !important; font-weight: 700; text-align: center;
+    border: none; border-radius: $border-radius;
+    padding: .7rem 1.25rem; line-height: 1.1; white-space: nowrap;
+    box-shadow: 0 4px 14px rgba($elfbar-grad-mid, 0.28);
+    transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    &:hover {
+        transform: translateY(-2px); filter: brightness(1.05);
+        box-shadow: 0 8px 22px rgba($elfbar-grad-mid, 0.38);
+        color: #fff !important; text-decoration: none;
+    }
+}
+/* Grid-Karte: "Anfragen" als breiter Button statt rundem "+" */
+.elfbar-ext-wrap { width: 100%; }
+.elfbar-ext-btn { width: 100%; font-size: .9rem; }
+
+/* Detail-Buybox: grosser, voller Button */
+.elfbar-buybox-ext { margin-bottom: 1rem; }
+.elfbar-buybox-ext__btn { width: 100%; font-size: 1.05rem; padding: .95rem 1.5rem; }
+
+/* Listrow: kompakter externer Button */
+.elfbar-listrow__cart--ext { font-size: .85rem; padding: .6rem 1rem; }
+
+/* =====================================================================
+   CHECKOUT — Rote Warnbox "Firma fehlt" (confirm-payment.html.twig).
+   Erscheint ueber den Zahlarten, aber NUR wenn in Rechnungs- und/oder
+   Lieferadresse die Firma fehlt (Billie/B2B-Rechnungskauf braucht sie).
+   ===================================================================== */
+$elfbar-alert-ink:  #8a3a3a;   // ruhiges Dunkelrot fuer Text
+$elfbar-alert-soft: #c0575a;   // etwas kraeftiger fuer Icon/Link
+
+.elfbar-billie-warn {
+    display: flex;
+    gap: .75rem;
+    align-items: flex-start;
+    margin: 0 0 1.25rem;
+    padding: .9rem 1rem;
+    border-radius: $border-radius;
+    // Weicher Alert-Ton statt Signalrot: gut lesbar, aber nicht schreiend.
+    background: #fdf2f2;
+    border: 1px solid #f3c9c9;
+    color: $elfbar-alert-ink;
+
+    &__ico {
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 19px;
+        height: 19px;
+        line-height: 0;
+        margin-top: .1rem;
+        color: $elfbar-alert-soft;
+        svg { display: block; width: 19px; height: 19px; }
+    }
+
+    &__body { min-width: 0; }
+
+    &__title {
+        font-weight: 600;
+        font-size: .9rem;
+        color: $elfbar-alert-ink;
+        margin-bottom: .25rem;
+        line-height: 1.4;
+    }
+
+    &__text {
+        margin: 0;
+        font-size: .85rem;
+        line-height: 1.55;
+        color: rgba($elfbar-alert-ink, 0.85);
+        strong { font-weight: 600; color: $elfbar-alert-ink; }
+    }
+
+    // Dezenter Textlink statt kraeftigem Button — ein voller roter Button
+    // waere im Checkout zu dominant.
+    &__link {
+        display: inline-block;
+        margin-top: .45rem;
+        font-size: .85rem;
+        font-weight: 600;
+        color: $elfbar-alert-soft;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        &:hover { color: $elfbar-alert-ink; }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .elfbar-billie-warn {
+        padding: .85rem .9rem;
+        gap: .6rem;
+        &__title { font-size: .9rem; }
+        &__text { font-size: .825rem; }
     }
 }

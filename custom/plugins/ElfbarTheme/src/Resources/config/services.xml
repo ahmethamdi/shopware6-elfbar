@@ -10,6 +10,15 @@
             <tag name="kernel.event_subscriber"/>
         </service>
 
+        <!-- Legt die Theme-Custom-Fields nachtraeglich an (fuer bereits
+             installierte Shops; bei Neuinstallation macht das die
+             activate()-Methode des Plugins).
+             Aufruf: bin/console elfbar:ensure-custom-fields -->
+        <service id="ElfbarTheme\Command\EnsureCustomFieldsCommand">
+            <argument type="service" id="custom_field_set.repository"/>
+            <tag name="console.command"/>
+        </service>
+
         <service id="ElfbarTheme\Controller\DocumentsController" public="true">
             <argument type="service" id="Doctrine\DBAL\Connection"/>
             <argument type="service" id="Shopware\Storefront\Page\GenericPageLoader"/>

@@ -1,0 +1,33 @@
+{% sw_extends '@Storefront/storefront/component/address/address-personal.html.twig' %}
+
+{# =====================================================================
+   ElfbarTheme — NUR GEWERBLICHE ADRESSEN.
+
+   Problem: Kunden konnten als Liefer-/Rechnungsadresse eine PRIVATE
+   Adresse anlegen. Dann fehlt die Firma — und Billie (B2B-Rechnungskauf)
+   lehnt die Zahlung ab. Vorgabe: "Hier darf nur gewerblich gewaehlt werden."
+
+   Loesung: Wir setzen `onlyCompanyRegistration = true`, BEVOR der
+   Core-Block laeuft. Der Core wertet diese Variable bereits aus und
+   erledigt dann alles selbst:
+     - die Option "Privat" wird gar nicht erst gerendert
+     - das Select wird disabled
+     - ein Hidden-Input erzwingt accountType = "business"
+     - die Firmenfelder werden eingeblendet und sind Pflicht
+
+   Deshalb KEIN eigenes Markup hier: Wir nutzen den offiziellen Weg des
+   Cores. Das gilt automatisch ueberall, wo dieses Template eingebunden
+   wird — Registrierung, Adressbuch, Adress-Modal im Checkout.
+
+   ⚠️ Elfbar ist ein reiner B2B-/Haendlershop — private Konten soll es
+   ohnehin nicht geben. Falls doch jemals Privatkunden erlaubt werden
+   sollen, muss diese Datei entfernt werden.
+
+   Gehoert inhaltlich zur roten "Firma fehlt"-Box im Checkout
+   (confirm-payment.html.twig): beide loesen dasselbe Problem an zwei
+   unterschiedlichen Stellen.
+   ===================================================================== #}
+{% block component_address_personal_fields %}
+    {% set onlyCompanyRegistration = true %}
+    {{ parent() }}
+{% endblock %}

@@ -36,6 +36,16 @@
                 <span class="elfbar-pcard__add is-login" aria-hidden="true">{% sw_icon 'lock-closed' %}</span>
             {% endif %}
         </div>
+        {# Lagerbestand: NUR eingeloggte Kunden (Gaeste sehen nichts).
+           ⚠️ Twig-MACROS sehen das globale `context` NICHT → `loggedIn`
+           wird als Parameter durchgereicht. #}
+        {% if loggedIn %}
+            <div class="elfbar-pcard__stock">
+                {% sw_include '@Storefront/storefront/component/product/elfbar-stock.html.twig' with {
+                    product: product
+                } only %}
+            </div>
+        {% endif %}
     </a>
 {% endmacro %}
 

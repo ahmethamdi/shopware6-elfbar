@@ -640,6 +640,145 @@
     }
     initProductDetailMobileOrder();
 
+    /* ---- MEGA MENÜ hover-intent (panel banner'ın üstünü kaplayınca
+       banner/kategoriye tıklanamıyor, özellikle dar ekranda) ------------------
+       Çözüm: panel açma/kapama saf CSS :hover yerine JS ile. Fare menü item'ından
+       VE panelden çıkınca kısa gecikmeyle (CLOSE_DELAY) kapanır → fare banner'a
+       inince panel hemen kapanıp tıklamayı serbest bırakır; panele geçerken de
+       (aradaki köprü + gecikme) kapanmaz. Sadece desktop; mobilde core offcanvas. */
+    function initMegaMenu() {
+        // JS aktif → CSS'teki saf :hover fallback'i kapat (çift açılma olmasın).
+        // WICHTIG: vor dem root-Check, damit die Klasse auch auf Seiten ohne
+        // Mega-Menü gesetzt ist. Sonst blieb dort der :hover-Fallback aktiv.
+        document.documentElement.classList.add('elfbar-mega-js');
+
+        var root = document.querySelector('[data-elfbar-mega]');
+        if (!root) { return; }
+        var desktop = window.matchMedia('(min-width: 992px)');
+
+        var CLOSE_DELAY = 180; // ms — fare banner'a geçerken panel kapanma toleransı
+        var items = root.querySelectorAll('.elfbar-mega__item.has-children');
+        var openItem = null;
+        var closeTimer = null;
+
+        function positionPanel(item) {
+            // Panel an der rechten Kante der Sidebar ausrichten. Rein per CSS
+            // ging das nicht zuverlaessig — der naechste positionierte Vorfahre
+            // ist nicht die Sidebar.
+            //
+            // ⚠️⚠️ ZWEI REGELN, die zusammen gelten muessen:
+            //   1. Das Panel darf nie oben/unten aus dem Viewport laufen.
+            //   2. Es muss trotzdem bei der gehoverten Zeile stehen.
+            // Gemessen wird erst, NACHDEM das Panel offen ist — geschlossen
+            // ist es scale(0)/hidden und jede Hoehenmessung liefert Unsinn.
+            // Was dann immer noch nicht passt, scrollt INNERHALB des Panels.
+            var panel = item.querySelector('.elfbar-mega__panel');
+            var sidebar = item.closest('.elfbar-sidebar') || item.closest('.elfbar-cat__aside');
+            if (!panel || !sidebar) { return; }
+
+            var r = sidebar.getBoundingClientRect();
+            var GAP = 6;
+            var MARGIN = 16;
+            var vh = window.innerHeight;
+
+            panel.style.position = 'fixed';
+            panel.style.left = Math.round(r.right + GAP) + 'px';
+            panel.style.bottom = 'auto';
+            panel.style.maxWidth = 'none';
+            panel.style.width = Math.max(320, Math.min(1080,
+                window.innerWidth - (r.right + GAP) - MARGIN)) + 'px';
+
+            panel.style.maxHeight = (vh - 2 * MARGIN) + 'px';
+            panel.style.overflowY = 'auto';
+
+            // Jetzt — mit gesetzter Breite und offenem Panel — ist die Messung
+            // gueltig (geschlossen waere sie wegen scale(0) unbrauchbar).
+            var h = Math.min(panel.offsetHeight || panel.scrollHeight, vh - 2 * MARGIN);
+
+            // ⚠️⚠️ Das Panel wird an der GEHOVERTEN ZEILE ausgerichtet, nicht
+            // am Viewport. Vorher wurde im Viewport zentriert — dadurch stand
+            // das Panel bei unteren Eintraegen weit ueber dem Mauszeiger, und
+            // kurze Panels schwebten voellig losgeloest in der Bildmitte.
+            // Jetzt: Oberkante = Oberkante der Zeile. Nur wenn das Panel damit
+            // unten rausliefe, wird es so weit nach oben geschoben wie noetig
+            // (nie ueber MARGIN hinaus) — die Naehe zur Zeile bleibt erhalten.
+            var ir = item.getBoundingClientRect();
+            var top = ir.top;
+            if (top + h > vh - MARGIN) { top = vh - MARGIN - h; }
+            if (top < MARGIN) { top = MARGIN; }
+            top = Math.round(top);
+
+            panel.style.top = top + 'px';
+        }
+
+        function open(item) {
+            if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+            if (openItem && openItem !== item) { openItem.classList.remove('is-open'); }
+            // ⚠️ REIHENFOLGE: erst oeffnen, dann positionieren. Solange das
+            // Panel `scale(0)`/hidden ist, liefert jede Messung Unsinn
+            // (siehe Kommentar in positionPanel).
+            item.classList.add('is-open');
+            positionPanel(item);
+            openItem = item;
+        }
+        function scheduleClose() {
+            if (closeTimer) { clearTimeout(closeTimer); }
+            closeTimer = setTimeout(function () {
+                if (openItem) { openItem.classList.remove('is-open'); openItem = null; }
+                closeTimer = null;
+            }, CLOSE_DELAY);
+        }
+        function cancelClose() {
+            if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+        }
+
+        items.forEach(function (item) {
+            item.addEventListener('mouseenter', function () {
+                if (!desktop.matches) { return; }
+                open(item);
+            });
+            item.addEventListener('mouseleave', function () {
+                if (!desktop.matches) { return; }
+                scheduleClose(); // panele geçiyor olabilir → gecikmeli kapat
+            });
+            // Panelin kendisi: fare panelin içindeyken açık kalsın
+            var panel = item.querySelector('.elfbar-mega__panel');
+            if (panel) {
+                panel.addEventListener('mouseenter', cancelClose);
+                panel.addEventListener('mouseleave', function () {
+                    if (!desktop.matches) { return; }
+                    scheduleClose();
+                });
+            }
+        });
+
+        // Panel dışına tıklanınca hemen kapat (banner/kategori tıklaması serbest)
+        document.addEventListener('mousedown', function (e) {
+            if (openItem && !openItem.contains(e.target)) {
+                cancelClose();
+                openItem.classList.remove('is-open');
+                openItem = null;
+            }
+        });
+        // Scrollen/Resizen: offenes Panel nachfuehren, damit es an der
+        // Sidebar kleben bleibt.
+        ['scroll', 'resize'].forEach(function (ev) {
+            window.addEventListener(ev, function () {
+                if (openItem && desktop.matches) { positionPanel(openItem); }
+            }, { passive: true });
+        });
+
+        // Ekran mobile küçülürse açık paneli temizle
+        if (desktop.addEventListener) {
+            desktop.addEventListener('change', function () {
+                if (!desktop.matches && openItem) {
+                    openItem.classList.remove('is-open'); openItem = null;
+                }
+            });
+        }
+    }
+    initMegaMenu();
+
     /* ---- FAQ Accordion (içerik sayfalarındaki .elfbar-faq__item aç/kapa) ---- */
     function initFaqAccordion() {
         // NOT: Shopware CMS sanitizer data-* attribute'larını siler → class selektörü

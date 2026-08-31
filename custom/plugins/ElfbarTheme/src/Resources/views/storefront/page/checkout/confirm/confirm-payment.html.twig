@@ -1,0 +1,66 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/confirm-payment.html.twig' %}
+
+{# =====================================================================
+   ElfbarTheme — Billie/Mollie-Hinweis im Checkout.
+
+   Problem: Kunden legen Liefer-/Rechnungsadressen OHNE Firma an. Billie
+   (B2B-Rechnungskauf) lehnt die Zahlung dann ab. Gewuenscht war ein
+   Hinweis ueber den Zahlarten — und zwar GEPRUEFT: die Box erscheint NUR,
+   wenn in der Rechnungs- und/oder Lieferadresse die Firma fehlt. Ist alles
+   korrekt ausgefuellt, bleibt der Checkout sauber (keine Dauer-Warnung,
+   die ohnehin ignoriert wird).
+
+   Der Hinweis haengt bewusst NICHT an einem bestimmten Zahlungs-Plugin:
+   Billie/Mollie sind Plugins, die lokal nicht installiert sind. So
+   funktioniert die Box unabhaengig davon, welches Plugin aktiv ist.
+
+   Gehoert inhaltlich zu address-personal.html.twig (nur gewerbliche
+   Adressen) — beide loesen dasselbe Problem an zwei Stellen.
+   ===================================================================== #}
+{% block page_checkout_confirm_payment_title %}
+    {{ parent() }}
+
+    {# Firma aus Rechnungs- und Lieferadresse pruefen. #}
+    {% set elfbarBillingCompany = context.customer.activeBillingAddress.company|default('')|trim %}
+    {% set elfbarShippingCompany = context.customer.activeShippingAddress.company|default('')|trim %}
+
+    {% set elfbarBillingMissing = elfbarBillingCompany is empty %}
+    {% set elfbarShippingMissing = elfbarShippingCompany is empty %}
+
+    {% if elfbarBillingMissing or elfbarShippingMissing %}
+        {# ⚠️ Icon bewusst als Inline-SVG statt {% sw_icon %}: sw_icon haengt am
+           Icon-Set des aktiven Themes/Plugins. Faellt das live aus, blieb die
+           Box optisch leer. Inline-SVG rendert immer. #}
+        <div class="elfbar-billie-warn" role="alert">
+            <span class="elfbar-billie-warn__ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="m13.7744 1.4124 9.7058 18.6649c.5096.98.1283 2.1875-.8517 2.6971a2 2 0 0 1-.9227.2256H2.2942c-1.1045 0-2-.8954-2-2a2 2 0 0 1 .2256-.9227l9.7058-18.665c.5096-.98 1.7171-1.3613 2.6971-.8517a2 2 0 0 1 .8517.8518zM2.2942 21h19.4116L12 2.335 2.2942 21zM12 17c.5523 0 1 .4477 1 1s-.4477 1-1 1-1-.4477-1-1 .4477-1 1-1zm1-2c0 .5523-.4477 1-1 1s-1-.4477-1-1v-5c0-.5523.4477-1 1-1s1 .4477 1 1v5z"/>
+                </svg>
+            </span>
+            <div class="elfbar-billie-warn__body">
+                {# Wortlaut bewusst genau so uebernommen. #}
+                <div class="elfbar-billie-warn__title">
+                    Um die Zahlart Billie zu nutzen geben Sie bitte Ihre Firma bei der
+                    Liefer- sowie Rechnungsadresse an.
+                </div>
+                {% if elfbarBillingMissing and elfbarShippingMissing %}
+                    <p class="elfbar-billie-warn__text">
+                        Aktuell fehlt die Firma in Ihrer <strong>Liefer-</strong> und
+                        <strong>Rechnungsadresse</strong>.
+                    </p>
+                {% elseif elfbarShippingMissing %}
+                    <p class="elfbar-billie-warn__text">
+                        Aktuell fehlt die Firma in Ihrer <strong>Lieferadresse</strong>.
+                    </p>
+                {% else %}
+                    <p class="elfbar-billie-warn__text">
+                        Aktuell fehlt die Firma in Ihrer <strong>Rechnungsadresse</strong>.
+                    </p>
+                {% endif %}
+                <a href="{{ path('frontend.account.address.page') }}" class="elfbar-billie-warn__link">
+                    Adresse jetzt ergänzen
+                </a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

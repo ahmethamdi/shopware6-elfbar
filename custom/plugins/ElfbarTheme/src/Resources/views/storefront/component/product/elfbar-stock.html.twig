@@ -1,0 +1,57 @@
+{# =====================================================================
+   ElfbarTheme — Lagerbestand-Anzeige (Ampel).
+
+   ⚠️⚠️ WICHTIG: Diese Datei rendert NUR die Anzeige. Die Sichtbarkeits-
+   Pruefung passiert IMMER beim Aufrufer:
+       {% if context.customer %} ... {% endif %}
+   NIEMALS ohne diese Pruefung einbinden — sonst sehen GAESTE den
+   Lagerbestand. Das Team wollte oeffentliche Bestaende ausdruecklich
+   nicht (siehe Vapor, 18. Sitzung: oeffentliche Bestaende wurden bewusst
+   wieder entfernt). Im B2B-Shop gilt: Gast sieht weder Preis noch Bestand.
+
+   Erwartet: product
+   ===================================================================== #}
+{# Bestand ermitteln.
+   ⚠️ Bewusst KEIN `|default(null)`: `stock = 0` ist in Twig falsy, `default()`
+   wuerde daraus `null` machen und der ausverkaufte Artikel bekaeme gar kein
+   Badge statt "Nicht auf Lager".
+   ⚠️⚠️ ZWEITER FALL (im Test aufgefallen, SW 6.7): Ist der Bestand 0, liefert
+   Shopware `availableStock`/`stock` im Storefront-Entity teilweise GAR NICHT
+   MEHR mit — beide sind dann `undefined`, obwohl in der DB sauber 0 steht.
+   Ohne Behandlung blieb das Badge bei ausverkauften Artikeln komplett leer.
+   Behandlung: sind beide Felder unbekannt, entscheidet `isCloseout`.
+     - isCloseout = true  → Artikel wird nur solange Bestand da ist verkauft.
+       Fehlt die Zahl, ist er ausverkauft → 0 → "Nicht auf Lager".
+     - isCloseout = false → Artikel bleibt bestellbar, auch ohne Bestand.
+       Eine "0" waere hier irrefuehrend → gar kein Badge (null). #}
+{% set elfbarStock = null %}
+{% if product.availableStock is defined and product.availableStock is not null %}
+    {% set elfbarStock = product.availableStock %}
+{% elseif product.stock is defined and product.stock is not null %}
+    {% set elfbarStock = product.stock %}
+{% elseif product.isCloseout is defined and product.isCloseout %}
+    {% set elfbarStock = 0 %}
+{% endif %}
+
+{% if elfbarStock is not null %}
+    {# Ampel: 0 = leer (rot), <= 10 = knapp (orange), sonst ok (gruen).
+       Varianten-Eltern (childCount > 0) fuehren den Bestand der Kinder →
+       Zahl waere irrefuehrend, daher nur ein neutraler Hinweis. #}
+    {% set elfbarIsParent = product.childCount|default(0) > 0 %}
+    {% set elfbarStockState = elfbarStock <= 0 ? 'out' : (elfbarStock <= 10 ? 'low' : 'ok') %}
+
+    <span class="elfbar-stock elfbar-stock--{{ elfbarStockState }}{% if elfbarIsParent %} elfbar-stock--parent{% endif %}">
+        {# Icon-Name geprueft: 'package-closed' existiert im Core-Iconset
+           ('stock'/'package'/'box' gibt es NICHT). #}
+        <span class="elfbar-stock__ico">{% sw_icon 'package-closed' %}</span>
+        <span class="elfbar-stock__txt">
+            {%- if elfbarIsParent -%}
+                Bestand je Variante
+            {%- elseif elfbarStock <= 0 -%}
+                Nicht auf Lager
+            {%- else -%}
+                {{ elfbarStock }} auf Lager
+            {%- endif -%}
+        </span>
+    </span>
+{% endif %}
