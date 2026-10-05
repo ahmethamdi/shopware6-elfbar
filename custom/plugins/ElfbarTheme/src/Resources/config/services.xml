@@ -7,6 +7,7 @@
         <service id="ElfbarTheme\Subscriber\HomeProductsSubscriber">
             <argument type="service" id="sales_channel.product.repository"/>
             <argument type="service" id="Shopware\Core\Content\Category\Service\NavigationLoader"/>
+            <argument type="service" id="sales_channel.category.repository"/>
             <tag name="kernel.event_subscriber"/>
         </service>
 

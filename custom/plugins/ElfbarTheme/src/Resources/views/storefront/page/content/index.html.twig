@@ -812,6 +812,38 @@
                     </button>
                 </div>
 
+                {# ============ ALT KATEGORİ ŞERİDİ ============
+                   Başlığın hemen ALTINDA, ürün listesinin ÜSTÜNDE: sayfaya
+                   girer girmez görünür. Yatay scroll'lu küçük kartlar; görsel
+                   kategorinin kendi media'sı yoksa içindeki bir ürünün kapağı
+                   (subscriber → elfbarSubcats). Alt kategorisi olmayan YAPRAK
+                   kategorilerde kardeş kategoriler gelir (aynı marka ailesi).
+                   Hiç yoksa şerit hiç render olmaz. #}
+                {% set elfbarSubcats = page.extensions.elfbarSubcats.items|default([]) %}
+                {% if elfbarSubcats|length > 0 %}
+                    <div class="elfbar-subcats">
+                        <div class="elfbar-subcats__scroller" data-elfbar-dragscroll>
+                            <div class="elfbar-subcats__track">
+                                {% for item in elfbarSubcats %}
+                                    {% set subCat = item.category %}
+                                    {% set subUrl = subCat.type == 'folder' ? '#' : (subCat.seoUrl ?: seoUrl('frontend.navigation.page', { navigationId: subCat.id })) %}
+                                    <a class="elfbar-subcat" href="{{ subUrl }}">
+                                        <span class="elfbar-subcat__img">
+                                            {% if item.media %}
+                                                <img src="{{ item.media.url }}" alt="{{ subCat.translated.name }}" loading="lazy">
+                                            {% else %}
+                                                {# mediaSvg anasayfa dalında tanımlı, bu kolda yok → inline #}
+                                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                                            {% endif %}
+                                        </span>
+                                        <span class="elfbar-subcat__name">{{ subCat.translated.name }}</span>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
                 <div class="elfbar-cat__cms">
                     {{ parent() }}
                 </div>

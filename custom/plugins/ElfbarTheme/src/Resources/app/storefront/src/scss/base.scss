@@ -5274,3 +5274,70 @@ $elfbar-alert-soft: #c0575a;   // etwas kraeftiger fuer Icon/Link
         &__text { font-size: .825rem; }
     }
 }
+
+/* =====================================================================
+   ALT KATEGORİ ŞERİDİ (kategori sayfası, başlık altı).
+   Alt kategoriler; yaprak kategoride kardeşler (aynı marka ailesi).
+   Beslenme: HomeProductsSubscriber → page.extensions.elfbarSubcats
+   ===================================================================== */
+.elfbar-subcats {
+    // Sayfa başlığı ile ürün listesi arasında durur. Kendi başlığı yok →
+    // üstte H1'den ayrılacak kadar boşluk bırakılır.
+    margin: 1rem 0 1.75rem;
+
+    &__scroller {
+        overflow-x: auto; overflow-y: hidden;
+        -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
+        scrollbar-width: none; &::-webkit-scrollbar { display: none; }
+        cursor: grab;
+        &.is-dragging { cursor: grabbing; scroll-behavior: auto; }
+    }
+
+    &__track {
+        display: flex; gap: .7rem; width: max-content; padding-bottom: .25rem;
+    }
+}
+
+.elfbar-subcat {
+    flex: 0 0 auto; width: 112px;
+    display: flex; flex-direction: column; align-items: center; gap: .5rem;
+    background: #fff; border: 1px solid rgba($elfbar-color-ink, 0.07);
+    border-radius: $border-radius; padding: .75rem .5rem;
+    text-decoration: none; color: $elfbar-color-ink;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    user-select: none;
+
+    // Ziyaret edilmiş kartlar mor/mavi kalmasın (kartlar arası tutarlılık).
+    &:visited { color: $elfbar-color-ink; }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba($elfbar-color-ink, 0.08);
+        border-color: rgba($elfbar-grad-mid, 0.4);
+        color: $elfbar-grad-mid; text-decoration: none;
+    }
+
+    &__img {
+        width: 44px; height: 44px; border-radius: 10px;
+        background: rgba($elfbar-grad-mid, 0.1);
+        display: grid; place-items: center;
+        color: rgba($elfbar-grad-mid, 0.55);
+        overflow: hidden;               // görsel radius dışına taşmasın
+        img { width: 100%; height: 100%; object-fit: contain; }
+        svg { width: 22px; height: 22px; }
+    }
+
+    &__name {
+        font-size: .76rem; font-weight: 600; line-height: 1.25; text-align: center;
+        // Uzun kategori adları kartı bozmasın (max 2 satır, sonrası "…").
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+        overflow: hidden; word-break: break-word;
+    }
+}
+
+/* Mobil: kartlar biraz daha dar, şerit ekran kenarına kadar kaysın */
+@media (max-width: 767.98px) {
+    .elfbar-subcats { margin: .85rem 0 1.25rem; }
+    .elfbar-subcat { width: 96px; padding: .6rem .4rem; }
+    .elfbar-subcat__img { width: 38px; height: 38px; }
+}
