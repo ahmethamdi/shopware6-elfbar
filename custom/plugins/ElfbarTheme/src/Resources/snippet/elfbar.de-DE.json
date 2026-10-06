@@ -1,0 +1,9 @@
+{
+    "account": {
+        "registerAdvantage2": "Speichern Sie Ihre Daten und Einstellungen"
+    },
+    "checkout": {
+        "finishHeader": "Vielen Dank für deine Bestellung!",
+        "finishUpdateHeader": "Vielen Dank für deine Bestellung!"
+    }
+}

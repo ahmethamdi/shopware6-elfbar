@@ -29,5 +29,11 @@
    ===================================================================== #}
 {% block component_address_personal_fields %}
     {% set onlyCompanyRegistration = true %}
+    {# Korrektur: das (gesperrte) Kontotyp-Feld zeigte "Auswaehlen ..." statt
+       "Gewerblich" — der Core waehlt auf der Login-/Registrierseite nichts vor.
+       Es gibt nur diese eine Option, also vorbelegen. #}
+    {% if not accountType|default(null) %}
+        {% set accountType = constant('Shopware\\Core\\Checkout\\Customer\\CustomerEntity::ACCOUNT_TYPE_BUSINESS') %}
+    {% endif %}
     {{ parent() }}
 {% endblock %}

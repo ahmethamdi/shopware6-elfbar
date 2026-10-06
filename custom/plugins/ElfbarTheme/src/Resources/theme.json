@@ -369,7 +369,7 @@
           "tr-TR": "Metin 4"
         },
         "type": "text",
-        "value": "Sichere Bezahlung mit PayPal",
+        "value": "",
         "editable": true,
         "block": "elfbarInfobar",
         "order": 120,
@@ -4496,7 +4496,7 @@
           "tr-TR": "USP 2 alt"
         },
         "type": "text",
-        "value": "PayPal & Kauf auf Rechnung",
+        "value": "Kauf auf Rechnung (Billie)",
         "editable": true,
         "block": "elfbarSidebar",
         "order": 530,
@@ -4792,7 +4792,7 @@
           "tr-TR": "USP 2 alt metin"
         },
         "type": "text",
-        "value": "PayPal & Rechnung",
+        "value": "Kauf auf Rechnung",
         "editable": true,
         "block": "elfbarFooter",
         "order": 1560,

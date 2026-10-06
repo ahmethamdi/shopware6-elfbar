@@ -136,7 +136,12 @@
                         <div class="elfbar-footer-newsletter__privacy">
                             <label>
                                 <input type="checkbox" name="privacy" required>
-                                <span>Ich habe die {% if dataProtectionPageUrl is defined and dataProtectionPageUrl %}<a href="{{ dataProtectionPageUrl }}" target="_blank">Datenschutzbestimmungen</a>{% else %}Datenschutzbestimmungen{% endif %} gelesen.</span>
+                                {# Korrektur: "Link zur Datenschutzerklaerung fehlt" — `dataProtectionPageUrl`
+                                   war hier nie gesetzt, es blieb reiner Text. Jetzt wie im Core-
+                                   Registrierungsformular: Datenschutz-Seite (Einstellungen →
+                                   Stammdaten) als Modal. #}
+                                {% set nlPrivacyPage = config('core.basicInformation.privacyPage') %}
+                                <span>Ich habe die {% if nlPrivacyPage %}<button type="button" class="btn btn-link-inline elfbar-footer-newsletter__privacylink" aria-haspopup="dialog" data-ajax-modal="true" data-url="{{ path('frontend.cms.page', { id: nlPrivacyPage }) }}">Datenschutzbestimmungen</button>{% else %}Datenschutzbestimmungen{% endif %} gelesen.</span>
                             </label>
                         </div>
                         {% if theme_config('elfbar-footer-newsletter-note') %}<p class="elfbar-footer-newsletter__note">{{ theme_config('elfbar-footer-newsletter-note') }}</p>{% endif %}
@@ -226,8 +231,7 @@
         <span class="elfbar-footer-age">
             18+ Nur für Erwachsene — Der Verkauf erfolgt ausschließlich an Gewerbetreibende.
         </span>
-        <span class="elfbar-footer-copyright-text">
-            {{ parent() }}
-        </span>
+        {# "Realisiert mit Shopware" entfernt (Korrektur). parent() lieferte nur
+           Shopware-Logo + footer.copyrightInfo. #}
     </div>
 {% endblock %}

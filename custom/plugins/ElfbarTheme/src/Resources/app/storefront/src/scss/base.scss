@@ -5274,3 +5274,68 @@ $elfbar-alert-soft: #c0575a;   // etwas kraeftiger fuer Icon/Link
         &__text { font-size: .825rem; }
     }
 }
+
+// =====================================================================
+// KORREKTUR new.elfbargermany.de (Dokument "new.elfbargermany.de
+// Korrektur.odt", 05.10.2026). Alle Punkte gesammelt in einem Block.
+// =====================================================================
+
+// --- Mobile Kategorieseite: Produktliste war auf ~1/3 Breite gequetscht
+// (Korrektur: "Alle Kategorieseiten"). Ursache: mobil steht
+// grid-template-areas: "main", die linke Spalte traegt aber weiter
+// grid-area: col → fuer den unbekannten Namen legt der Browser IMPLIZITE
+// Spalten an (gemessen live 393px: 147px | 0 | 214px). Die Spalte bekommt
+// mobil eine eigene Zeile; ihr Inhalt (Kategorie/Filter) sind fixed
+// Bottom-Sheets → die Zeile ist 0px hoch.
+@media (max-width: 991.98px) {
+    .elfbar-cat { grid-template-areas: "col" "main"; }
+}
+
+// --- Produktkarte Startseite: Preis + "+" am Kartenboden, nicht am Titel;
+// die Karte ist jetzt ein <div> mit "stretched link" (siehe Twig-Macro).
+.elfbar-pcard {
+    display: flex; flex-direction: column;
+    &__link { position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
+    &__foot { margin-top: auto; position: relative; z-index: 2; align-items: flex-end; }
+    &__pricewrap { display: flex; flex-direction: column; gap: .1rem; min-width: 0; }
+    &__tax { font-size: .66rem; font-weight: 500; color: rgba($elfbar-color-ink, 0.55); line-height: 1.2; }
+    &__addform { margin: 0; flex: 0 0 auto; }
+    // <a> und <button> gleich aussehen lassen (Variantenprodukt → Link)
+    a.elfbar-pcard__add, button.elfbar-pcard__add {
+        text-decoration: none; color: #fff; padding: 0; flex: 0 0 auto;
+        &:hover { color: #fff; }
+        &:focus-visible { outline: 2px solid $sw-color-brand-primary; outline-offset: 2px; }
+    }
+    // Lagerampel ueber dem Preis, damit der Boden immer gleich hoch ist
+    &__stock { position: relative; z-index: 2; margin: 0 0 .5rem; }
+}
+
+// --- Pfeile ("Alle anzeigen", "Anfragen") waren grau auf dunklem/lila
+// Grund und damit kaum sichtbar (live gemessen: rgb(74,84,91)). Das
+// Core-.icon setzt eine eigene Farbe → hier die Textfarbe erben.
+.elfbar-catslider__cta .icon,
+.elfbar-stripe__cta .icon {
+    color: inherit;
+    svg { color: inherit; fill: currentColor; }
+}
+// Pfeil nicht an den Rand schieben/abschneiden
+.elfbar-stripe__cta { padding-right: .25rem; }
+
+// --- Kategorie-Karte "Neuheiten": Bild wurde links abgeschnitten
+// ("LOST MARY" halb weg). cover beschneidet beide Seiten → links
+// ausrichten, damit Logos/Schrift oben links immer ganz sichtbar sind.
+.elfbar-catslider__bg { object-position: left center; }
+
+// --- Promo-Bilder (ELFLIQ / ELFA PODS) hatten als einzige keinen
+// Hover-Effekt (Korrektur). Gleicher Effekt wie die Karten.
+a.elfbar-promo-img {
+    transition: transform .18s ease, box-shadow .18s ease;
+    &:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba($sw-color-brand-primary, 0.18); }
+}
+
+// Newsletter: Datenschutz-Link (Button, oeffnet Modal) wie normaler Link
+.elfbar-footer-newsletter__privacylink {
+    padding: 0; border: 0; background: none; vertical-align: baseline;
+    color: inherit; font: inherit; text-decoration: underline; text-underline-offset: 2px; cursor: pointer;
+    &:hover { color: inherit; text-decoration-thickness: 2px; }
+}

@@ -1,14 +1,30 @@
 {% sw_extends '@Storefront/storefront/page/content/index.html.twig' %}
 
 {# Gerçek üründen .elfbar-pcard kartı üretir (Bestseller + Neuheiten ortak).
-   product = SalesChannelProductEntity, loggedIn = B2B gate, badge = 'Neu'/'Top' vb. #}
-{% macro elfbarProductCard(product, loggedIn, badge) %}
+   product = SalesChannelProductEntity, loggedIn = B2B gate, badge = 'Neu'/'Top' vb.,
+   taxNet = context.taxState == 'net' (Macro sieht `context` nicht → Parameter).
+
+   Korrektur new.elfbargermany.de (05.10.2026):
+   - "+" war nur Deko (Klick = Produktseite). Jetzt ECHTES Schnell-in-den-
+     Warenkorb fuer direkt kaufbare Produkte (keine Variantenwahl noetig);
+     Variantenprodukte fuehren zur Produktseite (dort Auswahl).
+   - Bei Schnellkauf gehoert die Preisangabe dazu: "zzgl./inkl. MwSt.
+     zzgl. Versand" unter dem Preis (PAngV).
+   - Preis und "+" sitzen am Kartenboden, nicht am Titel (Karte = Flex-Spalte).
+   ⚠️ Karte ist kein <a> mehr: ein <form> in einem <a> ist ungueltiges HTML.
+   Der Link liegt als "stretched link" ueber der ganzen Karte, das Formular
+   liegt darueber (z-index). #}
+{% macro elfbarProductCard(product, loggedIn, badge, taxNet) %}
     {% set pName = product.translated.name ?? product.name %}
     {% set pBrand = product.manufacturer ? (product.manufacturer.translated.name ?? product.manufacturer.name) : '' %}
     {% set pCover = product.cover.media ?? null %}
     {% set pPrice = product.calculatedCheapestPrice ?? product.calculatedPrice %}
     {% set pUrl = path('frontend.detail.page', { productId: product.id }) %}
-    <a href="{{ pUrl }}" class="elfbar-pcard">
+    {# Direkt kaufbar = keine Elternartikel mit Varianten, verfuegbar, kein Vitrinen-Produkt #}
+    {% set pQuickBuy = loggedIn and product.available and not product.childCount and not product.translated.customFields.external_product_link|default(false) %}
+    {% set pMinQty = product.minPurchase ?: 1 %}
+    <div class="elfbar-pcard">
+        <a href="{{ pUrl }}" class="elfbar-pcard__link" aria-label="{{ pName }}"></a>
         {% if badge %}<span class="elfbar-pcard__badge">{{ badge }}</span>{% endif %}
         <span class="elfbar-pcard__age">18+</span>
         <div class="elfbar-pcard__img">
@@ -27,15 +43,6 @@
         {% endif %}
         {% if pBrand %}<div class="elfbar-pcard__brand">{{ pBrand }}</div>{% endif %}
         <div class="elfbar-pcard__name">{{ pName }}</div>
-        <div class="elfbar-pcard__foot">
-            {% if loggedIn %}
-                <span class="elfbar-pcard__price">{{ pPrice.unitPrice|currency }}</span>
-                <span class="elfbar-pcard__add" aria-hidden="true">+</span>
-            {% else %}
-                <span class="elfbar-pcard__price is-login">{% sw_icon 'lock-closed' %} Login</span>
-                <span class="elfbar-pcard__add is-login" aria-hidden="true">{% sw_icon 'lock-closed' %}</span>
-            {% endif %}
-        </div>
         {# Lagerbestand: NUR eingeloggte Kunden (Gaeste sehen nichts).
            ⚠️ Twig-MACROS sehen das globale `context` NICHT → `loggedIn`
            wird als Parameter durchgereicht. #}
@@ -46,13 +53,38 @@
                 } only %}
             </div>
         {% endif %}
-    </a>
+        <div class="elfbar-pcard__foot">
+            {% if loggedIn %}
+                <span class="elfbar-pcard__pricewrap">
+                    <span class="elfbar-pcard__price">{{ pPrice.unitPrice|currency }}</span>
+                    <span class="elfbar-pcard__tax">{{ taxNet ? 'zzgl.' : 'inkl.' }} MwSt. zzgl. Versand</span>
+                </span>
+                {% if pQuickBuy %}
+                    <form action="{{ path('frontend.checkout.line-item.add') }}" method="post" class="elfbar-pcard__addform" data-add-to-cart="true">
+                        <input type="hidden" name="redirectTo" value="frontend.cart.offcanvas">
+                        <input type="hidden" name="lineItems[{{ product.id }}][id]" value="{{ product.id }}">
+                        <input type="hidden" name="lineItems[{{ product.id }}][type]" value="product">
+                        <input type="hidden" name="lineItems[{{ product.id }}][referencedId]" value="{{ product.id }}">
+                        <input type="hidden" name="lineItems[{{ product.id }}][quantity]" value="{{ pMinQty }}">
+                        <input type="hidden" name="lineItems[{{ product.id }}][stackable]" value="1">
+                        <input type="hidden" name="lineItems[{{ product.id }}][removable]" value="1">
+                        <button type="submit" class="elfbar-pcard__add" title="In den Warenkorb" aria-label="{{ pName }} in den Warenkorb">+</button>
+                    </form>
+                {% else %}
+                    <a href="{{ pUrl }}" class="elfbar-pcard__add" title="Zum Produkt" aria-label="{{ pName }} ansehen">›</a>
+                {% endif %}
+            {% else %}
+                <span class="elfbar-pcard__price is-login">{% sw_icon 'lock-closed' %} Login</span>
+                <span class="elfbar-pcard__add is-login" aria-hidden="true">{% sw_icon 'lock-closed' %}</span>
+            {% endif %}
+        </div>
+    </div>
 {% endmacro %}
 
 {# Kategori vitrini: SOL gradient kategori görsel kartı + SAĞ yatay ürün slider.
    products = ürün listesi, loggedIn = B2B gate, badge, tone = renk varyantı,
    catName/catSub/catLink = sol kart metinleri. #}
-{% macro elfbarCatSlider(products, loggedIn, badge, tone, catName, catSub, catLink, eyebrow, img) %}
+{% macro elfbarCatSlider(products, loggedIn, badge, tone, catName, catSub, catLink, eyebrow, img, taxNet) %}
     <section class="elfbar-catslider">
         <a href="{{ catLink ?: '#' }}" class="elfbar-catslider__feature elfbar-catslider__feature--{{ tone }}{% if img %} has-image{% endif %}">
             {# Panelden görsel yüklenmişse gradient+harf yerine görsel arka plan.
@@ -78,7 +110,7 @@
             <div class="elfbar-cardslider" data-elfbar-cardslider>
                 <div class="elfbar-cardslider__track">
                     {% for product in products %}
-                        {{ _self.elfbarProductCard(product, loggedIn, badge) }}
+                        {{ _self.elfbarProductCard(product, loggedIn, badge, taxNet) }}
                     {% endfor %}
                 </div>
             </div>
@@ -520,7 +552,7 @@
                         <div class="elfbar-cardslider" data-elfbar-cardslider>
                             <div class="elfbar-cardslider__track">
                                 {% for product in elfbarNeu %}
-                                    {{ _self.elfbarProductCard(product, elfbarLoggedIn, 'Neu') }}
+                                    {{ _self.elfbarProductCard(product, elfbarLoggedIn, 'Neu', context.taxState == 'net') }}
                                 {% endfor %}
                             </div>
                         </div>
@@ -545,7 +577,7 @@
                         {% if elfbarBest|length %}
                             <div class="elfbar-cardgrid">
                                 {% for product in elfbarBest %}
-                                    {{ _self.elfbarProductCard(product, elfbarLoggedIn, 'Bestseller') }}
+                                    {{ _self.elfbarProductCard(product, elfbarLoggedIn, 'Bestseller', context.taxState == 'net') }}
                                 {% endfor %}
                             </div>
                         {% else %}
@@ -615,7 +647,8 @@
                                 theme_config('elfbar-catslider1-sub')|default('Die meistverkauften Produkte unserer Händler.'),
                                 path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId }),
                                 theme_config('elfbar-catslider1-eyebrow')|default('Kategorie'),
-                                theme_config('elfbar-catslider1-img')) }}
+                                theme_config('elfbar-catslider1-img'),
+                                context.taxState == 'net') }}
                             </div>
                         {% endif %}
 
@@ -634,7 +667,8 @@
                                 theme_config('elfbar-catslider2-sub')|default('Frisch im Sortiment – jetzt als Erster bestellen.'),
                                 path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId }),
                                 theme_config('elfbar-catslider2-eyebrow')|default('Kategorie'),
-                                theme_config('elfbar-catslider2-img')) }}
+                                theme_config('elfbar-catslider2-img'),
+                                context.taxState == 'net') }}
                             </div>
                         {% endif %}
 
@@ -642,7 +676,14 @@
                         {% if theme_config('elfbar-sec-stripe2-enabled') is not same as(false) %}
                         <div class="elfbar-sec" style="order: {{ theme_config('elfbar-sec-stripe2-order')|default(elfbarSecOrderDefaults.stripe2) }}">
                         {% block elfbar_home_stripe2 %}
-                            <a href="{{ path('frontend.account.register.page') }}" class="elfbar-stripe elfbar-stripe--dark">
+                            {# Ziel = dasselbe Vitrinen-Anfrageformular wie der Button in der
+                               Vitrine-Sektion (Panel: elfbar-vitrine-btn1-link). Vorher fest
+                               auf die Registrierung → Korrektur: "Link fuehrt zum Kundenaccount,
+                               lieber zum Kontaktformular". Ohne Panel-Link → wie bisher Registrierung
+                               (⚠️ frontend.cms.page(.full) sind reine AJAX-Routen, als Link unbrauchbar). #}
+                            {% set stripeLink = theme_config('elfbar-vitrine-btn1-link') ?: path('frontend.account.register.page') %}
+                            {% set stripeExternal = stripeLink starts with 'http' %}
+                            <a href="{{ stripeLink }}" class="elfbar-stripe elfbar-stripe--dark"{% if stripeExternal %} target="_blank" rel="noopener"{% endif %}>
                                 <span class="elfbar-stripe__ico">{% sw_icon 'products' %}</span>
                                 <span class="elfbar-stripe__txt"><b>VITRINE PRO</b> · Premium Verkaufsvitrine – für Bestandskunden auf Wunsch kostenlos</span>
                                 <span class="elfbar-stripe__cta">Anfragen {% sw_icon 'arrow-right' %}</span>

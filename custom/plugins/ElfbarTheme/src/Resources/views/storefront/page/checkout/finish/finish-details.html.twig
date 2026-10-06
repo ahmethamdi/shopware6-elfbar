@@ -1,0 +1,27 @@
+{% sw_extends '@Storefront/storefront/page/checkout/finish/finish-details.html.twig' %}
+
+{# =====================================================================
+   ElfbarTheme — Bestellabschluss (Korrektur new.elfbargermany.de, 05.10.2026)
+
+   "Normale Bestellung aufgegeben. Nichts aktualisiert." — trotzdem stand
+   "Vielen Dank fuer die Aktualisierung Ihrer Bestellung!" und "Die
+   Zahlungsart Ihrer Bestellung wurde zu 'Billie' geaendert!".
+
+   Ursache: der Core zeigt diese Texte, sobald `page.changedPayment` gesetzt
+   ist. Das passiert, wenn die Zahlung nach dem Absenden ueber die Seite
+   "Bestellung bearbeiten" erneut gewaehlt wird (z. B. Billie lehnt im
+   ersten Anlauf ab und der Kunde bestaetigt Billie noch einmal). Fuer den
+   Kunden ist das trotzdem EINE ganz normale Bestellung.
+   → Immer der normale Dank (Text in snippet/elfbar.de-DE.json, "deine"
+     laut Korrektur) und die Bestaetigungsmail-Info, kein "geaendert"-Satz.
+   ===================================================================== #}
+
+{% block page_checkout_finish_header %}
+    <h1 class="finish-header">{{ 'checkout.finishHeader'|trans|sw_sanitize }}</h1>
+{% endblock %}
+
+{% block page_checkout_finish_subtitle %}{% endblock %}
+
+{% block page_checkout_finish_teaser %}
+    <p class="finish-teaser">{{ 'checkout.finishInfoConfirmationMail'|trans|sw_sanitize }}</p>
+{% endblock %}
