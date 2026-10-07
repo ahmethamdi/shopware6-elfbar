@@ -606,86 +606,288 @@ $elfbar-radius: 12px;
     .container-main { padding-top: 0; }
 }
 
-// --- HERO (FULL-SIZE, köşeli, header'a yapışık — boşluk YOK) ---
-.elfbar-hero {
-    // Elfbar marka gradient'i (pembe→mor→mavi) + yumuşak radyal glow lekeleri.
-    // Üst kenar header gradient'iyle akışkan devam eder; derinlik için ışık lekeleri.
-    background:
-        radial-gradient(120% 95% at 85% 18%, rgba(#ff9ecb, 0.45) 0%, rgba(#ff9ecb, 0) 50%),
-        radial-gradient(115% 100% at 8% 100%, rgba(#5a74ff, 0.55) 0%, rgba(#5a74ff, 0) 55%),
-        linear-gradient(135deg, #ff5ea7 0%, #c85aff 50%, #5a74ff 100%);
-    color: #fff;
-    border-radius: 0; // KULLANICI: radius YOK
-    margin: 0; // header ile arasında boşluk YOK
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    align-items: center;
-    gap: 2rem;
-    // full-size: içerik 1600'de ortalı ama mavi zemin tam genişlik
-    padding: 3rem max(1.5rem, calc((100% - 1600px) / 2 + 1.5rem));
-    @media (max-width: 991.98px) { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+// --- HERO-SLIDER (07.10.2026): links Panel (Titel + Text + 3 Produkte + Button),
+// rechts Banner. Full-size, köşeli, header'a yapışık (wie der alte Hero).
+// Slides liegen im selben Grid-Feld übereinander → die höchste Slide bestimmt
+// die Höhe, beim Wechsel springt nichts. Logik: main.js initHeroSlider.
+// Autoplay = Füll-Animation des aktiven Punkts ($hero-delay), siehe __dot-fill.
+$hero-delay: 6s;
+$hero-ink: #1d1338;
 
-    &__content { min-width: 0; }
+@keyframes elfbarHeroUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: none; }
+}
+@keyframes elfbarHeroZoom {
+    from { transform: scale(1.08); }
+    to   { transform: scale(1); }
+}
+@keyframes elfbarHeroFill {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
+@keyframes elfbarHeroPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(#fff, .6); }
+    50%      { box-shadow: 0 0 0 6px rgba(#fff, 0); }
+}
+
+.elfbar-hero2 {
+    $brand: linear-gradient(135deg, #ff5ea7 0%, #c85aff 50%, #5a74ff 100%);
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background: $brand;
+    margin: 0;
+
+    // grid-template-columns: 100% — sonst schrumpft das Grid auf Inhaltsbreite
+    &__track { display: grid; grid-template-columns: 100%; }
+
+    &__slide {
+        // ⚠️ NICHT "grid-area: 1 / 1" — SCSS rechnet das als Division (= 1)
+        grid-row: 1; grid-column: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+        min-height: 560px;
+        opacity: 0; visibility: hidden;
+        transition: opacity .7s ease, visibility 0s linear .7s;
+        &.is-active { opacity: 1; visibility: visible; transition: opacity .7s ease; z-index: 1; }
+    }
+
+    // ---------- Linkes Panel ----------
+    &__panel {
+        position: relative; overflow: hidden; isolation: isolate;
+        background:
+            radial-gradient(120% 95% at 85% 18%, rgba(#ff9ecb, 0.45) 0%, rgba(#ff9ecb, 0) 50%),
+            radial-gradient(115% 100% at 8% 100%, rgba(#5a74ff, 0.55) 0%, rgba(#5a74ff, 0) 55%),
+            $brand;
+        display: flex; align-items: center;
+        // Inhalt bündig mit dem 1600er-Container, Hintergrund bis zum Rand
+        // unten mehr Luft: dort sitzt die Slider-Navigation (__nav)
+        padding: 4rem 3.5rem 7rem max(1.5rem, calc((100vw - 1600px) / 2 + 1.5rem));
+    }
+    // Lichtring oben rechts + feines Punktraster, unten ausgeblendet
+    &__deco {
+        position: absolute; inset: 0; z-index: -1; pointer-events: none;
+        background-image: radial-gradient(rgba(#fff, .22) 1px, transparent 1.4px);
+        background-size: 22px 22px;
+        -webkit-mask-image: linear-gradient(160deg, #000 0%, transparent 55%);
+        mask-image: linear-gradient(160deg, #000 0%, transparent 55%);
+        &::before {
+            content: ''; position: absolute; width: 520px; height: 520px; border-radius: 50%;
+            right: -180px; top: -220px;
+            border: 1px solid rgba(#fff, .28);
+            box-shadow: 0 0 0 60px rgba(#fff, .05), 0 0 0 130px rgba(#fff, .035);
+        }
+    }
+    // Große Slide-Nummer als Wasserzeichen
+    &__num {
+        position: absolute; z-index: -1; right: 2rem; bottom: -2.2rem;
+        font-family: $elfbar-font-headline; font-weight: 800; font-size: 13rem; line-height: 1;
+        color: transparent; -webkit-text-stroke: 1px rgba(#fff, .28);
+        letter-spacing: -.04em; pointer-events: none; user-select: none;
+    }
+
+    &__content { position: relative; width: 100%; max-width: 620px; min-width: 0; }
 
     &__eyebrow {
-        display: inline-flex; align-items: center; gap: .4rem;
-        font-size: .78rem; font-weight: 600; letter-spacing: .03em;
-        background: rgba(#fff, 0.15); color: #fff;
-        padding: .4rem .85rem; border-radius: 999px; margin-bottom: 1.25rem;
+        display: inline-flex; align-items: center; gap: .55rem;
+        font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+        color: #fff; margin-bottom: 1.1rem;
+        padding: .45rem .9rem .45rem .7rem; border-radius: 999px;
+        background: rgba(#fff, .16); border: 1px solid rgba(#fff, .3);
+        backdrop-filter: blur(8px);
+    }
+    &__eyebrow-dot {
+        width: 8px; height: 8px; border-radius: 50%; background: #fff;
+        animation: elfbarHeroPulse 2.4s ease-in-out infinite;
     }
     &__title {
-        font-family: $elfbar-font-headline; font-weight: 700;
-        font-size: clamp(1.9rem, 3.5vw, 3rem); line-height: 1.12; color: #fff; margin-bottom: 1rem;
+        font-family: $elfbar-font-headline; font-weight: 800; text-transform: uppercase;
+        font-size: clamp(2.2rem, 4.4vw, 4rem); line-height: .98; letter-spacing: -.02em;
+        color: #fff; margin: 0 0 1rem;
+        text-shadow: 0 6px 30px rgba($hero-ink, .18);
     }
-    &__subtitle { font-size: 1.05rem; line-height: 1.6; color: rgba(#fff, 0.88); margin-bottom: 1.75rem; max-width: 460px; }
+    &__text {
+        font-size: 1.08rem; line-height: 1.55; color: rgba(#fff, .92); margin: 0 0 2rem;
+        max-width: 520px;
+    }
+
+    // ---------- Produktkarten ----------
+    &__products {
+        display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem;
+        margin-bottom: 2rem; max-width: 560px;
+    }
+    &__product {
+        position: relative;
+        display: flex; flex-direction: column; gap: .6rem;
+        padding: .65rem .65rem .8rem; border-radius: 18px;
+        background: #fff; color: $hero-ink; text-decoration: none;
+        box-shadow: 0 10px 30px -8px rgba($hero-ink, .35);
+        transition: transform .25s cubic-bezier(.2, .8, .2, 1), box-shadow .25s ease;
+        &:hover {
+            transform: translateY(-6px); color: $hero-ink; text-decoration: none;
+            box-shadow: 0 22px 40px -12px rgba($hero-ink, .45);
+            .elfbar-hero2__product-go { opacity: 1; transform: none; }
+            .elfbar-hero2__product-img img { transform: scale(1.06); }
+        }
+        &:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    }
+    &__product-img {
+        display: block; aspect-ratio: 1; overflow: hidden; border-radius: 12px;
+        // weicher Markenschimmer hinter dem Produkt
+        background: radial-gradient(circle at 50% 60%, rgba(#c85aff, .14) 0%, rgba(#ff5ea7, .06) 45%, #faf7ff 75%);
+        img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 8%; transition: transform .35s ease; }
+        &.is-empty { display: grid; place-items: center; color: rgba($hero-ink, .25); }
+    }
+    &__product-name {
+        font-size: .78rem; font-weight: 700; line-height: 1.3; padding: 0 .2rem;
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        min-height: 2.6em;
+    }
+    &__product-go {
+        position: absolute; top: .9rem; right: .9rem;
+        width: 28px; height: 28px; border-radius: 50%;
+        display: grid; place-items: center; font-size: .85rem; font-weight: 700;
+        background: $hero-ink; color: #fff;
+        opacity: 0; transform: translate(-4px, 4px);
+        transition: opacity .2s ease, transform .2s ease;
+    }
+
+    // ---------- Button ----------
     &__cta {
-        display: inline-block; background: #fff; color: $sw-color-brand-primary;
-        font-weight: 600; padding: .85rem 1.75rem; border-radius: $elfbar-radius; border: none;
-        transition: transform .15s ease, box-shadow .15s ease;
-        &:hover { color: darken($sw-color-brand-primary, 8%); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.2); }
+        display: inline-flex; align-items: center; gap: .9rem;
+        background: #fff; color: $hero-ink;
+        font-size: .82rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+        padding: .5rem .5rem .5rem 1.6rem; border-radius: 999px; text-decoration: none;
+        box-shadow: 0 12px 30px -10px rgba($hero-ink, .5);
+        transition: transform .2s ease, box-shadow .2s ease;
+        &:hover {
+            color: $hero-ink; transform: translateY(-2px); text-decoration: none;
+            box-shadow: 0 18px 36px -12px rgba($hero-ink, .55);
+            .elfbar-hero2__cta-arrow { transform: translateX(4px); }
+        }
+        &:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    }
+    &__cta-arrow {
+        width: 38px; height: 38px; border-radius: 50%;
+        display: grid; place-items: center; font-size: 1rem;
+        background: $brand; color: #fff;
+        transition: transform .2s ease;
     }
 
+    // ---------- Banner rechts ----------
     &__media {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        gap: 1rem;
-        min-height: 300px;
-        // Mobilde kutular fazla basıktı (küçükler ~100px) → ferahlat.
-        // Panelden mobil görsel yüklenince zaten o gösterilir; yine de
-        // grid oranı mobilde dengeli olsun (kesik/sıkışma azalır).
-        @media (max-width: 575.98px) {
-            min-height: 300px; gap: .65rem;
+        position: relative; display: block; overflow: hidden;
+        background: rgba(#fff, .12);
+        &.is-empty { display: grid; place-items: center; color: rgba(#fff, .7); }
+        // weicher Übergang zum Panel + oben dunkler für die Navigation
+        &::after {
+            content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+            background:
+                linear-gradient(90deg, rgba($hero-ink, .22) 0%, rgba($hero-ink, 0) 18%);
         }
     }
-    &__media-big, &__media-small {
-        background: rgba(#fff, 0.16);
-        border: 1px solid rgba(#fff, 0.3);
-        border-radius: $elfbar-radius;
-        display: grid; place-items: center;
-        color: rgba(#fff, 0.7);
-        transition: transform .2s ease, background .2s ease;
-        &:hover { transform: translateY(-4px); background: rgba(#fff, 0.24); }
+    &__img {
+        position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
     }
-    &__media-big { grid-row: 1 / 3; }
+    &__img--mobile { display: none; }
 
-    // --- Responsive görsel: desktop vs mobil (panelden ayrı yüklenebilir) ---
-    // Varsayılan (desktop ≥992px): desktop görselini göster, mobil görselini DAİMA gizle.
-    // (Bu kurallar media query DIŞINDA → desktop'ta her zaman geçerli.)
-    &__img--mobile { display: none !important; }
-    &__img--desktop { display: block; }
+    // ---------- Einblend-Animation der aktiven Slide ----------
+    &__slide.is-active {
+        .elfbar-hero2__content > * { animation: elfbarHeroUp .7s cubic-bezier(.2, .8, .2, 1) both; }
+        .elfbar-hero2__content > :nth-child(1) { animation-delay: .1s; }
+        .elfbar-hero2__content > :nth-child(2) { animation-delay: .18s; }
+        .elfbar-hero2__content > :nth-child(3) { animation-delay: .26s; }
+        .elfbar-hero2__content > :nth-child(4) { animation-delay: .34s; }
+        .elfbar-hero2__content > :nth-child(5) { animation-delay: .42s; }
+        .elfbar-hero2__products { animation: none; }
+        .elfbar-hero2__product { animation: elfbarHeroUp .6s cubic-bezier(.2, .8, .2, 1) both; }
+        .elfbar-hero2__product:nth-child(1) { animation-delay: .36s; }
+        .elfbar-hero2__product:nth-child(2) { animation-delay: .46s; }
+        .elfbar-hero2__product:nth-child(3) { animation-delay: .56s; }
+        .elfbar-hero2__img { animation: elfbarHeroZoom 9s ease-out both; }
+    }
 
-    // Mobilde (≤991.98px): "has-mobile" kutularda mobil göster, desktop gizle.
-    // has-mobile YOKSA desktop görseli mobilde de görünür (fallback).
-    // ÖNEMLİ: bu blok media query İÇİNDE kalmalı; aksi halde desktop'ta da
-    // mobil görsel gösterilir (eski bug). &__media-big & ref ile sağlam tutuldu.
+    // ---------- Navigation (Glas-Pille unten links im Panel, bündig mit dem Inhalt) ----------
+    // Vorher oben rechts auf dem Banner → verdeckte Banner-Inhalte (z. B. "10x").
+    &__nav {
+        position: absolute; bottom: 2rem; left: max(1.5rem, calc((100vw - 1600px) / 2 + 1.5rem));
+        z-index: 3; display: flex; align-items: center; gap: .75rem;
+        padding: .35rem .35rem .35rem 1rem; border-radius: 999px;
+        background: rgba($hero-ink, .28); border: 1px solid rgba(#fff, .25);
+        backdrop-filter: blur(10px);
+    }
+    &__counter {
+        font-size: .78rem; font-weight: 600; letter-spacing: .06em; color: rgba(#fff, .75);
+        font-variant-numeric: tabular-nums;
+        b { color: #fff; font-weight: 800; }
+    }
+    &__dots { display: flex; gap: .35rem; }
+    &__dot {
+        position: relative; overflow: hidden;
+        width: 26px; height: 4px; padding: 0; border: 0; border-radius: 4px;
+        background: rgba(#fff, .35); cursor: pointer;
+        transition: width .35s ease;
+        // größere Klickfläche ohne den Strich zu vergrößern
+        &::after { content: ''; position: absolute; inset: -12px -2px; }
+        &.is-active { width: 48px; }
+    }
+    &__dot-fill {
+        position: absolute; inset: 0; border-radius: inherit; background: #fff;
+        transform: scaleX(0); transform-origin: left center;
+    }
+    &__dot.is-active &__dot-fill { animation: elfbarHeroFill $hero-delay linear forwards; }
+    // Pause (Hover/Fokus): Fortschritt hält an, Autoplay damit auch
+    &.is-paused &__dot-fill { animation-play-state: paused; }
+    &__arrow {
+        width: 40px; height: 40px; border-radius: 50%;
+        display: grid; place-items: center; padding: 0;
+        border: 0; background: rgba(#fff, .16); color: #fff; cursor: pointer;
+        transition: background .15s ease, transform .15s ease;
+        &:hover { background: #fff; color: $hero-ink; .icon { color: $hero-ink; } }
+        &:active { transform: scale(.94); }
+        &:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+        .icon { color: #fff; }
+        .icon svg { fill: currentColor; }
+    }
+
+    // ---------- Tablet/Mobil: Banner oben, Panel darunter ----------
     @media (max-width: 991.98px) {
-        .elfbar-hero__media-big.has-mobile,
-        .elfbar-hero__media-small.has-mobile {
-            .elfbar-hero__img--desktop { display: none; }
-            .elfbar-hero__img--mobile { display: block !important; }
+        &__slide { grid-template-columns: 1fr; min-height: 0; }
+        &__media { order: -1; aspect-ratio: 2 / 1; }
+        &__media::after { background: linear-gradient(0deg, rgba($hero-ink, .35) 0%, rgba($hero-ink, 0) 30%); }
+        &__media.has-mobile {
+            .elfbar-hero2__img--desktop { display: none; }
+            .elfbar-hero2__img--mobile { display: block; }
         }
+        &__panel { padding: 2rem 1.5rem 2.25rem; }
+        &__num { font-size: 8rem; right: 1rem; bottom: -1.4rem; }
+        &__deco::before { width: 340px; height: 340px; right: -140px; top: -160px; }
+        &__panel { padding-bottom: 2.25rem; }
+        // unten rechts im Banner: Banner-Höhe = 50vw (2:1) …
+        &__nav { top: calc(50vw - 4.1rem); bottom: auto; left: auto; right: 1rem; padding: .3rem .3rem .3rem .8rem; gap: .5rem; }
+        &__arrow { width: 34px; height: 34px; }
+    }
+    @media (max-width: 575.98px) {
+        &__media { aspect-ratio: 4 / 3; }
+        &__counter { display: none; }
+        // … bzw. 75vw (4:3)
+        &__nav { top: calc(75vw - 3.9rem); padding-left: .6rem; }
+        &__title { font-size: 2.1rem; }
+        &__products { gap: .55rem; margin-bottom: 1.5rem; }
+        &__product { padding: .4rem .4rem .6rem; border-radius: 14px; }
+        &__product-name { font-size: .7rem; }
+        &__product-go { display: none; }
+        &__text { font-size: .95rem; margin-bottom: 1.4rem; }
+    }
+
+    // Bewegung reduzieren: keine Einblend-/Zoom-Animation, kein Autoplay
+    // (ohne Füll-Animation kommt kein animationend → JS blättert nicht)
+    @media (prefers-reduced-motion: reduce) {
+        &__slide, &__slide.is-active { transition: none !important; }
+        &__slide.is-active * { animation: none !important; }
+        &__dot-fill { animation: none !important; }
+        &__dot.is-active &__dot-fill { transform: scaleX(1); }
     }
 }
 
@@ -3796,8 +3998,6 @@ body.has-elfbar-bulkbar { padding-bottom: 80px; }
 // ANASAYFA CONFIG GÖRSELLERİ — panelden yüklenen <img> kutuya otursun
 // (theme config 'media' alanları; görsel yoksa eski SVG placeholder kalır)
 // =====================================================================
-.elfbar-hero__media-big img,
-.elfbar-hero__media-small img,
 .elfbar-promo-img img,
 .elfbar-sidebar__promo img,
 .elfbar-cattile__img img,
@@ -3950,30 +4150,6 @@ body {
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
     &:hover { text-decoration: none; opacity: .85; }
-}
-
-// --- HERO: cam panel görselleri + daha yumuşak metin gölgesi + CTA ---
-.elfbar-hero {
-    &__eyebrow {
-        background: rgba(#fff, 0.18);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(#fff, 0.25);
-        box-shadow: $elf-shadow-sm;
-    }
-    &__title { text-shadow: 0 2px 24px rgba(31, 22, 51, 0.18); }
-    &__cta {
-        background: #fff;
-        background-image: linear-gradient(#fff, #fff);
-        font-weight: 700;
-        box-shadow: 0 10px 30px -6px rgba(31, 22, 51, 0.35);
-        &:hover { transform: translateY(-2px) scale(1.02); }
-    }
-    &__media-big, &__media-small {
-        background: rgba(#fff, 0.14);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(#fff, 0.28);
-        box-shadow: 0 16px 40px -16px rgba(31, 22, 51, 0.4);
-    }
 }
 
 // --- Glassmorphism kart temel hissi: marka nav, kategori tile, top-marken, kampanya ---
@@ -4131,7 +4307,7 @@ a.elfbar-link, .elfbar-more-link {
 // Hareketi azalt tercihi olanlar için animasyonları kapat
 @media (prefers-reduced-motion: reduce) {
     .elfbar-brandnav__item, .elfbar-cattile, .elfbar-pcard, .elfbar-deal,
-    .elfbar-brandslider__item, .elfbar-campaign, .elfbar-hero__cta {
+    .elfbar-brandslider__item, .elfbar-campaign {
         transition: none !important;
     }
     .elfbar-brandslider__track { animation: none !important; }

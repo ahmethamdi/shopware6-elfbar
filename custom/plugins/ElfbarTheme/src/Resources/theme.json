@@ -88,9 +88,9 @@
       },
       "elfbarHero": {
         "label": {
-          "de-DE": "01) Hero (Text + Bilder)",
-          "en-GB": "01) Hero",
-          "tr-TR": "01) Hero"
+          "de-DE": "01) Hero-Slider (Banner rechts, Titel + 3 Produkte links)",
+          "en-GB": "01) Hero slider",
+          "tr-TR": "01) Hero slider"
         }
       },
       "elfbarSidebar": {
@@ -657,67 +657,571 @@
         "scss": false,
         "tab": "elfHeader"
       },
-      "elfbar-hero-eyebrow": {
+      "elfbar-heroslide-1-eyebrow": {
         "label": {
-          "de-DE": "Eyebrow (kleine Zeile)",
-          "en-GB": "Eyebrow",
-          "tr-TR": "Üst etiket"
+          "de-DE": "Slide 1 – Kleine Überschrift",
+          "en-GB": "Slide 1 – Eyebrow",
+          "tr-TR": "Slayt 1 – Üst küçük başlık"
         },
         "type": "text",
-        "value": "Deutschlands Nr. 1 in der Vape-Branche",
+        "value": "Von unseren beliebten Marken",
         "editable": true,
         "block": "elfbarHero",
         "order": 320,
         "scss": false,
         "tab": "elfHome"
       },
-      "elfbar-hero-title": {
+      "elfbar-heroslide-1-title": {
         "label": {
-          "de-DE": "Titel (<br> für Umbruch)",
-          "en-GB": "Title",
-          "tr-TR": "Başlık"
+          "de-DE": "Slide 1 – Titel (leer + kein Bild = Slide aus)",
+          "en-GB": "Slide 1 – Title",
+          "tr-TR": "Slayt 1 – Başlık"
         },
         "type": "text",
-        "value": "Mehr Auswahl. Mehr Marge.<br>Mehr Tempo für deinen Handel.",
+        "value": "LOST MARY 800",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 321,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-1-text": {
+        "label": {
+          "de-DE": "Slide 1 – Text unter dem Titel",
+          "en-GB": "Slide 1 – Text",
+          "tr-TR": "Slayt 1 – Alt metin"
+        },
+        "type": "text",
+        "value": "15 Aromen · 2 ml Tank · 20 mg/ml Nikotinsalz.",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 322,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-1-category": {
+        "label": {
+          "de-DE": "Slide 1 – Kategorie (Name oder ID) – füllt freie Produktplätze",
+          "en-GB": "Slide 1 – category (name or ID) – fills empty product slots",
+          "tr-TR": "Slayt 1 – kategori (ad veya ID) – boş ürün yerlerini doldurur"
+        },
+        "type": "text",
+        "value": "Lost Mary 800",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 323,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-1-product-1": {
+        "label": {
+          "de-DE": "Slide 1 – Produkt 1 (Produktnummer, leer = aus Kategorie)",
+          "en-GB": "Slide 1 – product 1 (product number, empty = from category)",
+          "tr-TR": "Slayt 1 – ürün 1 (ürün numarası, boş = kategoriden)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 324,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-1-product-2": {
+        "label": {
+          "de-DE": "Slide 1 – Produkt 2 (Produktnummer, leer = aus Kategorie)",
+          "en-GB": "Slide 1 – product 2 (product number, empty = from category)",
+          "tr-TR": "Slayt 1 – ürün 2 (ürün numarası, boş = kategoriden)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 325,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-1-product-3": {
+        "label": {
+          "de-DE": "Slide 1 – Produkt 3 (Produktnummer, leer = aus Kategorie)",
+          "en-GB": "Slide 1 – product 3 (product number, empty = from category)",
+          "tr-TR": "Slayt 1 – ürün 3 (ürün numarası, boş = kategoriden)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 326,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-1-cta": {
+        "label": {
+          "de-DE": "Slide 1 – Button-Text",
+          "en-GB": "Slide 1 – Button text",
+          "tr-TR": "Slayt 1 – Buton metni"
+        },
+        "type": "text",
+        "value": "Jetzt entdecken",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 327,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-1-cta-link": {
+        "label": {
+          "de-DE": "Slide 1 – Button-Link (leer = Kategorie)",
+          "en-GB": "Slide 1 – Button link (empty = category)",
+          "tr-TR": "Slayt 1 – Buton linki (boş = kategori)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 328,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-1-bg": {
+        "label": {
+          "de-DE": "Slide 1 – Hintergrundfarbe links (leer = Markenverlauf)",
+          "en-GB": "Slide 1 – Left background (empty = brand gradient)",
+          "tr-TR": "Slayt 1 – Sol arka plan (boş = marka gradyanı)"
+        },
+        "type": "color",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 329,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-1-img": {
+        "label": {
+          "de-DE": "Slide 1 – Banner rechts",
+          "en-GB": "Slide 1 – Banner right",
+          "tr-TR": "Slayt 1 – Sağ banner"
+        },
+        "type": "media",
+        "value": "",
         "editable": true,
         "block": "elfbarHero",
         "order": 330,
         "scss": false,
         "tab": "elfHome"
       },
-      "elfbar-hero-subtitle": {
+      "elfbar-heroslide-1-img-mobile": {
         "label": {
-          "de-DE": "Untertitel",
-          "en-GB": "Subtitle",
-          "tr-TR": "Alt metin"
+          "de-DE": "Slide 1 – Banner (Mobil)",
+          "en-GB": "Slide 1 – Banner (mobile)",
+          "tr-TR": "Slayt 1 – Banner (mobil)"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 331,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-1-img-link": {
+        "label": {
+          "de-DE": "Slide 1 – Banner-Link (leer = Button-Link)",
+          "en-GB": "Slide 1 – Banner link",
+          "tr-TR": "Slayt 1 – Banner linki"
         },
         "type": "text",
-        "value": "Starke Marken, faire B2B-Preise und schnelle Lieferung für Händler.",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 332,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-2-eyebrow": {
+        "label": {
+          "de-DE": "Slide 2 – Kleine Überschrift",
+          "en-GB": "Slide 2 – Eyebrow",
+          "tr-TR": "Slayt 2 – Üst küçük başlık"
+        },
+        "type": "text",
+        "value": "Neu im Sortiment",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 333,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-2-title": {
+        "label": {
+          "de-DE": "Slide 2 – Titel (leer + kein Bild = Slide aus)",
+          "en-GB": "Slide 2 – Title",
+          "tr-TR": "Slayt 2 – Başlık"
+        },
+        "type": "text",
+        "value": "LOST MARY WAVI",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 334,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-2-text": {
+        "label": {
+          "de-DE": "Slide 2 – Text unter dem Titel",
+          "en-GB": "Slide 2 – Text",
+          "tr-TR": "Slayt 2 – Alt metin"
+        },
+        "type": "text",
+        "value": "Prefilled Pod-System – nachfüllbar, ergiebig, starke Marge.",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 335,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-2-category": {
+        "label": {
+          "de-DE": "Slide 2 – Kategorie (Name oder ID) – füllt freie Produktplätze",
+          "en-GB": "Slide 2 – category (name or ID) – fills empty product slots",
+          "tr-TR": "Slayt 2 – kategori (ad veya ID) – boş ürün yerlerini doldurur"
+        },
+        "type": "text",
+        "value": "Lost Mary WAVI",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 336,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-2-product-1": {
+        "label": {
+          "de-DE": "Slide 2 – Produkt 1 (Produktnummer, leer = aus Kategorie)",
+          "en-GB": "Slide 2 – product 1 (product number, empty = from category)",
+          "tr-TR": "Slayt 2 – ürün 1 (ürün numarası, boş = kategoriden)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 337,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-2-product-2": {
+        "label": {
+          "de-DE": "Slide 2 – Produkt 2 (Produktnummer, leer = aus Kategorie)",
+          "en-GB": "Slide 2 – product 2 (product number, empty = from category)",
+          "tr-TR": "Slayt 2 – ürün 2 (ürün numarası, boş = kategoriden)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 338,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-2-product-3": {
+        "label": {
+          "de-DE": "Slide 2 – Produkt 3 (Produktnummer, leer = aus Kategorie)",
+          "en-GB": "Slide 2 – product 3 (product number, empty = from category)",
+          "tr-TR": "Slayt 2 – ürün 3 (ürün numarası, boş = kategoriden)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 339,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-2-cta": {
+        "label": {
+          "de-DE": "Slide 2 – Button-Text",
+          "en-GB": "Slide 2 – Button text",
+          "tr-TR": "Slayt 2 – Buton metni"
+        },
+        "type": "text",
+        "value": "Jetzt entdecken",
         "editable": true,
         "block": "elfbarHero",
         "order": 340,
         "scss": false,
         "tab": "elfHome"
       },
-      "elfbar-hero-cta": {
+      "elfbar-heroslide-2-cta-link": {
         "label": {
-          "de-DE": "Button-Text",
-          "en-GB": "Button text",
-          "tr-TR": "Buton metni"
+          "de-DE": "Slide 2 – Button-Link (leer = Kategorie)",
+          "en-GB": "Slide 2 – Button link (empty = category)",
+          "tr-TR": "Slayt 2 – Buton linki (boş = kategori)"
         },
         "type": "text",
-        "value": "Jetzt als Händler registrieren",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 341,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-2-bg": {
+        "label": {
+          "de-DE": "Slide 2 – Hintergrundfarbe links (leer = Markenverlauf)",
+          "en-GB": "Slide 2 – Left background (empty = brand gradient)",
+          "tr-TR": "Slayt 2 – Sol arka plan (boş = marka gradyanı)"
+        },
+        "type": "color",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 342,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-2-img": {
+        "label": {
+          "de-DE": "Slide 2 – Banner rechts",
+          "en-GB": "Slide 2 – Banner right",
+          "tr-TR": "Slayt 2 – Sağ banner"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 343,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-2-img-mobile": {
+        "label": {
+          "de-DE": "Slide 2 – Banner (Mobil)",
+          "en-GB": "Slide 2 – Banner (mobile)",
+          "tr-TR": "Slayt 2 – Banner (mobil)"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 344,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-2-img-link": {
+        "label": {
+          "de-DE": "Slide 2 – Banner-Link (leer = Button-Link)",
+          "en-GB": "Slide 2 – Banner link",
+          "tr-TR": "Slayt 2 – Banner linki"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 345,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-3-eyebrow": {
+        "label": {
+          "de-DE": "Slide 3 – Kleine Überschrift",
+          "en-GB": "Slide 3 – Eyebrow",
+          "tr-TR": "Slayt 3 – Üst küçük başlık"
+        },
+        "type": "text",
+        "value": "Der Klassiker",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 346,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-3-title": {
+        "label": {
+          "de-DE": "Slide 3 – Titel (leer + kein Bild = Slide aus)",
+          "en-GB": "Slide 3 – Title",
+          "tr-TR": "Slayt 3 – Başlık"
+        },
+        "type": "text",
+        "value": "ELFBAR 800",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 347,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-3-text": {
+        "label": {
+          "de-DE": "Slide 3 – Text unter dem Titel",
+          "en-GB": "Slide 3 – Text",
+          "tr-TR": "Slayt 3 – Alt metin"
+        },
+        "type": "text",
+        "value": "Der Bestseller für jeden Shop – schnell drehend, sofort lieferbar.",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 348,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-3-category": {
+        "label": {
+          "de-DE": "Slide 3 – Kategorie (Name oder ID) – füllt freie Produktplätze",
+          "en-GB": "Slide 3 – category (name or ID) – fills empty product slots",
+          "tr-TR": "Slayt 3 – kategori (ad veya ID) – boş ürün yerlerini doldurur"
+        },
+        "type": "text",
+        "value": "ELFBAR 800",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 349,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-3-product-1": {
+        "label": {
+          "de-DE": "Slide 3 – Produkt 1 (Produktnummer, leer = aus Kategorie)",
+          "en-GB": "Slide 3 – product 1 (product number, empty = from category)",
+          "tr-TR": "Slayt 3 – ürün 1 (ürün numarası, boş = kategoriden)"
+        },
+        "type": "text",
+        "value": "",
         "editable": true,
         "block": "elfbarHero",
         "order": 350,
         "scss": false,
         "tab": "elfHome"
       },
-      "elfbar-hero-cta-link": {
+      "elfbar-heroslide-3-product-2": {
         "label": {
-          "de-DE": "Button-Link (leer = Registrierung)",
-          "en-GB": "Button link (empty = registration)",
-          "tr-TR": "Buton link (boş = kayıt sayfası)"
+          "de-DE": "Slide 3 – Produkt 2 (Produktnummer, leer = aus Kategorie)",
+          "en-GB": "Slide 3 – product 2 (product number, empty = from category)",
+          "tr-TR": "Slayt 3 – ürün 2 (ürün numarası, boş = kategoriden)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 351,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-3-product-3": {
+        "label": {
+          "de-DE": "Slide 3 – Produkt 3 (Produktnummer, leer = aus Kategorie)",
+          "en-GB": "Slide 3 – product 3 (product number, empty = from category)",
+          "tr-TR": "Slayt 3 – ürün 3 (ürün numarası, boş = kategoriden)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 352,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-3-cta": {
+        "label": {
+          "de-DE": "Slide 3 – Button-Text",
+          "en-GB": "Slide 3 – Button text",
+          "tr-TR": "Slayt 3 – Buton metni"
+        },
+        "type": "text",
+        "value": "Jetzt entdecken",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 353,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-3-cta-link": {
+        "label": {
+          "de-DE": "Slide 3 – Button-Link (leer = Kategorie)",
+          "en-GB": "Slide 3 – Button link (empty = category)",
+          "tr-TR": "Slayt 3 – Buton linki (boş = kategori)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 354,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-3-bg": {
+        "label": {
+          "de-DE": "Slide 3 – Hintergrundfarbe links (leer = Markenverlauf)",
+          "en-GB": "Slide 3 – Left background (empty = brand gradient)",
+          "tr-TR": "Slayt 3 – Sol arka plan (boş = marka gradyanı)"
+        },
+        "type": "color",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 355,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-3-img": {
+        "label": {
+          "de-DE": "Slide 3 – Banner rechts",
+          "en-GB": "Slide 3 – Banner right",
+          "tr-TR": "Slayt 3 – Sağ banner"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 356,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-3-img-mobile": {
+        "label": {
+          "de-DE": "Slide 3 – Banner (Mobil)",
+          "en-GB": "Slide 3 – Banner (mobile)",
+          "tr-TR": "Slayt 3 – Banner (mobil)"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 357,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-3-img-link": {
+        "label": {
+          "de-DE": "Slide 3 – Banner-Link (leer = Button-Link)",
+          "en-GB": "Slide 3 – Banner link",
+          "tr-TR": "Slayt 3 – Banner linki"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 358,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-4-eyebrow": {
+        "label": {
+          "de-DE": "Slide 4 – Kleine Überschrift",
+          "en-GB": "Slide 4 – Eyebrow",
+          "tr-TR": "Slayt 4 – Üst küçük başlık"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 359,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-4-title": {
+        "label": {
+          "de-DE": "Slide 4 – Titel (leer + kein Bild = Slide aus)",
+          "en-GB": "Slide 4 – Title",
+          "tr-TR": "Slayt 4 – Başlık"
         },
         "type": "text",
         "value": "",
@@ -727,11 +1231,137 @@
         "scss": false,
         "tab": "elfHome"
       },
-      "elfbar-hero-img-big": {
+      "elfbar-heroslide-4-text": {
         "label": {
-          "de-DE": "Bild groß",
-          "en-GB": "Image (big)",
-          "tr-TR": "Görsel (büyük)"
+          "de-DE": "Slide 4 – Text unter dem Titel",
+          "en-GB": "Slide 4 – Text",
+          "tr-TR": "Slayt 4 – Alt metin"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 361,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-4-category": {
+        "label": {
+          "de-DE": "Slide 4 – Kategorie (Name oder ID) – füllt freie Produktplätze",
+          "en-GB": "Slide 4 – category (name or ID) – fills empty product slots",
+          "tr-TR": "Slayt 4 – kategori (ad veya ID) – boş ürün yerlerini doldurur"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 362,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-4-product-1": {
+        "label": {
+          "de-DE": "Slide 4 – Produkt 1 (Produktnummer, leer = aus Kategorie)",
+          "en-GB": "Slide 4 – product 1 (product number, empty = from category)",
+          "tr-TR": "Slayt 4 – ürün 1 (ürün numarası, boş = kategoriden)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 363,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-4-product-2": {
+        "label": {
+          "de-DE": "Slide 4 – Produkt 2 (Produktnummer, leer = aus Kategorie)",
+          "en-GB": "Slide 4 – product 2 (product number, empty = from category)",
+          "tr-TR": "Slayt 4 – ürün 2 (ürün numarası, boş = kategoriden)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 364,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-4-product-3": {
+        "label": {
+          "de-DE": "Slide 4 – Produkt 3 (Produktnummer, leer = aus Kategorie)",
+          "en-GB": "Slide 4 – product 3 (product number, empty = from category)",
+          "tr-TR": "Slayt 4 – ürün 3 (ürün numarası, boş = kategoriden)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 365,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-4-cta": {
+        "label": {
+          "de-DE": "Slide 4 – Button-Text",
+          "en-GB": "Slide 4 – Button text",
+          "tr-TR": "Slayt 4 – Buton metni"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 366,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-4-cta-link": {
+        "label": {
+          "de-DE": "Slide 4 – Button-Link (leer = Kategorie)",
+          "en-GB": "Slide 4 – Button link (empty = category)",
+          "tr-TR": "Slayt 4 – Buton linki (boş = kategori)"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 367,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-4-bg": {
+        "label": {
+          "de-DE": "Slide 4 – Hintergrundfarbe links (leer = Markenverlauf)",
+          "en-GB": "Slide 4 – Left background (empty = brand gradient)",
+          "tr-TR": "Slayt 4 – Sol arka plan (boş = marka gradyanı)"
+        },
+        "type": "color",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 368,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-4-img": {
+        "label": {
+          "de-DE": "Slide 4 – Banner rechts",
+          "en-GB": "Slide 4 – Banner right",
+          "tr-TR": "Slayt 4 – Sağ banner"
+        },
+        "type": "media",
+        "value": "",
+        "editable": true,
+        "block": "elfbarHero",
+        "order": 369,
+        "scss": false,
+        "tab": "elfHome"
+      },
+      "elfbar-heroslide-4-img-mobile": {
+        "label": {
+          "de-DE": "Slide 4 – Banner (Mobil)",
+          "en-GB": "Slide 4 – Banner (mobile)",
+          "tr-TR": "Slayt 4 – Banner (mobil)"
         },
         "type": "media",
         "value": "",
@@ -741,130 +1371,17 @@
         "scss": false,
         "tab": "elfHome"
       },
-      "elfbar-hero-img-big-link": {
+      "elfbar-heroslide-4-img-link": {
         "label": {
-          "de-DE": "Bild groß — Link",
-          "en-GB": "Image (big) — link",
-          "tr-TR": "Görsel (büyük) — link"
+          "de-DE": "Slide 4 – Banner-Link (leer = Button-Link)",
+          "en-GB": "Slide 4 – Banner link",
+          "tr-TR": "Slayt 4 – Banner linki"
         },
         "type": "text",
         "value": "",
         "editable": true,
         "block": "elfbarHero",
-        "order": 380,
-        "scss": false,
-        "tab": "elfHome"
-      },
-      "elfbar-hero-img-small-1": {
-        "label": {
-          "de-DE": "Bild klein 1",
-          "en-GB": "Image (small 1)",
-          "tr-TR": "Görsel (küçük 1)"
-        },
-        "type": "media",
-        "value": "",
-        "editable": true,
-        "block": "elfbarHero",
-        "order": 390,
-        "scss": false,
-        "tab": "elfHome"
-      },
-      "elfbar-hero-img-small-1-link": {
-        "label": {
-          "de-DE": "Bild klein 1 — Link",
-          "en-GB": "Image (small 1) — link",
-          "tr-TR": "Görsel (küçük 1) — link"
-        },
-        "type": "text",
-        "value": "",
-        "editable": true,
-        "block": "elfbarHero",
-        "order": 400,
-        "scss": false,
-        "tab": "elfHome"
-      },
-      "elfbar-hero-img-small-2": {
-        "label": {
-          "de-DE": "Bild klein 2",
-          "en-GB": "Image (small 2)",
-          "tr-TR": "Görsel (küçük 2)"
-        },
-        "type": "media",
-        "value": "",
-        "editable": true,
-        "block": "elfbarHero",
-        "order": 410,
-        "scss": false,
-        "tab": "elfHome"
-      },
-      "elfbar-hero-img-small-2-link": {
-        "label": {
-          "de-DE": "Bild klein 2 — Link",
-          "en-GB": "Image (small 2) — link",
-          "tr-TR": "Görsel (küçük 2) — link"
-        },
-        "type": "text",
-        "value": "",
-        "editable": true,
-        "block": "elfbarHero",
-        "order": 420,
-        "scss": false,
-        "tab": "elfHome"
-      },
-      "elfbar-hero-img-big-mobile": {
-        "label": {
-          "de-DE": "Bild groß (Mobil)",
-          "en-GB": "Image big (mobile)",
-          "tr-TR": "Görsel büyük (mobil)"
-        },
-        "helpText": {
-          "de-DE": "Optional. Wird nur auf Smartphones statt des Desktop-Bildes gezeigt. Leer = Desktop-Bild wird verwendet.",
-          "en-GB": "Optional. Shown only on phones instead of the desktop image. Empty = desktop image is used.",
-          "tr-TR": "Opsiyonel. Sadece telefonda desktop görseli yerine gösterilir. Boş = desktop görseli kullanılır."
-        },
-        "type": "media",
-        "value": "",
-        "editable": true,
-        "block": "elfbarHero",
-        "order": 430,
-        "scss": false,
-        "tab": "elfHome"
-      },
-      "elfbar-hero-img-small-1-mobile": {
-        "label": {
-          "de-DE": "Bild klein 1 (Mobil)",
-          "en-GB": "Image small 1 (mobile)",
-          "tr-TR": "Görsel küçük 1 (mobil)"
-        },
-        "helpText": {
-          "de-DE": "Optional. Nur auf Smartphones. Leer = Desktop-Bild.",
-          "en-GB": "Optional. Phones only. Empty = desktop image.",
-          "tr-TR": "Opsiyonel. Sadece telefon. Boş = desktop görseli."
-        },
-        "type": "media",
-        "value": "",
-        "editable": true,
-        "block": "elfbarHero",
-        "order": 440,
-        "scss": false,
-        "tab": "elfHome"
-      },
-      "elfbar-hero-img-small-2-mobile": {
-        "label": {
-          "de-DE": "Bild klein 2 (Mobil)",
-          "en-GB": "Image small 2 (mobile)",
-          "tr-TR": "Görsel küçük 2 (mobil)"
-        },
-        "helpText": {
-          "de-DE": "Optional. Nur auf Smartphones. Leer = Desktop-Bild.",
-          "en-GB": "Optional. Phones only. Empty = desktop image.",
-          "tr-TR": "Opsiyonel. Sadece telefon. Boş = desktop görseli."
-        },
-        "type": "media",
-        "value": "",
-        "editable": true,
-        "block": "elfbarHero",
-        "order": 450,
+        "order": 371,
         "scss": false,
         "tab": "elfHome"
       },

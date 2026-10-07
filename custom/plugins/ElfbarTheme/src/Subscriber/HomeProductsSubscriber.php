@@ -5,11 +5,16 @@ namespace ElfbarTheme\Subscriber;
 use Shopware\Core\Content\Category\Service\NavigationLoaderInterface;
 use Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsAnyFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\NotFilter;
+use Shopware\Core\Framework\Uuid\Uuid;
+use Shopware\Core\SalesChannelRequest;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Sorting\FieldSorting;
 use Shopware\Core\Framework\Struct\ArrayStruct;
 use Shopware\Core\System\SalesChannel\Entity\SalesChannelRepository;
 use Shopware\Storefront\Page\Navigation\NavigationPageLoadedEvent;
+use Shopware\Storefront\Theme\ThemeConfigValueAccessor;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -20,16 +25,23 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  *     ortamında ID'ler farklı olsa da çalışır).
  *  2) Bestseller / Neuheiten ürünleri (sadece anasayfada): Home ağacından
  *     'elfbarBestseller' / 'elfbarNeu' extension. B2B login-gate'i Twig hallediyor.
+ *  3) Hero-Slider (sadece anasayfada): her slaytın panelde girilen kategorisinden
+ *     3 ürün → 'elfbarHeroSlides' extension (slayt no → ürün listesi + kategori).
  */
 class HomeProductsSubscriber implements EventSubscriberInterface
 {
     private const LIMIT = 8;
     // 3 seviye: ana kategori → alt kategori → alt-altın altı (3. seviye).
     private const NAV_DEPTH = 3;
+    // Hero-Slider: slayt sayısı (theme.json elfbar-heroslide-1..4-*) ve slayt başına ürün.
+    private const HERO_SLIDES = 4;
+    private const HERO_PRODUCTS = 3;
 
     public function __construct(
         private readonly SalesChannelRepository $productRepository,
-        private readonly NavigationLoaderInterface $navigationLoader
+        private readonly NavigationLoaderInterface $navigationLoader,
+        private readonly SalesChannelRepository $categoryRepository,
+        private readonly ThemeConfigValueAccessor $themeConfig
     ) {
     }
 
@@ -69,6 +81,150 @@ class HomeProductsSubscriber implements EventSubscriberInterface
 
         $page->addExtension('elfbarBestseller', new ArrayStruct(['products' => $bestseller]));
         $page->addExtension('elfbarNeu', new ArrayStruct(['products' => $neu]));
+
+        $themeId = $event->getRequest()->attributes->get(SalesChannelRequest::ATTRIBUTE_THEME_ID);
+        $page->addExtension('elfbarHeroSlides', new ArrayStruct($this->loadHeroSlides($context, \is_string($themeId) ? $themeId : null)));
+    }
+
+    /**
+     * Her slayt için önce panelde girilen ürün numaralarını (product-1..3, sırası
+     * korunur), boş kalan yerler için kategoriden (ad VEYA ID) en çok satanları
+     * yükler (önce kapak görselli ana ürünler).
+     * Kategori ADI desteklenir çünkü canlı ve lokalde ID'ler farklı.
+     *
+     * ⚠️ Hafif tut: slayt başına limit 3, sadece cover — tam ürün entity'si
+     * ağırdır (Vapor /Aktionen RAM dersi).
+     *
+     * @return array<int, array{products: list<SalesChannelProductEntity>, categoryId: string|null}>
+     */
+    private function loadHeroSlides(\Shopware\Core\System\SalesChannel\SalesChannelContext $context, ?string $themeId): array
+    {
+        $slides = [];
+        for ($n = 1; $n <= self::HERO_SLIDES; ++$n) {
+            $slides[$n] = ['products' => [], 'categoryId' => null];
+            $prefix = 'elfbar-heroslide-' . $n . '-';
+
+            // 1) Im Panel fest gewaehlte Produkte (Produktnummern, Reihenfolge bleibt)
+            $numbers = [];
+            for ($i = 1; $i <= self::HERO_PRODUCTS; ++$i) {
+                $number = trim((string) $this->themeValue($prefix . 'product-' . $i, $context, $themeId));
+                if ($number !== '') {
+                    $numbers[] = $number;
+                }
+            }
+            $products = $numbers ? $this->loadProductsByNumber($context, $numbers) : [];
+
+            // 2) Freie Plaetze aus der Kategorie (Name oder ID) auffuellen
+            $ref = trim((string) $this->themeValue($prefix . 'category', $context, $themeId));
+            $categoryId = $ref !== '' ? $this->resolveCategoryId($context, $ref) : null;
+
+            if ($categoryId !== null && \count($products) < self::HERO_PRODUCTS) {
+                // Erst Produkte MIT Bild (der Hero-Kachel ist ein Bild), dann bei
+                // Bedarf ohne Bild auffuellen (Platzhalter-Icon im Template).
+                foreach ([true, false] as $withCover) {
+                    $missing = self::HERO_PRODUCTS - \count($products);
+                    if ($missing <= 0) {
+                        break;
+                    }
+                    $products = array_merge($products, $this->loadHeroProducts(
+                        $context,
+                        $categoryId,
+                        $missing,
+                        $withCover,
+                        array_map(static fn ($p) => $p->getId(), $products)
+                    ));
+                }
+            }
+
+            $slides[$n] = ['products' => $products, 'categoryId' => $categoryId];
+        }
+
+        return $slides;
+    }
+
+    private function themeValue(string $key, \Shopware\Core\System\SalesChannel\SalesChannelContext $context, ?string $themeId): mixed
+    {
+        try {
+            return $this->themeConfig->get($key, $context, $themeId);
+        } catch (\Throwable) {
+            return null;
+        }
+    }
+
+    /**
+     * Produkte per Produktnummer, in der eingegebenen Reihenfolge. Unbekannte
+     * oder nicht sichtbare Nummern fallen still weg (der Platz wird dann aus
+     * der Kategorie gefuellt). Varianten-Nummern sind erlaubt.
+     *
+     * @param list<string> $numbers
+     *
+     * @return list<SalesChannelProductEntity>
+     */
+    private function loadProductsByNumber(\Shopware\Core\System\SalesChannel\SalesChannelContext $context, array $numbers): array
+    {
+        $criteria = new Criteria();
+        $criteria->setLimit(\count($numbers));
+        $criteria->addFilter(new EqualsFilter('active', true));
+        $criteria->addFilter(new EqualsAnyFilter('productNumber', $numbers));
+        $criteria->addAssociation('cover');
+
+        $byNumber = [];
+        foreach ($this->productRepository->search($criteria, $context)->getEntities() as $product) {
+            $byNumber[mb_strtolower((string) $product->getProductNumber())] = $product;
+        }
+
+        $sorted = [];
+        foreach ($numbers as $number) {
+            $product = $byNumber[mb_strtolower($number)] ?? null;
+            if ($product !== null && !\in_array($product, $sorted, true)) {
+                $sorted[] = $product;
+            }
+        }
+
+        return $sorted;
+    }
+
+    /**
+     * @param list<string> $excludeIds
+     *
+     * @return list<SalesChannelProductEntity>
+     */
+    private function loadHeroProducts(\Shopware\Core\System\SalesChannel\SalesChannelContext $context, string $categoryId, int $limit, bool $withCover, array $excludeIds): array
+    {
+        $criteria = new Criteria();
+        $criteria->setLimit($limit);
+        $criteria->addFilter(new EqualsFilter('active', true));
+        $criteria->addFilter(new EqualsFilter('parentId', null));
+        $criteria->addFilter(new EqualsFilter('categoriesRo.id', $categoryId));
+        $coverNull = new EqualsFilter('coverId', null);
+        $criteria->addFilter($withCover ? new NotFilter(NotFilter::CONNECTION_AND, [$coverNull]) : $coverNull);
+        if ($excludeIds) {
+            $criteria->addFilter(new NotFilter(NotFilter::CONNECTION_AND, [new EqualsAnyFilter('id', $excludeIds)]));
+        }
+        $criteria->addSorting(new FieldSorting('sales', FieldSorting::DESCENDING));
+        $criteria->addSorting(new FieldSorting('id', FieldSorting::ASCENDING));
+        $criteria->addAssociation('cover');
+
+        return array_values($this->productRepository->search($criteria, $context)->getEntities()->getElements());
+    }
+
+    private function resolveCategoryId(\Shopware\Core\System\SalesChannel\SalesChannelContext $context, string $ref): ?string
+    {
+        if (Uuid::isValid(strtolower($ref))) {
+            return strtolower($ref);
+        }
+
+        // Ada göre (büyük/küçük harf duyarsız; DB collation'ı zaten ci).
+        // Aynı ad birden fazla kategoride varsa: en üst seviyedeki.
+        $criteria = new Criteria();
+        $criteria->setLimit(1);
+        $criteria->addFilter(new EqualsFilter('name', $ref));
+        $criteria->addFilter(new EqualsFilter('active', true));
+        $criteria->addSorting(new FieldSorting('level', FieldSorting::ASCENDING));
+
+        $id = $this->categoryRepository->searchIds($criteria, $context)->firstId();
+
+        return \is_string($id) ? $id : null;
     }
 
     /**

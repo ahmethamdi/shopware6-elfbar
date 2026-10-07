@@ -213,6 +213,98 @@
     }
 
     // =================================================================
+    // Hero-Slider (07.10.2026) — Pfeile, Punkte, Autoplay, Swipe, Tastatur.
+    // Slides liegen per CSS übereinander, hier wird nur .is-active gewechselt.
+    // Autoplay: die Füll-Animation des aktiven Punkts (CSS, 6 s) löst beim
+    // Ende "animationend" aus → nächste Slide. Pause = .is-paused am Root
+    // (animation-play-state) → Fortschritt und Autoplay bleiben synchron.
+    // Inaktive Slides: aria-hidden + Links aus der Tab-Reihenfolge.
+    // =================================================================
+    function initHeroSlider() {
+        var root = document.querySelector('[data-elfbar-heroslider]');
+        if (!root) { return; }
+        var slides = root.querySelectorAll('.elfbar-hero2__slide');
+        if (slides.length < 2) { return; }
+        var dots = root.querySelectorAll('[data-hero-dot]');
+        var counter = root.querySelector('[data-hero-current]');
+        var current = 0;
+        var hover = false;
+        var focus = false;
+
+        function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+        function show(index) {
+            current = (index + slides.length) % slides.length;
+            slides.forEach(function (slide, i) {
+                var active = i === current;
+                slide.classList.toggle('is-active', active);
+                if (active) { slide.removeAttribute('aria-hidden'); } else { slide.setAttribute('aria-hidden', 'true'); }
+                slide.querySelectorAll('a, button').forEach(function (el) {
+                    if (active) { el.removeAttribute('tabindex'); } else { el.setAttribute('tabindex', '-1'); }
+                });
+            });
+            dots.forEach(function (dot, i) {
+                dot.classList.toggle('is-active', i === current);
+                if (i === current) { dot.setAttribute('aria-current', 'true'); } else { dot.removeAttribute('aria-current'); }
+            });
+            if (counter) { counter.textContent = pad(current + 1); }
+        }
+
+        function syncPause() {
+            root.classList.toggle('is-paused', hover || focus || document.hidden);
+        }
+
+        root.addEventListener('animationend', function (e) {
+            var dot = e.target.parentNode;
+            if (e.target.classList.contains('elfbar-hero2__dot-fill') && dot.classList.contains('is-active')) {
+                show(current + 1);
+            }
+        });
+
+        var prev = root.querySelector('[data-hero-prev]');
+        var next = root.querySelector('[data-hero-next]');
+        if (prev) { prev.addEventListener('click', function () { show(current - 1); }); }
+        if (next) { next.addEventListener('click', function () { show(current + 1); }); }
+        dots.forEach(function (dot) {
+            dot.addEventListener('click', function () { show(parseInt(dot.getAttribute('data-hero-dot'), 10) || 0); });
+        });
+
+        root.addEventListener('mouseenter', function () { hover = true; syncPause(); });
+        root.addEventListener('mouseleave', function () { hover = false; syncPause(); });
+        root.addEventListener('focusin', function () { focus = true; syncPause(); });
+        root.addEventListener('focusout', function (e) {
+            if (!root.contains(e.relatedTarget)) { focus = false; syncPause(); }
+        });
+        root.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowLeft') { show(current - 1); }
+            if (e.key === 'ArrowRight') { show(current + 1); }
+        });
+        document.addEventListener('visibilitychange', syncPause);
+
+        // Swipe (nur horizontal, vertikales Scrollen bleibt frei)
+        var startX = null;
+        var startY = null;
+        root.addEventListener('touchstart', function (e) {
+            startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+        }, { passive: true });
+        root.addEventListener('touchend', function (e) {
+            if (startX === null) { return; }
+            var dx = e.changedTouches[0].clientX - startX;
+            var dy = e.changedTouches[0].clientY - startY;
+            if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) { show(current + (dx < 0 ? 1 : -1)); }
+            startX = null;
+        }, { passive: true });
+
+        show(0);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initHeroSlider);
+    } else {
+        initHeroSlider();
+    }
+
+    // =================================================================
     // Menge stepper (kategori liste satırı) — -/+ butonları
     // =================================================================
     function initQtySteppers() {

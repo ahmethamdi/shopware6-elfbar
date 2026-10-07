@@ -146,44 +146,119 @@
             {# ============ HERO (köşeli, üstte, tam genişlik) ============ #}
             {% if theme_config('elfbar-sec-hero-enabled') is not same as(false) %}
             {% block elfbar_home_hero %}
-                <section class="elfbar-hero">
-                    <div class="elfbar-hero__content">
-                        {% if theme_config('elfbar-hero-eyebrow') %}<span class="elfbar-hero__eyebrow">{{ theme_config('elfbar-hero-eyebrow') }}</span>{% endif %}
-                        {% if theme_config('elfbar-hero-title') %}<h1 class="elfbar-hero__title">{{ theme_config('elfbar-hero-title')|raw }}</h1>{% endif %}
-                        {% if theme_config('elfbar-hero-subtitle') %}<p class="elfbar-hero__subtitle">{{ theme_config('elfbar-hero-subtitle') }}</p>{% endif %}
-                        {% if theme_config('elfbar-hero-cta') %}<a href="{{ theme_config('elfbar-hero-cta-link') ?: path('frontend.account.register.page') }}" class="btn elfbar-hero__cta">{{ theme_config('elfbar-hero-cta') }}</a>{% endif %}
-                    </div>
-                    {# Mobilde ayrı görsel: panelde "(Mobil)" alanı doluysa telefonda O gösterilir
-                       (desktop görseli mobilde gizlenir). Boşsa desktop görseli mobilde de görünür. #}
-                    <div class="elfbar-hero__media">
-                        {% set heroBig      = theme_config('elfbar-hero-img-big') %}
-                        {% set heroSmall1   = theme_config('elfbar-hero-img-small-1') %}
-                        {% set heroSmall2   = theme_config('elfbar-hero-img-small-2') %}
-                        {% set heroBigMob    = theme_config('elfbar-hero-img-big-mobile') %}
-                        {% set heroSmall1Mob = theme_config('elfbar-hero-img-small-1-mobile') %}
-                        {% set heroSmall2Mob = theme_config('elfbar-hero-img-small-2-mobile') %}
-                        {# Görsel linkleri (panelden). Doluysa görsel <a> ile sarılır, boşsa düz div. #}
-                        {% set heroBigLink    = theme_config('elfbar-hero-img-big-link') %}
-                        {% set heroSmall1Link = theme_config('elfbar-hero-img-small-1-link') %}
-                        {% set heroSmall2Link = theme_config('elfbar-hero-img-small-2-link') %}
+                {# HERO-SLIDER (Wunsch Ahmet, 07.10.2026): je Slide links Titel + Text +
+                   3 Produkte aus einer Kategorie + Button, rechts ein Banner.
+                   Alles im Panel: elfbar-heroslide-1..4-*. Slide erscheint NUR, wenn ein
+                   Banner (Desktop oder Mobil) gesetzt ist — 2 Banner = 2 Slides (Wunsch
+                   Ahmet; die vorbelegten Titel allein erzeugen keine Slide). Hat keine
+                   Slide ein Banner, wird Slide 1 ohne Bild gezeigt (Hero nie leer). Produkte: HomeProductsSubscriber
+                   (page.extensions.elfbarHeroSlides[n]) — Kategorie per Name oder ID.
+                   Slider-Logik: main.js initHeroSlider (Pfeile, Punkte, Autoplay, Swipe). #}
+                {% set heroData = page.extensions.elfbarHeroSlides|default([]) %}
+                {% set heroSlides = [] %}
+                {% set heroAnyBanner = false %}
+                {% for n in 1..4 %}
+                    {% if theme_config('elfbar-heroslide-' ~ n ~ '-img') or theme_config('elfbar-heroslide-' ~ n ~ '-img-mobile') %}{% set heroAnyBanner = true %}{% endif %}
+                {% endfor %}
+                {% for n in 1..4 %}
+                    {% set hsKey = 'elfbar-heroslide-' ~ n ~ '-' %}
+                    {% set hsTitle = theme_config(hsKey ~ 'title') %}
+                    {% set hsImg = theme_config(hsKey ~ 'img') %}
+                    {% set hsImgMob = theme_config(hsKey ~ 'img-mobile') %}
+                    {% if hsImg or hsImgMob or (not heroAnyBanner and n == 1 and hsTitle) %}
+                        {% set hsCatId = heroData[n].categoryId ?? null %}
+                        {% set hsCatUrl = hsCatId ? path('frontend.navigation.page', { navigationId: hsCatId }) : '' %}
+                        {% set hsCtaLink = theme_config(hsKey ~ 'cta-link') ?: hsCatUrl %}
+                        {% set heroSlides = heroSlides|merge([{
+                            eyebrow: theme_config(hsKey ~ 'eyebrow'),
+                            title: hsTitle,
+                            text: theme_config(hsKey ~ 'text'),
+                            cta: theme_config(hsKey ~ 'cta'),
+                            ctaLink: hsCtaLink,
+                            bg: theme_config(hsKey ~ 'bg'),
+                            img: hsImg,
+                            imgMobile: hsImgMob,
+                            imgLink: theme_config(hsKey ~ 'img-link') ?: hsCtaLink,
+                            products: heroData[n].products ?? []
+                        }]) %}
+                    {% endif %}
+                {% endfor %}
 
-                        {% set heroBigTag = heroBigLink ? 'a' : 'div' %}
-                        <{{ heroBigTag }}{% if heroBigLink %} href="{{ heroBigLink }}"{% endif %} class="elfbar-hero__media-big{% if heroBigMob %} has-mobile{% endif %}">
-                            {% if heroBig %}<img class="elfbar-hero__img elfbar-hero__img--desktop" src="{{ heroBig }}" alt="" loading="lazy">{% elseif not heroBigMob %}{{ mediaSvg }}{% endif %}
-                            {% if heroBigMob %}<img class="elfbar-hero__img elfbar-hero__img--mobile" src="{{ heroBigMob }}" alt="" loading="lazy">{% endif %}
-                        </{{ heroBigTag }}>
-                        {% set heroS1Tag = heroSmall1Link ? 'a' : 'div' %}
-                        <{{ heroS1Tag }}{% if heroSmall1Link %} href="{{ heroSmall1Link }}"{% endif %} class="elfbar-hero__media-small{% if heroSmall1Mob %} has-mobile{% endif %}">
-                            {% if heroSmall1 %}<img class="elfbar-hero__img elfbar-hero__img--desktop" src="{{ heroSmall1 }}" alt="" loading="lazy">{% elseif not heroSmall1Mob %}{{ mediaSvg }}{% endif %}
-                            {% if heroSmall1Mob %}<img class="elfbar-hero__img elfbar-hero__img--mobile" src="{{ heroSmall1Mob }}" alt="" loading="lazy">{% endif %}
-                        </{{ heroS1Tag }}>
-                        {% set heroS2Tag = heroSmall2Link ? 'a' : 'div' %}
-                        <{{ heroS2Tag }}{% if heroSmall2Link %} href="{{ heroSmall2Link }}"{% endif %} class="elfbar-hero__media-small{% if heroSmall2Mob %} has-mobile{% endif %}">
-                            {% if heroSmall2 %}<img class="elfbar-hero__img elfbar-hero__img--desktop" src="{{ heroSmall2 }}" alt="" loading="lazy">{% elseif not heroSmall2Mob %}{{ mediaSvg }}{% endif %}
-                            {% if heroSmall2Mob %}<img class="elfbar-hero__img elfbar-hero__img--mobile" src="{{ heroSmall2Mob }}" alt="" loading="lazy">{% endif %}
-                        </{{ heroS2Tag }}>
+                {% if heroSlides|length %}
+                <section class="elfbar-hero2" data-elfbar-heroslider aria-roledescription="carousel" aria-label="Highlights">
+                    <div class="elfbar-hero2__track">
+                        {% for slide in heroSlides %}
+                            <div class="elfbar-hero2__slide{% if loop.first %} is-active{% endif %}"
+                                 role="group" aria-roledescription="slide" aria-label="{{ loop.index }} / {{ heroSlides|length }}"
+                                 {% if not loop.first %}aria-hidden="true"{% endif %}>
+                                <div class="elfbar-hero2__panel"{% if slide.bg %} style="background: {{ slide.bg }};"{% endif %}>
+                                    {# Deko: Lichtring + Punktraster + grosse Slide-Nummer (rein optisch) #}
+                                    <span class="elfbar-hero2__deco" aria-hidden="true"></span>
+                                    {% if heroSlides|length > 1 %}<span class="elfbar-hero2__num" aria-hidden="true">{{ '%02d'|format(loop.index) }}</span>{% endif %}
+                                    <div class="elfbar-hero2__content">
+                                        {% if slide.eyebrow %}<span class="elfbar-hero2__eyebrow"><span class="elfbar-hero2__eyebrow-dot" aria-hidden="true"></span>{{ slide.eyebrow }}</span>{% endif %}
+                                        {% if slide.title %}
+                                            {# Nur die erste Slide ist die Seitenueberschrift #}
+                                            {% if loop.first %}<h1 class="elfbar-hero2__title">{{ slide.title|raw }}</h1>{% else %}<h2 class="elfbar-hero2__title">{{ slide.title|raw }}</h2>{% endif %}
+                                        {% endif %}
+                                        {% if slide.text %}<p class="elfbar-hero2__text">{{ slide.text }}</p>{% endif %}
+
+                                        {% if slide.products|length %}
+                                            <div class="elfbar-hero2__products">
+                                                {% for product in slide.products %}
+                                                    {% set hpName = product.translated.name ?? product.name %}
+                                                    <a href="{{ path('frontend.detail.page', { productId: product.id }) }}" class="elfbar-hero2__product" title="{{ hpName }}"{% if not loop.parent.loop.first %} tabindex="-1"{% endif %}>
+                                                        <span class="elfbar-hero2__product-img{% if not product.cover.media %} is-empty{% endif %}">
+                                                            {% if product.cover.media %}
+                                                                {% sw_thumbnails 'elfbar-hero2-product-img' with {
+                                                                    media: product.cover.media,
+                                                                    sizes: { default: '200px' },
+                                                                    attributes: { alt: hpName, loading: loop.parent.loop.first ? 'eager' : 'lazy' }
+                                                                } %}
+                                                            {% else %}{{ mediaSvg }}{% endif %}
+                                                        </span>
+                                                        <span class="elfbar-hero2__product-name">{{ hpName }}</span>
+                                                        <span class="elfbar-hero2__product-go" aria-hidden="true">→</span>
+                                                    </a>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+
+                                        {% if slide.cta and slide.ctaLink %}
+                                            <a href="{{ slide.ctaLink }}" class="elfbar-hero2__cta"{% if not loop.first %} tabindex="-1"{% endif %}><span>{{ slide.cta }}</span><span class="elfbar-hero2__cta-arrow" aria-hidden="true">→</span></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                {% set hsMediaTag = slide.imgLink ? 'a' : 'div' %}
+                                {# Nur ein Bild gesetzt → es gilt fuer beide Ansichten (sonst leerer Banner) #}
+                                {% set hsDesk = slide.img ?: slide.imgMobile %}
+                                {% set hsMob = slide.img and slide.imgMobile ? slide.imgMobile : null %}
+                                <{{ hsMediaTag }}{% if slide.imgLink %} href="{{ slide.imgLink }}" aria-label="{{ slide.title|striptags }}"{% if not loop.first %} tabindex="-1"{% endif %}{% endif %} class="elfbar-hero2__media{% if hsMob %} has-mobile{% endif %}{% if not hsDesk %} is-empty{% endif %}">
+                                    {% if hsDesk %}<img class="elfbar-hero2__img elfbar-hero2__img--desktop" src="{{ hsDesk|sw_encode_url }}" alt="" {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>{% endif %}
+                                    {% if hsMob %}<img class="elfbar-hero2__img elfbar-hero2__img--mobile" src="{{ hsMob|sw_encode_url }}" alt="" {% if not loop.first %}loading="lazy"{% endif %}>{% endif %}
+                                    {% if not hsDesk %}{{ mediaSvg }}{% endif %}
+                                </{{ hsMediaTag }}>
+                            </div>
+                        {% endfor %}
                     </div>
+
+                    {% if heroSlides|length > 1 %}
+                        {# Autoplay laeuft ueber die Fuell-Animation des aktiven Punkts
+                           (animationend → naechste Slide), Pause = animation-play-state. #}
+                        <div class="elfbar-hero2__nav">
+                            <span class="elfbar-hero2__counter" aria-hidden="true"><b data-hero-current>01</b> / {{ '%02d'|format(heroSlides|length) }}</span>
+                            <div class="elfbar-hero2__dots">
+                                {% for slide in heroSlides %}
+                                    <button type="button" class="elfbar-hero2__dot{% if loop.first %} is-active{% endif %}" data-hero-dot="{{ loop.index0 }}" aria-label="Slide {{ loop.index }}"{% if loop.first %} aria-current="true"{% endif %}><span class="elfbar-hero2__dot-fill"></span></button>
+                                {% endfor %}
+                            </div>
+                            <button type="button" class="elfbar-hero2__arrow" data-hero-prev aria-label="Vorherige Slide">{% sw_icon 'arrow-head-left' style { size: 'sm' } %}</button>
+                            <button type="button" class="elfbar-hero2__arrow" data-hero-next aria-label="Nächste Slide">{% sw_icon 'arrow-head-right' style { size: 'sm' } %}</button>
+                        </div>
+                    {% endif %}
                 </section>
+                {% endif %}
             {% endblock %}
             {% endif %}
 
