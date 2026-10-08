@@ -662,7 +662,8 @@ $hero-ink: #1d1338;
             radial-gradient(120% 95% at 85% 18%, rgba(#ff9ecb, 0.45) 0%, rgba(#ff9ecb, 0) 50%),
             radial-gradient(115% 100% at 8% 100%, rgba(#5a74ff, 0.55) 0%, rgba(#5a74ff, 0) 55%),
             $brand;
-        display: flex; align-items: center;
+        // unten ausrichten: Slides teilen eine Höhe (die höchste) → Button bleibt auf Höhe der Navigation
+        display: flex; align-items: flex-end;
         // Inhalt bündig mit dem 1600er-Container, Hintergrund bis zum Rand
         // unten mehr Luft: dort sitzt die Slider-Navigation (__nav)
         // Slider-Navigation sitzt rechts unten auf Höhe des Buttons (kein eigener Streifen mehr)
