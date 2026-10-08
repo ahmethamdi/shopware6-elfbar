@@ -2953,7 +2953,7 @@
           "tr-TR": "Karte 3 · Punkt 2"
         },
         "type": "text",
-        "value": "Staffelpreise & Mengenrabatte",
+        "value": "Regelmäßige Aktionen & Gratis-Ware",
         "editable": true,
         "block": "elfbarWhyus",
         "order": 1395,
@@ -3079,7 +3079,7 @@
           "tr-TR": "Punkt 3 · Titel"
         },
         "type": "text",
-        "value": "Faire Mengenstaffel",
+        "value": "Attraktive Aktionen",
         "editable": true,
         "block": "elfbarPromise",
         "order": 1374,
@@ -3093,7 +3093,7 @@
           "tr-TR": "Punkt 3 · Text"
         },
         "type": "text",
-        "value": "Je mehr Sie bestellen, desto besser Ihr Preis.",
+        "value": "Regelmäßige Gratis-Aktionen auf ausgewählte Produkte.",
         "editable": true,
         "block": "elfbarPromise",
         "order": 1376,
@@ -3177,7 +3177,7 @@
           "tr-TR": "Nasıl · başlık"
         },
         "type": "text",
-        "value": "In 3 Schritten zum Händler",
+        "value": "In 3 Schritten zum Händler werden",
         "editable": true,
         "block": "elfbarHowto",
         "order": 1440,
@@ -5545,7 +5545,7 @@
           "tr-TR": "Hakkımızda metni"
         },
         "type": "text",
-        "value": "Ihr zuverlässiger B2B-Partner für E-Zigaretten, Liquids und Zubehör. Großhandelskonditionen, schnelle Lieferung und persönliche Beratung für den Fachhandel.",
+        "value": "Die Marke ELFBAR hat sich als Marktführer mit einer der ersten Einweg E-Zigaretten auf dem deutschen Markt durchgesetzt. Seitdem erstreckt sich das Sortiment über die verschiedensten Produktlinien. Für Händler bedeutet das eine riesige Auswahl, diverse Geschmacksrichtungen und gezielte Angebote für die individuelle Nachfrage Ihrer Kunden.",
         "editable": true,
         "block": "elfbarFooter",
         "order": 1630,

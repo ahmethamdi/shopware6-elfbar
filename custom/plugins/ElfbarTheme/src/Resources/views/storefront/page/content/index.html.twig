@@ -86,7 +86,9 @@
    catName/catSub/catLink = sol kart metinleri. #}
 {% macro elfbarCatSlider(products, loggedIn, badge, tone, catName, catSub, catLink, eyebrow, img, taxNet) %}
     <section class="elfbar-catslider">
-        <a href="{{ catLink ?: '#' }}" class="elfbar-catslider__feature elfbar-catslider__feature--{{ tone }}{% if img %} has-image{% endif %}">
+        {# Ohne Ziel (keine Kategorie) kein Link — vorher "#"/Startseite #}
+        {% set csFeatTag = catLink ? 'a' : 'div' %}
+        <{{ csFeatTag }}{% if catLink %} href="{{ catLink }}"{% endif %} class="elfbar-catslider__feature elfbar-catslider__feature--{{ tone }}{% if img %} has-image{% endif %}">
             {# Panelden görsel yüklenmişse gradient+harf yerine görsel arka plan.
                Metinlerin okunması için üstüne koyu degrade overlay biner. #}
             {% if img %}
@@ -96,9 +98,9 @@
             <span class="elfbar-catslider__eyebrow">{{ eyebrow|default('Kategorie') }}</span>
             <span class="elfbar-catslider__name">{{ catName }}</span>
             <span class="elfbar-catslider__sub">{{ catSub }}</span>
-            <span class="elfbar-catslider__cta">Alle anzeigen {% sw_icon 'arrow-right' %}</span>
+            {% if catLink %}<span class="elfbar-catslider__cta">Alle anzeigen {% sw_icon 'arrow-right' %}</span>{% endif %}
             {% if not img %}<span class="elfbar-catslider__glyph" aria-hidden="true">{{ catName|first|upper }}</span>{% endif %}
-        </a>
+        </{{ csFeatTag }}>
         <div class="elfbar-catslider__main">
             <div class="elfbar-catslider__head">
                 <h2 class="elfbar-catslider__title">{{ catName }}</h2>
@@ -322,7 +324,11 @@
                         {% set csT = theme_config('elfbar-catscroll-' ~ i ~ '-title') %}
                         {% set csI = theme_config('elfbar-catscroll-' ~ i ~ '-img') %}
                         {% if csT or csI %}
-                            {% set csCards = csCards|merge([{ title: csT, img: csI, link: theme_config('elfbar-catscroll-' ~ i ~ '-link') }]) %}
+                            {# Ohne Panel-Link: Kategorie mit gleichem Namen (HomeProductsSubscriber) #}
+                            {% set csLink = theme_config('elfbar-catscroll-' ~ i ~ '-link') %}
+                            {% set csCatId = page.extensions.elfbarHomeLinks.catscroll[i] ?? null %}
+                            {% if not csLink and csCatId %}{% set csLink = seoUrl('frontend.navigation.page', { navigationId: csCatId }) %}{% endif %}
+                            {% set csCards = csCards|merge([{ title: csT, img: csI, link: csLink }]) %}
                         {% endif %}
                     {% endfor %}
                     {% if csCards|length %}
@@ -380,7 +386,7 @@
                                 icon: theme_config('elfbar-whyus-3-icon')|default('headset'),
                                 title: theme_config('elfbar-whyus-3-title')|default('Persönlicher B2B-Service'),
                                 text: theme_config('elfbar-whyus-3-text')|default('Ein fester Ansprechpartner, faire Konditionen und flexible Zahlung.'),
-                                items: [theme_config('elfbar-whyus-3-item-1')|default('Kauf auf Rechnung für Gewerbekunden'), theme_config('elfbar-whyus-3-item-2')|default('Staffelpreise & Mengenrabatte'), theme_config('elfbar-whyus-3-item-3')|default('Beratung zu Sortiment & Aktionen')]
+                                items: [theme_config('elfbar-whyus-3-item-1')|default('Kauf auf Rechnung für Gewerbekunden'), theme_config('elfbar-whyus-3-item-2')|default('Regelmäßige Aktionen & Gratis-Ware'), theme_config('elfbar-whyus-3-item-3')|default('Beratung zu Sortiment & Aktionen')]
                             }
                         ] %}
                         <section class="elfbar-whyus" aria-labelledby="elfbar-whyus-title">
@@ -647,7 +653,8 @@
                                 {% if theme_config('elfbar-bestseller-title') %}<h2 class="elfbar-section-head__title">{{ theme_config('elfbar-bestseller-title') }}</h2>{% endif %}
                                 {% if theme_config('elfbar-bestseller-sub') %}<p class="elfbar-section-head__sub">{{ theme_config('elfbar-bestseller-sub') }}</p>{% endif %}
                             </div>
-                            <a href="{{ path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId }) }}" class="elfbar-section-head__link">Alle anzeigen →</a>
+                            {% set elfbarBestCat = page.extensions.elfbarHomeLinks.bestsellerCategoryId ?? null %}
+                            {% if elfbarBestCat %}<a href="{{ seoUrl('frontend.navigation.page', { navigationId: elfbarBestCat }) }}" class="elfbar-section-head__link">Alle anzeigen →</a>{% endif %}
                         </div>
                         {% if elfbarBest|length %}
                             <div class="elfbar-cardgrid">
@@ -720,7 +727,7 @@
                             {{ _self.elfbarCatSlider(elfbarBest, elfbarLoggedIn, 'Top', 'pink',
                                 theme_config('elfbar-catslider1-title')|default('Bestseller'),
                                 theme_config('elfbar-catslider1-sub')|default('Die meistverkauften Produkte unserer Händler.'),
-                                path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId }),
+                                page.extensions.elfbarHomeLinks.bestsellerCategoryId ?? false ? seoUrl('frontend.navigation.page', { navigationId: page.extensions.elfbarHomeLinks.bestsellerCategoryId }) : null,
                                 theme_config('elfbar-catslider1-eyebrow')|default('Kategorie'),
                                 theme_config('elfbar-catslider1-img'),
                                 context.taxState == 'net') }}
@@ -740,7 +747,7 @@
                             {{ _self.elfbarCatSlider(elfbarNeu, elfbarLoggedIn, 'Neu', 'blue',
                                 theme_config('elfbar-catslider2-title')|default('Neuheiten'),
                                 theme_config('elfbar-catslider2-sub')|default('Frisch im Sortiment – jetzt als Erster bestellen.'),
-                                path('frontend.navigation.page', { navigationId: context.salesChannel.navigationCategoryId }),
+                                null,
                                 theme_config('elfbar-catslider2-eyebrow')|default('Kategorie'),
                                 theme_config('elfbar-catslider2-img'),
                                 context.taxState == 'net') }}

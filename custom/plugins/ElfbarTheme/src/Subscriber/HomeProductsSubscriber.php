@@ -5,6 +5,7 @@ namespace ElfbarTheme\Subscriber;
 use Shopware\Core\Content\Category\Service\NavigationLoaderInterface;
 use Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\ContainsFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsAnyFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\NotFilter;
@@ -27,6 +28,10 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  *     'elfbarBestseller' / 'elfbarNeu' extension. B2B login-gate'i Twig hallediyor.
  *  3) Hero-Slider (sadece anasayfada): her slaytın panelde girilen kategorisinden
  *     3 ürün → 'elfbarHeroSlides' extension (slayt no → ürün listesi + kategori).
+ *  4) Linkler (sadece anasayfada) → 'elfbarHomeLinks': Bestseller-Kategorie
+ *     (Panel "Bestseller Kategorie-ID", Name oder ID) + Kategorie-Karten ohne
+ *     eigenen Link → Kategorie mit gleichem Namen (Korrektur 08.10.2026:
+ *     "Alle anzeigen" führte zur Startseite, Karten waren nicht klickbar).
  */
 class HomeProductsSubscriber implements EventSubscriberInterface
 {
@@ -36,6 +41,8 @@ class HomeProductsSubscriber implements EventSubscriberInterface
     // Hero-Slider: slayt sayısı (theme.json elfbar-heroslide-1..4-*) ve slayt başına ürün.
     private const HERO_SLIDES = 4;
     private const HERO_PRODUCTS = 3;
+    // Kategorie-Karten (theme.json elfbar-catscroll-1..8-*)
+    private const CATSCROLL_SLOTS = 8;
 
     public function __construct(
         private readonly SalesChannelRepository $productRepository,
@@ -68,8 +75,15 @@ class HomeProductsSubscriber implements EventSubscriberInterface
             return;
         }
 
+        $themeId = $event->getRequest()->attributes->get(SalesChannelRequest::ATTRIBUTE_THEME_ID);
+        $themeId = \is_string($themeId) ? $themeId : null;
+
+        // Bestseller-Kategorie aus dem Panel (leer = ganzer Shop, dann kein "Alle anzeigen")
+        $bestRef = trim((string) $this->themeValue('elfbar-bestseller-category', $context, $themeId));
+        $bestCategoryId = $bestRef !== '' ? $this->resolveCategoryId($context, $bestRef) : null;
+
         // Bestseller: en çok satan. Neuheiten: en yeni (createdAt — releaseDate çoğu üründe boş).
-        $bestseller = $this->loadProducts($context, $homeId, [
+        $bestseller = $this->loadProducts($context, $bestCategoryId ?? $homeId, [
             new FieldSorting('sales', FieldSorting::DESCENDING),
             new FieldSorting('id', FieldSorting::ASCENDING),
         ]);
@@ -82,8 +96,46 @@ class HomeProductsSubscriber implements EventSubscriberInterface
         $page->addExtension('elfbarBestseller', new ArrayStruct(['products' => $bestseller]));
         $page->addExtension('elfbarNeu', new ArrayStruct(['products' => $neu]));
 
-        $themeId = $event->getRequest()->attributes->get(SalesChannelRequest::ATTRIBUTE_THEME_ID);
-        $page->addExtension('elfbarHeroSlides', new ArrayStruct($this->loadHeroSlides($context, \is_string($themeId) ? $themeId : null)));
+        $page->addExtension('elfbarHeroSlides', new ArrayStruct($this->loadHeroSlides($context, $themeId)));
+
+        $catscroll = [];
+        for ($i = 1; $i <= self::CATSCROLL_SLOTS; ++$i) {
+            $prefix = 'elfbar-catscroll-' . $i . '-';
+            $title = trim((string) $this->themeValue($prefix . 'title', $context, $themeId));
+            if ($title === '' || trim((string) $this->themeValue($prefix . 'link', $context, $themeId)) !== '') {
+                continue;
+            }
+            $id = $this->resolveCategoryId($context, $title) ?? $this->resolveCategoryByWords($context, $title);
+            if ($id !== null) {
+                $catscroll[$i] = $id;
+            }
+        }
+        $page->addExtension('elfbarHomeLinks', new ArrayStruct([
+            'bestsellerCategoryId' => $bestCategoryId,
+            'catscroll' => $catscroll,
+        ]));
+    }
+
+    /**
+     * Ungefährer Treffer, wenn kein Kategoriename exakt passt: alle Wörter
+     * kommen im Namen vor ("Lost Mary Nicsalt" → "Lost Mary Liquid (NicSalt)").
+     */
+    private function resolveCategoryByWords(\Shopware\Core\System\SalesChannel\SalesChannelContext $context, string $title): ?string
+    {
+        $words = array_filter(preg_split('/[\s()]+/u', $title) ?: [], static fn (string $w) => mb_strlen($w) >= 2);
+        if (!$words) {
+            return null;
+        }
+        $criteria = new Criteria();
+        $criteria->setLimit(1);
+        $criteria->addFilter(new EqualsFilter('active', true));
+        foreach ($words as $word) {
+            $criteria->addFilter(new ContainsFilter('name', $word));
+        }
+        $criteria->addSorting(new FieldSorting('level', FieldSorting::ASCENDING));
+        $id = $this->categoryRepository->searchIds($criteria, $context)->firstId();
+
+        return \is_string($id) ? $id : null;
     }
 
     /**

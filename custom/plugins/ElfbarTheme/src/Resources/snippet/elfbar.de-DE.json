@@ -1,9 +1,17 @@
 {
+    "general": {
+        "netTaxInformation": "Preise zzgl. MwSt. zzgl. Versandkosten"
+    },
     "account": {
         "registerAdvantage2": "Speichern Sie Ihre Daten und Einstellungen"
     },
     "checkout": {
         "finishHeader": "Vielen Dank für deine Bestellung!",
-        "finishUpdateHeader": "Vielen Dank für deine Bestellung!"
+        "finishUpdateHeader": "Vielen Dank für deine Bestellung!",
+        "cartHeaderTaxExcludeVat": "zzgl. MwSt."
+    },
+    "footer": {
+        "excludeVatText": "%star%Alle Preise zzgl. gesetzl. Mehrwertsteuer zzgl. <a data-ajax-modal=\"true\" href=\"%url%\" data-url=\"%url%\">Versandkosten</a> und ggf. Nachnahmegebühren, wenn nicht anders angegeben.",
+        "excludeVatTextPage": "Alle Preise zzgl. gesetzl. Mehrwertsteuer zzgl. <a href=\"%url%\">Versandkosten</a> und ggf. Nachnahmegebühren, wenn nicht anders angegeben."
     }
 }
