@@ -5090,10 +5090,11 @@ a.elfbar-link, .elfbar-more-link {
 .elfbar-vitrine__photo {
     position: relative; width: 100%; border-radius: calc(#{$elfbar-radius} + 4px);
     padding: 6px; line-height: 0; background: $elfbar-gradient;
-    box-shadow: 0 20px 46px rgba($elfbar-grad-mid, 0.38);
+    // Schatten + Glow aus (Wunsch Ahmet 08.10.2026)
+    box-shadow: none;
     &::before {
         content: ""; position: absolute; inset: -3px; border-radius: inherit;
-        background: $elfbar-gradient; filter: blur(16px); opacity: 0.5; z-index: -1;
+        background: $elfbar-gradient; filter: blur(16px); opacity: 0; z-index: -1;
     }
     img { width: 100%; height: 100%; object-fit: cover; display: block; max-height: 300px; border-radius: $elfbar-radius; }
 }
@@ -5173,7 +5174,7 @@ a.elfbar-link, .elfbar-more-link {
     &__btn {
         width: 44px; height: 44px; border-radius: 12px; border: none; cursor: pointer;
         background: $elfbar-gradient; color: #fff; display: grid; place-items: center;
-        box-shadow: 0 8px 18px rgba($elfbar-grad-mid, 0.32); transition: transform .15s ease;
+        transition: transform .15s ease;
         &:hover { transform: translateY(-2px); }
         svg { width: 20px; height: 20px; }
     }
