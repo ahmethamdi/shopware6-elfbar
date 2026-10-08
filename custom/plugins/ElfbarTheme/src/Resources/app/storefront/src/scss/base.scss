@@ -1348,7 +1348,7 @@ $hero-ink: #1d1338;
     border: none; background: $sw-color-brand-primary;
     display: inline-flex; align-items: center; justify-content: center;
     cursor: pointer; color: #fff; line-height: 0;
-    box-shadow: 0 4px 12px rgba($sw-color-brand-primary, 0.28);
+    // ohne Schatten (Wunsch Ahmet 08.10.2026)
     transition: background .15s ease, transform .1s ease, box-shadow .15s ease;
     // ikon kesin ortala (inline chevron — tam simetrik)
     > svg, .icon svg { display: block; width: 20px; height: 20px; color: #fff; }
@@ -1356,7 +1356,6 @@ $hero-ink: #1d1338;
     &:hover {
         background: darken($sw-color-brand-primary, 9%);
         transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba($sw-color-brand-primary, 0.38);
     }
     &:active { transform: scale(.94); }
 }
@@ -2314,7 +2313,7 @@ $elfbar-footer-muted: rgba(#2A3340, 0.62); // ikincil metin
     border-radius: 16px;
     background: $elfbar-gradient;
     color: #fff;
-    box-shadow: 0 12px 28px -12px rgba($sw-color-brand-primary, 0.6);
+    // ohne Schatten (Wunsch Ahmet 08.10.2026)
 
     &__head {
         font-family: $elfbar-font-headline;
@@ -4428,9 +4427,9 @@ a.elfbar-link, .elfbar-more-link {
     .icon { width: 18px; height: 18px; transition: transform 0.25s ease; }
     &:hover .icon { transform: translateX(3px); }
     &--gradient {
+        // ohne Schatten (Wunsch Ahmet 08.10.2026)
         background: $elfbar-gradient; color: #fff;
-        box-shadow: 0 8px 22px rgba($elfbar-grad-mid, 0.4);
-        &:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba($elfbar-grad-mid, 0.5); color: #fff; }
+        &:hover { transform: translateY(-2px); color: #fff; }
     }
     &--outline {
         background: rgba(255,255,255,0.06); color: #fff;
