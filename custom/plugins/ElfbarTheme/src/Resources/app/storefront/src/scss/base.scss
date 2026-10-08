@@ -879,11 +879,11 @@ $hero-ink: #1d1338;
         &__nav { top: calc(50vw - 4.1rem); bottom: auto; left: auto; right: 1rem; transform: none; padding: .3rem .3rem .3rem .8rem; gap: .5rem; }
         &__arrow { width: 34px; height: 34px; }
     }
+    // Mobil: kein Banner (Hero passt auf einen Bildschirm), Pfeile rechts neben dem Button
     @media (max-width: 575.98px) {
-        &__media { aspect-ratio: 4 / 3; }
-        &__counter { display: none; }
-        // … bzw. 75vw (4:3)
-        &__nav { top: calc(75vw - 3.9rem); padding-left: .6rem; }
+        &__media { display: none; }
+        &__counter, &__dots { display: none; }
+        &__nav { top: auto; bottom: 1.75rem; right: 1.5rem; padding: .3rem; }
         &__title { font-size: 1.8rem; }
         &__products { gap: .55rem; margin-bottom: 1.2rem; }
         &__product { padding: .4rem .4rem .6rem; border-radius: 14px; }
