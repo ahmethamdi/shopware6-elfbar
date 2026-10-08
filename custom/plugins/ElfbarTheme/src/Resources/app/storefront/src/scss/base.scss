@@ -646,9 +646,8 @@ $hero-ink: #1d1338;
         // ⚠️ NICHT "grid-area: 1 / 1" — SCSS rechnet das als Division (= 1)
         grid-row: 1; grid-column: 1;
         display: grid;
-        // Banner (905×734 ≈ 1,23) bei ~480 px Höhe ≈ 600 px breit → nicht beschnitten;
-        // breitere Spalte würde oben/unten abschneiden (1920: Titel im Banner weg)
-        grid-template-columns: minmax(0, 1fr) min(47.5%, 600px);
+        // Banner quer (Desktop ~1,4–1,8 : 1 je nach Breite, object-fit: cover)
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
         min-height: 440px;
         opacity: 0; visibility: hidden;
         transition: opacity .7s ease, visibility 0s linear .7s;
@@ -793,7 +792,6 @@ $hero-ink: #1d1338;
     }
     &__img {
         position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-        object-position: center top; // falls doch beschnitten: Banner-Überschrift bleibt sichtbar
     }
     &__img--mobile { display: none; }
 
