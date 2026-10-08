@@ -646,7 +646,9 @@ $hero-ink: #1d1338;
         // ⚠️ NICHT "grid-area: 1 / 1" — SCSS rechnet das als Division (= 1)
         grid-row: 1; grid-column: 1;
         display: grid;
-        grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+        // Banner (905×734 ≈ 1,23) bei ~480 px Höhe ≈ 600 px breit → nicht beschnitten;
+        // breitere Spalte würde oben/unten abschneiden (1920: Titel im Banner weg)
+        grid-template-columns: minmax(0, 1fr) min(47.5%, 600px);
         min-height: 440px;
         opacity: 0; visibility: hidden;
         transition: opacity .7s ease, visibility 0s linear .7s;
@@ -716,7 +718,7 @@ $hero-ink: #1d1338;
     // ---------- Produktkarten ----------
     &__products {
         display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem;
-        margin-bottom: 1.4rem; max-width: 440px;
+        margin-bottom: 1.4rem; max-width: 520px;
     }
     &__product {
         position: relative;
@@ -790,6 +792,7 @@ $hero-ink: #1d1338;
     }
     &__img {
         position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+        object-position: center top; // falls doch beschnitten: Banner-Überschrift bleibt sichtbar
     }
     &__img--mobile { display: none; }
 
@@ -811,9 +814,10 @@ $hero-ink: #1d1338;
 
     // ---------- Navigation (Glas-Pille unten rechts im Panel, auf Höhe des Buttons) ----------
     // Vorher oben rechts auf dem Banner → verdeckte Banner-Inhalte (z. B. "10x").
-    // Panel = 1.05fr von 2fr = 52.5 % → rechter Panelrand liegt bei 47.5 % von rechts
+    // rechts bündig mit den Produktkarten (Inhalt links + max-width 520px)
     &__nav {
-        position: absolute; bottom: 2.5rem; right: calc(47.5% + 2rem);
+        position: absolute; bottom: 2.5rem;
+        left: calc(max(1.5rem, calc((100vw - 1600px) / 2 + 1.5rem)) + 520px); transform: translateX(-100%);
         z-index: 3; display: flex; align-items: center; gap: .75rem;
         padding: .35rem .35rem .35rem 1rem; border-radius: 999px;
         background: rgba($hero-ink, .28); border: 1px solid rgba(#fff, .25);
@@ -856,7 +860,7 @@ $hero-ink: #1d1338;
     // Schmaler Desktop: Button + Navigation passen nicht nebeneinander → Nav darunter, links bündig
     @media (min-width: 992px) and (max-width: 1279.98px) {
         &__panel { padding-bottom: 5.25rem; }
-        &__nav { bottom: 1.5rem; right: auto; left: 1.5rem; }
+        &__nav { bottom: 1.5rem; left: 1.5rem; transform: none; }
     }
 
     // ---------- Tablet/Mobil: Banner oben, Panel darunter ----------
@@ -873,7 +877,7 @@ $hero-ink: #1d1338;
         &__deco::before { width: 340px; height: 340px; right: -140px; top: -160px; }
         &__panel { padding-bottom: 1.75rem; }
         // unten rechts im Banner: Banner-Höhe = 50vw (2:1) …
-        &__nav { top: calc(50vw - 4.1rem); bottom: auto; left: auto; right: 1rem; padding: .3rem .3rem .3rem .8rem; gap: .5rem; }
+        &__nav { top: calc(50vw - 4.1rem); bottom: auto; left: auto; right: 1rem; transform: none; padding: .3rem .3rem .3rem .8rem; gap: .5rem; }
         &__arrow { width: 34px; height: 34px; }
     }
     @media (max-width: 575.98px) {
