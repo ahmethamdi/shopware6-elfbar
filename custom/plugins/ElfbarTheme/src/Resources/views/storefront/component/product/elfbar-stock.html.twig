@@ -50,7 +50,9 @@
             {%- elseif elfbarStock <= 0 -%}
                 Nicht auf Lager
             {%- else -%}
-                {{ elfbarStock }} auf Lager
+                {# Keine Stückzahl zeigen — auch nicht für eingeloggte Händler
+                   (Wunsch Ahmet 13.10.2026). Die Ampelfarbe bleibt. #}
+                Auf Lager
             {%- endif -%}
         </span>
     </span>

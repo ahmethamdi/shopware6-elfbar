@@ -4332,11 +4332,23 @@ a.elfbar-link, .elfbar-more-link {
 // =====================================================================
 
 // Sidebar & kategori aside: panel sağa TAŞABİLSİN + üstte dursun
-.elfbar-sidebar,
-.elfbar-cat__aside {
+// ⚠️ .elfbar-cat__aside NUR Desktop (Fix 13.10.2026): mobil ist die Aside ein
+// fixed Bottom-Sheet (siehe "MOBİL KATEGORİ SAYFASI"). Diese spätere Regel
+// überschrieb dort position:fixed → Aside blieb im Seitenfluss, wurde per
+// translateY(100%) um ihre eigene Höhe nach unten geschoben: ~400px Lücke
+// oben + "Alle Kategorien" über der Produktliste; overflow:visible nahm dem
+// Sheet außerdem das Scrollen.
+.elfbar-sidebar {
     overflow: visible !important;          // mega panel kesilmesin
     position: relative;
     z-index: 400;                          // ana içerik kartlarının ÜSTÜNde
+}
+@media (min-width: 992px) {
+    .elfbar-cat__aside {
+        overflow: visible !important;
+        position: relative;
+        z-index: 400;
+    }
 }
 
 // Sidebar/aside cam efekti panel'in arkasına stacking context kurmasın diye
